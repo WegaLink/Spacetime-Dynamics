@@ -1,0 +1,416 @@
+package Model.APPS.I2C_CONFIG.v4_0_6;
+
+/*************** Revision History **********************************************
+ Version     Date          Description
+ 4.0.0       12-Feb-2016   Initial version for DAVEv4<br>   
+ 4.0.2       07-Apr-2016   APP productive version<br>   
+ 4.0.4       23-Jun-2016   Redundant code generation for 
+                           external clock configuration corrected.<br> 
+ 4.0.6       18-Aug-2016   Improved documentation of address formatting.                       
+ *******************************************************************************/
+import ifx.davex.app.manifest.*
+
+class  I2C_CONFIG extends I2C_CONFIG_GUI {
+
+	/* ----------------------Begin : APP Properties------------------------------------------------------ */
+	/* Note  : Following App properties are mandatory and important */
+	/* Begin : APP property section */
+
+	/**
+	 * App version
+	 * Format: a string with three digit separated by a dot.
+	 */
+	def version = '4.0.6'
+	
+	/**
+	 * App categories declaration. 
+	 * It is list of strings. Subcategories are separated by slash.
+	 * No limits on number of categories and subcategories depth.
+	 */
+	def categoriesDescription = [
+		'Peripheral Configuration'
+	]
+	
+	/** 
+	 * Minimum DAVE version required for this APP.
+	 * 
+	 * It is string with three digit separated by a dot.
+	 */
+	def minDaveVersion           = '4.1.2'
+	
+	/**
+	 * Keywords used by search feature in Apps selection view
+	 *
+	 * It is a list of string.
+	 */
+	def keywords = [
+		'Config',
+		'USIC',
+		'I2C',
+		'Communication',
+		'Serial',
+		'Peripheral Configuration',
+		'I2C_CONFIG',
+        'ALL'
+	]
+	
+	/** 
+	 * softwareIDs is used to declare which devices are compatible with this APP.
+	 * It is a map with key a string containing a pattern that shall match the SW id of
+	 * the device and as value the minimal version of the APP.
+	 */
+	def softwareIDs = [
+		"XMC1.1.*.*.*": "1.0.0",
+		"XMC1.2.*.*.*": "1.0.0",
+		"XMC1.3.*.*.*": "1.0.0",
+		"XMC1.4.*.*.*": "1.0.0",
+		"XMC4.1.*.*.*": "1.0.0",
+		"XMC4.2.*.*.*": "1.0.0",
+    "XMC4.3.*.*.*": "1.0.0",
+		"XMC4.4.*.*.*": "1.0.0",
+		"XMC4.5.*.*.*": "1.0.0",
+		"XMC4.7.*.*.*": "1.0.0",
+		"XMC4.8.*.*.*": "1.0.0"
+	]
+	
+	/**
+	 * Singleton property:
+	 * When it is true the app can be instantiated only once.
+	 */
+	def singleton = false
+
+
+	/**
+	 * initProvider property
+	 * It shall be true to add a call to <AppName>_Init()
+	 */
+	def initProvider = true
+
+	/**
+	 * Deprecated app
+	 * Set it to true to indicate that the app shall be not used for new projects.
+	 */
+	def deprecated = false
+
+	/**
+	 * Sharable property.
+	 * It shall be true to allows multiple apps to require the same instance of this app.
+	 */
+	def sharable = false
+
+	/**
+	 *  App function description.
+	 */
+	def description = "Configures a USIC channel as a master/slave to perform transmit & receive operations using the I2C protocol"
+
+	/* ----------------End: APP Properties--------------------------------------------------------------- */
+	/* ----------------Begin : User Variables for hardware resources and virtual signals----------------- */
+	
+	/*Required Apps*/
+	MRequiredApp appres_clock             	      	    // Consumed clock APP
+	
+	/*Required resource groups*/
+	MVirtualResourceGroup hwres_usic_channel           	// USIC channel hardware resource
+
+	/*Required input virtual signals */
+	MVirtualSignal vs_i2c_datain0                    	// Input data DIN0 signal
+	MVirtualSignal vs_i2c_sclkin                    	// Shift clock input signal
+	MVirtualSignal vs_i2c_tx_validation                 // Input stage DX1 input selection DX2INS signal
+	
+	/*Required output virtual signals */
+	MVirtualSignal vs_i2c_dout0                     	// Shift data DOUT0 signal
+	MVirtualSignal vs_i2c_sclkout						// Shift clock output signal
+	
+	MVirtualSignal vs_i2c_dx1ins_sys_out				// Input stage DX1INS signal system output
+	MVirtualSignal vs_i2c_dx2ins_sys_out				// Input stage DX2INS signal system output
+	
+	MVirtualSignal vs_i2c_standard_tx_event         	// Standard buffer transmit event signal
+	MVirtualSignal vs_i2c_standard_rx_event         	// Standard buffer receive event signal
+	MVirtualSignal vs_i2c_tx_shift_event            	// Transmit shift event signal
+	MVirtualSignal vs_i2c_rx_start_event           	    // Receive start event signal
+	MVirtualSignal vs_i2c_alt_rx_event              	// Standard buffer alternative receive event signal
+	MVirtualSignal vs_i2c_proto_specfic_event       	// UART protocol specific event signal
+	MVirtualSignal vs_i2c_data_lost_event           	// Data lost event signal
+	MVirtualSignal vs_i2c_fifo_tx_event             	// FIFO transmit buffer event signal
+	MVirtualSignal vs_i2c_fifo_tx_err_event         	// Transmit FIFO buffer error event signal
+	MVirtualSignal vs_i2c_fifo_rx_event             	// FIFO standard receive buffer event signal
+	MVirtualSignal vs_i2c_fifo_rx_err_event         	// Receive FIFO buffer error event signal
+	MVirtualSignal vs_i2c_fifo_alt_rx_event         	// FIFO alternative receive buffer event signal
+
+	
+	/*Variable definition*/
+	GFloat gfloat_peripheral_clock = GFloat() 			// The peripheral clock from Clock APP. Used in baud rate calculations
+	GCombo baudrate_registers_values = GCombo()  		// To save the baud rate values
+	
+	/* -----------------End : User Variables -------------------------------------------------------------- */
+	/* -----------------Begin : APP Constructor and Logic ------------------------------------------------- */
+	
+	public I2C_CONFIG(DaveEnv daveEnv) {
+		/* -------------------------------------------------------------- */
+		/* ---------- Local variables & constants ----------------------- */
+		/* -------------------------------------------------------------- */
+		final String family = daveEnv.project.selectedDevice.deviceId.family
+		final String device = family + daveEnv.project.selectedDevice.deviceId.series
+		final boolean isfamily_4x
+		final boolean isfamily_1x
+		
+		/* ------------------------------------------------------------- */
+		/* ---------- Manifest function references ---------------------- */
+		/* -------------------------------------------------------------- */
+		
+		/* ----- TAB : General ------------------------------------------ */
+		/* ------- GROUP : Operation Mode  ------------------------------ */
+		MF uses_TX_validation = MF({ gcheck_enable_transmit_enable.value == true }, Boolean)	// MF variable to check if the transmit data validation is enabled
+		MF is_device_Master = MF({ gcombo_device_type.value == "Master" }, Boolean)     // MF variable to check if the device type is a master
+		MF is_device_Slave = MF({ gcombo_device_type.value == "Slave" }, Boolean)	    // MF variable to check if the device type is a slave
+		
+		/* ------- GROUP : Baud rate generation  ------------------------ */
+		MF uses_Internal_Clock = MF({ gcombo_clock_selection.value == "Internal Source (FD)" }, Boolean)	// MF variable to check if the clock selected is internal
+		MF uses_External_Clock = MF({ gcombo_clock_selection.value == "External Source (DX1)" }, Boolean)  // MF variable to check if the clock selected is external
+
+		
+		/* ------- TAB : FIFO  ------------------------------------------ */
+		/* ------- GROUP : Tx FIFO Buffer  ------------------------------ */
+		MF is_txFIFO_enabled = MF({gcombo_number_tx_fifo_entries.value != "0"}, Boolean)		// MF variable to check if the transmit FIFO is enabled
+		MF is_txFIFO_disabled = MF({gcombo_number_tx_fifo_entries.value == "0"}, Boolean)		// MF variable to check if the transmit FIFO is disabled
+		
+		/* ------- GROUP : Rx FIFO Buffer  ------------------------------ */
+		MF is_rxFIFO_enabled = MF({gcombo_number_rx_fifo_entries.value != "0"}, Boolean)		// MF variable to check if the receive FIFO is enabled
+		MF is_rxFIFO_disabled = MF({gcombo_number_rx_fifo_entries.value == "0"}, Boolean)		// MF variable to check if the receive FIFO is disabled
+		
+		
+		/* -------------------------------------------------------------- */
+		/* ---------- Target Specific User Variable Initialization ------ */
+		/* -------------------------------------------------------------- */
+		if (family == "XMC4") {
+			isfamily_4x = true
+			isfamily_1x = false
+		} else if (family == "XMC1") {
+			isfamily_1x = true
+			isfamily_4x = false
+		}
+		
+		/* -------------------------------------------------------------- */
+		/* ---------- APP consumption Block ----------------------------- */
+		/* -------------------------------------------------------------- */
+		if (isfamily_4x) {
+			appres_clock = MRequiredApp("CLOCK_XMC4", "Clock", RSHARABLE, "4.0.6")
+		} else if (isfamily_1x) {
+			appres_clock = MRequiredApp("CLOCK_XMC1", "Clock", RSHARABLE, "4.0.6")
+		}
+		
+		/* -------------------------------------------------------------- */
+		/* ---------- Hardware resource consumption block --------------- */
+		/* -------------------------------------------------------------- */
+		hwres_usic_channel = MVirtualResourceGroup("Channel", ["peripheral", "usic", "*", "channel", "*"])
+		
+		/*Set the size based on UI selection. Refer USIC->TBCTR/RBCTR->SIZE bitfield in reference manual*/
+		addRegisterBitFieldConstraint(hwres_usic_channel, "tbctr_size", MF({[gcombo_number_tx_fifo_entries.options.indexOf(gcombo_number_tx_fifo_entries.value)]}, List), is_txFIFO_enabled)
+		addRegisterBitFieldConstraint(hwres_usic_channel, "rbctr_size", MF({[gcombo_number_rx_fifo_entries.options.indexOf(gcombo_number_rx_fifo_entries.value)]}, List), is_rxFIFO_enabled)
+		
+		/* -------------------------------------------------------------- */
+		/* ---------- APP IO Signals ------------------------------------ */
+		/* -------------------------------------------------------------- */
+		/*I/O signals */
+		vs_i2c_datain0 = MVirtualSignal(hwres_usic_channel, "sda_in", "dx0ins", true, true)
+		vs_i2c_sclkin = MVirtualSignal(hwres_usic_channel, "scl_in", "dx1ins", true, true)
+	
+		vs_i2c_dout0   = MVirtualSignal(hwres_usic_channel, "sda_out", "dout0", true, true)
+		vs_i2c_sclkout = MVirtualSignal(hwres_usic_channel, "scl_out", "sclkout", true, true)
+		
+		/*Input signals */
+		vs_i2c_tx_validation = MVirtualSignal(hwres_usic_channel, "transmit_data_validation", "dx2ins", uses_TX_validation, uses_TX_validation)
+		
+		/*Output signals */
+		vs_i2c_dx1ins_sys_out = MVirtualSignal(hwres_usic_channel, "dx1ins_out", "dx1ins", isfamily_4x, isfamily_4x)
+		vs_i2c_dx2ins_sys_out = MVirtualSignal(hwres_usic_channel, "dx2ins_out", "dx2ins", uses_TX_validation, uses_TX_validation)
+		
+		vs_i2c_standard_tx_event   =  MVirtualSignal(hwres_usic_channel, "transmit_buffer_event", "transmit_buffer_int", true, true)
+		vs_i2c_standard_rx_event   =  MVirtualSignal(hwres_usic_channel, "standard_receive_event", "standard_receive_int", true, true)
+		vs_i2c_tx_shift_event      =  MVirtualSignal(hwres_usic_channel, "transmit_shift_event", "transmit_shift_int", true, true)
+		vs_i2c_rx_start_event      =  MVirtualSignal(hwres_usic_channel, "receive_start_event", "receive_start_int", true, true)
+		vs_i2c_alt_rx_event        =  MVirtualSignal(hwres_usic_channel, "alternate_receive_event", "alternate_receive_int", true, true)
+		vs_i2c_proto_specfic_event =  MVirtualSignal(hwres_usic_channel, "protocol_specific_event", "protocol_specific_int", true, true)
+		vs_i2c_fifo_tx_event       =  MVirtualSignal(hwres_usic_channel, "fifo_standard_transmit_buffer_event", "standard_transmit_buffer_int", is_txFIFO_enabled, is_txFIFO_enabled)
+		vs_i2c_fifo_tx_err_event   =  MVirtualSignal(hwres_usic_channel, "fifo_transmit_buffer_error_event", "transmit_buffer_error_int", is_txFIFO_enabled, is_txFIFO_enabled)
+		vs_i2c_fifo_rx_event       =  MVirtualSignal(hwres_usic_channel, "fifo_standard_receive_buffer_event", "standard_receive_buffer_int", is_rxFIFO_enabled, is_rxFIFO_enabled)
+		vs_i2c_fifo_rx_err_event   =  MVirtualSignal(hwres_usic_channel, "fifo_receive_buffer_error_event", "receive_buffer_error_int", is_rxFIFO_enabled, is_rxFIFO_enabled)
+		vs_i2c_fifo_alt_rx_event   =  MVirtualSignal(hwres_usic_channel, "fifo_alternate_receive_buffer_event", "alternate_receive_buffer_int", is_rxFIFO_enabled, is_rxFIFO_enabled)
+		
+		
+		/* -------------------------------------------------------------- */
+		/* ---------- APP IO Connections -------------------------------- */
+		/* -------------------------------------------------------------- */
+		
+		/* -------------------------------------------------------------- */
+		/* ---------- APP Configuration --------------------------------- */
+		/* -------------------------------------------------------------- */
+		if(isfamily_4x) {
+			/*Read the peripheral bus clock to derive maximum baudrate value*/
+			gfloat_peripheral_clock.value = MF({ appres_clock.getVal(["gfloat_peribusfreq", "value"]) }, Float)
+		} else {
+			/*Read the MCLK value to derive maximum baudrate value*/
+			gfloat_peripheral_clock.value = MF({ appres_clock.getVal(["gfloat_mclkactfrq", "value"]) }, Float)
+		}
+		
+		/* -------------------------------------------------------------- */
+		/* --------------- TAB : Symbol timing -------------------------- */
+		
+		
+		/* ------- GROUP : Operation Mode  ------------------------------ */
+		glabel_type_transmit_data_validation.enabled = uses_TX_validation
+		gcombo_type_transmit_data_validation.enabled = uses_TX_validation
+		glabel_transmit_data_validation_trigger_edge.enabled = MF({
+			gcheck_enable_transmit_enable.value == true &&
+			gcombo_type_transmit_data_validation.value == "Transfer On Event (DX2T)"
+		}, Boolean)
+		gcombo_transmit_data_validation_trigger_edge.enabled = MF({
+			gcheck_enable_transmit_enable.value == true &&
+			gcombo_type_transmit_data_validation.value == "Transfer On Event (DX2T)"
+		}, Boolean)
+		
+		/* ------- GROUP : Baud rate generation  ------------------------ */
+		ggroup_baud_rate.visible = is_device_Master
+		glabel_external_clock_edge.visible = uses_External_Clock
+		gcombo_external_clock_edge.visible = uses_External_Clock
+		ginteger_divider_factor_external_clk.visible = uses_External_Clock
+		ginteger_oversampling.visible = uses_External_Clock
+		glabel_desired_baud_rate.visible = uses_Internal_Clock
+		ginteger_desired_baud_rate.visible = uses_Internal_Clock
+		ginteger_divider_factor.visible = uses_Internal_Clock
+		ginteger_symbol_timing_master.visible = uses_Internal_Clock
+		glabel_step_value.visible = uses_Internal_Clock
+		ginteger_step_value.visible = uses_Internal_Clock
+		glabel_real_baud_rate.visible = uses_Internal_Clock
+		ginteger_real_baud_rate.visible = uses_Internal_Clock
+		
+		ginteger_slave_address.maxValue = MF({if(gcombo_addressing_mode.value == "7") return 255 else return 1023}, Integer)
+		
+		gimage_baud_rate.path = MF({
+			if(gcombo_clock_selection.value == "Internal Source (FD)") {
+				"doc/I2C_CONFIG_brg_internal_clk.png"
+			} else { // gcombo_clock_selection.value == "External Source (DX1)"
+				"doc/I2C_CONFIG_brg_external_clk.png"
+			}
+		}, String)
+		
+		baudrate_registers_values.options = MF({
+			Integer peripheral_clock
+			Integer clock_divider
+			Integer pdiv
+			Integer pdiv_int
+			Integer pdiv_int_min
+			Integer pdiv_frac
+			Integer pdiv_frac_min
+			Integer clock_divider_min
+			Integer rate
+			Integer oversampling
+			Float calBaud
+
+			peripheral_clock = (gfloat_peripheral_clock.value * 1000000 ) / 100
+			rate = (ginteger_desired_baud_rate.value * 1000)
+
+			if(rate <= 100000) { // <= 100 kHz --> standard mode
+				oversampling = 10
+			} else {
+				oversampling = 25 // > 100 kHz --> fast mode
+			}
+
+			rate = rate / 100
+
+			clock_divider_min = 1
+			pdiv_int_min = 1
+			pdiv_frac_min = 0x3ff
+
+			for(clock_divider = 1; clock_divider < 1024; ++clock_divider) {
+				pdiv = ((peripheral_clock * clock_divider) / (rate * oversampling))
+				pdiv_int = pdiv >> 10;
+				pdiv_frac = pdiv & 0x3ff;
+
+				if ((pdiv_int < 1024) && (pdiv_frac < pdiv_frac_min)) {
+					pdiv_frac_min = pdiv_frac;
+					pdiv_int_min = pdiv_int;
+					clock_divider_min = clock_divider;
+				}
+			}
+			
+			oversampling = 10
+			if(ginteger_desired_baud_rate.value <= 100) {
+				oversampling = 10
+			} else {
+				oversampling = 25
+			}
+			calBaud = (gfloat_peripheral_clock.value * 1000000 * clock_divider_min) / (1024 * oversampling * pdiv_int_min)
+			// converting to KHz
+			calBaud = calBaud / 1000
+			
+			return [calBaud.toInteger(), clock_divider_min, pdiv_int_min, oversampling]
+
+		}, List)
+		
+		ginteger_real_baud_rate.value = MF({ Integer.valueOf(baudrate_registers_values.options[0])}, Integer)
+		ginteger_step_value.value = MF({ Integer.valueOf(baudrate_registers_values.options[1])}, Integer)
+		ginteger_divider_factor.value = MF({ Integer.valueOf(baudrate_registers_values.options[2]) + 1}, Integer)
+		ginteger_symbol_timing_master.value = MF({ Integer.valueOf(baudrate_registers_values.options[3])}, Integer)
+		
+		glabel_symbol_timing_slave.visible = is_device_Slave
+		gcombo_symbol_timing_slave.visible = is_device_Slave
+		
+		/* ------- GROUP : Multi-Master  -------------------------------- */
+		ggroup_multi_master.visible = is_device_Master
+		ginteger_master_address.enabled = MF({ gcheck_enable_multi_master.value == true }, Boolean)
+		
+		/* ------- GROUP : Slave Address settings  ---------------------- */
+		ggroup_slave_address_settings.visible = is_device_Slave
+		
+	
+		/* --------------- TAB : Events --------------------------------- */
+		gcheck_scr_event.text = MF({
+			if(gcombo_device_type.value == "Master") {
+				"Start condition sent"
+			} else { // gcombo_device_type.value == "Slave"
+				"Start condition received"
+			}
+		}, String)
+		
+		/* ------- TAB : FIFO  ----------------------------------------- */
+		/* ------- GROUP : Tx FIFO Buffer  ----------------------------- */
+		glabel_tx_fifo_data_pointer.enabled = is_txFIFO_enabled
+		ginteger_tx_fifo_data_pointer.value = MF({ hwres_usic_channel.getRegValue("TBCTR", "tbctr_dptr") }, Integer)
+
+		/* ------- GROUP : Tx FIFO events  ----------------------------- */
+		ggroup_tx_fifo_interrupts_conf.enabled = is_txFIFO_enabled
+		ginteger_limit_for_transmit_events.maxValue = MF({
+			if(gcombo_number_tx_fifo_entries.value != "0") {
+				return Integer.parseInt(gcombo_number_tx_fifo_entries.value) - 1
+			} else {
+				return 0
+			}
+		}, Integer)
+		
+		/* ------- GROUP : Rx FIFO Buffer  ----------------------------- */
+		glabel_rx_fifo_data_pointer.enabled = is_rxFIFO_enabled
+		ginteger_rx_fifo_data_pointer.value = MF({ hwres_usic_channel.getRegValue("RBCTR", "rbctr_dptr") }, Integer)
+		
+		/* ------- GROUP : Rx FIFO events  ----------------------------- */
+		ggroup_rx_fifo_events_conf.enabled = is_rxFIFO_enabled
+		ginteger_limit_for_receive_events.maxValue = MF({
+			if(gcombo_number_rx_fifo_entries.value != "0") {
+				return Integer.parseInt(gcombo_number_rx_fifo_entries.value) - 1
+			} else {
+				return 0
+			}
+		}, Integer)
+	}
+	
+	/* ------------------End : APP Constructor and Logic--------------------------------------------------- */
+	/* ------------------Begin: File Generation------------------------------------------------------------ */
+	def generateFiles() {
+		copy("i2c_config.c", "i2c_config.c")
+		copy("i2c_config.h", "i2c_config.h")
+		generate("i2c_config_confc.tmpl", "i2c_config_conf.c")
+		generate("i2c_config_confh.tmpl", "i2c_config_conf.h")
+		generate("i2c_config_extern.tmpl", "i2c_config_extern.h")
+	}
+	/* ------------------End: File Generation-------------------------------------------------------------- */
+}

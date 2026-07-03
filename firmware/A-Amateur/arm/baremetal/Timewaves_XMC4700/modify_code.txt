@@ -1,0 +1,354 @@
+
+DAVE [4.3.2]:
+- create new DAVE CE project
+
+ETH_LWIP:
+- add ETH_LWIP [4.1.6]
+- enable RTOS
+- adjust MAC, IP, Gateway
+- enable DNS, set DNS server
+- pins
+  CRS_DV    - P15.9
+  MDC       - P2.7
+  MDIO      - P2.0
+  RMII_CLK  - P15.8
+  RXD0      - P2.2
+  RXD1      - P2.3
+  RXER      - P2.4
+  TXD0      - P2.8
+  TXD1      - P2.9
+  TXEN      - P2.5
+
+CMSIS_RTOS_RTX:
+- set concurrent user threads: 7
+- set thread stack size: 300
+- set threads with user stack size: 5
+- set total user stack size: 4000
+
+FATFS:
+- add FATFS [4.0.18]
+- set Use RTOS
+- enable MKFS function
+
+SDMMC_BLOCK:
+- enable DMA operation in SPI mode
+- pins
+  CLK   - P3.6
+  Slave - P4.1
+  MOSI  - P3.5
+  MISO  - P4.0
+
+main.c:
+- replace application while(1U) loop by 
+    osKernelStart();
+
+test ping:
+- generate code
+- build active project
+- run app
+-> make sure that ping is working against set IP address
+
+LED1:
+- add threads in main.c for blinking LED1
+
+    #define LED1_PIN P5_9
+    void led1_task(void const *args)
+    {
+      while(1)
+      {
+        XMC_GPIO_ToggleOutput(LED1_PIN);
+        osDelay(500);
+      }
+    }
+    osThreadDef(led1_task, osPriorityNormal, 1, 0);
+    
+    void main_task(void const *args)
+    {
+      XMC_GPIO_SetMode(LED1_PIN, XMC_GPIO_MODE_OUTPUT_PUSH_PULL);
+    
+      osThreadCreate(osThread(led1_task), NULL);
+    }
+    osThreadDef(main_task, osPriorityNormal, 1, 0);
+
+- add before osKernelStart():    
+ 
+  osKernelInitialize();
+  osThreadCreate(osThread(main_task), NULL);
+  
+- build and run app
+-> make sure that LED1 is blinking
+
+exFAT:
+- modify Dave/Generated/FATFS/ff_Src/ffconf.h
+- repeat in Dave/Model/APPS/FATFS/v4_0_18/Templates/ff_Src/ffconf.h
+  line  60 -> #include "stdlib.h"
+  line 128 -> #define FF_CODE_PAGE    850
+  line 157 -> #define FF_USE_LFN        3
+  line 284 -> #define FF_FS_EXFAT       1
+- fix in  Dave/Generated/FATFS/ff_Src/syscall.c
+- repeat in Dave/Model/APPS/FATFS/v4_0_18/Templates/ff_Src/syscall.c
+  line 132 -> #if FF_USE_LFN == 3 /* LFN with a working buffer on the heap */
+- add to Dave/Generated/FATFS/ff_Src a 'unicode.c' file (find one in the Internet)
+  
+IoTapp:
+- add to main.c
+    #include "IoTapp.h"
+- add in main.c to main_task 
+    runIoTapp(); 
+- create file "IoTapp.h" in the project folder
+
+    /* demo of a basic IoTapp
+     * - open a http server at port 80
+     * - serve http requests from a web browser
+     * - serve the following commands e.g. in a PuTTY session:
+     *   > LED2 1    -> switch LED2 ON, write a log message
+     *   > LED2 0    -> switch LED2 OFF, write a log message
+     *   > SD        -> return last lines from IoTapp.log file
+     */
+    void runIoTapp();
+
+#define LED2_PIN P1_0
+
+- create file "IoTapp.c" in the project folder
+
+    #include <DAVE.h>
+    #include "IoTapp.h"
+    
+    /* static web responses */
+    const static char http_html_hdr[] = "HTTP/1.1 200 OK\r\nContent-type: text/html\r\n\r\n";
+    const static char http_html_default[] = "<html><head><title>Congrats!</title></head><body><h2>Welcome to the IoTappXMC4500 microcontroller!</h2></body></html>";
+    /* static IoT terminal headline */
+    #define http_iot_headline "IoTappXMC4500\r\n> "
+    
+    static FATFS g_fatfs; /* File system object */
+    static FIL g_file1; /* File object */
+    
+    /* web server thread function */
+    static void iot_server_netconn_thread(void *arg);
+    
+    /** enty point to IoTapp functionality */
+    #define IOT_THREAD_STACKSIZE 1200
+    void runIoTapp()
+    {
+        /* start a web server */
+        sys_thread_new("iot_server_netconn", iot_server_netconn_thread, NULL, IOT_THREAD_STACKSIZE, DEFAULT_THREAD_PRIO);
+    }
+    
+    /** write to SD card */
+    static void
+    writeData(const char* Info, char* response, int length)
+    {
+        do
+        {
+            /* mount file system */
+            if(FR_OK != f_mount(&g_fatfs, "", 0))
+                break;
+    
+            /* file open */
+            if(FR_OK != f_open(&g_file1, "IoTapp.log", FA_OPEN_ALWAYS | FA_WRITE))
+                break;
+    
+            /* move to end of the file to append data */
+            if(FR_OK != f_lseek(&g_file1, f_size(&g_file1)))
+                break;
+    
+            /* write message into file */
+            UINT bw = 0; /* Bytes written */
+            if(FR_OK != f_write(&g_file1, Info, strlen(Info), &bw))
+                break;
+    
+            /* close file */
+            if(FR_OK != f_close(&g_file1))
+                break;
+    
+            /* unmount file system */
+            if(FR_OK != f_mount(NULL, "", 0))
+                break;
+    
+        } while (false);
+    }
+    
+    /** IoT LED request */
+    #define LED2ON ": LED2 ON\r\n"
+    #define LED2OFF ": LED2 OFF\r\n"
+    static void
+    iot_led2_request(const char* cmd, char* response, int length)
+    {
+        /* clear response */
+        strcpy(response, "");
+    
+        /* evaluate params */
+        if((strlen(cmd) < 6) || (length < strlen(LED2OFF)+1))
+            return;
+    
+        /* process command */
+        if(cmd[5] == '0'){
+            XMC_GPIO_SetOutputLow(LED2_PIN);
+            strcpy(response, LED2OFF);
+            writeData(LED2OFF,response,length);
+        }else if(cmd[5] == '1'){
+            XMC_GPIO_SetOutputHigh(LED2_PIN);
+            strcpy(response, LED2ON);
+            writeData(LED2ON,response,length);
+        }
+    }
+    
+    /** IoT SD request */
+    static void
+    iot_sd_request(const char* cmd, char* response, int length)
+    {
+        /* evaluate params */
+        if(strcmp(cmd,"SD") != 0)
+            return;
+    
+        do
+        {
+            /* mount file system */
+            if(FR_OK != f_mount(&g_fatfs, "", 0))
+                break;
+    
+            /* open file */
+            if(FR_OK != f_open(&g_file1, "IoTapp.log", FA_OPEN_ALWAYS | FA_READ))
+                break;
+    
+            /* move to one buffer length before end of file */
+            int pos = f_size(&g_file1) - length + 1;
+            if(FR_OK != f_lseek(&g_file1, pos >= 0 ? pos : 0))
+                break;
+    
+            /* read data from file */
+            UINT br = 0; /* Bytes read */
+            if(FR_OK != f_read(&g_file1, response, length-1, &br))
+                break;
+    
+            /* close file */
+            if(FR_OK != f_close(&g_file1))
+                break;
+    
+            /* unmount file system */
+            if(FR_OK != f_mount(NULL, "", 0))
+                break;
+    
+        } while (false);
+    }
+    
+    /** Serve IoT request */
+    static void
+    iot_request_serve(struct netconn *conn)
+    {
+      char response[80] = http_iot_headline;
+      struct netbuf *inbuf;
+      u16_t buflen;
+      char *buf;
+    
+      do{
+        /* send back response to IoT control terminal */
+        if(ERR_OK != netconn_write(conn, response, strlen(response), NETCONN_NOCOPY))
+            break;
+        strcpy(response, "> ");
+    
+        /* get next IoT request */
+        if(ERR_OK != netconn_recv(conn, &inbuf))
+            break;
+        if(ERR_OK != netbuf_data(inbuf, (void**)&buf, &buflen))
+            break;
+        /* Delete the buffer */
+        netbuf_delete(inbuf);
+    
+        /* identify IoT request */
+        if(buflen >= 4 && ((0 == strncmp(buf,"exit",4)) || (0 == strncmp(buf,"EXIT",4))))
+            break;
+        else if(buflen >= 4 && 0 == strncmp(buf,"LED2",4))
+            iot_led2_request(buf, response, sizeof(response));
+        else if(buflen >= 2 && 0 == strncmp(buf,"SD",2))
+            iot_sd_request(buf, response, sizeof(response));
+        else if(0 != strcmp(buf,"\r\n"))
+            strcpy(response, "");
+      }
+      while(1U);
+    }
+    
+    /** Serve one HTTP connection accepted in the web server thread */
+    static void
+    iot_server_netconn_serve(struct netconn *conn)
+    {
+      struct netbuf *inbuf;
+      char *buf;
+      u16_t buflen;
+      err_t err;
+    
+      /* Read the data from the port. We assume the request is in one netbuf */
+      err = netconn_recv(conn, &inbuf);
+    
+      if (err == ERR_OK) {
+        netbuf_data(inbuf, (void**)&buf, &buflen);
+    
+        /* Is this an HTTP GET command? */
+        if (buflen>=5 && buf[0]=='G' && buf[1]=='E' && buf[2]=='T' && buf[3]==' ' && buf[4]=='/' ) {
+    
+          /* Send the HTML header */
+          netconn_write(conn, http_html_hdr, sizeof(http_html_hdr)-1, NETCONN_NOCOPY);
+    
+          /* Send a default HTML page */
+          netconn_write(conn, http_html_default, sizeof(http_html_default)-1, NETCONN_NOCOPY);
+        } else{
+    
+            /* serve IoT request */
+            iot_request_serve(conn);
+        }
+      }
+    
+      /* Delete the buffer */
+      netbuf_delete(inbuf);
+    
+      /* Close the connection */
+      netconn_shutdown(conn,0,1);
+      osDelay(10);
+      netconn_close(conn);
+    }
+    
+    static void
+    iot_server_netconn_thread(void *arg)
+    {
+      struct netconn *conn, *newconn;
+      err_t err;
+      LWIP_UNUSED_ARG(arg);
+    
+      /* Create a new TCP connection handle */
+      conn = netconn_new(NETCONN_TCP);
+      LWIP_ERROR("http_server: invalid conn", (conn != NULL), return;);
+    
+      /* Bind to server port 80 (HTTP) with default IP address */
+      netconn_bind(conn, NULL, 80);
+    
+      /* Put the connection into LISTEN state */
+      netconn_listen(conn);
+    
+      do {
+        /* wait endless for incoming connections */
+        err = netconn_accept(conn, &newconn);
+        if (err == ERR_OK) {
+          /* serve connection */
+          iot_server_netconn_serve(newconn);
+          netconn_delete(newconn);
+        }
+      } while(err == ERR_OK);
+      /* error on listening connection -> shutdown */
+      LWIP_DEBUGF(HTTPD_DEBUG, ("iot_server_netconn_thread: netconn_accept received error %d, shutting down", err));
+      netconn_close(conn);
+      netconn_delete(conn);
+    }
+
+- build project
+   text    data     bss     dec     hex filename
+ 105084     708   52988  158780   26c3c IoTappXMC4500.elf
+   
+- insert a SD card 
+- start IoTapp
+- test with a web browser -> "Welcome to the IoTappXMC4500 microcontroller!"
+- test with a terminal, e.g. PuTTY
+  > LED2 1    -> switch LED2 ON, write a log message
+  > LED2 0    -> switch LED2 OFF, write a log message
+  > SD        -> return last lines from IoTapp.log file
+
+

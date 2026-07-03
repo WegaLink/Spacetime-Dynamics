@@ -1,0 +1,11 @@
+Eckhard's working hours 2025
+
+date        hours  total    location     subject
+
+
+-June-----
+2026-06-24    3      3      Vierow       KI chat on a Cat-7 based spacetime-analog-600MHz design
+2026-06-25    3      6      Vierow       KI chat on a Cat-7 based spacetime-analog-600MHz design
+2026-06-29    9     15      Vierow       KI chat on theory of gravitational wave detector systems
+2026-06-30    3     18      Vierow       KI chat on results of a 25m/16MHz detektor systems
+2026-07-03    2     20      Vierow       KI chat on the concept of a "Solar Interferometer"

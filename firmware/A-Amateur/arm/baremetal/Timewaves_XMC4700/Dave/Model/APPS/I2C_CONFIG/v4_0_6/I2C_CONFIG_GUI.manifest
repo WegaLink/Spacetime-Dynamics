@@ -1,0 +1,170 @@
+package Model.APPS.I2C_CONFIG.v4_0_6;
+
+// Import statements
+import ifx.davex.app.manifest.*
+
+abstract class I2C_CONFIG_GUI extends AppManifest {
+
+    /* IMPORTANT NOTE: This is an auto generated file, please do not edit manually. */
+    /* User modifications in the GUI editor will be updated here automatically.     */
+    /* Manually editing the contents of this file will corrupt the APP SDK project. */
+
+	/* Begin : UI variable section */
+	 public GTab gtab_general;
+	 public GTab gtab_events;
+	 public GTab gtab_fifo;
+	 public GImage gimage_baud_rate;
+	 public GInteger ginteger_slave_address;
+	 public GInteger ginteger_master_address;
+	 public GInteger ginteger_desired_baud_rate;
+	 public GInteger ginteger_real_baud_rate;
+	 public GInteger ginteger_divider_factor;
+	 public GInteger ginteger_symbol_timing_master;
+	 public GInteger ginteger_predivider;
+	 public GInteger ginteger_step_value;
+	 public GInteger ginteger_divider_factor_external_clk;
+	 public GInteger ginteger_oversampling;
+	 public GInteger ginteger_tx_fifo_data_pointer;
+	 public GInteger ginteger_rx_fifo_data_pointer;
+	 public GInteger ginteger_limit_for_transmit_events;
+	 public GInteger ginteger_limit_for_receive_events;
+	 public GCombo gcombo_device_type;
+	 public GCombo gcombo_type_transmit_data_validation;
+	 public GCombo gcombo_transmit_data_validation_trigger_edge;
+	 public GCombo gcombo_addressing_mode;
+	 public GCombo gcombo_external_clock_edge;
+	 public GCombo gcombo_clock_selection;
+	 public GCombo gcombo_symbol_timing_slave;
+	 public GCombo gcombo_number_tx_fifo_entries;
+	 public GCombo gcombo_number_rx_fifo_entries;
+	 public GCheck gcheck_enable_transmit_enable;
+	 public GCheck gcheck_enable_sensitivity_00_address;
+	 public GCheck gcheck_enable_multi_master;
+	 public GCheck gcheck_enable_capture_mode_timer;
+	 public GCheck gcheck_scr_event;
+	 public GCheck gcheck_arl_event;
+	 public GCheck gcheck_rcsr_event;
+	 public GCheck gcheck_srr_event;
+	 public GCheck gcheck_pcr_event;
+	 public GCheck gcheck_ack_event;
+	 public GCheck gcheck_nack_event;
+	 public GCheck gcheck_err_event;
+	 public GCheck gcheck_wtdf_event;
+	 public GCheck gcheck_datalost_event;
+	 public GCheck gcheck_brg_event;
+	 public GLabel glabel_device_type;
+	 public GLabel glabel_type_transmit_data_validation;
+	 public GLabel glabel_transmit_data_validation_trigger_edge;
+	 public GLabel glabel_slave_address;
+	 public GLabel glabel_addressing_mode;
+	 public GLabel glabel_master_address;
+	 public GLabel glabel_desired_baud_rate;
+	 public GLabel glabel_real_baud_rate;
+	 public GLabel glabel_divider_factor;
+	 public GLabel glabel_symbol_timing_master;
+	 public GLabel glabel_external_clock_edge;
+	 public GLabel glabel_clock_selection;
+	 public GLabel glabel_predivider;
+	 public GLabel glabel_step_value;
+	 public GLabel glabel_symbol_timing_slave;
+	 public GLabel glabel_err_event_2;
+	 public GLabel glabel_tx_fifo_data_pointer;
+	 public GLabel glabel_number_tx_fifo_entries;
+	 public GLabel glabel_rx_fifo_data_pointer;
+	 public GLabel glabel_number_rx_fifo_entries;
+	 public GLabel glabel_limit_for_transmit_events;
+	 public GLabel glabel_transmit_limit_for_event;
+	 public GLabel glabel_limit_for_receive_events;
+	 public GLabel glabel_receive_limit_for_event;
+	 public GGroup ggroup_operation_mode;
+	 public GGroup ggroup_slave_address_settings;
+	 public GGroup ggroup_multi_master;
+	 public GGroup ggroup_baud_rate;
+	 public GGroup ggroup_protocol_events;
+	 public GGroup ggroup_tx_fifo_buffer_conf;
+	 public GGroup ggroup_rx_fifo_buffer_conf;
+	 public GGroup ggroup_tx_fifo_interrupts_conf;
+	 public GGroup ggroup_rx_fifo_events_conf;
+
+	 public I2C_CONFIG_GUI(DaveEnv daveEnv){
+
+	 gtab_general = GTab(widgetName:"gtab_general", text:"General", enabled:true, visible:true)
+	 gtab_events = GTab(widgetName:"gtab_events", text:"Events", enabled:true, visible:true)
+	 gtab_fifo = GTab(widgetName:"gtab_fifo", text:"FIFO", enabled:true, visible:true)
+	 gimage_baud_rate = GImage(widgetName:"gimage_baud_rate", path: "doc/I2C_CONFIG_brg_internal_clk.png", enabled:true, visible:true)
+	 ginteger_slave_address = GInteger(widgetName:"ginteger_slave_address", value:0, minValue:0, maxValue:127, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_master_address = GInteger(widgetName:"ginteger_master_address", value:0, minValue:0, maxValue:65535, enabled:false, visible:true, isMandatoryValue:false)
+	 ginteger_desired_baud_rate = GInteger(widgetName:"ginteger_desired_baud_rate", value:100, minValue:1, maxValue:400, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_real_baud_rate = GInteger(widgetName:"ginteger_real_baud_rate", value:100, minValue:1, maxValue:400, enabled:false, visible:true, isMandatoryValue:false)
+	 ginteger_divider_factor = GInteger(widgetName:"ginteger_divider_factor", value:1, minValue:1, maxValue:1024, enabled:false, visible:true, isMandatoryValue:false)
+	 ginteger_symbol_timing_master = GInteger(widgetName:"ginteger_symbol_timing_master", value:10, minValue:10, maxValue:25, enabled:false, visible:true, isMandatoryValue:false)
+	 ginteger_predivider = GInteger(widgetName:"ginteger_predivider", value:0, minValue:0, maxValue:3, enabled:false, visible:true, isMandatoryValue:false)
+	 ginteger_step_value = GInteger(widgetName:"ginteger_step_value", value:0, minValue:0, maxValue:1023, enabled:false, visible:true, isMandatoryValue:false)
+	 ginteger_divider_factor_external_clk = GInteger(widgetName:"ginteger_divider_factor_external_clk", value:1, minValue:1, maxValue:1024, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_oversampling = GInteger(widgetName:"ginteger_oversampling", value:10, minValue:10, maxValue:25, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_tx_fifo_data_pointer = GInteger(widgetName:"ginteger_tx_fifo_data_pointer", value:0, minValue:0, maxValue:64, enabled:false, visible:true, isMandatoryValue:false)
+	 ginteger_rx_fifo_data_pointer = GInteger(widgetName:"ginteger_rx_fifo_data_pointer", value:0, minValue:0, maxValue:64, enabled:false, visible:true, isMandatoryValue:false)
+	 ginteger_limit_for_transmit_events = GInteger(widgetName:"ginteger_limit_for_transmit_events", value:0, minValue:0, maxValue:63, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_limit_for_receive_events = GInteger(widgetName:"ginteger_limit_for_receive_events", value:0, minValue:0, maxValue:63, enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_device_type = GCombo(widgetName:"gcombo_device_type", options:["Master","Slave"], value:"Master", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_type_transmit_data_validation = GCombo(widgetName:"gcombo_type_transmit_data_validation", options:["Transfer On Low (DX2S = 0)","Transfer On High (DX2S = 1)","Transfer On Event (DX2T)"], value:"Transfer On Low (DX2S = 0)", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_transmit_data_validation_trigger_edge = GCombo(widgetName:"gcombo_transmit_data_validation_trigger_edge", options:["Rising Edge","Falling Edge","Both Edges"], value:"Rising Edge", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_addressing_mode = GCombo(widgetName:"gcombo_addressing_mode", options:["7","10"], value:"7", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_external_clock_edge = GCombo(widgetName:"gcombo_external_clock_edge", options:["Rising Edge","Falling Edge","Both Edges"], value:"Falling Edge", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_clock_selection = GCombo(widgetName:"gcombo_clock_selection", options:["Internal Source (FD)","External Source (DX1)"], value:"Internal Source (FD)", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_symbol_timing_slave = GCombo(widgetName:"gcombo_symbol_timing_slave", options:["10 Time Quanta Per Symbol (100 kBaud)","25 Time Quanta Per Symbol (400 kBaud)"], value:"10 Time Quanta Per Symbol (100 kBaud)", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_number_tx_fifo_entries = GCombo(widgetName:"gcombo_number_tx_fifo_entries", options:["0","2","4","8","16","32","64"], value:"0", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_number_rx_fifo_entries = GCombo(widgetName:"gcombo_number_rx_fifo_entries", options:["0","2","4","8","16","32","64"], value:"0", enabled:true, visible:true, isMandatoryValue:false)
+	 gcheck_enable_transmit_enable = GCheck(widgetName:"gcheck_enable_transmit_enable", value:false, enabled:true, visible:true)
+	 gcheck_enable_sensitivity_00_address = GCheck(widgetName:"gcheck_enable_sensitivity_00_address", value:false, enabled:true, visible:true)
+	 gcheck_enable_multi_master = GCheck(widgetName:"gcheck_enable_multi_master", value:false, enabled:true, visible:true)
+	 gcheck_enable_capture_mode_timer = GCheck(widgetName:"gcheck_enable_capture_mode_timer", value:false, enabled:true, visible:true)
+	 gcheck_scr_event = GCheck(widgetName:"gcheck_scr_event", value:false, enabled:true, visible:true)
+	 gcheck_arl_event = GCheck(widgetName:"gcheck_arl_event", value:false, enabled:true, visible:true)
+	 gcheck_rcsr_event = GCheck(widgetName:"gcheck_rcsr_event", value:false, enabled:true, visible:true)
+	 gcheck_srr_event = GCheck(widgetName:"gcheck_srr_event", value:false, enabled:true, visible:true)
+	 gcheck_pcr_event = GCheck(widgetName:"gcheck_pcr_event", value:false, enabled:true, visible:true)
+	 gcheck_ack_event = GCheck(widgetName:"gcheck_ack_event", value:false, enabled:true, visible:true)
+	 gcheck_nack_event = GCheck(widgetName:"gcheck_nack_event", value:false, enabled:true, visible:true)
+	 gcheck_err_event = GCheck(widgetName:"gcheck_err_event", value:false, enabled:true, visible:true)
+	 gcheck_wtdf_event = GCheck(widgetName:"gcheck_wtdf_event", value:false, enabled:true, visible:true)
+	 gcheck_datalost_event = GCheck(widgetName:"gcheck_datalost_event", value:false, enabled:true, visible:true)
+	 gcheck_brg_event = GCheck(widgetName:"gcheck_brg_event", value:false, enabled:true, visible:true)
+	 glabel_device_type = GLabel(widgetName:"glabel_device_type", text:"Device type:", enabled:true, visible:true)
+	 glabel_type_transmit_data_validation = GLabel(widgetName:"glabel_type_transmit_data_validation", text:"Start of data transfer:", enabled:true, visible:true)
+	 glabel_transmit_data_validation_trigger_edge = GLabel(widgetName:"glabel_transmit_data_validation_trigger_edge", text:"Triggering edge for data validation on event:", enabled:true, visible:true)
+	 glabel_slave_address = GLabel(widgetName:"glabel_slave_address", text:"Address:", enabled:true, visible:true)
+	 glabel_addressing_mode = GLabel(widgetName:"glabel_addressing_mode", text:"Mode [bits]:", enabled:true, visible:true)
+	 glabel_master_address = GLabel(widgetName:"glabel_master_address", text:"Address:", enabled:true, visible:true)
+	 glabel_desired_baud_rate = GLabel(widgetName:"glabel_desired_baud_rate", text:"Desired bus speed [kHz]:", enabled:true, visible:true)
+	 glabel_real_baud_rate = GLabel(widgetName:"glabel_real_baud_rate", text:"Actual bus speed [kHz]:", enabled:true, visible:true)
+	 glabel_divider_factor = GLabel(widgetName:"glabel_divider_factor", text:"Divider factor:", enabled:true, visible:true)
+	 glabel_symbol_timing_master = GLabel(widgetName:"glabel_symbol_timing_master", text:"Symbol timing:", enabled:true, visible:true)
+	 glabel_external_clock_edge = GLabel(widgetName:"glabel_external_clock_edge", text:"Edge selection:", enabled:true, visible:true)
+	 glabel_clock_selection = GLabel(widgetName:"glabel_clock_selection", text:"Clock source:", enabled:true, visible:true)
+	 glabel_predivider = GLabel(widgetName:"glabel_predivider", text:"Pre-divider:", enabled:true, visible:true)
+	 glabel_step_value = GLabel(widgetName:"glabel_step_value", text:"Step value:", enabled:true, visible:true)
+	 glabel_symbol_timing_slave = GLabel(widgetName:"glabel_symbol_timing_slave", text:"Symbol timing:", enabled:true, visible:true)
+	 glabel_err_event_2 = GLabel(widgetName:"glabel_err_event_2", text:"address interrupted by a stop condition after the first address byte.", enabled:true, visible:true)
+	 glabel_tx_fifo_data_pointer = GLabel(widgetName:"glabel_tx_fifo_data_pointer", text:"Tx FIFO data pointer (TBCTR.DPTR):", enabled:true, visible:true)
+	 glabel_number_tx_fifo_entries = GLabel(widgetName:"glabel_number_tx_fifo_entries", text:"No. of FIFO buffer entries (TBCTR.SIZE):", enabled:true, visible:true)
+	 glabel_rx_fifo_data_pointer = GLabel(widgetName:"glabel_rx_fifo_data_pointer", text:"Rx FIFO data pointer (RBCTR.DPTR):", enabled:true, visible:true)
+	 glabel_number_rx_fifo_entries = GLabel(widgetName:"glabel_number_rx_fifo_entries", text:"No. of FIFO buffer entries (RBCTR.SIZE):", enabled:true, visible:true)
+	 glabel_limit_for_transmit_events = GLabel(widgetName:"glabel_limit_for_transmit_events", text:"Limit for the transmit buffer event generation (TBCTR.LIMIT):", enabled:true, visible:true)
+	 glabel_transmit_limit_for_event = GLabel(widgetName:"glabel_transmit_limit_for_event", text:"Note: the transmit buffer event is triggered when the filling level is falling\r\nbelow the limit (TBCTR.LOF = 0).", enabled:true, visible:true)
+	 glabel_limit_for_receive_events = GLabel(widgetName:"glabel_limit_for_receive_events", text:"Filling level for the receive buffer event detection (RBCTR.LIMIT):", enabled:true, visible:true)
+	 glabel_receive_limit_for_event = GLabel(widgetName:"glabel_receive_limit_for_event", text:"Note: the receive buffer event triggered when the filling level exceeds the \r\nlimit (RBCTR.LOF = 1).", enabled:true, visible:true)
+	 ggroup_operation_mode = GGroup(widgetName:"ggroup_operation_mode", text:"Operation Mode", enabled:true, visible:true)
+	 ggroup_slave_address_settings = GGroup(widgetName:"ggroup_slave_address_settings", text:"Address Settings", enabled:true, visible:true)
+	 ggroup_multi_master = GGroup(widgetName:"ggroup_multi_master", text:"Multi-master ", enabled:true, visible:true)
+	 ggroup_baud_rate = GGroup(widgetName:"ggroup_baud_rate", text:"Baud Rate Generator", enabled:true, visible:true)
+	 ggroup_protocol_events = GGroup(widgetName:"ggroup_protocol_events", text:"Protocol-Specific Events", enabled:true, visible:true)
+	 ggroup_tx_fifo_buffer_conf = GGroup(widgetName:"ggroup_tx_fifo_buffer_conf", text:"Transmit FIFO Buffer Configuration", enabled:true, visible:true)
+	 ggroup_rx_fifo_buffer_conf = GGroup(widgetName:"ggroup_rx_fifo_buffer_conf", text:"Receive FIFO Buffer Configuration", enabled:true, visible:true)
+	 ggroup_tx_fifo_interrupts_conf = GGroup(widgetName:"ggroup_tx_fifo_interrupts_conf", text:"Transmit FIFO Events Configuration", enabled:true, visible:true)
+	 ggroup_rx_fifo_events_conf = GGroup(widgetName:"ggroup_rx_fifo_events_conf", text:"Receive FIFO Events Configuration", enabled:true, visible:true)
+
+
+	 }
+	/* End : UI variable section */
+}
