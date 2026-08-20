@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//WEGALINK//DTD HTML 4.0+ Frameset//EN" "wegalinkframes.dtd">
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN"-->
+<html lang=en>
+<head>
+<meta charset="utf-8">
+<title> WegaLink </title>
+<link rev="made" href="https://wegalink.eu">
+<meta name="robots" content="index">
+<meta name="robots" content="follow">
+<meta name="description" lang="en" content= "">
+<meta name="author" content="Eckhard Kantz">
+<meta name="keywords" lang="en" content=
+  "software development Entwicklung C++ Unix radio astronomy sun spectrometer">
+<meta name="date" lang="en" content="2018-04-13">
+</head>
+<body bgcolor=#F0F0F0 text=#000000 style="background-image:url(./img/wegalink_background.jpg); background-attachment:fixed;background-repeat:repeat;">
+
+<center><h1>Solarer Einfluss auf den Klimawandel<br>Raumzeitforschung auf privatem <br>Grundst&uuml;ck MVP.wegalink.eu</h1></center>
+<font size=4>
+<hr>
+<p><strong>Gr&ouml;&szlig;e: 2455m^2 (~40m x 61m)</strong>
+<p>Eigent&uuml;mer: Eckhard Kantz
+<br>Kontakt: mvp@wegalink.eu
+<hr>
+<p>Das Grundst&uuml;ck liegt mehr als 1 km von einer Ortschaft entfernt auf freiem Feld in ungest&ouml;rter Lage und soll den 
+folgenden Umweltmessungen dienen:
+<ul><li> Live 3D-Energie der Sonne (Theorie und Messsystem: <a href="https://wegalink.eu/spacetime/">Solar Interferometer MVP</a> ) 
+</li><li> Zustands&auml;nderungen der Ionosph&auml;re (Projekt: <a href="./pdf/SDR filter board.pdf">AuraLink EKD</a>)
+</li><li> Raumzeitwellen (<a href="https://wegalink.eu/spacetime/doc/research_on_spacetime_dynamics.pdf">Research on Spacetime Dynamics</a>)
+<li> Solarer Einfluss auf biologische Systeme (<a href="./pdf/Solarer Einfluss auf biologische Systeme.pdf">KI-Dialog</a>) 
+</li></li></ul>
+<hr>
+<h1>Messstellenanordnung f&uuml;r Raumzeitwelleninterferometrie</h1>
+<img src="./img/messstellen.png" border=0 width=1024>
+<hr>
+<h1>Messdaten w&auml;hrend der Sonnenfinsternis 2026</h1>
+<!--
+<a href="https://wegalink.eu/mvp/data/eclipse2026/raw/SpacetimeWavesDetector51/20260812T175633_562.html">
+<img src="./img/20260812T175633_562.png" border=0 width=1024>
+</a>
+--!>
+<!--
+  Navigations-Widget für SpacetimeWavesDetector-Messdaten (Sonnenfinsternis 2026)
+  ---------------------------------------------------------------------------
+  Einbindung: Dieses Fragment (der komplette <div id="swd-nav">...</div>-Block
+  inkl. <script>) direkt in die vorhandene HTML-Seite einfügen, dort wo
+  aktuell der Beispiel-Link auf die erste Datei steht. Das Options-Objekt
+  in CONFIG unten ggf. anpassen.
+
+  Funktionsweise:
+  - Für jeden Detektor wird die reale Dateiliste ermittelt (nicht berechnet!),
+    damit Lücken und der langsamere Rechner 78 korrekt berücksichtigt werden.
+  - Reihenfolge der Beschaffung: zuerst wird versucht, eine JSON-Manifest-Datei
+    "<Detektor-Ordner>/index.json" zu laden (Array von Dateinamen). Falls die
+    nicht existiert, wird ersatzweise das Apache-Verzeichnis-Listing
+    "<Detektor-Ordner>/" per fetch() geladen und geparst.
+  - Navigation erfolgt über den Index in dieser realen Liste, nicht über
+    eine Zeitberechnung. "Vor/Zurück in Schritten 1-10-100-1000" bedeutet
+    also: Index ± 1/10/100/1000, am Rand geklemmt.
+  - Beim Wechsel des Detektors wird versucht, den Datensatz mit dem
+    zeitlich nächstgelegenen Zeitstempel zu finden, damit man beim
+    Detektor-Wechsel "an der gleichen Stelle" weitermachen kann.
+-->
+
+<div id="swd-nav" style="font-family: system-ui, sans-serif; max-width: 640px; margin: 1em 0; padding: 1em; border: 1px solid #ccc; border-radius: 8px;">
+
+  <div style="display:flex; align-items:center; gap:0.75em; flex-wrap:wrap; margin-bottom:0.75em;">
+    <label for="swd-detector"><strong>Detektor:</strong></label>
+    <select id="swd-detector"></select>
+
+    <span id="swd-time" style="margin-left:auto; font-variant-numeric: tabular-nums; font-size:1.1em; font-weight:bold; padding:2px 8px; background:#f0f0f0; border-radius:4px;">
+      --:--:--
+    </span>
+  </div>
+
+  <div style="display:flex; justify-content:center; gap:0.4em; flex-wrap:wrap; margin-bottom:0.5em;">
+    <button data-step="-1000">-1000</button>
+    <button data-step="-100">-100</button>
+    <button data-step="-10">-10</button>
+    <button data-step="-1">-1</button>
+    <button data-step="1">+1</button>
+    <button data-step="10">+10</button>
+    <button data-step="100">+100</button>
+    <button data-step="1000">+1000</button>
+  </div>
+
+  <div style="text-align:center; font-size:0.85em; color:#555; margin-bottom:0.5em;">
+    Datei <span id="swd-index">-</span> / <span id="swd-count">-</span>
+    &nbsp;–&nbsp;
+    <a id="swd-link" href="#" target="_blank" rel="noopener">Datei direkt öffnen</a>
+  </div>
+
+  <div id="swd-status" style="text-align:center; font-size:0.8em; color:#b00; margin-bottom:0.5em; min-height:1.2em;"></div>
+
+  <iframe id="swd-frame" title="Messdatenansicht"
+          style="width:100%; height:60vh; border:1px solid #ddd; border-radius:4px;"></iframe>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // -------------------- Konfiguration --------------------
+  const CONFIG = {
+    baseUrl: "https://wegalink.eu/mvp/data/eclipse2026/raw/",
+    detectors: [
+      { id: "SpacetimeWavesDetector51", label: "Detektor 51" },
+      { id: "SpacetimeWavesDetector60", label: "Detektor 60" },
+      { id: "SpacetimeWavesDetector61", label: "Detektor 61" },
+      { id: "SpacetimeWavesDetector78", label: "Detektor 78 (langsamer, ~8-12s)" }
+    ],
+    // Beispiel: 20260812T175633_562.html  ->  Datum + Zeit + Millisekunden
+    fileNamePattern: /^(\d{8})T(\d{6})_(\d{3})\.html$/,
+    manifestFileName: "index.json" // optionale, serverseitig gepflegte Liste
+  };
+  // ---------------------------------------------------------
+
+  const els = {
+    select: document.getElementById("swd-detector"),
+    time: document.getElementById("swd-time"),
+    index: document.getElementById("swd-index"),
+    count: document.getElementById("swd-count"),
+    link: document.getElementById("swd-link"),
+    frame: document.getElementById("swd-frame"),
+    status: document.getElementById("swd-status")
+  };
+
+  let state = {
+    detectorId: CONFIG.detectors[0].id,
+    files: [],        // sortierte Liste [{name, date}]
+    currentIndex: 0
+  };
+
+  // Detektor-Auswahl füllen
+  CONFIG.detectors.forEach(d => {
+    const opt = document.createElement("option");
+    opt.value = d.id;
+    opt.textContent = d.label;
+    els.select.appendChild(opt);
+  });
+  els.select.value = state.detectorId;
+
+  function parseFileName(name) {
+    const m = name.match(CONFIG.fileNamePattern);
+    if (!m) return null;
+    const [, ymd, hms, ms] = m;
+    const iso = `${ymd.slice(0,4)}-${ymd.slice(4,6)}-${ymd.slice(6,8)}` +
+                `T${hms.slice(0,2)}:${hms.slice(2,4)}:${hms.slice(4,6)}.${ms}`;
+    const date = new Date(iso);
+    return isNaN(date) ? null : { name, date };
+  }
+
+  // Variante A: Manifest laden (bevorzugt, robust, schnell)
+  // Akzeptiert zwei Formate:
+  //   1) echtes JSON-Array:  ["20260812T175633_562.html", "..."]
+  //   2) reine Textliste (z.B. per "ls > index.json" erzeugt): ein Dateiname pro Zeile
+  async function loadManifest(detectorId) {
+    const url = CONFIG.baseUrl + detectorId + "/" + CONFIG.manifestFileName;
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error("Manifest nicht erreichbar (HTTP " + res.status + "): " + url);
+    const raw = await res.text();
+
+    let names;
+    try {
+      // zuerst als echtes JSON versuchen
+      const parsed = JSON.parse(raw);
+      names = Array.isArray(parsed) ? parsed : (parsed.files || parsed.names || null);
+      if (!names) throw new Error("JSON hat kein Array");
+    } catch (e) {
+      // Fallback: Klartext, ein Dateiname pro Zeile (z.B. Ausgabe von "ls")
+      names = raw.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+    }
+
+    if (!names.length) throw new Error("Manifest ist leer: " + url);
+
+    const parsedFiles = names.map(parseFileName).filter(Boolean);
+    if (!parsedFiles.length) {
+      throw new Error(
+        "Manifest geladen (" + names.length + " Zeilen), aber keine passte zum Muster " +
+        CONFIG.fileNamePattern + ". Beispielzeile: '" + names[0] + "'"
+      );
+    }
+    return parsedFiles;
+  }
+
+  // Variante B: Apache-Verzeichnis-Listing parsen (Fallback)
+  async function loadDirectoryListing(detectorId) {
+    const url = CONFIG.baseUrl + detectorId + "/";
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error("Listing nicht erreichbar: " + res.status);
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const hrefs = Array.from(doc.querySelectorAll("a"))
+      .map(a => a.getAttribute("href"))
+      .filter(h => h && !h.startsWith("?") && !h.startsWith("/"));
+    return hrefs.map(h => parseFileName(decodeURIComponent(h))).filter(Boolean);
+  }
+
+  async function loadFilesForDetector(detectorId) {
+    let files;
+    let manifestError = null;
+    try {
+      files = await loadManifest(detectorId);
+      els.status.textContent = "";
+    } catch (e) {
+      manifestError = e;
+      try {
+        files = await loadDirectoryListing(detectorId);
+        els.status.textContent = "";
+      } catch (e2) {
+        // beide Varianten fehlgeschlagen -> Fehler sichtbar machen
+        els.status.textContent =
+          "Fehler beim Laden von " + detectorId + " – Manifest: " + manifestError.message +
+          " | Verzeichnis-Listing: " + e2.message;
+        throw e2;
+      }
+    }
+    files.sort((a, b) => a.date - b.date);
+    return files;
+  }
+
+  function formatTime(date) {
+    const hh = String(date.getHours()).padStart(2, "0");
+    const mm = String(date.getMinutes()).padStart(2, "0");
+    const ss = String(date.getSeconds()).padStart(2, "0");
+    return `${hh}:${mm}:${ss}`;
+  }
+
+  function render() {
+    const total = state.files.length;
+    if (total === 0) {
+      els.time.textContent = "--:--:--";
+      els.index.textContent = "-";
+      els.count.textContent = "0";
+      els.link.removeAttribute("href");
+      els.frame.removeAttribute("src");
+      return;
+    }
+    const entry = state.files[state.currentIndex];
+    const url = CONFIG.baseUrl + state.detectorId + "/" + entry.name;
+
+    els.time.textContent = formatTime(entry.date);
+    els.index.textContent = String(state.currentIndex + 1);
+    els.count.textContent = String(total);
+    els.link.setAttribute("href", url);
+    els.frame.setAttribute("src", url);
+  }
+
+  function clampIndex(i) {
+    return Math.max(0, Math.min(state.files.length - 1, i));
+  }
+
+  function step(n) {
+    if (state.files.length === 0) return;
+    state.currentIndex = clampIndex(state.currentIndex + n);
+    render();
+  }
+
+  // Nächstgelegenen Zeitpunkt in einer neuen Dateiliste finden (für Detektor-Wechsel)
+  function findClosestIndex(files, targetDate) {
+    if (!targetDate || files.length === 0) return 0;
+    let best = 0, bestDiff = Infinity;
+    for (let i = 0; i < files.length; i++) {
+      const diff = Math.abs(files[i].date - targetDate);
+      if (diff < bestDiff) { bestDiff = diff; best = i; }
+    }
+    return best;
+  }
+
+  async function switchDetector(detectorId) {
+    const previousTime = state.files[state.currentIndex]
+      ? state.files[state.currentIndex].date
+      : null;
+
+    els.time.textContent = "lädt…";
+    state.detectorId = detectorId;
+
+    try {
+      state.files = await loadFilesForDetector(detectorId);
+    } catch (err) {
+      console.error("Konnte Dateiliste nicht laden für", detectorId, err);
+      state.files = [];
+      // els.status wurde bereits in loadFilesForDetector mit der Fehlermeldung gefüllt
+    }
+
+    state.currentIndex = findClosestIndex(state.files, previousTime);
+    render();
+  }
+
+  // Event-Listener
+  document.querySelectorAll("#swd-nav button[data-step]").forEach(btn => {
+    btn.addEventListener("click", () => step(parseInt(btn.dataset.step, 10)));
+  });
+  els.select.addEventListener("change", () => switchDetector(els.select.value));
+
+  // Initialisierung
+  switchDetector(state.detectorId);
+})();
+</script>
+
+<hr>
+<p> Von Felix wurde im Mai 2024 mit seiner Drohne ein Luftbild vom Forschungsfeld aufgenommen. Danke, Felix, f&uuml;r diese &Uuml;bersichtsaufnahme aus 100 m H&ouml;he. Diese zeigt den 30 m Kreis mit 19 Raumzeitmesspunkten welche zus&auml;tzliche LED-Lichter zur Kennzeichnung der als "Weltraumbahnhof" bezeichneten Fl&auml;che haben. Zwei der 19 LEDs hatten zum Zeitpunkt der Aufnahme ein erst danach behobenes Problem und haben nicht geleuchtet (M44 und M45 auf der Westseite). Innerhalb der Fl&auml;che mit den 19 Messpunkten sind Bodenausgleichsarbeiten im Gange, welche sich als helle Flecken und Pfade abbilden.
+<p><img src="./img/spaceport_aerial_view.jpeg" border=0 width=1024>
+<hr>
+Im M&auml;rz 2024 wurde eine vertikale Kurzwellenantenne auf dem Feld installiert und durch ein Kabel mit dem Schaltkasten neben der Sitzbank verbunden. Der Senkrechtstrahler ist auf den KW-Amateurfunkb&auml;ndern 7-14-21-28 MHz in Resonanz und liefert mit seiner flachen, kreisf&ouml;rmigen Abstrahlcharakteristik Signale aus bis zu einigen 1000 km Entfernung, welche an der Ionosph&auml;re in etwa 100 km H&ouml;he reflektiert werden. Bei besonderen Ausbreitungsbedingungen k&ouml;nnen Amateurfunksignale rund um den Erdball empfangen werden. 
+<p> Aus den empfangenen Signalen k&ouml;nnen Schlussfolgerungen &uuml;ber den Zustand der Erdatmosph&auml;re gezogen werden, indem Modelle zu den Reflektionseigenschaften der Ionosph&auml;re und Statistik zum Einsatz kommen. Eine darauf aufbauende Korrelationsrechnung mit dem durch Raumzeitwellen auf dem Forschungsgel&auml;nde ermittelten 3D-Live-Energieabbild unserer Sonne soll als angestrebtes wissenschaftliches Ergebnis ein Zusammenhang zwischen energetischen Ereignissen innerhalb unserer Sonne und dem Zustand der Erdatmosph&auml;re ermittelt werden.
+<p><strong> Basierend auf dem bereits bekannten Langzeit-Zusammenhang zwischen der Ionisation der Erdatmosph&auml;re und dem Klima auf der Erde soll als wesentliche, &uuml;bergreifende Zielstellung der Anteil unserer Sonne am aktuell stattfindenden Klimawandel auf der Erde abgesch&auml;tzt werden.</strong>
+
+<p><img src="./img/short_wave_antenna.png" border=0 width=1024>
+<hr>
+<img src="./img/multi-band filter.GIF" border=0 width=1024>
+<br>KI Vorschlag f&uuml;r ein <a href="./pdf/SDR filter board.pdf">SDR Filterboard</a> zur Verarbeitung der Signale von der Groundplane Antenne.
+<hr>
+<p> Eine "Astronomie Beobachtungsbank" wurde von Stefan designed, perfekt hergestellt und im September 2023 auf dem Feld installiert. Danke, Stefan, f&uuml;r diese hilfreiche Erg&auml;nzung bei allen Arbeiten und Treffen auf dem Feld!
+<p><img src="./img/seating_bench.png" border=0 width=1024>
+
+<hr>
+<font size=3>Started: 1997 by <a href="https://wegalink.eu" target=_top>
+Eckhard Kantz</a></font>
+
+</font>
+</body>
+</html>
