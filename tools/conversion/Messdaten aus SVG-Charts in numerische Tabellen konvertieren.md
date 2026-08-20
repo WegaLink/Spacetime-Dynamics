@@ -24,3 +24,29 @@ Es ist *ein* SVG mit fixer Pixelgeometrie (Rahmen 40,40–1040,440), in dem vier
 
 Nur Platzhalter-URL in `1_fetch.py` (`http://<IP-DES-MESSGERAETS>/`) musst du noch auf deine echte Geräteadresse setzen.
 
+[👤 You]
+das script 1_fetch.py ruft alle 2 sec. eine html seite von einem messwertrechner ab, der über port forwarding vom macbook aus erreichbar ist. im nächsten schritt sollen zeitgleich html seiten von mehreren messwertrechnern gleichzeitig abgerufen und gespeichert werden, aktuell von 4 rechnern. wichtig ist, dass die zugriffe sich nicht gegenseitig beeinflussen. welche modifikationen im script sind für diese erweiterte funktionalität erforderlich?
+
+[🤖 AI]
+Für den gleichzeitigen Abruf von 4 Messwertrechnern im 2s-Takt, ohne dass sich die Abrufe gegenseitig blockieren, ist der entscheidende Punkt: **jeder Host braucht seinen eigenen unabhängigen Thread mit eigener Zeitsteuerung**. `urllib.request.urlopen` ist ein blockierender Aufruf – läuft alles sequenziell in einem einzigen Thread/Loop, verzögert ein langsamer oder hängender Rechner automatisch die Abrufe der anderen drei. Mit Python-Threads (I/O-bound, GIL ist hier kein Problem) lässt sich das sauber entkoppeln.
+
+Wesentliche Änderungen gegenüber deinem Script:
+
+1. **Hosts als Liste/Dict** statt einzelner `URL`-Konstante, je mit eigenem Namen und eigenem Zielverzeichnis.
+2. **Ein `threading.Thread` pro Rechner**, jeder mit eigener `next_tick`-Schleife (dein bestehendes Timing-Prinzip bleibt gleich, nur pro Host repliziert).
+3. **Kurzer, expliziter Timeout** (z.B. 3s) pro Request, damit ein hängender Rechner seinen eigenen Thread nicht dauerhaft blockiert.
+4. **Separate Ausgabeverzeichnisse** (`data/raw/<hostname>/`), damit Dateinamen sich nicht überschneiden und die Daten pro Rechner zuordenbar bleiben.
+5. **Thread-sicheres Logging** (einfacher `Lock` um die `print`-Ausgabe), damit die Konsolenausgaben sich nicht gegenseitig zerreißen.
+6. **Sauberes Beenden** über `KeyboardInterrupt` in allen Threads (z.B. mit `threading.Event`).
+
+Hier das angepasste Script:**Warum Threads statt z.B. `asyncio` oder Prozesse?**
+
+- **Threads** sind hier die einfachste Lösung, weil die Aufgabe rein I/O-bound ist (Warten auf HTTP-Antworten) – der GIL bremst nichts, da während `urlopen()` die GIL freigegeben wird. Vier Threads reichen locker aus.
+- **`asyncio`** wäre eleganter/skalierbarer (z.B. bei 50 statt 4 Rechnern), erfordert aber `aiohttp` statt `urllib` und einen Umbau der Struktur – für 4 Hosts ist das unnötiger Aufwand.
+- **Separate Prozesse** (z.B. 4× das Originalscript starten) würden ebenfalls funktionieren und sind der Ansatz mit der stärksten Isolation, sind aber unhandlicher zu verwalten (4 separate launchd-Jobs, kein gemeinsames Logging) – nur sinnvoll, falls du maximale Fehlerisolation brauchst (z.B. falls ein Host-Zugriff den ganzen Prozess crashen könnte).
+
+**Wichtig für den Praxiseinsatz:**
+- `REQUEST_TIMEOUT` muss kleiner als `POLL_SECONDS` sein – sonst blockiert ein hängender Request die nächste Taktrunde für genau diesen Host (die anderen Hosts sind davon aber wegen der Thread-Trennung nicht betroffen).
+- Die Portnummern in `HOSTS` musst du an deine tatsächliche Port-Forwarding-Konfiguration anpassen.
+- Falls einer der 4 Rechner dauerhaft nicht erreichbar ist, läuft sein Thread einfach mit Fehlermeldungen weiter, ohne die anderen zu stören – das war ja explizit die Anforderung.
+
