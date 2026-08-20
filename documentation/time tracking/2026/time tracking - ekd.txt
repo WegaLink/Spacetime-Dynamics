@@ -9,3 +9,5 @@ date        hours  total    location     subject
 2026-06-29    9     15      Vierow       KI chat on theory of gravitational wave detector systems
 2026-06-30    3     18      Vierow       KI chat on results of a 25m/16MHz detektor systems
 2026-07-03    2     20      Vierow       KI chat on the concept of a "Solar Interferometer"
+2026-08-09    2     22      Vierow       KI chat on data collection from spacetime waves detectors
+2026-08-10    2     24      Vierow       testing data collection from spacetime waves detectors
