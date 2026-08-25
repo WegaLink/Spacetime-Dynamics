@@ -71,10 +71,18 @@ Ich baue das komplett neu auf zwei Skripte:
 2. **"Neuere Charts überschreiben ältere" bei Überlappung**: wenn sich die 30‑Minuten-Fenster zweier Charts überschneiden, gewinnt für den gemeinsamen Slot der zeitlich später abgerufene Chart. Alternative wäre Mittelwertbildung – aktuell nicht implementiert, da Ihre Vorgabe „vollständig rekonstruieren" nahelegt, dass ein Wert pro Slot genügt.
 
 [👤 You]
-
+Das Extrahieren der Daten aus den Charts hat sehr gut funktioniert. Das Plotten der L2-Statistik war dabei sehr hilfreich. Als nächstes soll die Auswertung der extrahierten Daten erfolgen, was jedoch am besten in einem neuen Chat gemacht wird. Danke daher zunächst erstmal für die Scripts.
 
 [🤖 AI]
+Gern geschehen – freut mich, dass die Rekonstruktion aus den Zoom-Kurven so sauber funktioniert hat.
 
+Für den neuen Chat zur Spektral-/Korrelationsanalyse kurz zusammengefasst, was dort direkt zur Verfügung steht:
+
+- `2_parse_and_convert.py` – Basis-Dekodierung einzelner Chart-Snapshots
+- `4_extract_l2_timeseries.py` – lückenlose 2‑sec-L2-Zeitreihe (avg/min/max/burst/pause) aus `--start`/`--duration`, CSV ohne Zeitstempel/Index
+- `plot_l2.py` – Kontrollplot dazu
+
+Für die Spektralanalyse und die Korrelation zwischen zwei Detektoren ist es hilfreich, in dem neuen Chat kurz zu erwähnen: welche der vier Detektoren (51/60/61/78) verglichen werden sollen, über welchen Zeitraum der Sonnenfinsternis, und ob avg oder eine andere der fünf Größen im Fokus steht. Viel Erfolg bei der Auswertung!
 
 [👤 You]
 
