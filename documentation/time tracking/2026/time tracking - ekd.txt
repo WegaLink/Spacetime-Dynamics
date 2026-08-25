@@ -1,13 +1,20 @@
-Eckhard's working hours 2025
+Eckhard's working hours 2026
 
 date        hours  total    location     subject
 
-
 -June-----
-2026-06-24    3      3      Vierow       KI chat on a Cat-7 based spacetime-analog-600MHz design
-2026-06-25    3      6      Vierow       KI chat on a Cat-7 based spacetime-analog-600MHz design
-2026-06-29    9     15      Vierow       KI chat on theory of gravitational wave detector systems
-2026-06-30    3     18      Vierow       KI chat on results of a 25m/16MHz detektor systems
-2026-07-03    2     20      Vierow       KI chat on the concept of a "Solar Interferometer"
-2026-08-09    2     22      Vierow       KI chat on data collection from spacetime waves detectors
+2026-06-24    3      3      Vierow       AI chat on a Cat-7 based spacetime-analog-600MHz design
+2026-06-25    3      6      Vierow       AI chat on a Cat-7 based spacetime-analog-600MHz design
+2026-06-29    9     15      Vierow       AI chat on theory of gravitational wave detector systems
+2026-06-30    3     18      Vierow       AI chat on results of a 25m/16MHz detektor systems
+
+-July-----
+2026-07-03    2     20      Vierow       AI chat on the concept of a "Solar Interferometer"
+
+-August---
+2026-08-09    2     22      Vierow       AI chat on data collection from spacetime waves detectors
 2026-08-10    2     24      Vierow       testing data collection from spacetime waves detectors
+2026-08-12    3     27      Vierow       data acquisition during a solar eclipse
+2026-08-20    2     29      Vierow       uploading AI chats to the GitHub repository
+2026-08-21    2     31      Vierow       AI chat on extracting data from solar eclipse charts
+2026-08-24    2     33      Vierow       extracting data from solar eclipse charts
