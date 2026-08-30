@@ -2,8 +2,8 @@
   Perplexity Bewertung Raumzeitwellendetektoren
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 30. August 2026 um 17:21
-Nachrichten: 4
+Exportiert: 30. August 2026 um 23:53
+Nachrichten: 7
 Modell: sonar
 
 ───────────────────────────────────────────────────────────────
@@ -180,6 +180,177 @@ Die Idee ist als **hochpräzises Laufzeit-/Phasenmesssystem** nachvollziehbar un
 [13] [https://pure.mpg.de/rest/items/item_148205_5/component/file_148204/content](https://pure.mpg.de/rest/items/item_148205_5/component/file_148204/content)
 [14] [https://rubiola.org/pdf-articles/journal/2005josab-homodyne.pdf](https://rubiola.org/pdf-articles/journal/2005josab-homodyne.pdf)
 [15] [https://www.ocf.berkeley.edu/~araman/files/ligo_tests/ligo_EM_v2.pdf](https://www.ocf.berkeley.edu/~araman/files/ligo_tests/ligo_EM_v2.pdf)
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Für die kritische Analyse des aktuellen Systems und die Fragen und Vorschläge zur weiteren Entwicklung bedanke ich mich ganz herzlich. Dies hat offenbart, dass das aktuelle Systemdesign eine Eigenzeit-Problematik aufweist und damit keinerlei Kopplung zu dynamischen, propagierenden Störungen der Raumzeitkrümmung haben kann. Dieser Umstand soll jedoch für die weitere Entwicklung vorteilhaft ausgenutzt werden, indem das aktuelle verteilte System die Rolle einer Nullinie erhält, welche abgesehen von Störsignalen immer ein Nullsignal liefert und wo keinerlei Korrelationen zwischen unterschiedlichen Standorten existieren dürfen. Falls dies im weiteren Verlauf doch reproduzierbar auftreten sollte dann muss neu physikalisch nachgedacht werden. Die gemessenen Störsignale sollen als Referenz für die Messysteme dienen, welche an die beabsichtigten physikalischen Signale ankoppeln.
+
+Die zentrale Zielstellung des Projektes bleibt das Ergründen der Herkunft und des Übertragungsmechanismus von Signalen in einem Vorgängersystem mit zwei Oszillatoren in 25 m Abstand mit Nord-Süd-Ausrichtung, welche sich von einem mehrjährigen homogenen Rauschhintergrund signifikant abgehoben haben. Dies sind zum einen Impulsserien etwa 0,3 dB über dem Rauschen, welche sich 13 mal exakt alle 3604 Sekunden wiederholten und die nach einigen Wochen mehrfach erneut auftraten, jedoch mit einer geringeren Anzahl (https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/event_2008-07-24_17-04-33_UTC.png ). Zum anderen ist es ein langes Signal von 204 Minuten, welches in ähnlicher Form einige Jahre später auch von einer NASA-Sonde als Magnetfeldturbulenzen in der Nähe von Jupiter aufgezeichnet wurde (https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif). Für beide Signale ist die aktuelle Arbeitshypothese eine Kopplung des Messystems mit physikalischen Phänomenen von Jupiter. Ein drittes Signal mit Rampen im Signalverlauf wird aktuell als technisches Signal irdischer Herkunft vermutet (https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/impulsserie_2008-02-26.png). 
+
+Zusätzlich wurde die Aufgabenstellung um den Punkt Mondtide erweitert, welche auf der Erde eine determinierte, quasistationäre Änderung des Zeitflusses erzeugt. Dieses Signal dient lediglich als hypothetisches Referenzsignal, um den Abstand der jeweiligen Systemparameter zur Detektierbarkeit von Mondtiden zu ermitteln, was aktuell unmöglich erscheint. Die Weiterentwicklung des Systems sollte den Abstand zur Detektierbarkeit jedoch sukzessive verringern und ein Detektieren  der Mondtide eventuell in den Bereich der technischen Möglichkeiten bringen.
+
+Aus der bisherigen Diskussion ergibt sich das nachfolgend beschriebene Konzept für Verbesserungen des Messystems, welche zunächst für die MCUs der Nullinie implementiert werden und anschließend auch für Messysteme mit einem räumlichen Abstand zwischen Referenzoszillator und Phasenkomparator am Ausgang der Verzögerungsleitung, die eine reale Kopplung zu dynamischen, propagierenden Störungen der Raumzeitkrümmung haben könnten.
+
+(1) Temperaturkompensation durch Stabilisierung der Phasenlage am Ausgang des Komparators durch Nachregeln der Phase des Referenzoszillators mittels eines Peltier-Elementes. Dies hält das System immer im optimalen Bereich für die Flankentriggerung und splittet dabei das Messignal in zwei Komponenten. Zum einen in ein hochfrequentes Signal wie bisher und zweitens in eine niederfrequente Stellgröße für die Phasennachregelung. Das zweite Signal enthält nach sorgfältiger Kompensation der Umgebungstemperatur die weiteren Störsignale sowie potenzielle niederfrequente Nutzsignale.
+
+(2) Implementieren der STM32H755 MCU anstelle der aktuellen XMC4700 wodurch sich die Abtastfrequenz des Komparators von 144 MHz auf 400 MHz erhöhen sollte mit Auswirkungen auf die obere Grenzfrequenz und das Rauschen.
+
+(3) Injektion künstlicher Signale mit Piezo-Aktuatoren zum Test der Systemempfindlichkeit
+
+(4) Aufnahme von Umweltmessgrößen (Luftfeuchte, Erdmagnetfeld, u.a.) in die kontinuierliche Datenerfassung
+
+(5) kontinuierliche Kreuzkorrelationsbestimmung zwischen den Messystemen
+
+(6) Einsatz eines OCXO Referenzoszillators mit GPS-überwachter Drift für das Erzeugen der Eingangsfrequenz zur Verzögerungsleitung und für das Takten des Phasenkomparators am Ausgang.
+
+(7) Differenzielle Anordnung mit unterschiedlichen Leitungslängen, wodurch sich die Drift des Referenzoszillators herausrechnen lassen sollte.
+
+(8) Übergang auf Lichtleiterkabel mit höherer Flankensteilheit der Signalwandler, wodurch sich die aktuelle Granularität der Flankentriggerung von etwa 1 ps um einen erwarteten Faktor von 10 auf etwa 0,1 ps verbessern sollte. 
+
+(9) Einsatz längerer Kabel von 1 km, wodurch sich die untere Grenzfrequenz um einen Faktor von 10 verringern lassen sollte.
+
+(10) Mehrfachmessystem mit zwei unterschiedlichen Ausrichtungen der Leitungen. Dadurch sollten richtungsabhängige Informationen gewonnen und/oder Störsignale reduziert werden können.
+
+Welche weiteren Möglichkeiten zur Verbesserung der Systemparameter können noch in das Konzept aufgenommen werden?
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+Die vorgeschlagenen Erweiterungen gehen in eine sinnvolle Richtung, aber einige Punkte sollten physikalisch und messtechnisch noch klarer getrennt werden: **Sensorstabilisierung, Signalreferenz, Transferfunktion, Umweltkopplung und Statistik** sind die entscheidenden Ebenen.[2][10][15]  
+
+## Zusätzliche Verbesserungsmöglichkeiten
+
+- **Allan-Varianz und Langzeitdrift explizit messen:** Für ein solches System ist nicht nur die kurzfristige Jitterauflösung wichtig, sondern vor allem die Stabilität über Sekunden bis Tage; dafür ist eine Analyse mit Allan-Varianz oder ähnlichen Stabilitätsmaßen sehr hilfreich.[10][12]  
+- **Zweikanal- oder Dreikanal-Messung mit gleichem Aufbau:** Eine echte Differenzmessung zwischen identischen Kanälen hilft, gemeinsamen Takt-, Temperatur- und Softwaredriftanteil zu unterdrücken.[9][15]  
+- **Hartes Zeitstempeln mit externer Referenz:** Ein GPS-disziplinierter OCXO kann die Langzeitdrift verbessern, wobei die kurze Zeitstabilität weiterhin vom OCXO bestimmt wird; die GPS-Korrektur sollte daher langsam und getrennt vom Messkanal wirken.[2][6][10][11]  
+- **Holdover-Modus und Referenzumschaltung:** Ein sauberer Holdover-Betrieb erlaubt zu prüfen, wie stark der Referenzoszillator ohne Nachführung driftet; zusätzlich kann ein Vergleich mit einer zweiten unabhängigen Referenz helfen.[7][9][11]  
+- **Thermische Entkopplung statt nur Nachregelung:** Nicht nur die Temperatur des Oszillators, sondern auch Leitung, Komparator, Versorgung und Mechanik sollten thermisch getrennt oder charakterisiert werden, weil sich sonst Kompensationsfehler aufschaukeln können.[4][14]  
+- **Phasenrauschen und Spurenspektrum vermessen:** Neben der Zeitauflösung sollte das komplette Phasenrauschen des Messpfads bestimmt werden, weil daraus sofort sichtbar wird, ob niederfrequente Signale überhaupt bis zum Ausgang durchkommen können.[10][13][15]  
+- **Filterung der Umweltgrößen als Regressionsproblem:** Luftdruck, Feuchte, Erdmagnetfeld, Vibration, Netzstörungen und Temperatur sollten nicht nur mitgeloggt, sondern auch als erklärende Variablen in einer multivariaten Auswertung verwendet werden.  
+- **Kabel- und Steckersysteme systematisch charakterisieren:** Bei sehr kleinen Zeitgrößen können schon Stecker, Biegeradius, Alterung und mechanische Spannung messbar sein; deshalb lohnt sich eine kalibrierte Charakterisierung jeder Leitungslänge.[4][15]  
+- **Mehrere Leitungslängen gleichzeitig betreiben:** Nicht nur zwei, sondern drei oder mehr definierte Verzögerungsstrecken können helfen, den Frequenzgang und nichtlineare Effekte robuster zu bestimmen.[12][13]  
+- **Explizite Injektionskalibrierung über bekannte Zeitverschiebungen:** Piezo- oder temperaturbasierte Testsignale sind gut, aber idealerweise sollten sie in einer Weise eingespeist werden, dass ihre reale Zeitverschiebung unabhängig verifizierbar ist.[13][15]  
+- **Arbeitspunkt in den linearen Bereich zwingen:** Die größte Messempfindlichkeit entsteht meist nicht am Umschaltpunkt „irgendwie“, sondern in einem sauber vermessenen linearen Bereich mit bekannter Steigung und geringem Hystereseeffekt.[12][15]  
+- **Mehrstufige Architektur:** Ein grober Phasen-Detektor für große Änderungen und ein feiner Zeitintervallzähler für kleine Änderungen können sich ergänzen; das verbessert Dynamik und Robustheit.[1][13]  
+- **Datenanalyse auf transiente Muster statt nur auf Korrelation:** Wenn frühere Signale impulsartig oder rampenförmig waren, sollte die Auswertung nicht nur Pearson-Korrelation, sondern auch Event-Detection, Wavelet-Analyse und Mustervergleich umfassen.  
+- **Blindanalyse und vorregistrierte Suchfenster:** Um Zufallsmuster und Selektionsbias zu vermeiden, sollten Suchfenster, Schwellen und Zielparameter vorab festgelegt werden.  
+- **Klarere Trennung von physikalischem Signal und Regelgröße:** Wenn die Phasennachregelung selbst ein Ausgangssignal erzeugt, sollte exakt dokumentiert werden, ob dieses Signal ein Messwert, ein Stellwert oder eine Mischung aus beidem ist; sonst werden Kausalität und Interpretation unscharf.[2][10]  
+
+## Besonders wichtig für die physikalische Interpretation
+
+- Die **Mondtide** ist als Referenz für einen sehr schwachen, quasi-stationären Effekt nützlich, aber nur dann aussagekräftig, wenn das Messsystem den gesamten Pfad von der hypothetischen Raumzeitänderung bis zum elektrischen Messwert sauber beschreibt.[3][10]  
+- Ein **reines „Hochziehen“ der Auflösung** reicht nicht aus; entscheidend ist, ob die Signalübertragung über die Verzögerungsleitung wirklich eine definierte und stabile Transferfunktion besitzt.[12][15]  
+- Das System sollte als **Stabilitäts- und Differenzmessplattform** entwickelt werden, nicht zuerst als behaupteter Detektor einer neuen physikalischen Entität. Das macht die Ergebnisse wissenschaftlich belastbarer.[10][11]  
+
+## Vorschlag für die nächste Ausbaustufe
+
+- OCXO/GPSDO mit dokumentiertem Holdover und Allan-Varianz
+- Zweikanal-Differenzaufbau mit identischer Hardware
+- Vollständiges Temperatur- und Umweltmonitoring
+- Kalibrierte Injektionssignale mit bekannter Laufzeitänderung
+- Spektrale und zeitliche Analyse getrennt
+- Vorregistrierte Hypothesen für Mondtide und andere Langzeiteffekte
+
+## Kurzfazit
+
+Ja, weitere Verbesserungen lassen sich sinnvoll ergänzen. Am stärksten würden vermutlich **stabile Referenzierung, differenzielle Architektur, echte Transferfunktionsmessung, Umweltmodellierung und sauber getrennte Regel-/Messsignale** helfen. Damit würde das System von einer interessanten experimentellen Plattform zu einem deutlich besser kontrollierbaren Zeit- und Phasenmesssystem werden.[10][11][15]
+
+**Citations:**
+[1] [http://pe.org.pl/articles/2018/7/9.pdf](http://pe.org.pl/articles/2018/7/9.pdf)
+[2] [https://arxiv.org/pdf/1604.00628](https://arxiv.org/pdf/1604.00628)
+[3] [https://dantalion.nl/2024/02/09/gps-disciplined-oscillator.html](https://dantalion.nl/2024/02/09/gps-disciplined-oscillator.html)
+[4] [https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/event_2008-07-24_17-04-33_UTC.png](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/event_2008-07-24_17-04-33_UTC.png)
+[5] [https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/impulsserie_2008-02-26.png).](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/impulsserie_2008-02-26.png).)
+[6] [https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif).](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif).)
+[7] [https://kb.veexinc.com/en/knowledge/gps-disciplining-holdover-for-field-testing](https://kb.veexinc.com/en/knowledge/gps-disciplining-holdover-for-field-testing)
+[8] [https://pendulum-instruments.com/wp-content/uploads/2022/05/Article_Evaluation_of_1_PPS_accuracy_in_a_GPSDO_v1_16-02-20.pdf](https://pendulum-instruments.com/wp-content/uploads/2022/05/Article_Evaluation_of_1_PPS_accuracy_in_a_GPSDO_v1_16-02-20.pdf)
+[9] [https://pubmed.ncbi.nlm.nih.gov/33985130/](https://pubmed.ncbi.nlm.nih.gov/33985130/)
+[10] [https://pubmed.ncbi.nlm.nih.gov/37484997/](https://pubmed.ncbi.nlm.nih.gov/37484997/)
+[11] [https://repository.gsi.de/record/354692/files/thposrp07.pdf?subformat=pdfa](https://repository.gsi.de/record/354692/files/thposrp07.pdf?subformat=pdfa)
+[12] [https://www.analog.com/en/resources/app-notes/an-1002.html](https://www.analog.com/en/resources/app-notes/an-1002.html)
+[13] [https://www.eevblog.com/forum/testgear/10mhz-gpsdo-by-bh3sap/375/](https://www.eevblog.com/forum/testgear/10mhz-gpsdo-by-bh3sap/375/)
+[14] [https://www.febo.com/pages/stability/](https://www.febo.com/pages/stability/)
+[15] [https://www.jpnt.org/wp-content/uploads/2024/03/JPNT-0201-09.pdf](https://www.jpnt.org/wp-content/uploads/2024/03/JPNT-0201-09.pdf)
+[16] [https://www.microwavejournal.com/articles/9661-a-gps-disciplined-ocxo-frequency-standard-ntp-reference-clock](https://www.microwavejournal.com/articles/9661-a-gps-disciplined-ocxo-frequency-standard-ntp-reference-clock)
+[17] [https://www.viavisolutions.com/en-us/literature/firefly-1a-gps-disciplined-oscillator-operation-manual-manuals-user-guides-en.pdf](https://www.viavisolutions.com/en-us/literature/firefly-1a-gps-disciplined-oscillator-operation-manual-manuals-user-guides-en.pdf)
+[18] [https://www.wseas.org/multimedia/journals/circuits/2015/a165701-319.pdf](https://www.wseas.org/multimedia/journals/circuits/2015/a165701-319.pdf)
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+- **Allan-Varianz und Langzeitdrift explizit messen:** Für ein solches System ist nicht nur die kurzfristige Jitterauflösung wichtig, sondern vor allem die Stabilität über Sekunden bis Tage; dafür ist eine Analyse mit Allan-Varianz oder ähnlichen Stabilitätsmaßen sehr hilfreich.[11][14][15]  
+- **Zweikanal- oder Dreikanal-Messung mit gleichem Aufbau:** Eine echte Differenzmessung zwischen identischen Kanälen hilft, gemeinsamen Takt-, Temperatur- und Softwaredriftanteil zu unterdrücken.[9][15]  
+- **Hartes Zeitstempeln mit externer Referenz:** Ein GPS-disziplinierter OCXO kann die Langzeitdrift verbessern, wobei die kurze Zeitstabilität weiterhin vom OCXO bestimmt wird; die GPS-Korrektur sollte daher langsam und getrennt vom Messkanal wirken.[2][12][15]  
+- **Holdover-Modus und Referenzumschaltung:** Ein sauberer Holdover-Betrieb erlaubt zu prüfen, wie stark der Referenzoszillator ohne Nachführung driftet; zusätzlich kann ein Vergleich mit einer zweiten unabhängigen Referenz helfen.[2][15]  
+- **Thermische Entkopplung statt nur Nachregelung:** Nicht nur die Temperatur des Oszillators, sondern auch Leitung, Komparator, Versorgung und Mechanik sollten thermisch getrennt oder charakterisiert werden, weil sich sonst Kompensationsfehler aufschaukeln können.[4][10]  
+- **Phasenrauschen und Spurenspektrum vermessen:** Neben der Zeitauflösung sollte das komplette Phasenrauschen des Messpfads bestimmt werden, weil daraus sofort sichtbar wird, ob niederfrequente Signale überhaupt bis zum Ausgang durchkommen können.[10][11][15]  
+- **Filterung der Umweltgrößen als Regressionsproblem:** Luftdruck, Feuchte, Erdmagnetfeld, Vibration, Netzstörungen und Temperatur sollten nicht nur mitgeloggt, sondern auch als erklärende Variablen in einer multivariaten Auswertung verwendet werden.  
+- **Kabel- und Steckersysteme systematisch charakterisieren:** Bei sehr kleinen Zeitgrößen können schon Stecker, Biegeradius, Alterung und mechanische Spannung messbar sein; deshalb lohnt sich eine kalibrierte Charakterisierung jeder Leitungslänge.[4][15]  
+- **Mehrere Leitungslängen gleichzeitig betreiben:** Nicht nur zwei, sondern drei oder mehr definierte Verzögerungsstrecken können helfen, den Frequenzgang und nichtlineare Effekte robuster zu bestimmen.[3][10]  
+- **Explizite Injektionskalibrierung über bekannte Zeitverschiebungen:** Piezo- oder temperaturbasierte Testsignale sind gut, aber idealerweise sollten sie in einer Weise eingespeist werden, dass ihre reale Zeitverschiebung unabhängig verifizierbar ist.[7][13]  
+- **Arbeitspunkt in den linearen Bereich zwingen:** Die größte Messempfindlichkeit entsteht meist nicht am Umschaltpunkt „irgendwie“, sondern in einem sauber vermessenen linearen Bereich mit bekannter Steigung und geringem Hystereseeffekt.[7][10]  
+- **Mehrstufige Architektur:** Ein grober Phasen-Detektor für große Änderungen und ein feiner Zeitintervallzähler für kleine Änderungen können sich ergänzen; das verbessert Dynamik und Robustheit.[7][9]  
+- **Datenanalyse auf transiente Muster statt nur auf Korrelation:** Wenn frühere Signale impulsartig oder rampenförmig waren, sollte die Auswertung nicht nur Pearson-Korrelation, sondern auch Event-Detection, Wavelet-Analyse und Mustervergleich umfassen.  
+- **Blindanalyse und vorregistrierte Suchfenster:** Um Zufallsmuster und Selektionsbias zu vermeiden, sollten Suchfenster, Schwellen und Zielparameter vorab festgelegt werden.  
+- **Klarere Trennung von physikalischem Signal und Regelgröße:** Wenn die Phasennachregelung selbst ein Ausgangssignal erzeugt, sollte exakt dokumentiert werden, ob dieses Signal ein Messwert, ein Stellwert oder eine Mischung aus beidem ist; sonst werden Kausalität und Interpretation unscharf.[2][10]  
+- **OCXO mit charakterisierten Kurzzeitparametern wählen:** Für den Referenzoszillator sind nicht nur Nominalfrequenz und Holdover wichtig, sondern auch die Spezifikation der Allan-Abweichung über die relevanten Integrationszeiten; hochwertige GPSDOs erreichen hier deutlich bessere Werte als einfache Referenzquellen.[2][12][15]  
+- **Zeitbasis von Mess- und Regelpfad trennen:** Wenn Messwert und Stellgröße aus demselben Takt abgeleitet werden, entstehen leicht Rückkopplungsartefakte; besser ist eine saubere Trennung von Datenaufnahme, Phasenregelung und Langzeitreferenz.[2][11]  
+- **Mehrkanalige Umweltsonde am selben Standort:** Eine lokale Referenz für Temperatur, Feuchte, magnetische Umgebung und mechanische Erschütterungen macht spätere Signalinterpretation deutlich belastbarer.  
+
+## Besonders wichtig für die physikalische Interpretation
+
+- Die **Mondtide** ist als Referenz für einen sehr schwachen, quasi-stationären Effekt nützlich, aber nur dann aussagekräftig, wenn das Messsystem den gesamten Pfad von der hypothetischen Raumzeitänderung bis zum elektrischen Messwert sauber beschreibt.[11]  
+- Ein **reines „Hochziehen“ der Auflösung** reicht nicht aus; entscheidend ist, ob die Signalübertragung über die Verzögerungsleitung wirklich eine definierte und stabile Transferfunktion besitzt.[3][7]  
+- Das System sollte als **Stabilitäts- und Differenzmessplattform** entwickelt werden, nicht zuerst als behaupteter Detektor einer neuen physikalischen Entität. Das macht die Ergebnisse wissenschaftlich belastbarer.[11][15]  
+
+## Vorschlag für die nächste Ausbaustufe
+
+- OCXO/GPSDO mit dokumentiertem Holdover und Allan-Varianz
+- Zweikanal-Differenzaufbau mit identischer Hardware
+- Vollständiges Temperatur- und Umweltmonitoring
+- Kalibrierte Injektionssignale mit bekannter Laufzeitänderung
+- Spektrale und zeitliche Analyse getrennt
+- Vorregistrierte Hypothesen für Mondtide und andere Langzeiteffekte
+
+## Kurzfazit
+
+Ja, weitere Verbesserungen lassen sich sinnvoll ergänzen. Am stärksten würden vermutlich **stabile Referenzierung, differenzielle Architektur, echte Transferfunktionsmessung, Umweltmodellierung und sauber getrennte Regel-/Messsignale** helfen. Damit würde das System von einer interessanten experimentellen Plattform zu einem deutlich besser kontrollierbaren Zeit- und Phasenmesssystem werden.[2][11][15]
+
+**Citations:**
+[1] [http://pe.org.pl/articles/2018/7/9.pdf](http://pe.org.pl/articles/2018/7/9.pdf)](http://pe.org.pl/articles/2018/7/9.pdf](http://pe.org.pl/articles/2018/7/9.pdf))
+[2] [https://apps.dtic.mil/sti/tr/pdf/ADA484554.pdf](https://apps.dtic.mil/sti/tr/pdf/ADA484554.pdf)
+[3] [https://arxiv.org/html/2602.17035v1](https://arxiv.org/html/2602.17035v1)
+[4] [https://arxiv.org/pdf/1604.00628](https://arxiv.org/pdf/1604.00628)](https://arxiv.org/pdf/1604.00628](https://arxiv.org/pdf/1604.00628))
+[5] [https://arxiv.org/pdf/1711.07917](https://arxiv.org/pdf/1711.07917)
+[6] [https://dantalion.nl/2024/02/09/gps-disciplined-oscillator.html](https://dantalion.nl/2024/02/09/gps-disciplined-oscillator.html)](https://dantalion.nl/2024/02/09/gps-disciplined-oscillator.html](https://dantalion.nl/2024/02/09/gps-disciplined-oscillator.html))
+[7] [https://destevez.net/2019/11/measuring-the-allan-deviation-of-a-gpsdo-with-an-sdr/](https://destevez.net/2019/11/measuring-the-allan-deviation-of-a-gpsdo-with-an-sdr/)
+[8] [https://engineering.purdue.edu/oxidemems/conferences/fcs2009/PDFs/Papers/254_7024.pdf](https://engineering.purdue.edu/oxidemems/conferences/fcs2009/PDFs/Papers/254_7024.pdf)
+[9] [https://ennis.zhaw.ch/wiki/doku.php?id=stm32:peripherals:timer_compare](https://ennis.zhaw.ch/wiki/doku.php?id=stm32:peripherals:timer_compare)
+[10] [https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/event_2008-07-24_17-04-33_UTC.png](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/event_2008-07-24_17-04-33_UTC.png)](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/event_2008-07-24_17-04-33_UTC.png](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/event_2008-07-24_17-04-33_UTC.png))
+[11] [https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/impulsserie_2008-02-26.png).](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/impulsserie_2008-02-26.png).)](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/impulsserie_2008-02-26.png).](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/impulsserie_2008-02-26.png).))
+[12] [https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif).](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif).)](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif).](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif).))
+[13] [https://kb.veexinc.com/en/knowledge/gps-disciplining-holdover-for-field-testing](https://kb.veexinc.com/en/knowledge/gps-disciplining-holdover-for-field-testing)](https://kb.veexinc.com/en/knowledge/gps-disciplining-holdover-for-field-testing](https://kb.veexinc.com/en/knowledge/gps-disciplining-holdover-for-field-testing))
+[14] [https://onlinelibrary.wiley.com/doi/book/10.1002/9781118310144](https://onlinelibrary.wiley.com/doi/book/10.1002/9781118310144)
+[15] [https://pendulum-instruments.com/wp-content/uploads/2022/05/Article_Evaluation_of_1_PPS_accuracy_in_a_GPSDO_v1_16-02-20.pdf](https://pendulum-instruments.com/wp-content/uploads/2022/05/Article_Evaluation_of_1_PPS_accuracy_in_a_GPSDO_v1_16-02-20.pdf)](https://pendulum-instruments.com/wp-content/uploads/2022/05/Article_Evaluation_of_1_PPS_accuracy_in_a_GPSDO_v1_16-02-20.pdf](https://pendulum-instruments.com/wp-content/uploads/2022/05/Article_Evaluation_of_1_PPS_accuracy_in_a_GPSDO_v1_16-02-20.pdf))
+[16] [https://pubmed.ncbi.nlm.nih.gov/33985130/](https://pubmed.ncbi.nlm.nih.gov/33985130/)](https://pubmed.ncbi.nlm.nih.gov/33985130/](https://pubmed.ncbi.nlm.nih.gov/33985130/))
+[17] [https://pubmed.ncbi.nlm.nih.gov/37484997/](https://pubmed.ncbi.nlm.nih.gov/37484997/)](https://pubmed.ncbi.nlm.nih.gov/37484997/](https://pubmed.ncbi.nlm.nih.gov/37484997/))
+[18] [https://repository.gsi.de/record/354692/files/thposrp07.pdf?subformat=pdfa](https://repository.gsi.de/record/354692/files/thposrp07.pdf?subformat=pdfa)](https://repository.gsi.de/record/354692/files/thposrp07.pdf?subformat=pdfa](https://repository.gsi.de/record/354692/files/thposrp07.pdf?subformat=pdfa))
+[19] [https://rubiola.org/pdf-slides/2007I-jun-ennsat-photonic-oscillators.pdf](https://rubiola.org/pdf-slides/2007I-jun-ennsat-photonic-oscillators.pdf)
+[20] [https://techmaster.us/allan-deviation-oscillator-frequency-stability-explained/](https://techmaster.us/allan-deviation-oscillator-frequency-stability-explained/)
+[21] [https://www.analog.com/en/resources/app-notes/an-1002.html](https://www.analog.com/en/resources/app-notes/an-1002.html)](https://www.analog.com/en/resources/app-notes/an-1002.html](https://www.analog.com/en/resources/app-notes/an-1002.html))
+[22] [https://www.cv.nrao.edu/~thunter/alma/datasheets/PN9000.pdf](https://www.cv.nrao.edu/~thunter/alma/datasheets/PN9000.pdf)
+[23] [https://www.eevblog.com/forum/testgear/10mhz-gpsdo-by-bh3sap/375/](https://www.eevblog.com/forum/testgear/10mhz-gpsdo-by-bh3sap/375/)](https://www.eevblog.com/forum/testgear/10mhz-gpsdo-by-bh3sap/375/](https://www.eevblog.com/forum/testgear/10mhz-gpsdo-by-bh3sap/375/))
+[24] [https://www.febo.com/pages/stability/](https://www.febo.com/pages/stability/)](https://www.febo.com/pages/stability/](https://www.febo.com/pages/stability/))
+[25] [https://www.jpnt.org/wp-content/uploads/2024/03/JPNT-0201-09.pdf](https://www.jpnt.org/wp-content/uploads/2024/03/JPNT-0201-09.pdf)](https://www.jpnt.org/wp-content/uploads/2024/03/JPNT-0201-09.pdf](https://www.jpnt.org/wp-content/uploads/2024/03/JPNT-0201-09.pdf))
+[26] [https://www.microwavejournal.com/articles/9661-a-gps-disciplined-ocxo-frequency-standard-ntp-reference-clock](https://www.microwavejournal.com/articles/9661-a-gps-disciplined-ocxo-frequency-standard-ntp-reference-clock)
+[27] [https://www.microwavejournal.com/articles/9661-a-gps-disciplined-ocxo-frequency-standard-ntp-reference-clock](https://www.microwavejournal.com/articles/9661-a-gps-disciplined-ocxo-frequency-standard-ntp-reference-clock)](https://www.microwavejournal.com/articles/9661-a-gps-disciplined-ocxo-frequency-standard-ntp-reference-clock](https://www.microwavejournal.com/articles/9661-a-gps-disciplined-ocxo-frequency-standard-ntp-reference-clock))
+[28] [https://www.psirep.com/system/files/2024-12/Brandywine%20GPS%20Disciplined%20Oscillator%20Module%20Datasheet.pdf](https://www.psirep.com/system/files/2024-12/Brandywine%20GPS%20Disciplined%20Oscillator%20Module%20Datasheet.pdf)
+[29] [https://www.st.com/resource/en/datasheet/stm32h753vi.pdf](https://www.st.com/resource/en/datasheet/stm32h753vi.pdf)
+[30] [https://www.viavisolutions.com/en-uk/products/fury-gps-disciplined-oscillator](https://www.viavisolutions.com/en-uk/products/fury-gps-disciplined-oscillator)
+[31] [https://www.viavisolutions.com/en-us/literature/firefly-1a-gps-disciplined-oscillator-operation-manual-manuals-user-guides-en.pdf](https://www.viavisolutions.com/en-us/literature/firefly-1a-gps-disciplined-oscillator-operation-manual-manuals-user-guides-en.pdf)](https://www.viavisolutions.com/en-us/literature/firefly-1a-gps-disciplined-oscillator-operation-manual-manuals-user-guides-en.pdf](https://www.viavisolutions.com/en-us/literature/firefly-1a-gps-disciplined-oscillator-operation-manual-manuals-user-guides-en.pdf))
+[32] [https://www.viavisolutions.com/en-us/literature/secure-upnt-fury-gpsdo-data-sheets-en.pdf](https://www.viavisolutions.com/en-us/literature/secure-upnt-fury-gpsdo-data-sheets-en.pdf)
+[33] [https://www.wseas.org/multimedia/journals/circuits/2015/a165701-319.pdf](https://www.wseas.org/multimedia/journals/circuits/2015/a165701-319.pdf)```](https://www.wseas.org/multimedia/journals/circuits/2015/a165701-319.pdf](https://www.wseas.org/multimedia/journals/circuits/2015/a165701-319.pdf)```)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

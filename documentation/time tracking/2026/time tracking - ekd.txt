@@ -19,3 +19,5 @@ date        hours  total    location     subject
 2026-08-21    2     31      Vierow       AI chat on extracting data from solar eclipse charts
 2026-08-24    2     33      Vierow       extracting data from solar eclipse charts
 2026-08-25    2     35      Vierow       AI chat on spectral analysis, testing analysis script
+2026-08-28    2     37      Vierow       AI chat on improving system params
+2026-08-30    6     43      Vierow       AI chat on improving system params
