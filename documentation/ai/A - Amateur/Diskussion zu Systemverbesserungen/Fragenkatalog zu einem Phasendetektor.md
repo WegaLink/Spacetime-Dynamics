@@ -12,18 +12,18 @@
 <a name="katalog"></a>
 # Fragenkatalog Raumzeit-Dynamics
 ## 2. Hypothesen & Fragen-Katalog
-| Kategorie | Frage | Status | ID
-| :--- | :--- | :--- |
-| Physik | Welche physikalische Größe misst das System am direktesten (Laufzeit, Phase, Frequenz)? | offen | Physik_1 |
-| Physik | Welche Komponenten des Signals sind durch Temperatur, Taktjitter oder Mechanik erklärbar? | offen | Physik_2 |
-| Physik | Wie sieht die vollständige Transferfunktion der Messkette aus? | offen | Physik_3 |
-| Methodik | Welche Beobachtung würde die Hypothese eines externen Signals am stärksten widerlegen? | offen | Methodik_1 |
-| Methodik | Welche künstliche Injektion ist am besten geeignet, um Empfindlichkeit zu testen? | offen | Methodik_2 |
-| Methodik | Welche Umweltkanäle müssen zwingend mitgemessen werden (Schein-Korrelationen)? | offen | Methodik_3 |
-| Methodik | Wie stabil ist die Zeitbasis über verschiedene Zeitbereiche (Drift-Analyse)? | offen | Methodik_4 |
-| Methodik | Welche Unterschiede zeigen sich zwischen Standorten bei systematischem Zeitversatz? | offen | Methodik_5 |
-| Methodik | Welche Messstrategie verbessert die Trennschärfe am stärksten? | offen | Methodik_6 |
-| Intuition | Welche Beobachtung würde mich heute am meisten überraschen und als wichtig erscheinen? | offen | Intuition_1 |
+| Kategorie | Frage | Status | ID |
+| :--- | :--- | :--- | :--- |
+| Physik | Welche physikalische Größe misst das System am direktesten (Laufzeit, Phase, Frequenz)? | offen | [Physik 1](#Physik_1) |
+| Physik | Welche Komponenten des Signals sind durch Temperatur, Taktjitter oder Mechanik erklärbar? | offen | [Physik 2](#Physik_2) |
+| Physik | Wie sieht die vollständige Transferfunktion der Messkette aus? | offen | [Physik 3](#Physik_3) |
+| Methodik | Welche Beobachtung würde die Hypothese eines externen Signals am stärksten widerlegen? | offen | [Methodik 1](#Methodik_1) |
+| Methodik | Welche künstliche Injektion ist am besten geeignet, um Empfindlichkeit zu testen? | offen | [Methodik 2](#Methodik_2) |
+| Methodik | Welche Umweltkanäle müssen zwingend mitgemessen werden (Schein-Korrelationen)? | offen | [Methodik 3](#Methodik_3) |
+| Methodik | Wie stabil ist die Zeitbasis über verschiedene Zeitbereiche (Drift-Analyse)? | offen | [Methodik 4](#Methodik_4) |
+| Methodik | Welche Unterschiede zeigen sich zwischen Standorten bei systematischem Zeitversatz? | offen | [Methodik 5](#Methodik_5) |
+| Methodik | Welche Messstrategie verbessert die Trennschärfe am stärksten? | offen | [Methodik 6](#Methodik_6) |
+| Intuition | Welche Beobachtung würde mich heute am meisten überraschen und als wichtig erscheinen? | offen | [Intuition 1](#Intuition_1) |
 ---
 <a name="erkenntnisse"></a>
 ## 3. Dokumentation der Erkenntnisse
