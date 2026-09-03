@@ -160,7 +160,7 @@ Die Information aus dem Informationsfeld war, dass die Impulse von einer kosmisc
 <a name="Intuition_4"></a>
 ### Intuition 4
 - **Datum:** 2026-09-02
-- **Frage:** **Die Jupiter-Vermutung** [Chart](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif) [Sound](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/wav/sound_signal_2008-02-21.gif)
+- **Frage:** **Die Jupiter-Vermutung** [Chart](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif) [Sound](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/wav/zeit.wav)
 
 Die Übereinstimmung der langen 204-min-Signale mit NASA-Magnetfelddaten nahe Jupiter ist verblüffend. Könnte es einen **bisher unbekannten Kopplungsmechanismus** geben (z. B. über das interplanetare Magnetfeld, den Sonnenwind oder eine Art von "verschalteter" Information), der solche Phänomene über diese Distanzen verbindet?
 - **Antwort / Impuls:** Die Verwendung eines 25 m langen RG58 Kabels zur Weiterleitung der Signale von zwei 16 MHz Oszillatoren und eine anschließende Auswertung der Phasendifferenz im Bereich 0-5 MHz macht es wahrscheinlich, dass ein sehr schwaches Kurzwellensignal von Jupiter empfangen wurde. 
