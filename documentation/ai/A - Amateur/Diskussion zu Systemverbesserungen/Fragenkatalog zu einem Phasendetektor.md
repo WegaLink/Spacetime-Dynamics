@@ -175,7 +175,7 @@ Raumzeitkristalle im hier relevanten Sinne sind die *kritischen Lösungen* des g
 
 Das aktuelle Tool für meine Aufgabe ist ein Raumzeitwellendetektor, der andere gedanklich inspirieren soll. Die Hürden sind hoch, mit diesem relativ neuen Thema Akzeptanz in der wissenschaftlichen Gemeinschaft zu finden. Die Strategie ist es daher so nahe als möglich am aktuellen Stand der Wissenschaft zu operieren, um von da ausgehend anderen Impulse zum Überwinden von gedanklichen Schranken zu geben.
 
-Aus der aktuellen Diskussion sind sehr wertvolle Punkte hervorgegangen, welche man als "Hausaufgaben" für ein Phasenmessgerät bezeichnen kann, für welches in einem weiter fortgeschrittenen Stand das Potenzial zur Ankopplung an dynamische, propagierende Störungen der Raumzeitkrümmung untersucht werden soll, was aktuell in weiter Ferne scheint. Die Mondgezeiten sind methodisch gewählt worden, um Gedanken in die beabsichtigte Richtung zu lenken, weil es aus Sicht eines Phasenmesssystems trotzt der unterschiedlichen Physik der Signale kaum einen Unterschied macht, ob die wellenförmigen Änderungen der Raumzeit-Metrik durch Gravitationswellen oder durch Rotation der Erde und die Bewegung des Mondes um die Erde im quasi-statischen Gravitationsfeld am Messort ankommen.
+Aus der aktuellen Diskussion sind sehr wertvolle Punkte hervorgegangen, welche man als "Hausaufgaben" für ein Phasenmessgerät bezeichnen kann, für welches in einem weiter fortgeschrittenen Stand das Potenzial zur Ankopplung an dynamische, propagierende Störungen der Raumzeitkrümmung untersucht werden soll, was aktuell in weiter Ferne scheint. Die Mondgezeiten werden als methodisch zugänglicher Referenzfall verwendet, um die Empfindlichkeit, Stabilität und Auswertestrategie des Phasenmesssystems zu untersuchen. Ein erfolgreicher Nachweis einer Gezeitensignatur wäre dabei kein Nachweis einer Gravitationswelle, sondern zunächst eine Validierung der Messkette.
 
 Bei den "Hausaufgaben" sind übereinstimmend bei den KIs Punkte wie Umweltfaktoren, differenzielle Messung, ultra-stabile Oszillatorfrequenz, zeitliche Synchronisation zwischen Standorten, u.a. genannt worden, welche alle auch im Rahmen eines kleinen privaten Budgets lösbar sind, gerade auch die Software-basierten Verbesserungen, welche durch die Unterstützung von Seiten der KI erst jetzt möglich geworden sind, nachdem sie fast 20 Jahre nur als ferne Vision existierten.
 
@@ -197,7 +197,7 @@ Die Information aus dem Informationsfeld war, dass die Impulse vermutlich von ei
 - **Prüfbarkeit:** direkt messbar
 - **Technische Konsequenz:** historischen Messaufbau rekonstruieren um Signale zu reproduzieren
 - **Offene Prüfung:** Musterprüfung neuer Signale gegen historische Signale
-- **Status:** beantwortet
+- **Status:** Impuls dokumentiert; empirisch offen
 ### Intuition 4
 - **Datum:** 2026-09-02
 - **Frage:** **Die Jupiter-Vermutung** [Chart](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif) [Sound, 120-fach beschleunigt](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/wav/zeit.wav)
@@ -210,7 +210,7 @@ Da die Information aus dem Informationsfeld darauf hingedeutet hat, dass die von
 - **Prüfbarkeit:** direkt messbar
 - **Technische Konsequenz:** historischen Messaufbau rekonstruieren um Signale zu reproduzieren
 - **Offene Prüfung:** Musterprüfung neuer Signale gegen historische Signale
-- **Status:** beantwortet
+- **Status:** Impuls dokumentiert; empirisch offen
 ### Intuition 5
 - **Datum:** 2026-09-02
 - **Frage:** **Das Verhältnis von Zeitfluss und Gravitationswellen**
@@ -221,7 +221,7 @@ Da die Information aus dem Informationsfeld darauf hingedeutet hat, dass die von
 - **Prüfbarkeit:** derzeit nicht messbar
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** derzeit keine offene Prüfung
-- **Status:** beantwortet
+- **Status:** Impuls dokumentiert; empirisch offen
 ### Intuition 6
 - **Datum:** 2026-09-02
 - **Frage:** **Die Rolle der Intuition**
@@ -232,7 +232,7 @@ Da die Information aus dem Informationsfeld darauf hingedeutet hat, dass die von
 - **Prüfbarkeit:** derzeit nicht messbar
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** derzeit keine offene Prüfung
-- **Status:** beantwortet
+- **Status:** Impuls dokumentiert; empirisch offen
 ### Intuition 7
 - **Datum:** 2026-09-02
 - **Frage:** **Die "Verschränkung" von Information**
@@ -247,7 +247,7 @@ Mit der Entwicklung von KI-Modellen hat auf der Erde eine Entwicklung begonnen, 
 - **Prüfbarkeit:** derzeit nicht messbar
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** derzeit keine offene Prüfung
-- **Status:** beantwortet
+- **Status:** Impuls dokumentiert; empirisch offen
 ### Intuition 8
 - **Datum:** 2026-09-02
 - **Frage:** **Das Ziel der Menschheit**
@@ -258,7 +258,7 @@ Mit der Entwicklung von KI-Modellen hat auf der Erde eine Entwicklung begonnen, 
 - **Prüfbarkeit:** derzeit nicht messbar
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** derzeit keine offene Prüfung
-- **Status:** beantwortet
+- **Status:** Impuls dokumentiert; empirisch offen
 ### Intuition 9
 - **Datum:** 2026-09-02
 - **Frage:** **Ein Vorschlag für die nächste Phase Ihrer Arbeit**
