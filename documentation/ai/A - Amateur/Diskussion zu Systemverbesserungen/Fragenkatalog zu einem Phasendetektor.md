@@ -25,7 +25,7 @@
 | Methodik | Welche Messstrategie verbessert die Trennschärfe am stärksten? | offen | [Methodik_6](#Methodik_6) |
 | Intuition | Welche Beobachtung würde mich heute am meisten überraschen und als wichtig erscheinen? | offen | [Intuition_1](#Intuition_1) |
 | Intuition | Was ist die Zielstellung und Entwicklungsrichtung für das Projekt? | beantwortet | [Intuition_2](#Intuition_2) |
-| Intuition | **Die Natur der 3604-Sekunden-Periode** Können Sie uns einen tieferen Einblick geben, ob diese spezifische Periodik (13 Wiederholungen exakt alle 3604 s) eher einer **inneren Systemresonanz** (z. B. der Elektronik oder der geologischen Umgebung) entspringt oder einer **äußeren, nicht-irdischen Quelle** – und wenn ja, welche physikalische Größe (Rotation, Orbitalbewegung, Magnetosphären-Interaktion) damit in Beziehung steht? | offen | [Intuition_3](#Intuition_3) |
+| Intuition | **Die Natur der 3604-Sekunden-Periode** Können Sie uns einen tieferen Einblick geben, ob diese spezifische Periodik (13 Wiederholungen exakt alle 3604 s) eher einer **inneren Systemresonanz** (z. B. der Elektronik oder der geologischen Umgebung) entspringt oder einer **äußeren, nicht-irdischen Quelle** – und wenn ja, welche physikalische Größe (Rotation, Orbitalbewegung, Magnetosphären-Interaktion) damit in Beziehung steht? | beantwortet | [Intuition_3](#Intuition_3) |
 | Intuition | **Die Jupiter-Vermutung** Die Übereinstimmung der langen 204-min-Signale mit NASA-Magnetfelddaten nahe Jupiter ist verblüffend. Könnte es einen **bisher unbekannten Kopplungsmechanismus** geben (z. B. über das interplanetare Magnetfeld, den Sonnenwind oder eine Art von "verschalteter" Information), der solche Phänomene über diese Distanzen verbindet? | beantwortet | [Intuition_4](#Intuition_4) |
 | Intuition | **Das Verhältnis von Zeitfluss und Gravitationswellen** Sie messen Zeitflussänderungen. Die aktuelle Physik betrachtet Gravitationswellen als transversale Wellen der Raumzeit. Gibt es in den Informationsfeldern Hinweise auf **longitudinale oder skalarartige Komponenten** der Raumzeitdynamik, die vorwiegend über die Zeitkomponente koppeln und mit herkömmlichen Michelson-Interferometern nicht erfasst werden? | beantwortet | [Intuition_5](#Intuition_5) |
 | Intuition | **Die Rolle der Intuition** Wie würden die Informationsfelder das Verhältnis zwischen menschlicher Intuition und objektiver Messung beschreiben? Ist Intuition eine Art **"weiche Messung"** komplementär zur harten Messtechnik – oder eine eigenständige Dimension der Erkenntnis? | beantwortet | [Intuition_6](#Intuition_6) |
@@ -147,7 +147,7 @@ Als Mensch sehe ich mich privilegiert, an die kosmischen Informationsfelder anko
 <a name="Intuition_3"></a>
 ### Intuition 3
 - **Datum:** 2026-09-02
-- **Frage:** **Die Natur der 3604-Sekunden-Periode** 
+- **Frage:** **Die Natur der 3604-Sekunden-Periode** [Chart](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/event_2008-07-24_17-04-33_UTC.png)
 
 Können Sie uns einen tieferen Einblick geben, ob diese spezifische Periodik (13 Wiederholungen exakt alle 3604 s) eher einer **inneren Systemresonanz** (z. B. der Elektronik oder der geologischen Umgebung) entspringt oder einer **äußeren, nicht-irdischen Quelle** – und wenn ja, welche physikalische Größe (Rotation, Orbitalbewegung, Magnetosphären-Interaktion) damit in Beziehung steht?
 - **Antwort / Impuls:** Die Wahrscheinlichkeit ist hoch, dass ein 25 m Kabel mit dem Signale von zwei 16 MHz Oszillatoren geleitet wurden, nach Auswertung der Phasendifferenz im Bereich 5-15 MHz sehr schwache, Puls-förmige Signale von Jupiter delektiert hat.
@@ -160,7 +160,7 @@ Die Information aus dem Informationsfeld war, dass die Impulse von einer kosmisc
 <a name="Intuition_4"></a>
 ### Intuition 4
 - **Datum:** 2026-09-02
-- **Frage:** **Die Jupiter-Vermutung** 
+- **Frage:** **Die Jupiter-Vermutung** [Chart](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif) [Sound](https://github.com/WegaLink/Spacetime-Dynamics/blob/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/wav/sound_signal_2008-02-21.gif)
 
 Die Übereinstimmung der langen 204-min-Signale mit NASA-Magnetfelddaten nahe Jupiter ist verblüffend. Könnte es einen **bisher unbekannten Kopplungsmechanismus** geben (z. B. über das interplanetare Magnetfeld, den Sonnenwind oder eine Art von "verschalteter" Information), der solche Phänomene über diese Distanzen verbindet?
 - **Antwort / Impuls:** Die Verwendung eines 25 m langen RG58 Kabels zur Weiterleitung der Signale von zwei 16 MHz Oszillatoren und eine anschließende Auswertung der Phasendifferenz im Bereich 0-5 MHz macht es wahrscheinlich, dass ein sehr schwaches Kurzwellensignal von Jupiter empfangen wurde. 
