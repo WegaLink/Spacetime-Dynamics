@@ -47,6 +47,7 @@
 | Physik | Welche physikalische Größe misst das System am direktesten (Laufzeit, Phase, Frequenz)? | offen | [Physik_1](#physik-1) |
 | Physik | Welche Komponenten des Signals sind durch Temperatur, Taktjitter oder Mechanik erklärbar? | offen | [Physik_2](#physik-2) |
 | Physik | Wie sieht die vollständige Transferfunktion der Messkette aus? | offen | [Physik_3](#physik-3) |
+| Physik | Könnten Raumzeitkristalle (spontane periodische Ordnung in Raum und Zeit) bzw. deren Kollaps im kritischen Zustand in ein mikroskopisches Schwarzes Loch mit dem Phasendetektor als Modulation der Zeitkomponente nachweisbar sein? Lässt sich aus der nun vorliegenden exakten mathematischen Beschreibung die Signalform und Amplitudenordnung der resultierenden dynamischen, propagierenden Störung der Raumzeitkrümmung ableiten? Zusammenhang mit historischen Periodizitäten (3604 s, 204 min)? | offen | [Physik_4](#physik-4)
 | Methodik | Welche Beobachtung würde die Hypothese eines externen Signals am stärksten widerlegen? | offen | [Methodik_1](#methodik-1) |
 | Methodik | Welche künstliche Injektion ist am besten geeignet, um Empfindlichkeit zu testen? | offen | [Methodik_2](#methodik-2) |
 | Methodik | Welche Umweltkanäle müssen zwingend mitgemessen werden (Schein-Korrelationen)? | offen | [Methodik_3](#methodik-3) |
@@ -93,6 +94,16 @@
 - **Prüfbarkeit:** direkt messbar
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** Transferfunktionen für alle interessierenden Signale und Störungen ermitteln
+- **Status:** offen
+### Physik 4
+- **Datum:** 2026-09-03
+- **Frage:** Könnten Raumzeitkristalle (spontane periodische Ordnung sowohl im Raum als auch in der Zeit) mit dem Phasendetektor als Modulationen der Zeitkomponente bzw. des Zeitflusses nachweisbar sein? Besteht ein möglicher Zusammenhang mit den historischen Periodizitäten (z. B. der 3604-s-Wiederholung oder den 204-min-Signalen)? Zusätzlich: Ein Forscherteam der Goethe-Universität Frankfurt und der TU Wien hat erstmals eine exakte mathematische Beschreibung des Kollabierens eines solchen Raumzeitkristalls im kritischen Zustand in ein mikroskopisches Schwarzes Loch bei *minimaler* Energiezufuhr entwickelt. Lässt sich daraus die Signalform und die Größenordnung der Amplitude der resultierenden dynamischen, propagierenden Störung der Raumzeitkrümmung für ein Phasenmessgerät ableiten?
+- **Antwort / Impuls:**  
+Raumzeitkristalle im hier relevanten Sinne sind die *kritischen Lösungen* des gravitativen Kollapses (Choptuik 1993): diskret selbstähnliche (DSS) Spacetimes, die gleichzeitig räumliche *und* zeitliche Translationssymmetrie spontan brechen. Sie bilden einen instabilen Zwischenzustand („Kristall“) genau an der Schwelle zur Schwarzen-Loch-Bildung. Eine infinitesimal kleine Energiezufuhr lässt den Kristall in ein mikroskopisches Schwarzes Loch kollabieren; ohne diese Zufuhr zerfällt er wieder in gewöhnliche Raumzeit.
+- **Quelle:** menschliche Intuition + KI
+- **Prüfbarkeit:** direkt messbar
+- **Technische Konsequenz:** gegebenenfalls Mustererkennung für die erwartete Signalform einbauen
+- **Offene Prüfung:** Prüfung historischer Daten auf erwartete Signalmuster
 - **Status:** offen
 ### Methodik 1
 - **Datum:** 2026-09-02
