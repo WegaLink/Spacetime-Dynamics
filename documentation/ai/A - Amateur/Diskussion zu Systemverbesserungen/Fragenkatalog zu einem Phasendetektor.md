@@ -47,7 +47,6 @@
 - **Technische Konsequenz:** [Konsequenz]
 - **Offene Prüfung:** [Prüfung]
 - **Status:** offen
-<a name="physik-2"></a>
 ### Physik 2
 - **Datum:** 2026-09-02
 - **Frage:** Welche Komponenten des Signals sind durch Temperatur, Taktjitter oder Mechanik erklärbar?
@@ -56,7 +55,6 @@
 - **Technische Konsequenz:** [Konsequenz]
 - **Offene Prüfung:** [Prüfung]
 - **Status:** offen
-<a name="Physik_3"></a>
 ### Physik 3
 - **Datum:** 2026-09-02
 - **Frage:** Wie sieht die vollständige Transferfunktion der Messkette aus?
@@ -65,7 +63,6 @@
 - **Technische Konsequenz:** [Konsequenz]
 - **Offene Prüfung:** [Prüfung]
 - **Status:** offen
-<a name="Methodik_1"></a>
 ### Methodik 1
 - **Datum:** 2026-09-02
 - **Frage:** Welche Beobachtung würde die Hypothese eines externen Signals am stärksten widerlegen?
@@ -74,7 +71,6 @@
 - **Technische Konsequenz:** [Konsequenz]
 - **Offene Prüfung:** [Prüfung]
 - **Status:** offen
-<a name="Methodik_2"></a>
 ### Methodik 2
 - **Datum:** 2026-09-02
 - **Frage:** Welche künstliche Injektion ist am besten geeignet, um Empfindlichkeit zu testen?
@@ -83,7 +79,6 @@
 - **Technische Konsequenz:** [Konsequenz]
 - **Offene Prüfung:** [Prüfung]
 - **Status:** offen
-<a name="Methodik_3"></a>
 ### Methodik 3
 - **Datum:** 2026-09-02
 - **Frage:** Welche Umweltkanäle müssen zwingend mitgemessen werden (Schein-Korrelationen)?
@@ -92,7 +87,6 @@
 - **Technische Konsequenz:** [Konsequenz]
 - **Offene Prüfung:** [Prüfung]
 - **Status:** offen
-<a name="Methodik_4"></a>
 ### Methodik 4
 - **Datum:** 2026-09-02
 - **Frage:** Wie stabil ist die Zeitbasis über verschiedene Zeitbereiche (Drift-Analyse)?
@@ -101,7 +95,6 @@
 - **Technische Konsequenz:** [Konsequenz]
 - **Offene Prüfung:** [Prüfung]
 - **Status:** offen
-<a name="Methodik_5"></a>
 ### Methodik 5
 - **Datum:** 2026-09-02
 - **Frage:** Welche Unterschiede zeigen sich zwischen Standorten bei systematischem Zeitversatz?
@@ -110,7 +103,6 @@
 - **Technische Konsequenz:** [Konsequenz]
 - **Offene Prüfung:** [Prüfung]
 - **Status:** offen
-<a name="Methodik_6"></a>
 ### Methodik 6
 - **Datum:** 2026-09-02
 - **Frage:** Welche Messstrategie verbessert die Trennschärfe am stärksten? | offen | Methodik_6
@@ -119,7 +111,6 @@
 - **Technische Konsequenz:** [Konsequenz]
 - **Offene Prüfung:** [Prüfung]
 - **Status:** offen
-<a name="Intuition_1"></a>
 ### Intuition 1
 - **Datum:** 2026-09-02
 - **Frage:** Welche Beobachtung würde mich heute am meisten überraschen und als wichtig erscheinen?
@@ -128,7 +119,6 @@
 - **Technische Konsequenz:** [Konsequenz]
 - **Offene Prüfung:** [Prüfung]
 - **Status:** offen
-<a name="Intuition_2"></a>
 ### Intuition 2
 - **Datum:** 2026-09-02
 - **Frage:** Was ist die Zielstellung und Entwicklungsrichtung für das Projekt?
@@ -145,7 +135,6 @@ Als Mensch sehe ich mich privilegiert, an die kosmischen Informationsfelder anko
 - **Technische Konsequenz:** 
 - **Offene Prüfung:** 
 - **Status:** beantwortet
-<a name="Intuition_3"></a>
 ### Intuition 3
 - **Datum:** 2026-09-02
 - **Frage:** **Die Natur der 3604-Sekunden-Periode** [Chart](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/event_2008-07-24_17-04-33_UTC.png)
@@ -158,7 +147,6 @@ Die Information aus dem Informationsfeld war, dass die Impulse vermutlich von ei
 - **Technische Konsequenz:** 
 - **Offene Prüfung:** 
 - **Status:** beantwortet
-<a name="Intuition_4"></a>
 ### Intuition 4
 - **Datum:** 2026-09-02
 - **Frage:** **Die Jupiter-Vermutung** [Chart](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/img/sound_signal_2008-02-21.gif) [Sound, 120-fach beschleunigt](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Analyse%20historischer%20Beobachtungen/wav/zeit.wav)
@@ -171,7 +159,6 @@ Da die Information aus dem Informationsfeld darauf hingedeutet hat, dass die von
 - **Technische Konsequenz:** 
 - **Offene Prüfung:** 
 - **Status:** beantwortet
-<a name="Intuition_5"></a>
 ### Intuition 5
 - **Datum:** 2026-09-02
 - **Frage:** **Das Verhältnis von Zeitfluss und Gravitationswellen**
@@ -182,7 +169,6 @@ Da die Information aus dem Informationsfeld darauf hingedeutet hat, dass die von
 - **Technische Konsequenz:** 
 - **Offene Prüfung:** 
 - **Status:** beantwortet
-<a name="Intuition_6"></a>
 ### Intuition 6
 - **Datum:** 2026-09-02
 - **Frage:** **Die Rolle der Intuition**
@@ -193,7 +179,6 @@ Da die Information aus dem Informationsfeld darauf hingedeutet hat, dass die von
 - **Technische Konsequenz:** 
 - **Offene Prüfung:** 
 - **Status:** beantwortet
-<a name="Intuition_7"></a>
 ### Intuition 7
 - **Datum:** 2026-09-02
 - **Frage:** **Die "Verschränkung" von Information**
@@ -204,7 +189,6 @@ Da die Information aus dem Informationsfeld darauf hingedeutet hat, dass die von
 - **Technische Konsequenz:** 
 - **Offene Prüfung:** 
 - **Status:** beantwortet
-<a name="Intuition_8"></a>
 ### Intuition 8
 - **Datum:** 2026-09-02
 - **Frage:** **Das Ziel der Menschheit**
@@ -215,7 +199,6 @@ Da die Information aus dem Informationsfeld darauf hingedeutet hat, dass die von
 - **Technische Konsequenz:** 
 - **Offene Prüfung:** 
 - **Status:** beantwortet
-<a name="Intuition_9"></a>
 ### Intuition 9
 - **Datum:** 2026-09-02
 - **Frage:** **Ein Vorschlag für die nächste Phase Ihrer Arbeit**
@@ -226,7 +209,6 @@ Ich empfehle dringend, die von Ihnen erwähnten historischen Signale (2008–201
 - **Technische Konsequenz:** 
 - **Offene Prüfung:** 
 - **Status:** beantwortet
-<a name="Intuition_10"></a>
 ### Intuition 10
 - **Datum:** 2026-09-02
 - **Frage:** **Das Wesen der Zeit und die Quantisierung der Raumzeit** 
