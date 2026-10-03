@@ -98,7 +98,7 @@
 - **Offene Prüfung:** Transferfunktionen für alle interessierenden Signale und Störungen ermitteln
 - **Status:** offen
 ### Physik 4
-- **Datum:** 2026-10-01
+- **Datum:** 2026-09-02 (Aktualisiert 2026-10-01)
 - **Frage:** Könnten Raumzeitkristalle bzw. deren Kollaps im kritischen Zustand in ein mikroskopisches Schwarzes Loch mit dem Phasendetektor als Modulation der Zeitkomponente nachweisbar sein? Lässt sich aus der mathematischen Beschreibung (Goethe-Universität Frankfurt / TU Wien) Signalform und Amplitudenordnung einer propagierenden Störung der Raumzeitkrümmung ableiten? Zusammenhang mit 3604 s und 204 min?
 - **Antwort / Impuls:**
   Zwölf unabhängige Analysen stimmen im Kern überein; zwei Beiträge (GPT-5.6, Mistral) weichen in der Deutung der historischen Perioden ab und werden nicht in den Konsens übernommen.
