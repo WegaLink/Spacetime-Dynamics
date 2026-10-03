@@ -26,3 +26,6 @@ date        hours  total    location     subject
 -September
 2026-09-01    2     48      Vierow       AI chat on Q&A from cosmic information field
 2026-09-02    6     54      Vierow       document conversion to markdown (.md) file
+
+-October--
+2026-10-01    6     60      Vierow       "Physik 4" mit 7 KIs und später 12 KIs diskutiert
