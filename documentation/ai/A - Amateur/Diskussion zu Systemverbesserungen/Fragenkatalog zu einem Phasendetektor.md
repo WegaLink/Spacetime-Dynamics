@@ -48,14 +48,14 @@
 | Physik | Welche physikalische Größe misst das System am direktesten (Laufzeit, Phase, Frequenz)? | offen | [Physik_1](#physik-1) |
 | Physik | Welche Komponenten des Signals sind durch Temperatur, Taktjitter oder Mechanik erklärbar? | offen | [Physik_2](#physik-2) |
 | Physik | Wie sieht die vollständige Transferfunktion der Messkette aus? | offen | [Physik_3](#physik-3) |
-| Physik | Könnten Raumzeitkristalle (spontane periodische Ordnung in Raum und Zeit) bzw. deren Kollaps im kritischen Zustand in ein mikroskopisches Schwarzes Loch mit dem Phasendetektor als Modulation der Zeitkomponente nachweisbar sein? Lässt sich aus der nun vorliegenden exakten mathematischen Beschreibung die Signalform und Amplitudenordnung der resultierenden dynamischen, propagierenden Störung der Raumzeitkrümmung ableiten? Zusammenhang mit historischen Periodizitäten (3604 s, 204 min)? | offen | [Physik_4](#physik-4)
+| Physik | Könnten Raumzeitkristalle (spontane periodische Ordnung in Raum und Zeit) bzw. deren Kollaps im kritischen Zustand in ein mikroskopisches Schwarzes Loch mit dem Phasendetektor als Modulation der Zeitkomponente nachweisbar sein? Lässt sich aus der nun vorliegenden exakten mathematischen Beschreibung die Signalform und Amplitudenordnung der resultierenden dynamischen, propagierenden Störung der Raumzeitkrümmung ableiten? Zusammenhang mit historischen Periodizitäten (3604 s, 204 min)? | widerlegt | [Physik_4](#physik-4)
 | Methodik | Welche Beobachtung würde die Hypothese eines externen Signals am stärksten widerlegen? | offen | [Methodik_1](#methodik-1) |
 | Methodik | Welche künstliche Injektion ist am besten geeignet, um Empfindlichkeit zu testen? | offen | [Methodik_2](#methodik-2) |
 | Methodik | Welche Umweltkanäle müssen zwingend mitgemessen werden (Schein-Korrelationen)? | offen | [Methodik_3](#methodik-3) |
 | Methodik | Wie stabil ist die Zeitbasis über verschiedene Zeitbereiche (Drift-Analyse)? | offen | [Methodik_4](#methodik-4) |
 | Methodik | Welche Unterschiede zeigen sich zwischen Standorten bei systematischem Zeitversatz? | offen | [Methodik_5](#methodik-5) |
 | Methodik | Welche Messstrategie verbessert die Trennschärfe am stärksten? | offen | [Methodik_6](#methodik-6) |
-| Messung | Welche Erkenntnisse gibt es zu möglichen alternativen Entstehungsmechanismen der beobachteten 204-min-Chip-Signale jenseits der diskret selbstähnlichen (DSS) kritischen Lösung des gravitativen Kollapses (Choptuik 1993)? | offen | [Messung_1](#messung-1) |
+| Messung | Welche Erkenntnisse gibt es zu möglichen alternativen Entstehungsmechanismen der beobachteten 204-min-Chirp-Signale jenseits der diskret selbstähnlichen (DSS) kritischen Lösung des gravitativen Kollapses (Choptuik 1993)? | offen | [Messung_1](#messung-1) |
 | Intuition | Welche Beobachtung würde mich heute am meisten überraschen und als wichtig erscheinen? | offen | [Intuition_1](#intuition-1) |
 | Intuition | Was ist die Zielstellung und Entwicklungsrichtung für das Projekt? | beantwortet | [Intuition_2](#intuition-2) |
 | Intuition | **Die Natur der 3604-Sekunden-Periode** Können Sie uns einen tieferen Einblick geben, ob diese spezifische Periodik (13 Wiederholungen exakt alle 3604 s) eher einer **inneren Systemresonanz** (z. B. der Elektronik oder der geologischen Umgebung) entspringt oder einer **äußeren, nicht-irdischen Quelle** – und wenn ja, welche physikalische Größe (Rotation, Orbitalbewegung, Magnetosphären-Interaktion) damit in Beziehung steht? | beantwortet | [Intuition_3](#intuition-3) |
@@ -174,7 +174,7 @@
 - **Status:** offen
 ### Messung 1
 - **Datum:** 2026-10-03
-- **Frage:** Für ein historisches 204-min-Chirp Signal wurde im Punkt "Physik 4" eine Deutung als gravitativer Kollaps (Choptuik 1993) mit hoher Sicherheit ausgeschlossen. Stattdessen gibt es Hinweise, dass wegen einer Ähnlichkeit mit Jupiter-Signalen von einer NASA Sonde eine Signaleinkopplung im Kurzwellenbereich in ein 25 m RG58 Kabel als wahrscheinlich angenommen werden kann. Welche Erkenntnisse gibt es zu möglichen alternativen Entstehungsmechanismen der beobachteten Chip-Signale jenseits der diskret selbstähnlichen (DSS) kritischen Lösung des gravitativen Kollapses (Choptuik 1993)?
+- **Frage:** Welche alternativen Entstehungsmechanismen des historischen 204-min-Chirps bleiben, nachdem eine Deutung als Choptuik-Kollaps anhand der Zeitstruktur ausgeschlossen ist? Zu prüfen sind insbesondere instrumentelle Perioden, Einkopplung in das RG58-Kabel und eine etwaige Ähnlichkeit mit den NASA-Magnetfelddaten, ohne diese Ähnlichkeit bereits als Ursache vorauszusetzen.
 - **Antwort / Impuls:** ausstehend
 - **Quelle:** noch nicht zugeordnet
 - **Prüfbarkeit:** direkt messbar
