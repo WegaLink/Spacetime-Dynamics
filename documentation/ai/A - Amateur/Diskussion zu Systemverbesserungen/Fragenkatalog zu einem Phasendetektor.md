@@ -76,7 +76,7 @@
 *Die oben aufgeführten Fragen werden anschließend bearbeitet, um daraus Impulse für die Weiterarbeit am Projekt zu erhalten.*
 ### Physik 1
 - **Datum:** 2026-09-02
-- **Frage:** Welche physikalische Größe misst das in [Spacetime Wave Solar Interferometer](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/main/documentation/website/pdf/spacetime_wave_solar_interferometer.pdf) beschriebene System am direktesten (Laufzeit, Phase, Frequenz)?
+- **Frage:** Welche physikalische Größe misst das in [Spacetime Wave Solar Interferometer](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/website/pdf/spacetime_wave_solar_interferometer.pdf) beschriebene System am direktesten (Laufzeit, Phase, Frequenz)?
 - **Antwort / Impuls:** ausstehend
 - **Quelle:** noch nicht zugeordnet
 - **Prüfbarkeit:** direkt messbar
