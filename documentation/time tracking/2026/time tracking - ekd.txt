@@ -30,3 +30,4 @@ date        hours  total    location     subject
 -October--
 2026-10-01    6     60      Vierow       "Physik 4" mit 7 KIs und später 12 KIs diskutiert
 2026-10-03    4     64      Vierow       Antworten zu "Physik 4" von 12 KIs konsolidiert
+2026-10-04    3     67      Vierow       Beantworten von "Physik 4" abgeschlossen
