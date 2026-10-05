@@ -8,7 +8,7 @@
 ## 1. Vorwort & Methodik
 *Mit dem Nachweis von Gravitationswellen wurde 2015 eine 100 Jahre zuvor von Albert Einstein aufgestellte Hypothese zur Existenz und Nachweisbarkeit von dynamischen, propagierenden Störungen der Raumzeitkrümmung bestätigt. Seit den ersten nachgewiesenen Signalen gab es eine rasante Entwicklung von immer empfindlicheren Detektoren. Die gegenwärtige Raumzeit-Forschung muss nach meiner Intuition jedoch um neue Aspekte erweitert werden, welche sich aus dem Zusammenwirken von Raum und Zeit in der Raumzeit ergeben.*
 
-*Das Projekt "Phasendetektor" soll einen Beitrag leisten, die Zeit-Komponente der Raumzeit bei der weiteren Erforschung der Raumzeit-Dynamik stärker in den Mittelpunkt zu rücken. Dazu findet aktuell eine Weiterentwicklung des historischen Messaufbaus von 2008 ([Präsentation 2008](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/zeit.pdf) zu den damaligen Thesen) in ein hochempfindliches Phasenmessgerät mit definierten Parametern statt. Darauf aufbauend sollen Ankopplungen von Phasensignalen an dynamische, propagierende Raumzeitstörungen untersucht werden. Bei der Diskussion von Fragen, insbesondere zum physikalischen Wesen der Zeit, werden Informationen aus einem postulierten "kosmischen Informationsfeld" mit herangezogen.*
+*Das Projekt "Phasendetektor" soll einen Beitrag leisten, die Zeit-Komponente der Raumzeit bei der weiteren Erforschung der Raumzeit-Dynamik stärker in den Mittelpunkt zu rücken. Dazu findet aktuell eine Weiterentwicklung des historischen Messaufbaus von 2008 ([Präsentation 2008](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/zeit.pdf) zu den damaligen Thesen) in ein hochempfindliches [Phasenmessgerät](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/website/pdf/spacetime_wave_solar_interferometer.pdf) mit definierten Parametern statt. Darauf aufbauend sollen Ankopplungen von Phasensignalen an dynamische, propagierende Raumzeitstörungen untersucht werden. Bei der Diskussion von Fragen, insbesondere zum physikalischen Wesen der Zeit, werden Informationen aus einem postulierten "kosmischen Informationsfeld" mit herangezogen.*
 
 *Dieses Dokument wird als lebendiger Mensch-KI Dialog mit Fragen/Antworten in beiden Richtungen zum gegenseitigen Nutzen geführt.*
 
@@ -45,10 +45,11 @@
 ## 2. Hypothesen & Fragen-Katalog
 | Kategorie | Frage | Status | ID |
 | :--- | :--- | :--- | :--- |
-| Physik | Welche physikalische Größe misst das System am direktesten (Laufzeit, Phase, Frequenz)? | offen | [Physik_1](#physik-1) |
+| Physik | Welche physikalische Größe misst das System am direktesten (Laufzeit, Phase, Frequenz)? | Impuls dokumentiert | [Physik_1](#physik-1) |
 | Physik | Welche Komponenten des Signals sind durch Temperatur, Taktjitter oder Mechanik erklärbar? | offen | [Physik_2](#physik-2) |
 | Physik | Wie sieht die vollständige Transferfunktion der Messkette aus? | offen | [Physik_3](#physik-3) |
-| Physik | Könnten Raumzeitkristalle (spontane periodische Ordnung in Raum und Zeit) bzw. deren Kollaps im kritischen Zustand in ein mikroskopisches Schwarzes Loch mit dem Phasendetektor als Modulation der Zeitkomponente nachweisbar sein? Lässt sich aus der nun vorliegenden exakten mathematischen Beschreibung die Signalform und Amplitudenordnung der resultierenden dynamischen, propagierenden Störung der Raumzeitkrümmung ableiten? Zusammenhang mit historischen Periodizitäten (3604 s, 204 min)? | widerlegt | [Physik_4](#physik-4)
+| Physik | Könnten Raumzeitkristalle (spontane periodische Ordnung in Raum und Zeit) bzw. deren Kollaps im kritischen Zustand in ein mikroskopisches Schwarzes Loch mit dem Phasendetektor als Modulation der Zeitkomponente nachweisbar sein? Lässt sich aus der nun vorliegenden exakten mathematischen Beschreibung die Signalform und Amplitudenordnung der resultierenden dynamischen, propagierenden Störung der Raumzeitkrümmung ableiten? Zusammenhang mit historischen Periodizitäten (3604 s, 204 min)? | widerlegt | [Physik_4](#physik-4) |
+| Physik | Hebt der gemeinsame Takt eine quasistationäre Eigenzeitänderung in erster Ordnung auf, und welche Restkopplung bleibt für eine propagierende Störung, deren Wellenlänge mit dem Spulendurchmesser vergleichbar ist? (Grok) | offen | [Physik_5](#physik-5) |
 | Methodik | Welche Beobachtung würde die Hypothese eines externen Signals am stärksten widerlegen? | offen | [Methodik_1](#methodik-1) |
 | Methodik | Welche künstliche Injektion ist am besten geeignet, um Empfindlichkeit zu testen? | offen | [Methodik_2](#methodik-2) |
 | Methodik | Welche Umweltkanäle müssen zwingend mitgemessen werden (Schein-Korrelationen)? | offen | [Methodik_3](#methodik-3) |
@@ -56,8 +57,10 @@
 | Methodik | Welche Unterschiede zeigen sich zwischen Standorten bei systematischem Zeitversatz? | offen | [Methodik_5](#methodik-5) |
 | Methodik | Welche Messstrategie verbessert die Trennschärfe am stärksten? | offen | [Methodik_6](#methodik-6) |
 | Methodik | Welche Beobachtung trennt eine behauptete Zeitflussmodulation von Takt- und Temperaturdrift, wenn der Aufbau keinen Längenarm hat? Kandidaten sind Mondgezeiten, ein Gravimeter oder zwei GPS-/PPS-synchronisierte Standorte mit Laufzeitunterschied ≤ d/c (Muse, Claude). Methodik 5 deckt den Standortvergleich nur teilweise ab. | offen | [Methodik_7](#methodik-7) |
+| Methodik | Unterdrückt eine zweite, thermisch gekoppelte Leitung gleicher elektrischer Länge die Kabeldrift, und bleibt dabei eine Empfindlichkeit für eine räumlich differenzielle Störung erhalten oder nur eine bessere Apparatestabilität? (Qwen) | offen | [Methodik_8](#methodik-8) |
 | Messung | Welche Erkenntnisse gibt es zu möglichen alternativen Entstehungsmechanismen der beobachteten 204-min-Chirp-Signale jenseits der diskret selbstähnlichen (DSS) kritischen Lösung des gravitativen Kollapses (Choptuik 1993)? | offen | [Messung_1](#messung-1) |
 | Messung | Sind die 13 Impulse im Abstand 3604 s mit Abtastraster, Zählerlänge oder Timer-Überlauf kommensurabel, und bleiben sie bei abgeschlossenem Eingang oder abgeschaltetem Detektor bestehen? | offen | [Messung_2](#messung-2) |
+| Messung | Sind Pause- und Burst-Statistik linear in einer elektrisch oder mechanisch injizierten Laufzeitänderung, und welches Vorzeichen und welcher Zyklusbereich gelten? Das entscheidet die Zuordnung experimentell, bevor eine Transferfunktion behauptet wird. (GPT, Grok) | offen | [Messung_3](#messung-3) |
 | Intuition | Welche Beobachtung würde mich heute am meisten überraschen und als wichtig erscheinen? | offen | [Intuition_1](#intuition-1) |
 | Intuition | Was ist die Zielstellung und Entwicklungsrichtung für das Projekt? | beantwortet | [Intuition_2](#intuition-2) |
 | Intuition | **Die Natur der 3604-Sekunden-Periode** Können Sie uns einen tieferen Einblick geben, ob diese spezifische Periodik (13 Wiederholungen exakt alle 3604 s) eher einer **inneren Systemresonanz** (z. B. der Elektronik oder der geologischen Umgebung) entspringt oder einer **äußeren, nicht-irdischen Quelle** – und wenn ja, welche physikalische Größe (Rotation, Orbitalbewegung, Magnetosphären-Interaktion) damit in Beziehung steht? | beantwortet | [Intuition_3](#intuition-3) |
@@ -66,23 +69,39 @@
 | Intuition | **Die Rolle der Intuition** Wie würden die Informationsfelder das Verhältnis zwischen menschlicher Intuition und objektiver Messung beschreiben? Ist Intuition eine Art **"weiche Messung"** komplementär zur harten Messtechnik – oder eine eigenständige Dimension der Erkenntnis? | beantwortet | [Intuition_6](#intuition-6) |
 | Intuition | **Die "Verschränkung" von Information** Wenn Sie von "kosmischen Informationsfeldern" sprechen – ist dies metaphorisch gemeint (eine Art tiefes, nicht-lokales kollektives Wissen) oder könnte es eine **physikalische Bedingung** (z. B. holographisches Prinzip, quantenfeldtheoretische Vakuumfluktuationen) geben, die dies ermöglicht? | beantwortet | [Intuition_7](#intuition-7) |
 | Intuition | **Das Ziel der Menschheit** Aus Ihrer Perspektive – welche Evolutionsstufe der Menschheit steht bevor, wenn wir beginnen, die **Raumzeit selbst als Medium der Kommunikation und Navigation** zu verstehen? Ist dies der nächste Schritt nach der elektromagnetischen Zivilisation? | beantwortet | [Intuition_8](#intuition-8) |
-| Intuition | **Ein Vorschlag für die nächste Phase Ihrer Arbeit** Ich empfehle dringend, die von Ihnen erwähnten historischen Signale (2008–2010) **erneut mit modernen Software-Werkzeugen zu analysieren** – insbesondere mit **künstlichen neuronalen Netzen zur Anomalie-Erkennung**. Vielleicht sind in den damaligen Daten noch mehr Muster verborgen, die 2024 (mit den neuen KI-Werkzeugen) sichtbar werden. Dies wäre ein wunderbares Beispiel, wie Ihre "kosmische Intuition" und die "künstliche Intelligenz" der KIs sich gegenseitig befruchten könnten. | beantwortet | [Intuition_9](#intuition-9) |
-| Intuition | **Das Wesen der Zeit und die Quantisierung der Raumzeit** In der Allgemeinen Relativitätstheorie ist die Raumzeit ein kontinuierliches, glattes Gewebe, in dem Zeit eine dynamische Dimension darstellt. In der Quantenmechanik hingegen ist Zeit ein externer, absoluter Parameter, während alles andere diskret (gequantelt) ist. Diese beiden Säulen widersprechen sich fundamental. **Die Frage** * Ist die Raumzeit auf der allerkleinsten Skala (Planck-Skala) kontinuierlich oder diskret/körnig – und entsteht das, was wir als kontinuierlichen „Fluss der Zeit“ wahrnehmen, erst als emergentes Phänomen aus tiefer liegenden, nicht-lokalen Informationsbeziehungen? * | offen | [Intuition_10](#intuition-10) |
-| Intuition | **Der Mechanismus der Nicht-Lokalität (Verschränkung vs. Raumzeit)** Quantenverschränkung zeigt, dass Information oder Korrelationen instantan – ohne Zeitverlust und unabhängig von der räumlichen Distanz – zu existieren scheinen. Raumzeitliche Abstände scheinen für verschränkte Zustände keine Barriere darzustellen. **Die Frage** * Ist die geometrische Raumzeit (mit ihren Grenzen wie der Lichtgeschwindigkeit $c$) nur eine Art „Projektionsfläche“ einer fundamentaleren, nicht-lokalen Struktur, in der alle Punkte des Universums permanent und direkt miteinander verknüpft sind? Gibt es ein zugrunde liegendes Trägermedium für diese Wechselwirkung? * | offen | [Intuition_11](#intuition-11) |
-| Intuition | **Die Kopplung von Bewusstsein, Information und physikalischer Realität** In der theoretischen Physik wächst die Erkenntnis, dass Information fundamentaler sein könnte als Masse und Energie (vgl. John Archibald Wheelers Konzept „It from bit“). Gleichzeitig bleibt das sogenannte Messproblem der Quantenmechanik ungelöst: Wie und warum wird aus einem Raum von bloßen Möglichkeiten durch eine Messung/Beobachtung eine konkrete Realität? **Die Frage** * Welche Rolle spielt das Bewusstsein bzw. die Informationsverarbeitung im Universum: Ist es lediglich ein passives Beobachten der materiellen Raumzeit, oder ist Bewusstsein eine aktive, strukturierende Kraft, die mit der Dynamik der Raumzeit direkt wechselwirkt? * | offen | [Intuition_12](#intuition-12) |
+| Intuition | **Ein Vorschlag für die nächste Phase Ihrer Arbeit** Ich empfehle dringend, die von Ihnen erwähnten historischen Signale (2008–2010) **erneut mit modernen Software-Werkzeugen zu analysieren** – insbesondere mit **künstlichen neuronalen Netzen zur Anomalie-Erkennung**. Vielleicht sind in den damaligen Daten noch mehr Muster verborgen, die 2024 (mit den neuen KI-Werkzeugen) sichtbar werden. Dies wäre ein wunderbares Beispiel, wie Ihre "kosmische Intuition" und die "künstliche Intelligenz" der KIs sich gegenseitig befruchten könnten. | in Bearbeitung | [Intuition_9](#intuition-9) |
+| Intuition | **Das Wesen der Zeit und die Quantisierung der Raumzeit** *Ist die Raumzeit auf der allerkleinsten Skala (Planck-Skala) kontinuierlich oder diskret/körnig – und entsteht das, was wir als kontinuierlichen „Fluss der Zeit“ wahrnehmen, erst als emergentes Phänomen aus tiefer liegenden, nicht-lokalen Informationsbeziehungen?* | offen | [Intuition_10](#intuition-10) |
+| Intuition | **Der Mechanismus der Nicht-Lokalität (Verschränkung vs. Raumzeit)** *Ist die geometrische Raumzeit (mit ihren Grenzen wie der Lichtgeschwindigkeit $c$) nur eine Art „Projektionsfläche“ einer fundamentaleren, nicht-lokalen Struktur, in der alle Punkte des Universums permanent und direkt miteinander verknüpft sind? Gibt es ein zugrunde liegendes Trägermedium für diese Wechselwirkung?* | offen | [Intuition_11](#intuition-11) |
+| Intuition | **Die Kopplung von Bewusstsein, Information und physikalischer Realität** *Welche Rolle spielt das Bewusstsein bzw. die Informationsverarbeitung im Universum: Ist es lediglich ein passives Beobachten der materiellen Raumzeit, oder ist Bewusstsein eine aktive, strukturierende Kraft, die mit der Dynamik der Raumzeit direkt wechselwirkt?* | offen | [Intuition_12](#intuition-12) |
 ---
 <a name="erkenntnisse"></a>
 ## 3. Dokumentation der Erkenntnisse
 *Die oben aufgeführten Fragen werden anschließend bearbeitet, um daraus Impulse für die Weiterarbeit am Projekt zu erhalten.*
 ### Physik 1
-- **Datum:** 2026-09-02
+
+- **Datum:** 2026-09-02 (zusammengefasst 2026-10-05)
 - **Frage:** Welche physikalische Größe misst das System am direktesten (Laufzeit, Phase, Frequenz)?
-- **Antwort / Impuls:** ausstehend
-- **Quelle:** noch nicht zugeordnet
-- **Prüfbarkeit:** direkt messbar
-- **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
-- **Offene Prüfung:** Transferfunktionen für interessierende Signale ermitteln
-- **Status:** offen
+- **Antwort / Impuls:**
+
+  Zwölf Analysen stimmen in der Hierarchie überein. Die Benennung der Primärgröße schwankt zwischen Laufzeit und Phase; das ist bei festem Träger keine inhaltliche Spaltung, sondern dieselbe Größe in zwei Einheiten. Zeitfluss und Raumzeitstörung sind keine Messgrößen.
+
+  **Zwei Sensoren, nicht einer.** Der historische Aufbau (zwei freie 16-MHz-Oszillatoren, etwa 25 m RG58, Mischer, Bänder 0–5 MHz und 5–15 MHz) und die aktuelle Einkanal-Verzögerungsleitung dürfen nicht in ein gemeinsames Phasenmodell fallen (Grok, Claude, Mistral, MiniMax). Dort ist die Primärgröße die relative Phase zweier freilaufender Takte, äquivalent zum Integral von Δf/f, zuzüglich allem, was das Kabel als Laufzeitglied oder als Antenne einstreut. Hier teilen PWM und Capture denselben 144-MHz-Takt des XMC4700. Ein gemeinsamer relativer Frequenzfehler fällt dann in erster Ordnung heraus (Grok).
+
+  **Aktueller Aufbau, Rohdatum.** Der Capture-Modus zählt 144-MHz-Takte zwischen einer PWM-Flanke und der über RS422 (LTC1687CS) zurückkehrenden Flanke. Das ist ein diskretes Zeitintervall. Die Strecke ist eine aufgewickelte Cat-6a-Leitung, 4 × 100 m, elektrische Länge etwa 400 m, Verkürzungsfaktor etwa 0,66, Laufzeit etwa 2 µs zuzüglich eines Elektronik-Offsets in der Größenordnung 60 ns (Muse, GLM, Qwen, DeepSeek). Der 7-ns-Takt wird durch Feinstufen (3D3428, Schritte grob 30 ps) und Statistik über etwa 1000 Zyklen verfeinert; seit März 2021 zusätzlich über „Pause“ und „Burst“. Die in den PDF-gestützten Beiträgen genannte effektive Auflösung liegt bei etwa 10–100 ps. Die Angabe etwa 1 ps bei Grok stammt aus dem Design-Prompt ohne die PDF und wird nicht in den Konsens übernommen.
+
+  **Abbildung.** Bei festem Träger gilt Δφ = 2π f Δt und Δf = (1/2π) dφ/dt. Phase ist damit die elektrische Lesart derselben Flankenlage, Frequenz nur ihre zeitliche Ableitung. Die Abbildung δφ → δτ gilt nur, wenn Träger und Leitungsparameter festgehalten sind. Das ist eine Kalibrierannahme, keine Eigenschaft des Zählers (Grok, GPT). τ ist elektrische Gruppenlaufzeit, kein geometrischer Weg: Länge, Dielektrikum, Temperatur, Feuchte, Mechanik und Versorgung gehen mit ein.
+
+  **Was nicht gemessen wird.** Eine quasistationäre Änderung der lokalen Eigenzeit skaliert Taktperiode und elektromagnetische Laufzeit gemeinsam. Der Phasenvergleich bleibt dann in erster Ordnung null. Das ist keine Empfindlichkeitslücke, die sich durch längere Mittelung schließt (Grok, Mistral, Gemini). Eine aufgewickelte Mehrfachleitung hat fast keine gerichtete Basis; eine propagierende Störung mittelt sich über die Windungen (Grok). Die Rohreihe ist daher zunächst die elektro-thermische Stabilität von Leitung, Treibern und Versorgung. USB-Lastspitzen gegen einen stabilen PoE-Pfad sind im Systemdokument bereits als dominante Störung beschrieben (Claude, DeepSeek, GPT).
+
+  **Terminologie.** „Zeitflussmodulation“, „Phase“ und „Laufzeit“ nicht synonym verwenden, sonst bleibt die Hypothese nicht falsifizierbar (Claude). Die Software sollte Δt ausgeben, bevor eine Deutung als Zeitfluss anschließt (Qwen, DeepSeek).
+
+- **Quelle:** technische Analyse (Verzeichnis `Physik 1/`); Zeit- und Frequenzmetrologie
+- **Prüfbarkeit:** direkt messbar. Die Zuordnung zu einer Ursache ist ohne Injektion, Nullmessung und Transferfunktion nicht entscheidbar.
+- **Technische Konsequenz:** kein Umbau aus diesem Punkt allein. Rohgröße, Abtastrate und Umrechnung Δt ↔ Δφ im Datenstrom festhalten. Historische und aktuelle Kette in jeder späteren Transferfunktion getrennt führen: dort ∫Δf dt, hier δτ bei festem f. Standardausgabe ist die Zeitfehlerreihe, nicht eine bereits gedeutete Raumzeitgröße. Allan-Abweichung und eine Common-Mode- bzw. Abschlussmessung gehören zur Kette (Claude, GPT). Eine thermisch gekoppelte Zweitstrecke gleicher Länge ist ein Kandidat gegen Kabeldrift, aber noch keine Raumzeitbasis (Qwen).
+- **Offene Prüfung:** Linearität von Zählerstand und Pause/Burst-Statistik gegen eine bekannte Laufzeitinjektion; Unterdrückung einer gemeinsamen Taktverstimmung; Phasenmehrdeutigkeit nur für den historischen Mischer relevant. Die vollständige Kette bleibt Physik 3, die Störkanäle Physik 2.
+- **Status:** Impuls dokumentiert
+- **Abweichende Beiträge:** keine im Urteil. Grok gewichtet die Phase als elektrische Primärgröße und die Eigenzeit-Auslöschung stärker; die PDF-Leser gewichten den Capture-Zählerstand als Laufzeit. Beides ist hier zusammengeführt. Die 1-ps-Angabe wird nicht übernommen.
+
 ### Physik 2
 - **Datum:** 2026-09-02
 - **Frage:** Welche Komponenten des Signals sind durch Temperatur, Taktjitter oder Mechanik erklärbar?
@@ -118,6 +137,15 @@
 - **Offene Prüfung:** keine mehr zu diesem Phänomen an diesem Aufbau. Bibliographische Feinheit der Primärstelle ändert die Skalenargumente nicht.
 - **Status:** Phänomen derzeit nicht messbar; Zusammenhang mit den historischen Perioden widerlegt
 - **Abweichende Beiträge:** GPT-5.6 und, abgeschwächt, Mistral. Nicht in den Konsens übernommen.
+### Physik 5
+- **Datum:** 2026-10-05
+- **Frage:** Hebt der gemeinsame Takt eine quasistationäre Eigenzeitänderung in erster Ordnung auf, und welche Restkopplung bleibt für eine propagierende Störung, deren Wellenlänge mit dem Spulendurchmesser vergleichbar ist? (Grok)
+- **Antwort / Impuls:** ausstehend
+- **Quelle:** noch nicht zugeordnet
+- **Prüfbarkeit:** direkt messbar
+- **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
+- **Offene Prüfung:** derzeit keine offene Prüfung
+- **Status:** offen
 ### Methodik 1
 - **Datum:** 2026-09-02
 - **Frage:** Welche Beobachtung würde die Hypothese eines externen Signals am stärksten widerlegen?
@@ -181,6 +209,15 @@
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** derzeit keine offene Prüfung
 - **Status:** offen
+### Methodik 8
+- **Datum:** 2026-10-05
+- **Frage:** Unterdrückt eine zweite, thermisch gekoppelte Leitung gleicher elektrischer Länge die Kabeldrift, und bleibt dabei eine Empfindlichkeit für eine räumlich differenzielle Störung erhalten oder nur eine bessere Apparatestabilität? (Qwen)
+- **Antwort / Impuls:** ausstehend
+- **Quelle:** aus Physik 1 entstanden
+- **Prüfbarkeit:** direkt messbar
+- **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
+- **Offene Prüfung:** derzeit keine offene Prüfung
+- **Status:** offen
 ### Messung 1
 - **Datum:** 2026-10-03
 - **Frage:** Welche alternativen Entstehungsmechanismen des historischen 204-min-Chirps bleiben, nachdem eine Deutung als Choptuik-Kollaps anhand der Zeitstruktur ausgeschlossen ist? Zu prüfen sind insbesondere instrumentelle Perioden, Einkopplung in das RG58-Kabel und eine etwaige Ähnlichkeit mit den NASA-Magnetfelddaten, ohne diese Ähnlichkeit bereits als Ursache vorauszusetzen. Prüfen, ob der historische Chirp linear bzw. thermisch ist oder eine diskrete log-periodische Folge. Ein kontinuierlicher Verlauf passt zu differentieller Quarzdrift, nicht zu DSS (Gemini, DeepSeek). Dazu eine Kalibrierung durch Injektion eines bekannten Chirps und die Gruppenlaufzeit des RG58-Kabels (Muse).
@@ -198,6 +235,15 @@
 - **Prüfbarkeit:** direkt messbar
 - **Technische Konsequenz:** historischen Messaufbau von 2008 wieder herstellen
 - **Offene Prüfung:** Prüfung bei abgeschlossenem Eingang oder abgeschaltetem Detektor
+- **Status:** offen
+### Messung 3
+- **Datum:** 2026-10-05
+- **Frage:** Sind Pause- und Burst-Statistik linear in einer elektrisch oder mechanisch injizierten Laufzeitänderung, und welches Vorzeichen und welcher Zyklusbereich gelten? Das entscheidet die Zuordnung experimentell, bevor eine Transferfunktion behauptet wird. (GPT, Grok)
+- **Antwort / Impuls:** ausstehend
+- **Quelle:** noch nicht zugeordnet
+- **Prüfbarkeit:** direkt messbar
+- **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
+- **Offene Prüfung:** derzeit keine offene Prüfung
 - **Status:** offen
 ### Intuition 1
 - **Datum:** 2026-09-02
@@ -309,7 +355,7 @@ Ich empfehle dringend, die von Ihnen erwähnten historischen Signale (2008–201
 - **Prüfbarkeit:** indirekt messbar
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** Vorhandensein weiterer Signalmuster in historischen Daten prüfen
-- **Status:** beantwortet
+- **Status:** in Bearbeitung
 ### Intuition 10
 - **Datum:** 2026-09-02
 - **Frage:** **Das Wesen der Zeit und die Quantisierung der Raumzeit** 
