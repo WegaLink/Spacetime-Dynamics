@@ -50,6 +50,7 @@
 | Physik | Wie sieht die vollständige Transferfunktion der Messkette aus? | offen | [Physik_3](#physik-3) |
 | Physik | Könnten Raumzeitkristalle (spontane periodische Ordnung in Raum und Zeit) bzw. deren Kollaps im kritischen Zustand in ein mikroskopisches Schwarzes Loch mit dem Phasendetektor als Modulation der Zeitkomponente nachweisbar sein? Lässt sich aus der nun vorliegenden exakten mathematischen Beschreibung die Signalform und Amplitudenordnung der resultierenden dynamischen, propagierenden Störung der Raumzeitkrümmung ableiten? Zusammenhang mit historischen Periodizitäten (3604 s, 204 min)? | widerlegt | [Physik_4](#physik-4) |
 | Physik | Hebt der gemeinsame Takt eine quasistationäre Eigenzeitänderung in erster Ordnung auf, und welche Restkopplung bleibt für eine propagierende Störung, deren Wellenlänge mit dem Spulendurchmesser vergleichbar ist? (Grok) | offen | [Physik_5](#physik-5) |
+| Physik | Lassen sich aus der [Dokumentation](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/website/pdf/Kozyrev%20-%20CHAPTER%201.%20REVIEWS%20AND%20COMMENTS.pdf) zu Kozyrevs Beobachtungen Informationen über natürlich vorkommende relative Zeitflussänderungen der von ihm untersuchten kosmischen Phänomene ableiten? | offen | [Physik_6](#physik-6) |
 | Methodik | Welche Beobachtung würde die Hypothese eines externen Signals am stärksten widerlegen? | offen | [Methodik_1](#methodik-1) |
 | Methodik | Welche künstliche Injektion ist am besten geeignet, um Empfindlichkeit zu testen? | offen | [Methodik_2](#methodik-2) |
 | Methodik | Welche Umweltkanäle müssen zwingend mitgemessen werden (Schein-Korrelationen)? | offen | [Methodik_3](#methodik-3) |
@@ -140,6 +141,15 @@
 ### Physik 5
 - **Datum:** 2026-10-05
 - **Frage:** Hebt der gemeinsame Takt eine quasistationäre Eigenzeitänderung in erster Ordnung auf, und welche Restkopplung bleibt für eine propagierende Störung, deren Wellenlänge mit dem Spulendurchmesser vergleichbar ist? (Grok)
+- **Antwort / Impuls:** ausstehend
+- **Quelle:** noch nicht zugeordnet
+- **Prüfbarkeit:** direkt messbar
+- **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
+- **Offene Prüfung:** derzeit keine offene Prüfung
+- **Status:** offen
+### Physik 6
+- **Datum:** 2026-10-05
+- **Frage:** Lassen sich aus der [Dokumentation](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/website/pdf/Kozyrev%20-%20CHAPTER%201.%20REVIEWS%20AND%20COMMENTS.pdf) zu Kozyrevs Beobachtungen Informationen über natürlich vorkommende relative Zeitflussänderungen der von ihm untersuchten kosmischen Phänomene ableiten?
 - **Antwort / Impuls:** ausstehend
 - **Quelle:** noch nicht zugeordnet
 - **Prüfbarkeit:** direkt messbar
