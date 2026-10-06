@@ -186,7 +186,7 @@
 - **Status:** offen
 ### Physik 8
 - **Datum:** 2026-10-06
-- **Frage:** Sind die in der Levich-Darstellung vermischten Skalen (ppm an Widerständen, \(10^{-4}\)–\(10^{-5}\) an Torsionskräften, Prozent an Viskosität) überhaupt dieselbe physikalische Größe? Sonst wird aus drei verschiedenen Laboreffekten ein einziger „Zeitfluss“ gebaut. Die Diskrepanz zu den strengen Anforderungen von Navigationssystemen und Atomuhren dient als entscheidender Falsifikationsmaßstab. Wenn ein Detektor Signale im ppm-Bereich misst, die im Widerspruch zur globalen Uhrenstabilität stehen, handelt es sich per Definition um ein lokales Apparate- oder Umweltartefakt (Temperatur, Einstuung, Lastwechsel) und nicht um eine kosmische Raumzeit- oder Zeitfluss-Modulation.
+- **Frage:** Sind die in der Levich-Darstellung vermischten Skalen (ppm an Widerständen, \(10^{-4}\)–\(10^{-5}\) an Torsionskräften, Prozent an Viskosität) überhaupt dieselbe physikalische Größe? Sonst wird aus drei verschiedenen Laboreffekten ein einziger „Zeitfluss“ gebaut. Die Diskrepanz zu den strengen Anforderungen von Navigationssystemen und Atomuhren dient als entscheidender Falsifikationsmaßstab. Wenn ein Detektor Signale im ppm-Bereich misst, die im Widerspruch zur globalen Uhrenstabilität stehen, handelt es sich per Definition um ein lokales Apparate- oder Umweltartefakt (Temperatur, Einstreuung, Lastwechsel) und nicht um eine kosmische Raumzeit- oder Zeitfluss-Modulation.
 - **Antwort / Impuls:** ausstehend
 - **Quelle:** noch nicht zugeordnet
 - **Prüfbarkeit:** direkt messbar
