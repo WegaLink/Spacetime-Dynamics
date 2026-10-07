@@ -446,11 +446,20 @@ Ich empfehle dringend, die von Ihnen erwähnten historischen Signale (2008–201
 In der Allgemeinen Relativitätstheorie ist die Raumzeit ein kontinuierliches, glattes Gewebe, in dem Zeit eine dynamische Dimension darstellt. In der Quantenmechanik hingegen ist Zeit ein externer, absoluter Parameter, während alles andere diskret (gequantelt) ist. Diese beiden Säulen widersprechen sich fundamental.
 
 **Die Frage** *Ist die Raumzeit auf der allerkleinsten Skala (Planck-Skala) kontinuierlich oder diskret/körnig – und entsteht das, was wir als kontinuierlichen „Fluss der Zeit“ wahrnehmen, erst als emergentes Phänomen aus tiefer liegenden, nicht-lokalen Informationsbeziehungen?*
-- **Antwort / Impuls:** 
+- **Antwort / Impuls:** **Physische Natur des Zeitflussfeldes**
+
+Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie. Für unser Universum hat Max Planck experimentell herausgefunden, dass es für das Absorbieren/Emittieren von Energieportionen eine kleinste Energiemenge gibt. Die ZEIT repräsentiert die Anzahl dieser kleinsten Energieportionen.
+
+In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energieportionen durchströmt. Die Anzahl der Energieportionen, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: N_pot = 1 / h = 1 / 6,62607015 × 10⁻³⁴ Js = 1,50919 × 10³³ / Js. Die Anzahl N_pot kann als ein Potenzial verstanden werden, welches Änderungen/Bewegung erzeugen kann.
+
+Für ein Kilogramm Masse ergibt sich die äquivalente Energiemenge aus der Einsteinschen Formel:
+E = m c^2 = 1 kg * (3 x 10^8 m/s)^2 = 9 * 10^16 J. Die Anzahl an kleinsten Energieportionen für das Fortbewegen dieser Masse in der Zeit um eine Sekunde ist demnach:
+N_1kg_1s = 1,50919 * 10^33 * 9 * 10^16 = 1,35827 * 10^50.
+
 - **Quelle:** Informationsfeld-Impuls
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** derzeit keine offene Prüfung
-- **Status:** offen
+- **Status:** in Bearbeitung
 ### Intuition 11
 - **Datum:** 2026-09-02
 - **Frage:** **Der Mechanismus der Nicht-Lokalität (Verschränkung vs. Raumzeit)** 
