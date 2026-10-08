@@ -470,7 +470,7 @@ Ein Abgleich des beschriebenen ZEIT-Modells mit der Allgemeinen Relativitätsthe
 
 Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinsten Energiepotenzialen durch ein proportional zum Reziprokwert der Entfernung abfallendes Gravitationspotenzial -GM/r (G: Gravitationskonstante, M: Masse, r: Abstand). Von Gravitationswellen ist weiterhin bekannt, dass sich dynamische Änderungen des Gravitationspotenzials und damit Zeitflussänderungen mit Lichtgeschwindigkeit im Universum ausbreiten.
 
-Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es für das Universum eine oobere Grenze für den Austausch von kleinsten Energiepotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte gibt, welche beim Entstehen eines schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze kann durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie erfolgen:
+Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es für das Universum eine obere Grenze für den Austausch von kleinsten Energiepotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte gibt, welche beim Entstehen eines schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze kann durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie erfolgen:
 
 M_BH_Milkyway = 4 * 10^6 Sonnenmassen = 4 * 10^6 * 1,989 * 10^30 kg = **7,956 * 10^36 Kg**
 
@@ -489,6 +489,8 @@ Dichte_BH_Milkyway = M_BH_Milkyway / V_BH_Milkyway = 7,956 * 10^36 / 6,8826 * 10
 Die maximale Anzahl für den Austausch von kleinsten Energiepotenzialen in unserem Universum ist demnach:
 
 N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1,35827 * 10^50 * kg^-1 * 1,156 * 10^6 kg/m^3 = **1,57 * 10^56 m^-3**
+
+
 
 
 
