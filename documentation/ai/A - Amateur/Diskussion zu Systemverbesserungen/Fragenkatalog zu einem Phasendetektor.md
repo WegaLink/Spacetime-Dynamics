@@ -448,13 +448,49 @@ In der Allgemeinen Relativitätstheorie ist die Raumzeit ein kontinuierliches, g
 **Die Frage** *Ist die Raumzeit auf der allerkleinsten Skala (Planck-Skala) kontinuierlich oder diskret/körnig – und entsteht das, was wir als kontinuierlichen „Fluss der Zeit“ wahrnehmen, erst als emergentes Phänomen aus tiefer liegenden, nicht-lokalen Informationsbeziehungen?*
 - **Antwort / Impuls:** **Physische Natur des Zeitflussfeldes**
 
-Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie. Für unser Universum hat Max Planck experimentell herausgefunden, dass es für das Absorbieren/Emittieren von Energieportionen eine kleinste Energiemenge gibt. Die ZEIT repräsentiert die Anzahl dieser kleinsten Energieportionen.
+Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie. Für unser Universum hat Max Planck experimentell herausgefunden, dass es für das Absorbieren/Emittieren von Raumenergie ein kleinstes Energiepotenzial gibt. Die ZEIT repräsentiert die ausgetauschte Anzahl dieser kleinsten Energiepotenziale.
 
-In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energieportionen durchströmt. Die Anzahl der Energieportionen, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: N_pot = 1 / h = 1 / 6,62607015 × 10⁻³⁴ Js = 1,50919 × 10³³ / Js. Die Anzahl N_pot kann als ein Potenzial verstanden werden, welches Änderungen/Bewegung erzeugen kann.
+In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energiepotenzialen durchströmt. Die Anzahl der Energiepotenziale, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: 
 
-Für ein Kilogramm Masse ergibt sich die äquivalente Energiemenge aus der Einsteinschen Formel:
-E = m c^2 = 1 kg * (3 x 10^8 m/s)^2 = 9 * 10^16 J. Die Anzahl an kleinsten Energieportionen für das Fortbewegen dieser Masse in der Zeit um eine Sekunde ist demnach:
+N_pot = 1 / h = 1 / 6,62607015 * 10^-34 Js = 1,50919 × 10^33 / Js. 
+
+Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung erzeugen kann.
+
+Für ein Kilogramm Masse ergibt sich eine äquivalente Energiemenge aus der Einsteinschen Formel:
+
+E = m c^2 = 1 kg * (3 * 10^8 m/s)^2 = 9 * 10^16 J. 
+
+Die Anzahl an kleinsten Energiepotenzialen für das Fortbewegen dieser Masse in der Zeit um eine Sekunde ist demnach:
+
 N_1kg_1s = 1,50919 * 10^33 * 9 * 10^16 = 1,35827 * 10^50.
+
+Das auf einen Austausch von kleinsten Energiepotenzialen mit dem Zeitflussfeld beruhende ZEIT-Modell führt in der Konsequenz auf eine dynamische Einbindung jeder Masse/Energie in das Zeitflussfeld, welche auch im Ruhezustand eines Teilchens durch diesen Austausch charakterisiert wird. Für ein Proton mit einer Ruhemasse von 1,67262 * 10^-27 Kg ergibt sich in jeder Sekunde ein Absorbieren/Emittieren von 1,27187 * 10^23 kleinsten Energiepotenzialen.
+
+Ein Abgleich des beschriebenen ZEIT-Modells mit der Allgemeinen Relativitätstheorie (ART) erfordert, dass sich der Zeitfluss und damit die Anzahl der mit dem Zeitflussfeld ausgetauschten kleinsten Energiepotenziale in Abhängigkeit von der Masse-/Energiedichte proportional verringert. Dies kann so interpretiert werden, dass eine mit der Masse-/Energiedichte proportional ansteigende Anzahl von kleinsten Energiepotenzialen rekursiv in die Masse/Energie integriert wird und somit nicht mehr für den freien Austausch von kleinsten Energiepotenzialen mit dem Zeitflussfeld zur Verfügung steht.
+
+Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinsten Energiepotenzialen durch ein proportional zum Reziprokwert der Entfernung abfallendes Gravitationspotenzial -GM/r (G: Gravitationskonstante, M: Masse, r: Abstand). Von Gravitationswellen ist weiterhin bekannt, dass sich dynamische Änderungen des Gravitationspotenzials und damit Zeitflussänderungen mit Lichtgeschwindigkeit im Universum ausbreiten.
+
+Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es für das Universum eine oobere Grenze für den Austausch von kleinsten Energiepotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte gibt, welche beim Entstehen eines schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze kann durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie erfolgen:
+
+M_BH_Milkyway = 4 * 10^6 Sonnenmassen = 4 * 10^6 * 1,989 * 10^30 kg = **7,956 * 10^36 Kg**
+
+Für das Abfallen der Eigenzeit des schwarzen Loches durch Zeitdilatation auf Null ergibt sich der Radius des schwarzen Loches aus der Beziehung:
+
+r_BH_Milkyway = 2GM/c^2 = 2 * 6,6743 * 10^-11 * 7,956 * 10^36 / (3 * 10^8)^2 m = **11,8 * 10^10 m**
+
+Das Volumen des schwarzen Loches ist demnach:
+
+V_BH_Milkyway = 4/3 * Pi * r_BH_Milkyway^3 = **6,8826 * 10^30 m^3**
+
+Somit wäre die Massedichte des schwarzen Loches:
+
+Dichte_BH_Milkyway = M_BH_Milkyway / V_BH_Milkyway = 7,956 * 10^36 / 6,8826 * 10^30 kg/m^3 = **1,156 * 10^6 kg/m^3**
+
+Die maximale Anzahl für den Austausch von kleinsten Energiepotenzialen in unserem Universum ist demnach:
+
+N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1,35827 * 10^50 * kg^-1 * 1,156 * 10^6 kg/m^3 = **1,57 * 10^56 m^-3**
+
+
 
 - **Quelle:** Informationsfeld-Impuls
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
