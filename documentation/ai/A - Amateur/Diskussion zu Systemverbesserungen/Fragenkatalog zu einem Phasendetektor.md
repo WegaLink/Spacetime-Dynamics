@@ -464,9 +464,9 @@ Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie. F
 
 In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energiepotenzialen der Raumenergie durchströmt. Die Anzahl der kleinsten Energiepotenziale, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: 
 
-N_pot = 1 / h = 1 / 6,62607015 * 10^-34 Js = 1,50919 * 10^33 / Js. 
+N_pot = 1 / h = 1 / (6,62607015 * 10^-34 Js) = 1,50919 * 10^33 / Js. 
 
-Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule in einer Sekunde erzeugt.
+Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule beim Voranschreiten in der Zeit um eine Sekunde erzeugt.
 
 Für ein Kilogramm Masse ergibt sich eine äquivalente Energiemenge aus der Einsteinschen Formel:
 
@@ -474,9 +474,9 @@ E = m c^2 = 1 kg * (3 * 10^8 m/s)^2 = 9 * 10^16 J.
 
 Die Anzahl an kleinsten Energiepotenzialen für das Fortbewegen dieser Masse in der Zeit um eine Sekunde ist demnach:
 
-N_1kg_1s = 1,50919 * 10^33 * 9 * 10^16 = 1,35827 * 10^50.
+N_1kg_1s = 1.50919 * 10^33 * 9 * 10^16 = 1.35827 * 10^50.
 
-Das auf einen Austausch von kleinsten Energiepotenzialen mit dem Zeitflussfeld beruhende ZEIT-Modell führt in der Konsequenz auf eine dynamische Einbindung jeder Masse/Energie in das Zeitflussfeld, welche auch im Ruhezustand eines Teilchens durch diesen Austausch charakterisiert wird. Für ein Proton mit einer Ruhemasse von 1,67262 * 10^-27 Kg ergibt sich in jeder Sekunde ein Absorbieren/Emittieren von 2,27187 * 10^23 kleinsten Energiepotenzialen.
+Das auf einen Austausch von kleinsten Energiepotenzialen mit dem Zeitflussfeld beruhende ZEIT-Modell führt in der Konsequenz auf eine dynamische Einbindung jeder Masse/Energie in das Zeitflussfeld, welche auch im Ruhezustand eines Teilchens durch diesen Austausch charakterisiert wird. Für ein Proton mit einer Ruhemasse von 1.67262 * 10^-27 Kg ergibt sich in jeder Sekunde ein Absorbieren/Emittieren von 2.27187 * 10^23 kleinsten Energiepotenzialen.
 
 **Anbindung an die ART (Gravitationspotenzial, Wellen)**
 
@@ -488,23 +488,23 @@ Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinste
 
 Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des freien Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es für das Universum eine obere Grenze für den Austausch von kleinsten Energiepotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte des jeweiligen schwarzen Loches gibt, welche beim Entstehen des schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze kann z.B. durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie erfolgen:
 
-M_BH_Milkyway = 4,154 * 10^6 Sonnenmassen = 4,154 * 10^6 * 1,989 * 10^30 kg = **8,262 * 10^36 Kg**
+M_BH_Milkyway = 4.154 * 10^6 Sonnenmassen = 4.154 * 10^6 * 1.989 * 10^30 kg = **8.262 * 10^36 Kg**
 
 Für das Abfallen der Eigenzeit des schwarzen Loches durch Zeitdilatation auf Null ergibt sich der Radius des schwarzen Loches aus der Beziehung:
 
-r_BH_Milkyway = 2GM/c^2 = 2 * 6,6743 * 10^-11 * 8,262 * 10^36 / (3 * 10^8)^2 m = **1,225 * 10^10 m**
+r_BH_Milkyway = 2GM/c^2 = 2 * 6.6743 * 10^-11 * 8.262 * 10^36 / (3 * 10^8)^2 m = **1.225 * 10^10 m**
 
 Das Volumen des schwarzen Loches ist demnach:
 
-V_BH_Milkyway = 4/3 * Pi * r_BH_Milkyway^3 = **7,700 * 10^30 m^3**
+V_BH_Milkyway = 4/3 * Pi * r_BH_Milkyway^3 = **7.700 * 10^30 m^3**
 
 Somit wäre die Massedichte des schwarzen Loches:
 
-Dichte_BH_Milkyway = M_BH_Milkyway / V_BH_Milkyway = 8,262 * 10^36 / 7,700 * 10^30 kg/m^3 = **1,073 * 10^6 kg/m^3**
+Dichte_BH_Milkyway = M_BH_Milkyway / V_BH_Milkyway = 8.262 * 10^36 / 7.700 * 10^30 kg/m^3 = **1.073 * 10^6 kg/m^3**
 
 Die maximale Anzahl für den Austausch von kleinsten Energiepotenzialen in unserem Universum ist demnach:
 
-N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1,35827 * 10^50 * kg^-1 s^-1 * 1,073 * 10^6 kg/m^3 = **1,46 * 10^56 m^-3 s^-1**
+N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1.35827 * 10^50 * kg^-1 s^-1 * 1.073 * 10^6 kg/m^3 = **1.46 * 10^56 m^-3 s^-1**
 
 Beim Erreichen dieser Masse-/Energiedichte wird die gesamte Fähigkeit des Universums für das Existieren der Masse/Energie selbst durch rekursives Integrieren von Zeitfluss in der Masse/Energie aufgebraucht und es kann kein freier Austausch von kleinsten Energiepotenzialen mit der Umgebung mehr erfolgen, wodurch die Abstrahlung im wesentlichen auf Null sinkt, bis auf einige Sekundäreffekte am Rande des schwarzen Loches. Für hypothetische Masse-/Energiedichten jenseits des genannten Limits kann keine Aussage über das Verhalten gemacht werden, außer dass das Universum nicht mehr in der Lage wäre, diese Masse/Energie in der linearen Zeit nach den Prinzipien von ART fortzubewegen.
 
@@ -522,11 +522,11 @@ Im Kontext von Entropie ausgedrückt besitzt ein unmodulierter Zeitfluss höchst
 
 **Postulate (Vorschlag Claude)**
 
-P1: Zeit entspricht der Austauschrate E/h.
+P1: Zeit entspricht einer postulierten Austauschrate E/h.
 
 P2: Die Austauschrate sinkt mit der Masse-/Energiedichte.
 
-P3: Es gibt eine Obergrenze, abgeleitet aus Sgr A*.
+P3: Es gibt eine individuelle Obergrenze für schwarze Löcher wie Sgr A*.
 
 P4: Modulationen breiten sich mit c aus und koppeln resonant.
 
