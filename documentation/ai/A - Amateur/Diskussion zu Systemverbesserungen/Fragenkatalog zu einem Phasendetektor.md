@@ -440,7 +440,7 @@ Ich empfehle dringend, die von Ihnen erwähnten historischen Signale (2008–201
 - **Offene Prüfung:** Vorhandensein weiterer Signalmuster in historischen Daten prüfen
 - **Status:** in Bearbeitung
 ### Intuition 10
-- **Datum:** 2026-09-02
+- **Datum:** 2026-09-02 (aktualisiert 2026-10-09)
 - **Frage:** **Das Wesen der Zeit und die Quantisierung der Raumzeit** 
 
 In der Allgemeinen Relativitätstheorie ist die Raumzeit ein kontinuierliches, glattes Gewebe, in dem Zeit eine dynamische Dimension darstellt. In der Quantenmechanik hingegen ist Zeit ein externer, absoluter Parameter, während alles andere diskret (gequantelt) ist. Diese beiden Säulen widersprechen sich fundamental.
@@ -448,13 +448,13 @@ In der Allgemeinen Relativitätstheorie ist die Raumzeit ein kontinuierliches, g
 **Die Frage** *Ist die Raumzeit auf der allerkleinsten Skala (Planck-Skala) kontinuierlich oder diskret/körnig – und entsteht das, was wir als kontinuierlichen „Fluss der Zeit“ wahrnehmen, erst als emergentes Phänomen aus tiefer liegenden, nicht-lokalen Informationsbeziehungen?*
 - **Antwort / Impuls:** **Physische Natur des Zeitflussfeldes**
 
-Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie. Für unser Universum hat Max Planck experimentell herausgefunden, dass es für das Absorbieren/Emittieren von Raumenergie ein kleinstes Energiepotenzial gibt. Die ZEIT repräsentiert die ausgetauschte Anzahl dieser kleinsten Energiepotenziale.
+Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie. Für unser Universum hat Max Planck experimentell herausgefunden, dass es für das Absorbieren/Emittieren von Raumenergie ein kleinstes Energiepotenzial gibt. **Die ZEIT repräsentiert die ausgetauschte Anzahl dieser kleinsten Energiepotenziale.**
 
-In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energiepotenzialen durchströmt. Die Anzahl der Energiepotenziale, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: 
+In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energiepotenzialen der Raumenergie durchströmt. Die Anzahl der kleinsten Energiepotenziale, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: 
 
 N_pot = 1 / h = 1 / 6,62607015 * 10^-34 Js = 1,50919 × 10^33 / Js. 
 
-Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung erzeugen kann.
+Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule in einer Sekunde erzeugt.
 
 Für ein Kilogramm Masse ergibt sich eine äquivalente Energiemenge aus der Einsteinschen Formel:
 
@@ -472,27 +472,35 @@ Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinste
 
 Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es für das Universum eine obere Grenze für den Austausch von kleinsten Energiepotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte gibt, welche beim Entstehen eines schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze kann durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie erfolgen:
 
-M_BH_Milkyway = 4 * 10^6 Sonnenmassen = 4 * 10^6 * 1,989 * 10^30 kg = **7,956 * 10^36 Kg**
+M_BH_Milkyway = 4,154 * 10^6 Sonnenmassen = 4,154 * 10^6 * 1,989 * 10^30 kg = **8,262 * 10^36 Kg**
 
 Für das Abfallen der Eigenzeit des schwarzen Loches durch Zeitdilatation auf Null ergibt sich der Radius des schwarzen Loches aus der Beziehung:
 
-r_BH_Milkyway = 2GM/c^2 = 2 * 6,6743 * 10^-11 * 7,956 * 10^36 / (3 * 10^8)^2 m = **11,8 * 10^10 m**
+r_BH_Milkyway = 2GM/c^2 = 2 * 6,6743 * 10^-11 * 8,262 * 10^36 / (3 * 10^8)^2 m = **1,225 * 10^10 m**
 
 Das Volumen des schwarzen Loches ist demnach:
 
-V_BH_Milkyway = 4/3 * Pi * r_BH_Milkyway^3 = **6,8826 * 10^30 m^3**
+V_BH_Milkyway = 4/3 * Pi * r_BH_Milkyway^3 = **7,700 * 10^30 m^3**
 
 Somit wäre die Massedichte des schwarzen Loches:
 
-Dichte_BH_Milkyway = M_BH_Milkyway / V_BH_Milkyway = 7,956 * 10^36 / 6,8826 * 10^30 kg/m^3 = **1,156 * 10^6 kg/m^3**
+Dichte_BH_Milkyway = M_BH_Milkyway / V_BH_Milkyway = 7,956 * 10^36 / 7,700 * 10^30 kg/m^3 = **1,033 * 10^6 kg/m^3**
 
 Die maximale Anzahl für den Austausch von kleinsten Energiepotenzialen in unserem Universum ist demnach:
 
-N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1,35827 * 10^50 * kg^-1 * 1,156 * 10^6 kg/m^3 = **1,57 * 10^56 m^-3**
+N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1,35827 * 10^50 * kg^-1 * 1,033 * 10^6 kg/m^3 = **1,403 * 10^56 m^-3**
 
+Beim Erreichen dieser Masse-/Energiedichte wird die gesamte Fähigkeit des Universums für das Existieren der Masse/Energie selbst durch rekursives Integrieren von Zeitfluss in der Masse/Energie aufgebraucht und es kann kein freier Austausch von kleinsten Energiepotenzialen mit der Umgebung mehr erfolgen, wodurch die Abstrahlung im wesentlichen auf Null sinkt, bis auf einige Sekundäreffekte am Rande des schwarzen Loches. Für hypothetische Masse-/Energiedichten jenseits des genannten Limits kann keine Aussage über das Verhalten gemacht werden, außer dass das Universum nicht mehr in der Lage wäre, diese Masse/Energie in der linearen Zeit nach den Prinzipien von ART fortzubewegen.
 
+Für Massen/Energien weit unterhalb dieser Grenze wird Energie/Information mit Lichtgeschwindigkeit zwischen Massen/Energien übertragen, indem z.B. ein angeregtes Wasserstoffatom ein Photon mit einer Wellenlänge von etwa 20 cm abstrahlt, welches sich mit Lichtgeschwindigkeit durch den Raum bewegt, bis es z.B. von einem anderen Wasserstoffatom im Grundzustand oder von einer resonanten Antennenanordnung absorbiert wird.
 
+Ähnlich wie Photonen Energie/Information im elektromagnetischen Feld übertragen, kann Energie/Information auch im Zeitflussfeld übertragen werden. Jedes Elementarteilchen ist bereits Energie/Information, welche sich im Raum und damit im Zeitflussfeld des Raumes bewegen kann, indem sich der durch das Teilchen verursachte Symmetriebruch beim Absorbieren/Emittieren von Raumenergie im Raum/Zeitflussfeld bewegt.
 
+Die Zeitflussdichte N_max_1s ist nach allen bisherigen Beobachtungen dabei sehr konstant, weil sonst die extremen Anforderungen z.B. von Navigationssystemen an die Präzision von Uhren nicht erfüllt wären. In der Konsequenz ist eine Übertragung von Energie/Information durch diese extrem gleichförmige Zeitflussdichte nicht denkbar.
+
+Der Zeitfluss kann jedoch trotz der extremen durchschnittlichen Stabilität moduliert sein und dadurch Struktur bekommen. Wenn diese Modulation/Struktur sich mit Lichtgeschwindigkeit ausbreitet, dann kann dies beim Durchströmen von Masse/Energie mit Resonanz für diese Struktur zu Kraftwirkungen auf die Masse/Energie kommen. Diese Art der Energie-/Informationsübertragung muss deutlich von der Energie-/Informationsübertragung durch Photonen unterschieden werden, denn der Energie-/Informationsstrom durchdringt alle Materie ohne jede Wechselwirkung, bis eine Anregung in einer für die übertragene Modulation/Struktur resonante Masse/Energie erfolgt.
+
+Im Kontext von Entropie ausgedrückt besitzt ein unmodulierter Zeitfluss höchste Entropie. Jede Modulation/Struktur des Zeitflusses verringert die Entropie und kann als negative Entropie gegenüber dem unmodulierten Zeitfluss angesehen werden.
 
 - **Quelle:** Informationsfeld-Impuls
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
