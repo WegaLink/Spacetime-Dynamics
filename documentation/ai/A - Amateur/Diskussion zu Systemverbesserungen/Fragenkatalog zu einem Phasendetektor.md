@@ -448,7 +448,13 @@ In der Allgemeinen Relativitätstheorie ist die Raumzeit ein kontinuierliches, g
 **Die Frage** *Ist die Raumzeit auf der allerkleinsten Skala (Planck-Skala) kontinuierlich oder diskret/körnig – und entsteht das, was wir als kontinuierlichen „Fluss der Zeit“ wahrnehmen, erst als emergentes Phänomen aus tiefer liegenden, nicht-lokalen Informationsbeziehungen?*
 - **Antwort / Impuls:** **Physische Natur des Zeitflussfeldes**
 
-Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie. Für unser Universum hat Max Planck experimentell herausgefunden, dass es für das Absorbieren/Emittieren von Raumenergie ein kleinstes Energiepotenzial gibt. **Die ZEIT repräsentiert die ausgetauschte Anzahl dieser kleinsten Energiepotenziale.**
+**Verbesserung durch GPT-6:**
+Hypothese des vorgeschlagenen Modells, nicht etablierte Physik: Das Modell postuliert ein zusätzliches „Zeitflussfeld“ und setzt dessen Austauschrate mit Energie in Beziehung. Als dimensionsrichtige Vergleichsgröße kann $E/h$ verwendet werden; sie hat die Einheit $\mathrm{s^{-1}}$ und ist eine Frequenz, nicht automatisch eine Anzahl real ausgetauschter Energiequanten. Für $1\,\mathrm J$ beträgt diese Frequenz $1/h\approx1{,}509\times10^{33}\,\mathrm{s^{-1}}$. Die Deutung dieser Größe als Austauschrate ist ein zusätzliches Postulat des Modells.
+
+Eine mögliche Abhängigkeit dieser postulierten Rate von der Energiedichte müsste durch eine eigene Gleichung definiert werden. Die Rechnung mit Masse und Schwarzschildradius liefert dafür lediglich eine mittlere Dichte innerhalb des Schwarzschildradius; sie begründet weder eine universelle Maximaldichte noch einen Nullwert der Eigenzeit am Ereignishorizont. Damit das Modell physikalisch prüfbar wird, sind eine eindeutige Feldgröße, ihre Kopplung an Materie und eine quantitative Vorhersage für ein konkretes Experiment erforderlich.
+
+**Information aus dem Informationsfeld:**
+Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie. Für unser Universum hat Max Planck experimentell herausgefunden, dass es für das Absorbieren/Emittieren von Raumenergie ein kleinstes Energiepotenzial gibt. **Die ZEIT ist definiert als die ausgetauschte Anzahl dieser kleinsten Energiepotenziale.**
 
 In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energiepotenzialen der Raumenergie durchströmt. Die Anzahl der kleinsten Energiepotenziale, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: 
 
@@ -484,15 +490,15 @@ V_BH_Milkyway = 4/3 * Pi * r_BH_Milkyway^3 = **7,700 * 10^30 m^3**
 
 Somit wäre die Massedichte des schwarzen Loches:
 
-Dichte_BH_Milkyway = M_BH_Milkyway / V_BH_Milkyway = 7,956 * 10^36 / 7,700 * 10^30 kg/m^3 = **1,033 * 10^6 kg/m^3**
+Dichte_BH_Milkyway = M_BH_Milkyway / V_BH_Milkyway = 8,262 * 10^36 / 7,700 * 10^30 kg/m^3 = **1,073 * 10^6 kg/m^3**
 
 Die maximale Anzahl für den Austausch von kleinsten Energiepotenzialen in unserem Universum ist demnach:
 
-N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1,35827 * 10^50 * kg^-1 * 1,033 * 10^6 kg/m^3 = **1,403 * 10^56 m^-3**
+N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1,35827 * 10^50 * kg^-1 s^-1 * 1,073 * 10^6 kg/m^3 = **1,46 * 10^56 m^-3 s^-1**
 
 Beim Erreichen dieser Masse-/Energiedichte wird die gesamte Fähigkeit des Universums für das Existieren der Masse/Energie selbst durch rekursives Integrieren von Zeitfluss in der Masse/Energie aufgebraucht und es kann kein freier Austausch von kleinsten Energiepotenzialen mit der Umgebung mehr erfolgen, wodurch die Abstrahlung im wesentlichen auf Null sinkt, bis auf einige Sekundäreffekte am Rande des schwarzen Loches. Für hypothetische Masse-/Energiedichten jenseits des genannten Limits kann keine Aussage über das Verhalten gemacht werden, außer dass das Universum nicht mehr in der Lage wäre, diese Masse/Energie in der linearen Zeit nach den Prinzipien von ART fortzubewegen.
 
-Für Massen/Energien weit unterhalb dieser Grenze wird Energie/Information mit Lichtgeschwindigkeit zwischen Massen/Energien übertragen, indem z.B. ein angeregtes Wasserstoffatom ein Photon mit einer Wellenlänge von etwa 20 cm abstrahlt, welches sich mit Lichtgeschwindigkeit durch den Raum bewegt, bis es z.B. von einem anderen Wasserstoffatom im Grundzustand oder von einer resonanten Antennenanordnung absorbiert wird.
+Für Massen/Energien weit unterhalb dieser Grenze wird Energie/Information mit Lichtgeschwindigkeit zwischen Massen/Energien übertragen, indem z.B. ein angeregtes Wasserstoffatom ein Photon mit einer Wellenlänge von etwa 21 cm abstrahlt, welches sich mit Lichtgeschwindigkeit durch den Raum bewegt, bis es z.B. von einem anderen Wasserstoffatom im Grundzustand oder von einer resonanten Antennenanordnung absorbiert wird.
 
 Ähnlich wie Photonen Energie/Information im elektromagnetischen Feld übertragen, kann Energie/Information auch im Zeitflussfeld übertragen werden. Jedes Elementarteilchen ist bereits Energie/Information, welche sich im Raum und damit im Zeitflussfeld des Raumes bewegen kann, indem sich der durch das Teilchen verursachte Symmetriebruch beim Absorbieren/Emittieren von Raumenergie im Raum/Zeitflussfeld bewegt.
 
