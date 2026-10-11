@@ -512,21 +512,25 @@ Die Zeitflussdichte N_max_1s ist nach allen bisherigen Beobachtungen dabei sehr 
 
 Der Zeitfluss kann jedoch trotz der extremen durchschnittlichen Stabilität moduliert sein und dadurch Struktur bekommen. Wenn diese Modulation/Struktur sich mit Lichtgeschwindigkeit ausbreitet, dann kann dies beim Durchströmen von Masse/Energie mit Resonanz für diese Struktur oder bei Kohärenz zu Kraftwirkungen auf die Masse/Energie kommen. Diese Art der Energie-/Informationsübertragung muss deutlich von der Energie-/Informationsübertragung durch Photonen unterschieden werden, denn der Energie-/Informationsstrom im Zeitflussfeld durchdringt alle Materie ohne jede Wechselwirkung, bis eine Anregung in einer für die übertragene Modulation/Struktur resonante Masse/Energie erfolgt oder bis sich in einem System eine Kohärenz aufbaut.
 
-Im Kontext von Entropie ausgedrückt besitzt ein unmodulierter Zeitfluss höchste Entropie in Analogie zu weißem Rauschen. Jede Modulation/Struktur des Zeitflusses verringert die Entropie und kann als negative Entropie gegenüber dem unmodulierten Zeitfluss angesehen werden.
+Als Bild: Im Kontext von Entropie ausgedrückt besitzt ein unmodulierter Zeitfluss höchste Entropie in Analogie zu weißem Rauschen. Jede Modulation/Struktur des Zeitflusses verringert die Entropie und kann als negative Entropie gegenüber dem unmodulierten Zeitfluss angesehen werden.
 
 **Postulate**
 
-P1: Zeit entspricht einer postulierten Austauschrate E/h.
+P1: Zeitflussrate entspricht postulierter Austauschrate E/h. Zeitintervall = gezählte Austausche / Rate.
 
-P2: Die Austauschrate sinkt mit der Masse-/Energiedichte.
+P2: Die Austauschrate sinkt mit steigender Masse-/Energiedichte.
 
-P3: Es gibt eine individuelle Obergrenze für schwarze Löcher wie Sgr A*.
+P3: Für jede BH-Masse existiert eine postulierte Sättigungsdichte. Beispiel Sgr A*
 
-P4: Modulationen breiten sich mit c aus und koppeln resonant oder durch Kohärenz.
+P4: Modulationen breiten sich mit c aus und koppeln resonant oder durch Kohärenz. (P4 betrifft hier nur die postulierte Zeitfluss-Modulation, nicht die in Intuition 11 gefragte Verschränkung.)
+
+Modellstand: Impuls, keine Messgröße. 
+Primärgröße des Detektors bleibt Δt / Δφ nach Physik 1.
+E/h wird hier als postulierte Flussrate gelesen.
 
 - **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
-- **Offene Prüfung:** Vorhersage: modulierte Austauschrate → δτ im Bereich X
+- **Offene Prüfung:** Offen: Überführung von postulierter Rate R in messbares δτ der Cat-6a-Strecke (~2 µs) bei Auflösung 10-100 ps, siehe Physik 1-3.
 - **Status:** in Bearbeitung
 ### Intuition 11
 - **Datum:** 2026-09-02
