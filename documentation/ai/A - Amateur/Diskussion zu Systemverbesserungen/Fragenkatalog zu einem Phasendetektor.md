@@ -521,12 +521,15 @@ P1: Zeitflussrate entspricht postulierter Austauschrate E/h. Zeitintervall = gez
 P2: Die Austauschrate sinkt mit steigender Masse-/Energiedichte.
 
 P3: Für jede BH-Masse existiert eine postulierte Sättigungsdichte. Beispiel Sgr A*
+(P3 postuliert, dass die in P1 definierte Rate räumlich lokalisiert wird: N_max_1s beschreibt die maximale Anzahl von Austauschvorgängen pro Volumenelement und Zeit, bei der die rekursive Bindung an die Massendichte sättigt.)
 
 P4: Modulationen breiten sich mit c aus und koppeln resonant oder durch Kohärenz. (P4 betrifft hier nur die postulierte Zeitfluss-Modulation, nicht die in Intuition 11 gefragte Verschränkung.)
 
 Modellstand: Impuls, keine Messgröße. 
 Primärgröße des Detektors bleibt Δt / Δφ nach Physik 1.
 E/h wird hier als postulierte Flussrate gelesen.
+
+Kopplung an den Detektor: Damit das Modell mit dem Phasendetektor prüfbar wird, muss postuliert werden, wie eine lokale Änderung der Austauschrate R (P1) die elektromagnetische Laufzeit τ in der Cat-6a-Leitung modifiziert (z.B. über eine Änderung der effektiven Lichtgeschwindigkeit c' = c(1 - κ·ΔR/R₀) im Dielektrikum). Ohne diesen Kopplungsterm bleibt das Modell eine Interpretation ohne experimentelle Signatur.
 
 - **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
