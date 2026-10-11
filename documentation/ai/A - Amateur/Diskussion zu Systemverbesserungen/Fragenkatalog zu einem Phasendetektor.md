@@ -458,7 +458,7 @@ In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstant
 
 N_pot = 1 / h = 1 / (6,62607015 * 10^-34 J s) = 1,50919 * 10^33 J^-1 s^-1. 
 
-Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule beim Voranschreiten in der Zeit um eine Sekunde erzeugt. Als Formel E / h ergibt sich die Maßeinheit einer Frequenz s^-1. Die daraus abgeleitete dimensionslose Größe entspricht der Anzahl der Schwingungen in einer Sekunde. Somit steht eine einzelne Schwingung mit dem kleinsten Energie-/Aktionspotenzial in direkter Beziehung. Die Lesart ist jedoch nicht die einer harmonischen Schwingung sondern von ausgetauschten kleinsten Wirkungen.
+Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule beim Voranschreiten in der Zeit um eine Sekunde erzeugt. Als Formel E / h ergibt sich die Maßeinheit einer Frequenz s^-1. Die Lesart ist jedoch nicht die einer harmonischen Schwingung sondern von ausgetauschten kleinsten Wirkungen. Die daraus abgeleitete dimensionslose Größe entspricht der Anzahl der Schwingungen in einer Sekunde. Somit steht eine einzelne Schwingung mit dem kleinsten Energie-/Aktionspotenzial in direkter Beziehung. 
 
 Für ein Kilogramm Masse ergibt sich eine äquivalente Energiemenge aus der Einsteinschen Formel:
 
@@ -470,11 +470,11 @@ N_1kg_1s = 1.50919 * 10^33 * 9 * 10^16 = 1.35827 * 10^50.
 
 Das auf einen Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitflussfeld beruhende ZEIT-Modell führt in der Konsequenz auf eine dynamische Einbindung jeder Masse/Energie in das Zeitflussfeld, welche auch im Ruhezustand eines Teilchens durch diesen Austausch charakterisiert wird. Für ein Proton mit einer Ruhemasse von 1.67262 * 10^-27 Kg ergibt sich in jeder Sekunde ein Absorbieren/Emittieren von 2.27187 * 10^23 kleinsten Energie-/Aktionspotenzialen.
 
-**Anbindung an die ART (Gravitationspotenzial, Wellen)**
+**Qualitativer Anschluss an die ART (Bild)**
 
 Ein Abgleich des beschriebenen ZEIT-Modells mit der Allgemeinen Relativitätstheorie (ART) erfordert, dass sich der Zeitfluss und damit die Anzahl der mit dem Zeitflussfeld ausgetauschten kleinsten Energie-/Aktionspotenzialen in Abhängigkeit von der Masse-/Energiedichte proportional verringert. Dies kann so interpretiert werden, dass eine mit der Masse-/Energiedichte proportional ansteigende Anzahl von kleinsten Energie-/Aktionspotenzialen rekursiv in die Masse/Energie integriert wird und somit nicht mehr für den freien Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitflussfeld zur Verfügung steht.
 
-Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinsten Energie-/Aktionspotenzialen durch ein proportional zum Reziprokwert der Entfernung abfallendes Gravitationspotenzial -GM/r (G: Gravitationskonstante, M: Masse, r: Abstand). Von Gravitationswellen ist weiterhin bekannt, dass sich dynamische Änderungen des Gravitationspotenzials und damit Zeitflussänderungen mit Lichtgeschwindigkeit im Universum ausbreiten.
+Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinsten Energie-/Aktionspotenzialen durch ein proportional zum Reziprokwert der Entfernung abfallendes Gravitationspotenzial ähnlich einem −GM/r-Verlauf (G: Gravitationskonstante, M: Masse, r: Abstand). Von Gravitationswellen ist weiterhin bekannt, dass sich dynamische Änderungen des Gravitationspotenzials und damit Zeitflussänderungen mit Lichtgeschwindigkeit im Universum ausbreiten.
 
 **Obergrenze und Schwarzes Loch**
 
@@ -500,7 +500,7 @@ N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1.35827 * 10^50 * kg^-1 s^-1 * 1.073 
 
 Beim Erreichen dieser Masse-/Energiedichte wird die gesamte Fähigkeit des Universums für das Existieren der Masse/Energie selbst, durch rekursives Integrieren von Zeitfluss in der Masse/Energie aufgebraucht und es kann kein freier Austausch von kleinsten Energie-/Aktionspotenzialen mit der Umgebung mehr erfolgen, wodurch die Abstrahlung im wesentlichen auf Null sinkt, bis auf einige Sekundäreffekte am Rande des schwarzen Loches. Für hypothetische Masse-/Energiedichten jenseits des genannten Limits kann keine Aussage über das Verhalten gemacht werden, außer dass das Universum nicht mehr in der Lage wäre, diese Masse/Energie in der linearen Zeit nach den Prinzipien von ART fortzubewegen.
 
-Für schwarze Löcher mit anderem Radius ergibt sich ein anderer Grenzwert, doch das Existieren eines Grenzwertes für die jeweilige Masse-/Energiedichte eines schwarzen Loches und damit für eine maximale Dichte des Zeitflusses ist eine universelle Begrenzung des Universums.
+Für schwarze Löcher mit anderem Radius ergibt sich ein anderer Grenzwert, doch das Existieren eines Grenzwertes für die jeweilige Masse-/Energiedichte eines schwarzen Loches und damit für eine maximale Dichte des Zeitflusses ist eine für jede gegebene BH-Masse existierende Begrenzung des Universums.
 
 **Modulation, Informationsübertragung, Entropie**
 
@@ -523,17 +523,20 @@ P2: Die Austauschrate sinkt mit steigender Masse-/Energiedichte.
 P3: Für jede BH-Masse existiert eine postulierte Sättigungsdichte. Beispiel Sgr A*
 (P3 postuliert, dass die in P1 definierte Rate räumlich lokalisiert wird: N_max_1s beschreibt die maximale Anzahl von Austauschvorgängen pro Volumenelement und Zeit, bei der die rekursive Bindung an die Massendichte sättigt.)
 
-P4: Modulationen breiten sich mit c aus und koppeln resonant oder durch Kohärenz. (P4 betrifft hier nur die postulierte Zeitfluss-Modulation, nicht die in Intuition 11 gefragte Verschränkung.)
+P4: Modulationen breiten sich mit c aus und koppeln resonant oder durch Kohärenz, siehe Physik 4 – dort anderes Thema (P4 betrifft hier nur die postulierte Zeitfluss-Modulation, nicht die in Intuition 11 gefragte Verschränkung.) 
 
 Modellstand: Impuls, keine Messgröße. 
 Primärgröße des Detektors bleibt Δt / Δφ nach Physik 1.
 E/h wird hier als postulierte Flussrate gelesen.
 
-Kopplung an den Detektor: Damit das Modell mit dem Phasendetektor prüfbar wird, muss postuliert werden, wie eine lokale Änderung der Austauschrate R (P1) die elektromagnetische Laufzeit τ in der Cat-6a-Leitung modifiziert (z.B. über eine Änderung der effektiven Lichtgeschwindigkeit c' = c(1 - κ·ΔR/R₀) im Dielektrikum). Ohne diesen Kopplungsterm bleibt das Modell eine Interpretation ohne experimentelle Signatur.
 
 - **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** Offen: Überführung von postulierter Rate R in messbares δτ der Cat-6a-Strecke (~2 µs) bei Auflösung 10-100 ps, siehe Physik 1-3.
+
+**Kopplungshypothese**
+
+Kopplung an den Detektor: Damit das Modell mit dem Phasendetektor prüfbar wird, muss postuliert werden, wie eine lokale Änderung der Austauschrate R (P1) die elektromagnetische Laufzeit τ in der Cat-6a-Leitung modifiziert (z.B. über eine Änderung der effektiven Lichtgeschwindigkeit c' = c(1 - κ·ΔR/R₀) im Dielektrikum, κ - freier Parameter). Ohne diesen Kopplungsterm bleibt das Modell eine Interpretation ohne experimentelle Signatur.
 - **Status:** in Bearbeitung
 ### Intuition 11
 - **Datum:** 2026-09-02
