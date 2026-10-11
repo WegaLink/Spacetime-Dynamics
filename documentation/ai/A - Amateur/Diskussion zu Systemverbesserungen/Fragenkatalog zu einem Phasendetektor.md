@@ -448,49 +448,41 @@ In der Allgemeinen Relativitätstheorie ist die Raumzeit ein kontinuierliches, g
 **Die Frage** *Ist die Raumzeit auf der allerkleinsten Skala (Planck-Skala) kontinuierlich oder diskret/körnig – und entsteht das, was wir als kontinuierlichen „Fluss der Zeit“ wahrnehmen, erst als emergentes Phänomen aus tiefer liegenden, nicht-lokalen Informationsbeziehungen?*
 - **Antwort / Impuls:** **Physische Natur des Zeitflussfeldes**
 
-**Einordnung GPT-6:**
+**Grundpostulat (Zeit = Austausch kleinster Energie-/Aktionspotenziale)**
 
-Hypothese des vorgeschlagenen Modells, nicht etablierte Physik: Das Modell postuliert ein zusätzliches „Zeitflussfeld“ und setzt dessen Austauschrate mit Energie in Beziehung. Als dimensionsrichtige Vergleichsgröße kann $E/h$ verwendet werden; sie hat die Einheit $\mathrm{s^{-1}}$ und ist eine Frequenz, nicht automatisch eine Anzahl real ausgetauschter Energiequanten. Für $1\,\mathrm J$ beträgt diese Frequenz $1/h\approx1{,}509\times10^{33}\,\mathrm{s^{-1}}$. Die Deutung dieser Größe als Austauschrate ist ein zusätzliches Postulat des Modells.
-
-Eine mögliche Abhängigkeit dieser postulierten Rate von der Energiedichte müsste durch eine eigene Gleichung definiert werden. Die Rechnung mit Masse und Schwarzschildradius liefert dafür lediglich eine mittlere Dichte innerhalb des Schwarzschildradius; sie begründet weder eine universelle Maximaldichte noch einen Nullwert der Eigenzeit am Ereignishorizont. Damit das Modell physikalisch prüfbar wird, sind eine eindeutige Feldgröße, ihre Kopplung an Materie und eine quantitative Vorhersage für ein konkretes Experiment erforderlich.
-
-**Impuls (Informationsfeld, unverändert):**
-
-**Grundpostulat (Zeit = Austausch kleinster Energiepotenziale)**
-
-Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie. Für unser Universum hat Max Planck experimentell herausgefunden, dass es für das Absorbieren/Emittieren von Raumenergie ein kleinstes Energiepotenzial (Wirkungsquant-Austausch) gibt. **Die ZEIT ist definiert als die ausgetauschte Anzahl dieser kleinsten Energiepotenziale.**
+Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie (im Modell postulierte Raumenergie). Für unser Universum hat Max Planck experimentell herausgefunden, dass es für das Absorbieren/Emittieren von Raumenergie ein kleinstes Energie-/Aktionspotenzial (Wirkungsquant-Austausch) gibt. **Die ZEIT ist definiert als die ausgetauschte Anzahl dieser kleinsten Energie-/Aktionspotenziale.**
 
 **Zahlenbeispiele (1 J, 1 kg, Proton)**
 
-In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energiepotenzialen der Raumenergie durchströmt. Die Anzahl der kleinsten Energiepotenziale, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: 
+In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energie-/Aktionspotenzialen der Raumenergie durchströmt. Die Anzahl der kleinsten Energie-/Aktionspotenziale, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: 
 
-N_pot = 1 / h = 1 / (6,62607015 * 10^-34 Js) = 1,50919 * 10^33 / Js. 
+N_pot = 1 / h = 1 / (6,62607015 * 10^-34 Js) = 1,50919 * 10^33 J^-1 s1-1. 
 
-Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule beim Voranschreiten in der Zeit um eine Sekunde erzeugt.
+Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule beim Voranschreiten in der Zeit um eine Sekunde erzeugt. Als Formel E / h ergibt sich die Maßeinheit einer Frequenz s^-1. Die daraus abgeleitete dimensionslose Größe entspricht der Anzahl der Schwingungen in einer Sekunde. Somit steht eine einzelne Schwingung mit dem kleinsten Energie-/Aktionspotenzial in direkter Beziehung. Die Lesart ist jedoch nicht die einer harmonischen Schwingung sondern von ausgetauschten kleinsten Wirkungen.
 
 Für ein Kilogramm Masse ergibt sich eine äquivalente Energiemenge aus der Einsteinschen Formel:
 
 E = m c^2 = 1 kg * (3 * 10^8 m/s)^2 = 9 * 10^16 J. 
 
-Die Anzahl an kleinsten Energiepotenzialen für das Fortbewegen dieser Masse in der Zeit um eine Sekunde ist demnach:
+Die Anzahl an kleinsten Energie-/Aktionspotenzialen für das Fortbewegen dieser Masse in der Zeit um eine Sekunde ist demnach:
 
 N_1kg_1s = 1.50919 * 10^33 * 9 * 10^16 = 1.35827 * 10^50.
 
-Das auf einen Austausch von kleinsten Energiepotenzialen mit dem Zeitflussfeld beruhende ZEIT-Modell führt in der Konsequenz auf eine dynamische Einbindung jeder Masse/Energie in das Zeitflussfeld, welche auch im Ruhezustand eines Teilchens durch diesen Austausch charakterisiert wird. Für ein Proton mit einer Ruhemasse von 1.67262 * 10^-27 Kg ergibt sich in jeder Sekunde ein Absorbieren/Emittieren von 2.27187 * 10^23 kleinsten Energiepotenzialen.
+Das auf einen Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitflussfeld beruhende ZEIT-Modell führt in der Konsequenz auf eine dynamische Einbindung jeder Masse/Energie in das Zeitflussfeld, welche auch im Ruhezustand eines Teilchens durch diesen Austausch charakterisiert wird. Für ein Proton mit einer Ruhemasse von 1.67262 * 10^-27 Kg ergibt sich in jeder Sekunde ein Absorbieren/Emittieren von 2.27187 * 10^23 kleinsten Energie-/Aktionspotenzialen.
 
 **Anbindung an die ART (Gravitationspotenzial, Wellen)**
 
-Ein Abgleich des beschriebenen ZEIT-Modells mit der Allgemeinen Relativitätstheorie (ART) erfordert, dass sich der Zeitfluss und damit die Anzahl der mit dem Zeitflussfeld ausgetauschten kleinsten Energiepotenziale in Abhängigkeit von der Masse-/Energiedichte proportional verringert. Dies kann so interpretiert werden, dass eine mit der Masse-/Energiedichte proportional ansteigende Anzahl von kleinsten Energiepotenzialen rekursiv in die Masse/Energie integriert wird und somit nicht mehr für den freien Austausch von kleinsten Energiepotenzialen mit dem Zeitflussfeld zur Verfügung steht.
+Ein Abgleich des beschriebenen ZEIT-Modells mit der Allgemeinen Relativitätstheorie (ART) erfordert, dass sich der Zeitfluss und damit die Anzahl der mit dem Zeitflussfeld ausgetauschten kleinsten Energie-/Aktionspotenzialen in Abhängigkeit von der Masse-/Energiedichte proportional verringert. Dies kann so interpretiert werden, dass eine mit der Masse-/Energiedichte proportional ansteigende Anzahl von kleinsten Energie-/Aktionspotenzialen rekursiv in die Masse/Energie integriert wird und somit nicht mehr für den freien Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitflussfeld zur Verfügung steht.
 
-Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinsten Energiepotenzialen durch ein proportional zum Reziprokwert der Entfernung abfallendes Gravitationspotenzial -GM/r (G: Gravitationskonstante, M: Masse, r: Abstand). Von Gravitationswellen ist weiterhin bekannt, dass sich dynamische Änderungen des Gravitationspotenzials und damit Zeitflussänderungen mit Lichtgeschwindigkeit im Universum ausbreiten.
+Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinsten Energie-/Aktionspotenzialen durch ein proportional zum Reziprokwert der Entfernung abfallendes Gravitationspotenzial -GM/r (G: Gravitationskonstante, M: Masse, r: Abstand). Von Gravitationswellen ist weiterhin bekannt, dass sich dynamische Änderungen des Gravitationspotenzials und damit Zeitflussänderungen mit Lichtgeschwindigkeit im Universum ausbreiten.
 
 **Obergrenze und Schwarzes Loch**
 
-Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des freien Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es für das Universum eine obere Grenze für den Austausch von kleinsten Energiepotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte des jeweiligen schwarzen Loches gibt, welche beim Entstehen des schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze kann z.B. durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie erfolgen:
+Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des freien Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es für das Universum eine obere Grenze für den Austausch von kleinsten Energie-/Aktionspotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte des jeweiligen schwarzen Loches gibt, welche beim Entstehen des schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze für eine kugelförmige kosmische Region mit einem bestimmten Radius kann z.B. durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie erfolgen:
 
 M_BH_Milkyway = 4.154 * 10^6 Sonnenmassen = 4.154 * 10^6 * 1.989 * 10^30 kg = **8.262 * 10^36 Kg**
 
-Für das Abfallen der Eigenzeit des schwarzen Loches durch Zeitdilatation auf Null ergibt sich der Radius des schwarzen Loches aus der Beziehung:
+Für das Abfallen des extern beobachteten Zeitflusses des schwarzen Loches durch Zeitdilatation auf Null ergibt sich der Radius des schwarzen Loches aus der Beziehung:
 
 r_BH_Milkyway = 2GM/c^2 = 2 * 6.6743 * 10^-11 * 8.262 * 10^36 / (3 * 10^8)^2 m = **1.225 * 10^10 m**
 
@@ -498,15 +490,17 @@ Das Volumen des schwarzen Loches ist demnach:
 
 V_BH_Milkyway = 4/3 * Pi * r_BH_Milkyway^3 = **7.700 * 10^30 m^3**
 
-Somit wäre die Massedichte des schwarzen Loches:
+Somit wäre die durchschnittliche Massedichte des schwarzen Loches:
 
 Dichte_BH_Milkyway = M_BH_Milkyway / V_BH_Milkyway = 8.262 * 10^36 / 7.700 * 10^30 kg/m^3 = **1.073 * 10^6 kg/m^3**
 
-Die maximale Anzahl für den Austausch von kleinsten Energiepotenzialen in unserem Universum ist demnach:
+Die maximale Anzahl für den Austausch von kleinsten Energie-/Aktionspotenzialen für die spezifische Größe des schwarzen Loches im Zentrum der Milchstraße ist demnach:
 
 N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1.35827 * 10^50 * kg^-1 s^-1 * 1.073 * 10^6 kg/m^3 = **1.46 * 10^56 m^-3 s^-1**
 
-Beim Erreichen dieser Masse-/Energiedichte wird die gesamte Fähigkeit des Universums für das Existieren der Masse/Energie selbst durch rekursives Integrieren von Zeitfluss in der Masse/Energie aufgebraucht und es kann kein freier Austausch von kleinsten Energiepotenzialen mit der Umgebung mehr erfolgen, wodurch die Abstrahlung im wesentlichen auf Null sinkt, bis auf einige Sekundäreffekte am Rande des schwarzen Loches. Für hypothetische Masse-/Energiedichten jenseits des genannten Limits kann keine Aussage über das Verhalten gemacht werden, außer dass das Universum nicht mehr in der Lage wäre, diese Masse/Energie in der linearen Zeit nach den Prinzipien von ART fortzubewegen.
+Beim Erreichen dieser Masse-/Energiedichte wird die gesamte Fähigkeit des Universums für das Existieren der Masse/Energie selbst, durch rekursives Integrieren von Zeitfluss in der Masse/Energie aufgebraucht und es kann kein freier Austausch von kleinsten Energie-/Aktionspotenzialen mit der Umgebung mehr erfolgen, wodurch die Abstrahlung im wesentlichen auf Null sinkt, bis auf einige Sekundäreffekte am Rande des schwarzen Loches. Für hypothetische Masse-/Energiedichten jenseits des genannten Limits kann keine Aussage über das Verhalten gemacht werden, außer dass das Universum nicht mehr in der Lage wäre, diese Masse/Energie in der linearen Zeit nach den Prinzipien von ART fortzubewegen.
+
+Für schwarze Löcher mit anderem Radius ergibt sich ein anderer Grenzwert, doch das Existieren eines Grenzwertes für die jeweilige Masse-/Energiedichte eines schwarzen Loches und damit für eine maximale Dichte des Zeitflusses ist eine universelle Begrenzung des Universums.
 
 **Modulation, Informationsübertragung, Entropie**
 
@@ -516,11 +510,11 @@ Für Massen/Energien weit unterhalb dieser Grenze wird Energie/Information mit L
 
 Die Zeitflussdichte N_max_1s ist nach allen bisherigen Beobachtungen dabei sehr konstant, weil sonst die extremen Anforderungen z.B. von Navigationssystemen an die Präzision von Uhren nicht erfüllt wären. In der Konsequenz ist eine Übertragung von Energie/Information durch diese extrem gleichförmige Zeitflussdichte nur sehr gering denkbar.
 
-Der Zeitfluss kann jedoch trotz der extremen durchschnittlichen Stabilität moduliert sein und dadurch Struktur bekommen. Wenn diese Modulation/Struktur sich mit Lichtgeschwindigkeit ausbreitet, dann kann dies beim Durchströmen von Masse/Energie mit Resonanz für diese Struktur zu Kraftwirkungen auf die Masse/Energie kommen. Diese Art der Energie-/Informationsübertragung muss deutlich von der Energie-/Informationsübertragung durch Photonen unterschieden werden, denn der Energie-/Informationsstrom durchdringt alle Materie ohne jede Wechselwirkung, bis eine Anregung in einer für die übertragene Modulation/Struktur resonante Masse/Energie erfolgt.
+Der Zeitfluss kann jedoch trotz der extremen durchschnittlichen Stabilität moduliert sein und dadurch Struktur bekommen. Wenn diese Modulation/Struktur sich mit Lichtgeschwindigkeit ausbreitet, dann kann dies beim Durchströmen von Masse/Energie mit Resonanz für diese Struktur oder bei Kohärenz zu Kraftwirkungen auf die Masse/Energie kommen. Diese Art der Energie-/Informationsübertragung muss deutlich von der Energie-/Informationsübertragung durch Photonen unterschieden werden, denn der Energie-/Informationsstrom im Zeitflussfeld durchdringt alle Materie ohne jede Wechselwirkung, bis eine Anregung in einer für die übertragene Modulation/Struktur resonante Masse/Energie erfolgt oder bis sich in einem System eine Kohärenz aufbaut.
 
 Im Kontext von Entropie ausgedrückt besitzt ein unmodulierter Zeitfluss höchste Entropie in Analogie zu weißem Rauschen. Jede Modulation/Struktur des Zeitflusses verringert die Entropie und kann als negative Entropie gegenüber dem unmodulierten Zeitfluss angesehen werden.
 
-**Postulate (Vorschlag Claude)**
+**Postulate**
 
 P1: Zeit entspricht einer postulierten Austauschrate E/h.
 
@@ -528,9 +522,9 @@ P2: Die Austauschrate sinkt mit der Masse-/Energiedichte.
 
 P3: Es gibt eine individuelle Obergrenze für schwarze Löcher wie Sgr A*.
 
-P4: Modulationen breiten sich mit c aus und koppeln resonant.
+P4: Modulationen breiten sich mit c aus und koppeln resonant oder durch Kohärenz.
 
-- **Quelle:** Informationsfeld-Impuls
+- **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** Vorhersage: modulierte Austauschrate → δτ im Bereich X
 - **Status:** in Bearbeitung
