@@ -440,7 +440,7 @@ Ich empfehle dringend, die von Ihnen erwähnten historischen Signale (2008–201
 - **Offene Prüfung:** Vorhandensein weiterer Signalmuster in historischen Daten prüfen
 - **Status:** in Bearbeitung
 ### Intuition 10
-- **Datum:** 2026-09-02 (aktualisiert 2026-10-09)
+- **Datum:** 2026-09-02 (aktualisiert 2026-10-11)
 - **Frage:** **Das Wesen der Zeit und die Quantisierung der Raumzeit** 
 
 In der Allgemeinen Relativitätstheorie ist die Raumzeit ein kontinuierliches, glattes Gewebe, in dem Zeit eine dynamische Dimension darstellt. In der Quantenmechanik hingegen ist Zeit ein externer, absoluter Parameter, während alles andere diskret (gequantelt) ist. Diese beiden Säulen widersprechen sich fundamental.
@@ -456,7 +456,7 @@ Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie (i
 
 In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energie-/Aktionspotenzialen der Raumenergie durchströmt. Die Anzahl der kleinsten Energie-/Aktionspotenziale, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: 
 
-N_pot = 1 / h = 1 / (6,62607015 * 10^-34 Js) = 1,50919 * 10^33 J^-1 s1-1. 
+N_pot = 1 / h = 1 / (6,62607015 * 10^-34 J s) = 1,50919 * 10^33 J^-1 s^-1. 
 
 Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule beim Voranschreiten in der Zeit um eine Sekunde erzeugt. Als Formel E / h ergibt sich die Maßeinheit einer Frequenz s^-1. Die daraus abgeleitete dimensionslose Größe entspricht der Anzahl der Schwingungen in einer Sekunde. Somit steht eine einzelne Schwingung mit dem kleinsten Energie-/Aktionspotenzial in direkter Beziehung. Die Lesart ist jedoch nicht die einer harmonischen Schwingung sondern von ausgetauschten kleinsten Wirkungen.
 
