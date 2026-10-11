@@ -478,7 +478,7 @@ Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinste
 
 **Obergrenze und Schwarzes Loch**
 
-Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des freien Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es für das Universum eine obere Grenze für den Austausch von kleinsten Energie-/Aktionspotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte des jeweiligen schwarzen Loches gibt, welche beim Entstehen des schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze für eine kugelförmige kosmische Region mit einem bestimmten Radius kann z.B. durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie erfolgen:
+Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des freien Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es bei gegebenem Schwarzschild-Radius für das Universum eine obere Grenze für den Austausch von kleinsten Energie-/Aktionspotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte des jeweiligen schwarzen Loches gibt, welche beim Entstehen des schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze für eine kugelförmige kosmische Region mit einem bestimmten Radius kann z.B. durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie erfolgen:
 
 M_BH_Milkyway = 4.154 * 10^6 Sonnenmassen = 4.154 * 10^6 * 1.989 * 10^30 kg = **8.262 * 10^36 Kg**
 
