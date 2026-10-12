@@ -454,11 +454,13 @@ Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie (i
 
 **Zahlenbeispiele (1 J, 1 kg, Proton)**
 
+Setzung: Die in E = hν enthaltene Frequenz ν wird hier nicht als Schwingung, sondern als Rate eines elementaren Austauschvorgangs zwischen Masse/Energie und einem 'Zeitflussfeld' gelesen. Die folgenden Zahlen sind dann die Anzahl dieser Austauschvorgänge pro Sekunde.
+
 In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energie-/Aktionspotenzialen der Raumenergie durchströmt. Die Anzahl der kleinsten Energie-/Aktionspotenziale, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: 
 
 N_pot = 1 / h = 1 / (6,62607015 * 10^-34 J s) = 1,50919 * 10^33 J^-1 s^-1. 
 
-Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule beim Voranschreiten in der Zeit um eine Sekunde erzeugt. Als Formel E / h ergibt sich die Maßeinheit einer Frequenz s^-1. Die Lesart ist jedoch nicht die einer harmonischen Schwingung sondern von ausgetauschten kleinsten Wirkungen. Die daraus abgeleitete dimensionslose Größe entspricht der Anzahl der Schwingungen in einer Sekunde. Somit steht eine einzelne Schwingung mit dem kleinsten Energie-/Aktionspotenzial in direkter Beziehung. 
+Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule beim Voranschreiten in der Zeit um eine Sekunde erzeugt. Als Formel E / h ergibt sich die Maßeinheit einer Frequenz s^-1. Die Lesart ist jedoch nicht die einer harmonischen Schwingung sondern von ausgetauschten kleinsten Wirkungen. Die daraus abgeleitete dimensionslose Größe entspricht der Anzahl der Schwingungen in einer Sekunde. Somit steht eine einzelne Schwingung mit dem kleinsten Energie-/Aktionspotenzial in direkter Beziehung. Die Größe E/h ist als Compton-Frequenz bekannt; die hier verwendete Lesart als Austauschrate kleinster Wirkungen ist eine Umdeutung, keine neue Messgröße.
 
 Für ein Kilogramm Masse ergibt sich eine äquivalente Energiemenge aus der Einsteinschen Formel:
 
@@ -472,13 +474,13 @@ Das auf einen Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitfl
 
 **Qualitativer Anschluss an die ART (Bild)**
 
-Ein Abgleich des beschriebenen ZEIT-Modells mit der Allgemeinen Relativitätstheorie (ART) erfordert, dass sich der Zeitfluss und damit die Anzahl der mit dem Zeitflussfeld ausgetauschten kleinsten Energie-/Aktionspotenzialen in Abhängigkeit von der Masse-/Energiedichte proportional verringert. Dies kann so interpretiert werden, dass eine mit der Masse-/Energiedichte proportional ansteigende Anzahl von kleinsten Energie-/Aktionspotenzialen rekursiv in die Masse/Energie integriert wird und somit nicht mehr für den freien Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitflussfeld zur Verfügung steht.
+Ein Abgleich des beschriebenen ZEIT-Modells mit der Allgemeinen Relativitätstheorie (ART) postuliert, dass sich der Zeitfluss und damit die Anzahl der mit dem Zeitflussfeld ausgetauschten kleinsten Energie-/Aktionspotenzialen in Abhängigkeit von der Masse-/Energiedichte proportional verringert. Dies kann so interpretiert werden, dass eine mit der Masse-/Energiedichte proportional ansteigende Anzahl von kleinsten Energie-/Aktionspotenzialen rekursiv in die Masse/Energie gebunden (postuliert, Mechanismus nicht spezifiziert) wird und somit nicht mehr für den freien Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitflussfeld zur Verfügung steht. Das Modell reproduziert qualitativ die Zeitdilatation der ART, bietet aber einen anderen Mechanismus an.
 
 Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinsten Energie-/Aktionspotenzialen durch ein proportional zum Reziprokwert der Entfernung abfallendes Gravitationspotenzial ähnlich einem −GM/r-Verlauf (G: Gravitationskonstante, M: Masse, r: Abstand). Von Gravitationswellen ist weiterhin bekannt, dass sich dynamische Änderungen des Gravitationspotenzials und damit Zeitflussänderungen mit Lichtgeschwindigkeit im Universum ausbreiten.
 
 **Obergrenze und Schwarzes Loch**
 
-Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des freien Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es bei gegebenem Schwarzschild-Radius für das Universum eine obere Grenze für den Austausch von kleinsten Energie-/Aktionspotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte des jeweiligen schwarzen Loches gibt, welche beim Entstehen des schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze für eine kugelförmige kosmische Region mit einem bestimmten Radius kann z.B. durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie erfolgen:
+Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des freien Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es bei gegebenem Schwarzschild-Radius für das Universum eine obere Grenze für den Austausch von kleinsten Energie-/Aktionspotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte des jeweiligen schwarzen Loches gibt, welche beim Entstehen des schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze für eine kugelförmige kosmische Region mit einem bestimmten Radius kann z.B. durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie unter der vereinfachenden Annahme einer homogenen Dichte innerhalb des Schwarzschild-Radius erfolgen:
 
 M_BH_Milkyway = 4.154 * 10^6 Sonnenmassen = 4.154 * 10^6 * 1.989 * 10^30 kg = **8.262 * 10^36 Kg**
 
@@ -498,9 +500,9 @@ Die maximale Anzahl für den Austausch von kleinsten Energie-/Aktionspotenzialen
 
 N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1.35827 * 10^50 * kg^-1 s^-1 * 1.073 * 10^6 kg/m^3 = **1.46 * 10^56 m^-3 s^-1**
 
-Beim Erreichen dieser Masse-/Energiedichte wird die gesamte Fähigkeit des Universums für das Existieren der Masse/Energie selbst, durch rekursives Integrieren von Zeitfluss in der Masse/Energie aufgebraucht und es kann kein freier Austausch von kleinsten Energie-/Aktionspotenzialen mit der Umgebung mehr erfolgen, wodurch die Abstrahlung im wesentlichen auf Null sinkt, bis auf einige Sekundäreffekte am Rande des schwarzen Loches. Für hypothetische Masse-/Energiedichten jenseits des genannten Limits kann keine Aussage über das Verhalten gemacht werden, außer dass das Universum nicht mehr in der Lage wäre, diese Masse/Energie in der linearen Zeit nach den Prinzipien von ART fortzubewegen.
+Beim Erreichen dieser Masse-/Energiedichte wird die gesamte Fähigkeit des Universums für das Existieren der Masse/Energie selbst, durch rekursives Integrieren von Zeitfluss in der Masse/Energie aufgebraucht und es kann kein freier Austausch von kleinsten Energie-/Aktionspotenzialen mit der Umgebung mehr erfolgen, wodurch die freie Abstrahlung sättigt und im wesentlichen auf Null sinkt, bis auf einige Sekundäreffekte am Rande des schwarzen Loches. ART-seitig entspricht dies dem Horizont, an dem die Eigenzeit des Objekts für externe Beobachter einfriert. Für hypothetische Masse-/Energiedichten jenseits des genannten Limits kann keine Aussage über das Verhalten gemacht werden, außer dass das Universum nicht mehr in der Lage wäre, diese Masse/Energie in der linearen Zeit nach den Prinzipien von ART fortzubewegen.
 
-Für schwarze Löcher mit anderem Radius ergibt sich ein anderer Grenzwert, doch das Existieren eines Grenzwertes für die jeweilige Masse-/Energiedichte eines schwarzen Loches und damit für eine maximale Dichte des Zeitflusses ist eine für jede gegebene BH-Masse existierende Begrenzung des Universums.
+Die mittlere Dichte eines Schwarzschild-Lochs skaliert als $\rho \propto 1/M^2$. Das bedeutet: Je massereicher das Loch, desto geringer die „Sättigungsdichte" im Sinne des Modells. Somit ergibt sich für schwarze Löcher mit anderem Radius ein anderer Grenzwert, doch das Existieren eines Grenzwertes für die jeweilige Masse-/Energiedichte eines schwarzen Loches und damit für eine maximale Dichte des Zeitflusses ist eine für jede gegebene BH-Masse existierende Begrenzung des Universums.
 
 **Modulation, Informationsübertragung, Entropie**
 
@@ -510,9 +512,22 @@ Für Massen/Energien weit unterhalb dieser Grenze wird Energie/Information mit L
 
 Die Zeitflussdichte N_max_1s ist nach allen bisherigen Beobachtungen dabei sehr konstant, weil sonst die extremen Anforderungen z.B. von Navigationssystemen an die Präzision von Uhren nicht erfüllt wären. In der Konsequenz ist eine Übertragung von Energie/Information durch diese extrem gleichförmige Zeitflussdichte nur sehr gering denkbar.
 
-Der Zeitfluss kann jedoch trotz der extremen durchschnittlichen Stabilität moduliert sein und dadurch Struktur bekommen. Wenn diese Modulation/Struktur sich mit Lichtgeschwindigkeit ausbreitet, dann kann dies beim Durchströmen von Masse/Energie mit Resonanz für diese Struktur oder bei Kohärenz zu Kraftwirkungen auf die Masse/Energie kommen. Diese Art der Energie-/Informationsübertragung muss deutlich von der Energie-/Informationsübertragung durch Photonen unterschieden werden, denn der Energie-/Informationsstrom im Zeitflussfeld durchdringt alle Materie ohne jede Wechselwirkung, bis eine Anregung in einer für die übertragene Modulation/Struktur resonante Masse/Energie erfolgt oder bis sich in einem System eine Kohärenz aufbaut.
+Der Zeitfluss kann jedoch trotz der extremen durchschnittlichen Stabilität moduliert sein und dadurch Struktur bekommen. Wenn diese Modulation/Struktur sich mit Lichtgeschwindigkeit ausbreitet, dann kann dies beim Durchströmen von Masse/Energie mit Resonanz für diese Struktur oder bei Kohärenz zu Kraftwirkungen auf die Masse/Energie kommen. Diese Art der Energie-/Informationsübertragung muss deutlich von der Energie-/Informationsübertragung durch Photonen unterschieden werden, denn der Energie-/Informationsstrom im Zeitflussfeld durchdringt alle Materie ohne signifikante Wechselwirkung, bis eine Anregung in einer für die übertragene Modulation/Struktur resonante Masse/Energie erfolgt oder bis sich in einem System eine Kohärenz aufbaut.
 
-Als Bild: Im Kontext von Entropie ausgedrückt besitzt ein unmodulierter Zeitfluss höchste Entropie in Analogie zu weißem Rauschen. Jede Modulation/Struktur des Zeitflusses verringert die Entropie und kann als negative Entropie gegenüber dem unmodulierten Zeitfluss angesehen werden.
+Als Bild: Im Kontext von Entropie ausgedrückt, besitzt ein unmodulierter Zeitfluss im Sinne einer Analogie (nicht als thermodynamische Aussage) höchste Entropie, ähnlich zu weißem Rauschen. Jede Modulation/Struktur des Zeitflusses kann als Reduktion der Entropie gegenüber dem unmodulierten Zeitfluss angesehen werden.
+
+1. unmodulierter Fluss = hohe Entropie,
+2. Modulation = spektrale Struktur,
+3. Ausbreitung mit c (wie GWs),
+4. Kopplung an Resonator/Kohärenz (wie ein Detektor im Grundzustand).
+
+**Zusammenfassung**
+
+N_pot     = 1/h                ≈ 1,50919 × 10^33  [J⁻¹ s⁻¹]   (Austauschvorgänge pro Joule und Sekunde)
+R(E)      = E/h                ≈ 1,50919 × 10^33·E [s⁻¹]       (Rate für die Energie E)
+R(1 kg)   = mc²/h              ≈ 1,35827 × 10^50  [s⁻¹]       (Rate für 1 kg Masse)
+R(ρ,1 s)  = ρc²/h              ≈ 1,35827 × 10^50·ρ [kg m⁻³ s⁻¹] (Rate pro Volumen, ausgedrückt in Massendichte)
+R_max     = ρ_BH · c²/h        ≈ 1,46 × 10^56    [kg m⁻³ s⁻¹] (pro Volumen, unter Benutzung der BH-Mitteldichte)
 
 **Postulate**
 
@@ -529,14 +544,13 @@ Modellstand: Impuls, keine Messgröße.
 Primärgröße des Detektors bleibt Δt / Δφ nach Physik 1.
 E/h wird hier als postulierte Flussrate gelesen.
 
+**Kopplungshypothese - Experimentelle Brücke**
+
+Kopplung an den Detektor: Damit das Modell mit dem Phasendetektor prüfbar wird, muss postuliert werden, wie eine lokale Änderung der Austauschrate R (P1) die elektromagnetische Laufzeit τ in der Cat-6a-Leitung modifiziert (z.B. über eine Änderung der effektiven Lichtgeschwindigkeit c' = c(1 - κ·ΔR/R₀) im Dielektrikum, κ - freier Parameter). Wenn $\Delta R/R_0 \sim 10^{-6}$–$10^{-7}$ (Kozyrev-Skala, vgl. Physik 6) und $\kappa \sim 1$, dann wäre $\Delta c/c \sim 10^{-7}$, was einer Laufzeitänderung von $\Delta\tau \sim 2\;\mu\text{s} \times 10^{-7} = 0{,}2\;\text{ps}$ entspräche – unterhalb der aktuellen Auflösung von 10–100 ps.
 
 - **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** Offen: Überführung von postulierter Rate R in messbares δτ der Cat-6a-Strecke (~2 µs) bei Auflösung 10-100 ps, siehe Physik 1-3.
-
-**Kopplungshypothese**
-
-Kopplung an den Detektor: Damit das Modell mit dem Phasendetektor prüfbar wird, muss postuliert werden, wie eine lokale Änderung der Austauschrate R (P1) die elektromagnetische Laufzeit τ in der Cat-6a-Leitung modifiziert (z.B. über eine Änderung der effektiven Lichtgeschwindigkeit c' = c(1 - κ·ΔR/R₀) im Dielektrikum, κ - freier Parameter). Ohne diesen Kopplungsterm bleibt das Modell eine Interpretation ohne experimentelle Signatur.
 - **Status:** in Bearbeitung
 ### Intuition 11
 - **Datum:** 2026-09-02
