@@ -524,9 +524,13 @@ Als Bild: Im Kontext von Entropie ausgedrückt, besitzt ein unmodulierter Zeitfl
 **Zusammenfassung**
 
 N_pot     = 1/h                ≈ 1,50919 × 10^33  [J⁻¹ s⁻¹]   (Austauschvorgänge pro Joule und Sekunde)
+
 R(E)      = E/h                ≈ 1,50919 × 10^33·E [s⁻¹]       (Rate für die Energie E)
+
 R(1 kg)   = mc²/h              ≈ 1,35827 × 10^50  [s⁻¹]       (Rate für 1 kg Masse)
+
 R(ρ,1 s)  = ρc²/h              ≈ 1,35827 × 10^50·ρ [kg m⁻³ s⁻¹] (Rate pro Volumen, ausgedrückt in Massendichte)
+
 R_max     = ρ_BH · c²/h        ≈ 1,46 × 10^56    [kg m⁻³ s⁻¹] (pro Volumen, unter Benutzung der BH-Mitteldichte)
 
 **Postulate**
