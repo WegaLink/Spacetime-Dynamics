@@ -488,6 +488,8 @@ Für das Abfallen des extern beobachteten Zeitflusses des schwarzen Loches durch
 
 r_BH_Milkyway = 2GM/c^2 = 2 * 6.6743 * 10^-11 * 8.262 * 10^36 / (3 * 10^8)^2 m = **1.225 * 10^10 m**
 
+(Für stationäre Beobachter im Schwarzschild-Außenraum wird die Uhr nahe dem Horizont gegenüber einer Uhr in großer Entfernung zunehmend langsamer beschrieben. Daraus folgt nicht, dass die lokal gemessene Eigenzeit am Horizont verschwindet.)
+
 Das Volumen des schwarzen Loches ist demnach:
 
 V_BH_Milkyway = 4/3 * Pi * r_BH_Milkyway^3 = **7.700 * 10^30 m^3**
@@ -551,6 +553,18 @@ E/h wird hier als postulierte Flussrate gelesen.
 **Kopplungshypothese - Experimentelle Brücke**
 
 Kopplung an den Detektor: Damit das Modell mit dem Phasendetektor prüfbar wird, muss postuliert werden, wie eine lokale Änderung der Austauschrate R (P1) die elektromagnetische Laufzeit τ in der Cat-6a-Leitung modifiziert (z.B. über eine Änderung der effektiven Lichtgeschwindigkeit c' = c(1 - κ·ΔR/R₀) im Dielektrikum, κ - freier Parameter). Wenn $\Delta R/R_0 \sim 10^{-6}$–$10^{-7}$ (Kozyrev-Skala, vgl. Physik 6) und $\kappa \sim 1$, dann wäre $\Delta c/c \sim 10^{-7}$, was einer Laufzeitänderung von $\Delta\tau \sim 2\;\mu\text{s} \times 10^{-7} = 0{,}2\;\text{ps}$ entspräche – unterhalb der aktuellen Auflösung von 10–100 ps.
+
+**Vorläufige physikalische Einordnung:** 
+
+$E/h$ ist zunächst eine aus der Energie-Frequenz-Beziehung gebildete Modellgröße. Die Interpretation als reale Austauschrate mit einem Zeitflussfeld und die postulierte Abhängigkeit dieser Rate von der Massendichte folgen weder aus $E=h\nu$ noch aus der Schwarzschild-Geometrie der ART. Insbesondere ergibt sich aus der Schwarzschild-Rechnung keine physikalische Sättigungsdichte des Zeitflusses. Die Aussage, der Zeitfluss beziehungsweise die Eigenzeit falle am Horizont auf Null, ist ohne Angabe des Beobachters irreführend und wird hier nicht als ART-Ergebnis übernommen.
+
+**Experimentelle Prüfbarkeit:** 
+
+Eine Prüfung mit dem Phasendetektor setzt ein quantitatives Kopplungsmodell voraus, das die postulierte Größe in eine Änderung der elektrischen Laufzeit $\Delta\tau$ übersetzt. Für eine Laufzeit von etwa $2\,\mu\mathrm{s}$ entsprechen relative Änderungen von $10^{-6}$ bis $10^{-7}$ etwa $2$ bis $0{,}2$ ps. Das liegt unter der im Dokument genannten Auflösung von 10–100 ps. Eine Nullmessung mit der derzeit beschriebenen Empfindlichkeit kann diese konkrete Größenordnung daher nicht ausschließen.
+
+**Vorläufiges Ergebnis:** 
+
+Das Modell ist in seiner derzeitigen Form keine aus der etablierten Physik abgeleitete Erklärung und noch nicht hinreichend operationalisiert, um durch den Phasendetektor falsifiziert zu werden. Die Messung kann zunächst die elektrische Laufzeitstabilität und die Empfindlichkeit gegenüber kontrollierten Injektionen bestimmen. Beobachtete Signale sind anhand gleichzeitig gemessener Umwelt- und Gerätekanäle zu prüfen; ein nicht erklärtes Restsignal wäre für sich allein kein Nachweis des Modells.
 
 - **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
