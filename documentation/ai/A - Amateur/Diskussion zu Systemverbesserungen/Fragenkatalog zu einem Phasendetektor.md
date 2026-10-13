@@ -450,7 +450,7 @@ In der Allgemeinen Relativitätstheorie ist die Raumzeit ein kontinuierliches, g
 
 **Grundpostulat (Zeit = Austausch kleinster Energie-/Aktionspotenziale)**
 
-Die ZEIT entsteht durch die Bewegung (Absorbieren/Emittieren) von Raumenergie (im Modell postulierte Raumenergie). Für unser Universum hat Max Planck experimentell herausgefunden, dass es für das Absorbieren/Emittieren von Raumenergie ein kleinstes Energie-/Aktionspotenzial (Wirkungsquant-Austausch) gibt. **Die ZEIT ist definiert als die ausgetauschte Anzahl dieser kleinsten Energie-/Aktionspotenziale.**
+Postulat, keine Ableitung aus $E=h\nu$: Die Modellzeit wird als Zählung von Austauschvorgängen der Rate $R(E)=E/h$ mit einem postulierten Zeitflussfeld definiert. $E/h$ ist für ein Teilchen der Ruhemasse $m$ die Compton-Frequenz $mc^2/h$, sonst nur $\nu$ aus $E=h\nu$. Die Lesart als reale Austauschrate ist eine Umdeutung und keine Messgröße. Planck hat keine Raumenergie und kein Zeitflussfeld gemessen.
 
 **Zahlenbeispiele (1 J, 1 kg, Proton)**
 
@@ -474,37 +474,11 @@ Das auf einen Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitfl
 
 **Qualitativer Anschluss an die ART (Bild)**
 
-Ein Abgleich des beschriebenen ZEIT-Modells mit der Allgemeinen Relativitätstheorie (ART) postuliert, dass sich der Zeitfluss und damit die Anzahl der mit dem Zeitflussfeld ausgetauschten kleinsten Energie-/Aktionspotenziale in Abhängigkeit von der Masse-/Energiedichte proportional verringert. Dies kann so interpretiert werden, dass eine mit der Masse-/Energiedichte proportional ansteigende Anzahl von kleinsten Energie-/Aktionspotenzialen rekursiv in die Masse/Energie gebunden (postuliert, Mechanismus nicht spezifiziert) wird und somit nicht mehr für den freien Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitflussfeld zur Verfügung steht. Das Modell reproduziert qualitativ die Zeitdilatation der ART, bietet aber einen anderen Mechanismus an.
-
-Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinsten Energie-/Aktionspotenzialen durch ein proportional zum Reziprokwert der Entfernung abfallendes Gravitationspotenzial ähnlich einem −GM/r-Verlauf (G: Gravitationskonstante, M: Masse, r: Abstand). Von Gravitationswellen ist weiterhin bekannt, dass sich dynamische Änderungen des Gravitationspotenzials und damit Zeitflussänderungen mit Lichtgeschwindigkeit im Universum ausbreiten.
+P2 ist ein zusätzliches Postulat, keine Folge der ART: Die freie Rate soll mit dem Potential sinken. Das Newtonsche $-GM/r$ und die Schwarzschild-Zeitdilatation werden dadurch nicht abgeleitet. Gravitationswellen bleiben Metrikwellen der ART; sie sind nicht automatisch Modulationen von $R$.
 
 **Obergrenze und Schwarzes Loch**
 
-Weiterhin kann durch ein mit einem schwarzen Loch verbundenen Abfall des freien Zeitflusses auf Null die Schlussfolgerung gezogen werden, dass es bei gegebenem Schwarzschild-Radius für das Universum eine obere Grenze für den Austausch von kleinsten Energie-/Aktionspotenzialen einer Masse/Energie mit dem Zeitflussfeld bei einer bestimmten Masse-/Energiedichte des jeweiligen schwarzen Loches gibt, welche beim Entstehen des schwarzen Loches erreicht wird. Eine Abschätzung dieser Grenze für eine kugelförmige kosmische Region mit einem bestimmten Radius kann z.B. durch die von der Astronomie ermittelten Parameter des schwarzen Loches im Zentrum unserer Milchstrassen-Galaxie unter der vereinfachenden Annahme einer homogenen Dichte innerhalb des Schwarzschild-Radius erfolgen:
-
-M_BH_Milkyway = 4.154 * 10^6 Sonnenmassen = 4.154 * 10^6 * 1.989 * 10^30 kg = **8.262 * 10^36 Kg**
-
-Für das Abfallen des extern beobachteten Zeitflusses des schwarzen Loches durch Zeitdilatation auf Null ergibt sich der Radius des schwarzen Loches aus der Beziehung:
-
-r_BH_Milkyway = 2GM/c^2 = 2 * 6.6743 * 10^-11 * 8.262 * 10^36 / (3 * 10^8)^2 m = **1.225 * 10^10 m**
-
-(Für stationäre Beobachter im Schwarzschild-Außenraum wird die Uhr nahe dem Horizont gegenüber einer Uhr in großer Entfernung zunehmend langsamer beschrieben. Daraus folgt nicht, dass die lokal gemessene Eigenzeit am Horizont verschwindet.)
-
-Das Volumen des schwarzen Loches ist demnach:
-
-V_BH_Milkyway = 4/3 * Pi * r_BH_Milkyway^3 = **7.700 * 10^30 m^3**
-
-Somit wäre die durchschnittliche Massedichte des schwarzen Loches:
-
-Dichte_BH_Milkyway = M_BH_Milkyway / V_BH_Milkyway = 8.262 * 10^36 / 7.700 * 10^30 kg/m^3 = **1.073 * 10^6 kg/m^3**
-
-Die maximale Anzahl für den Austausch von kleinsten Energie-/Aktionspotenzialen für die spezifische Größe des schwarzen Loches im Zentrum der Milchstraße ist demnach:
-
-N_max_1s = N_1kg_1s * Dichte_BH_Milkyway = 1.35827 * 10^50 * kg^-1 s^-1 * 1.073 * 10^6 kg/m^3 = **1.46 * 10^56 m^-3 s^-1**
-
-Beim Erreichen dieser Masse-/Energiedichte wird die gesamte Fähigkeit des Universums für das Existieren der Masse/Energie selbst, durch rekursives Integrieren von Zeitfluss in der Masse/Energie aufgebraucht und es kann kein freier Austausch von kleinsten Energie-/Aktionspotenzialen mit der Umgebung mehr erfolgen, wodurch die freie Abstrahlung sättigt und im wesentlichen auf Null sinkt, bis auf einige Sekundäreffekte am Rande des schwarzen Loches. Die Rotverschiebung eines vom Horizont ausgesandten Signals divergiert für ferne Beobachter. Die Eigenzeit des Objekts bleibt endlich. Für hypothetische Masse-/Energiedichten jenseits des genannten Limits kann keine Aussage über das Verhalten gemacht werden, außer dass das Universum nicht mehr in der Lage wäre, diese Masse/Energie in der linearen Zeit nach den Prinzipien von ART fortzubewegen.
-
-Die mittlere Dichte eines Schwarzschild-Lochs skaliert als $\rho \propto 1/M^2$. Das bedeutet: Je massereicher das Loch, desto geringer die „Sättigungsdichte" im Sinne des Modells. Somit ergibt sich für schwarze Löcher mit anderem Radius ein anderer Grenzwert, doch das Existieren eines Grenzwertes für die jeweilige Masse-/Energiedichte eines schwarzen Loches und damit für eine maximale Dichte des Zeitflusses ist eine für jede gegebene BH-Masse existierende Begrenzung des Universums.
+Die Standardformel $r_s=2GM/c^2$ und $\rho=3c^6/(32\pi G^3 M^2)$ werden nur als Rechenbeispiel zitiert. Aus ihnen folgt keine Sättigungsdichte des Zeitflusses und kein Versagen der linearen Zeit. Die Aussage, der Zeitfluss falle am Horizont auf null, wird nicht verwendet. P3 bleibt ein Modellpostulat ohne ART-Gegenstück und ohne Konsequenz für den Detektor. Die Zahlen $N_\mathrm{max}$ entfallen als physikalische Grenze.
 
 **Modulation, Informationsübertragung, Entropie**
 
@@ -550,9 +524,10 @@ Modellstand: Impuls, keine Messgröße.
 Primärgröße des Detektors bleibt Δt / Δφ nach Physik 1.
 E/h wird hier als postulierte Flussrate gelesen.
 
-**Kopplungshypothese - Experimentelle Brücke**
+**Kopplungshypothese**
 
-Kopplung an den Detektor: Damit das Modell mit dem Phasendetektor prüfbar wird, muss postuliert werden, wie eine lokale Änderung der Austauschrate R (P1) die elektromagnetische Laufzeit τ in der Cat-6a-Leitung modifiziert (z.B. über Δτ/τ = κ·ΔR/R0, κ - freier Parameter). Wenn $\Delta R/R_0 \sim 10^{-6}$–$10^{-7}$ (Kozyrev-Skala, vgl. Physik 6) und $\kappa \sim 1$, dann wäre $\Delta c/c \sim 10^{-7}$, was einer Laufzeitänderung von $\Delta\tau \sim 2\;\mu\text{s} \times 10^{-7} = 0{,}2\;\text{ps}$ entspräche – unterhalb der aktuellen Auflösung von 10–100 ps. Das Modell ist mit diesem Aufbau derzeit nicht falsifizierbar, nur Obergrenzen für κ·ΔR/R0 sind erreichbar (ca. 10⁻⁵ bis 10⁻⁴
+Operative Kopplung, nur differentiell: Eine räumlich gleichförmige Änderung von $R$ skaliert Takt und Leitung gemeinsam und ergibt in erster Ordnung $\Delta\tau=0$ (Physik 1). Sichtbar wäre höchstens eine Differenz zwischen elektromagnetischer Gruppenlaufzeit und Zählertakt, $\Delta\tau/\tau=\kappa_\mathrm{diff}\,\Delta R/R_0$, mit freiem $\kappa_\mathrm{diff}$. Eine allgemeine Rate von $10^{-6}$–$10^{-7}$ ist mit Uhrenmetrologie unvereinbar und wird nicht als Zielamplitude verwendet. Bei $\tau\approx 2\,\mu\mathrm{s}$ und 10–100 ps entspricht die erreichbare Schranke $|\kappa_\mathrm{diff}\,\Delta R/R_0|\lesssim 5\times 10^{-6}$–$5\times 10^{-5}$, und auch das nur nach Abzug der Umwelt. Ohne diesen Abzug ist jede Reihe dieser Größe der Leitung, der Versorgung und der Temperatur zuzuordnen.
+Vorläufiger Abschluss: Innerhalb der heutigen Empfindlichkeit macht das Modell keine eigene, von der Umgebung unterscheidbare Vorhersage. Ein Null begrenzt nur $\kappa_\mathrm{diff}$ und bestätigt die elektrische Stabilität. Ein Rest bestätigt P1–P4 nicht. Kandidatensignale gelten als Umgebung, bis sie eine Regression auf Temperatur, Versorgung, Mechanik und eine injizierte Laufzeit (Physik 2/3) überleben. Kein Umbau, keine Firmware-Signatur aus $E/h$ oder aus der Sgr-A*-Dichte.
 
 **Vorläufige physikalische Einordnung:** 
 
@@ -563,10 +538,6 @@ $E/h$ ist zunächst eine aus der Energie-Frequenz-Beziehung gebildete Modellgrö
 Eine Prüfung mit dem Phasendetektor setzt ein quantitatives Kopplungsmodell voraus, das die postulierte Größe in eine Änderung der elektrischen Laufzeit $\Delta\tau$ übersetzt. Für eine Laufzeit von etwa $2\,\mu\mathrm{s}$ entsprechen relative Änderungen von $10^{-6}$ bis $10^{-7}$ etwa $2$ bis $0{,}2$ ps. Das liegt unter der im Dokument genannten Auflösung von 10–100 ps. Eine Nullmessung mit der derzeit beschriebenen Empfindlichkeit kann diese konkrete Größenordnung daher nicht ausschließen.
 
 Falsifikationskriterium: Ein Restsignal oberhalb des Umweltuntergrunds mit Δτ > ~100 ps bei Korrelation zur Hypothese, sonst nur Obergrenze für κ.
-
-**Vorläufiges Ergebnis:** 
-
-Das Modell ist in seiner derzeitigen Form keine aus der etablierten Physik abgeleitete Erklärung und noch nicht hinreichend operationalisiert, um durch den Phasendetektor falsifiziert zu werden. Die Messung kann zunächst die elektrische Laufzeitstabilität und die Empfindlichkeit gegenüber kontrollierten Injektionen bestimmen. Beobachtete Signale sind anhand gleichzeitig gemessener Umwelt- und Gerätekanäle zu prüfen; ein nicht erklärtes Restsignal wäre für sich allein kein Nachweis des Modells.
 
 - **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
