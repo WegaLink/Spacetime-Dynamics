@@ -474,7 +474,7 @@ Das auf einen Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitfl
 
 **Qualitativer Anschluss an die ART (Bild)**
 
-Ein Abgleich des beschriebenen ZEIT-Modells mit der Allgemeinen Relativitätstheorie (ART) postuliert, dass sich der Zeitfluss und damit die Anzahl der mit dem Zeitflussfeld ausgetauschten kleinsten Energie-/Aktionspotenzialen in Abhängigkeit von der Masse-/Energiedichte proportional verringert. Dies kann so interpretiert werden, dass eine mit der Masse-/Energiedichte proportional ansteigende Anzahl von kleinsten Energie-/Aktionspotenzialen rekursiv in die Masse/Energie gebunden (postuliert, Mechanismus nicht spezifiziert) wird und somit nicht mehr für den freien Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitflussfeld zur Verfügung steht. Das Modell reproduziert qualitativ die Zeitdilatation der ART, bietet aber einen anderen Mechanismus an.
+Ein Abgleich des beschriebenen ZEIT-Modells mit der Allgemeinen Relativitätstheorie (ART) postuliert, dass sich der Zeitfluss und damit die Anzahl der mit dem Zeitflussfeld ausgetauschten kleinsten Energie-/Aktionspotenziale in Abhängigkeit von der Masse-/Energiedichte proportional verringert. Dies kann so interpretiert werden, dass eine mit der Masse-/Energiedichte proportional ansteigende Anzahl von kleinsten Energie-/Aktionspotenzialen rekursiv in die Masse/Energie gebunden (postuliert, Mechanismus nicht spezifiziert) wird und somit nicht mehr für den freien Austausch von kleinsten Energie-/Aktionspotenzialen mit dem Zeitflussfeld zur Verfügung steht. Das Modell reproduziert qualitativ die Zeitdilatation der ART, bietet aber einen anderen Mechanismus an.
 
 Die Umgebung eines Teilchens spürt diese verringerte Austauschrate von kleinsten Energie-/Aktionspotenzialen durch ein proportional zum Reziprokwert der Entfernung abfallendes Gravitationspotenzial ähnlich einem −GM/r-Verlauf (G: Gravitationskonstante, M: Masse, r: Abstand). Von Gravitationswellen ist weiterhin bekannt, dass sich dynamische Änderungen des Gravitationspotenzials und damit Zeitflussänderungen mit Lichtgeschwindigkeit im Universum ausbreiten.
 
@@ -531,7 +531,7 @@ R(1 kg)   = mc²/h              ≈ 1,35827 × 10^50  [s⁻¹]       (Rate für 
 
 R(ρ,1 s)  = ρc²/h              ≈ 1,35827 × 10^50·ρ [kg m⁻³ s⁻¹] (Rate pro Volumen, ausgedrückt in Massendichte)
 
-R_max     = ρ_BH · c²/h        ≈ 1,46 × 10^56    [kg m⁻³ s⁻¹] (pro Volumen, unter Benutzung der BH-Mitteldichte)
+R_max_BH_Sgr_A* = ρ_BH · c²/h  ≈ 1,46 × 10^56    [kg m⁻³ s⁻¹] (pro Volumen, unter Benutzung der BH-Mitteldichte von Sgr A*)
 
 **Postulate**
 
