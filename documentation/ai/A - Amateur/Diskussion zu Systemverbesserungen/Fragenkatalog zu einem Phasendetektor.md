@@ -478,7 +478,7 @@ P2 ist ein zusätzliches Postulat, keine Folge der ART: Die freie Rate soll mit 
 
 **Obergrenze und Schwarzes Loch**
 
-Die Standardformel $r_s=2GM/c^2$ und $\rho=3c^6/(32\pi G^3 M^2)$ werden nur als Rechenbeispiel zitiert. Aus ihnen folgt keine Sättigungsdichte des Zeitflusses und kein Versagen der linearen Zeit. Die Aussage, der Zeitfluss falle am Horizont auf null, wird nicht verwendet. P3 bleibt ein Modellpostulat ohne ART-Gegenstück und ohne Konsequenz für den Detektor. Die Zahlen $N_\mathrm{max}$ entfallen als physikalische Grenze.
+Die Standardformel $r_s=2GM/c^2$ und $\rho=3c^6/(32\pi G^3 M^2)$ werden nur als Rechenbeispiel zitiert. Aus ihnen folgt keine Sättigungsdichte des Zeitflusses und kein Versagen der linearen Zeit. Die Koordinatenzeit $t$ divergiert am Ereignishorizont für einen ruhenden Beobachter im Unendlichen, während die Eigenzeit eines frei fallenden Beobachters endlich bleibt. Das Modell verwendet $R$ als lokale, differentielle Rate im Sinne der Eigenzeit; eine Sättigung oder ein Nullwerden von $R$ am Horizont ist nicht Teil des Postulats und physikalisch nicht begründbar. P3 bleibt ein Modellpostulat ohne ART-Gegenstück und ohne Konsequenz für den Detektor. Die Zahlen $N_\mathrm{max}$ entfallen als physikalische Grenze.
 
 **Modulation, Informationsübertragung, Entropie**
 
@@ -489,6 +489,8 @@ Für Massen/Energien weit unterhalb dieser Grenze wird Energie/Information mit L
 Die Zeitflussdichte R0 (postuliert) ist nach allen bisherigen Beobachtungen dabei sehr konstant, weil sonst die extremen Anforderungen z.B. von Navigationssystemen an die Präzision von Uhren nicht erfüllt wären. Uhrenvergleiche zeigen für die jeweils untersuchten Uhren und Messbedingungen relative Frequenzstabilitäten bzw. -vergleiche bis in den Bereich $10^{-18}$. Das begrenzt Modelle, die eine entsprechende Änderung der gemessenen Uhrenrate vorhersagen; es ist keine modellunabhängige Schranke für eine separat definierte Größe $R$. Das ist weit strenger als die Kozyrev-Skala von 10⁻⁶ bis 10⁻⁷ und stellt ein starkes Gegenargument für eine allgemeine Zeitflussmodulation dieser Größe dar. In der Konsequenz ist eine Übertragung von Energie/Information durch diese extrem gleichförmige Zeitflussdichte nur sehr gering denkbar.
 
 Der Zeitfluss kann jedoch trotz der extremen durchschnittlichen Stabilität moduliert sein und dadurch Struktur bekommen. Wenn diese Modulation/Struktur sich mit Lichtgeschwindigkeit ausbreitet, dann kann dies beim Durchströmen von Masse/Energie mit Resonanz für diese Struktur oder bei Kohärenz zu Kraftwirkungen auf die Masse/Energie kommen. Diese Art der Energie-/Informationsübertragung muss deutlich von der Energie-/Informationsübertragung durch Photonen unterschieden werden, denn der Energie-/Informationsstrom im Zeitflussfeld durchdringt alle Materie ohne signifikante Wechselwirkung, bis eine Anregung in einer für die übertragene Modulation/Struktur resonante Masse/Energie erfolgt oder bis sich in einem System eine Kohärenz aufbaut.
+
+Eine Kopplung an die Phasenlaufzeit $\tau$ der Leitung erfolgt nur über die Änderung der Ausbreitungsgeschwindigkeit im Medium, $\Delta\tau/\tau = -\Delta n/n + \Delta L/L$, wobei $n$ der Brechungsindex ist. Eine skalare Raumzeit-Störung würde $\Delta L/L = \kappa_{\text{diff}} \Delta R/R_0$ induzieren. Resonanz tritt auf, wenn die Frequenz der Störung mit einer mechanischen oder elektromagnetischen Eigenmode der Spule übereinstimmt; ansonsten ist die Kopplung differentiell unterdrückt.
 
 Als Bild: Im Kontext von Entropie ausgedrückt, besitzt ein unmodulierter Zeitfluss im Sinne einer Analogie (nicht als thermodynamische Aussage) höchste Entropie, ähnlich zu weißem Rauschen. Jede Modulation/Struktur des Zeitflusses kann als Reduktion der Entropie gegenüber dem unmodulierten Zeitfluss angesehen werden. (nur Bild, keine Messvorhersage)
 
@@ -539,7 +541,9 @@ P1 ist als Zählprozess-Deutung von E = hν beobachtbar nicht von der Standardqu
 
 **Experimentelle Prüfbarkeit:** 
 
-Eine Prüfung mit dem Phasendetektor setzt ein quantitatives Kopplungsmodell voraus, das die postulierte Größe in eine Änderung der elektrischen Laufzeit $\Delta\tau$ übersetzt. Für eine Laufzeit von etwa $2\,\mu\mathrm{s}$ entsprechen relative Änderungen von $10^{-6}$ bis $10^{-7}$ etwa $2$ bis $0{,}2$ ps. Das liegt unter der im Dokument genannten Auflösung von 10–100 ps. Eine Nullmessung mit der derzeit beschriebenen Empfindlichkeit kann diese konkrete Größenordnung daher nicht ausschließen.
+Eine Prüfung mit dem Phasendetektor setzt voraus, dass das Modell eine differentielle Verletzung des Äquivalenzprinzips vorhersagt (Parameter $\kappa_{\text{diff}}$), die sich als Laufzeitdifferenz zwischen elektromagnetischer Signalausbreitung und mechanischer/elektronischer Taktgebung äußert. Für die Cat-6a-Strecke ($\tau \approx 2\,\mu\text{s}$, Auflösung 10–100 ps) ergibt sich eine Nachweisgrenze von $|\kappa_{\text{diff}} \cdot \Delta R/R_0| \lesssim 5 \times 10^{-6}$ bis $5 \times 10^{-5}$.
+
+Falsifikationskriterium: Ein Signal in diesem Fenster wird als Umgebungseffekt klassifiziert (Temperatur, Versorgungsspannung, mechanische Vibration), wenn es nicht mit einer injizierten künstlichen Laufzeitänderung kalibriert werden kann oder wenn es nicht die für eine propagierende Störung erwartete Korrelationslänge (Vergleich zweier getrennter Detektoren) zeigt. Ein positives Signal ohne diese Kontrollen ist kein Nachweis des Modells. Ein Nullresultat bei dieser Empfindlichkeit grenzt $\kappa_{\text{diff}}$ auf Werte ein, die bereits durch Eötvös-Experimente (MICROSCOPE) und atomare Uhrenvergleiche ausgeschlossen sind, sofern das Modell keine zusätzliche Abschirmung postuliert.
 
 **Falsifikationskriterium:**
  
