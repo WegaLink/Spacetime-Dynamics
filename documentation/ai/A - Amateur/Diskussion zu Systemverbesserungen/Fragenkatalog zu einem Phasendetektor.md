@@ -507,16 +507,13 @@ R(1 kg)   = mc²/h              ≈ 1,35827 × 10^50  [s⁻¹]       (Rate für 
 
 R(ρ,1 s)  = ρc²/h              ≈ 1,35827 × 10^50·ρ [m⁻³ s⁻¹] (Rate pro Volumen, ausgedrückt in Massendichte)
 
-R_max_BH_Sgr_A* = ρ_BH · c²/h  ≈ 1,46 × 10^56    [m⁻³ s⁻¹] (pro Volumen, unter Benutzung der BH-Mitteldichte von Sgr A*)
-
 **Postulate**
 
 P1: Zeitflussrate entspricht postulierter Austauschrate E/h. Zeitintervall = gezählte Austausche / Rate.
 
 P2: Die Austauschrate hängt vom Potential Φ/c² ab
 
-P3: Für jede BH-Masse existiert eine postulierte Sättigungsdichte. Beispiel Sgr A*
-(P3 postuliert, dass die in P1 definierte Rate räumlich lokalisiert wird: N_max_1s beschreibt die maximale Anzahl von Austauschvorgängen pro Volumenelement und Zeit, bei der die rekursive Bindung an die Massendichte sättigt.)
+P3 (gestrichen / physikalisch unbegründet): Die mittlere Dichte eines Schwarzen Lochs $\rho_\mathrm{BH} \propto 1/M^2$ ist ein rein geometrisches Skalenmaß des Ereignishorizonts und keine universelle Dichteobergrenze. Da bereits Standardmaterie im Labor (Kupferleiter, Dielektrikum) eine um Größenordnungen höhere Massendichte aufweist als $\rho_\mathrm{BH}(\text{Sgr A*})$, kann daraus keine physikalische Sättigungsschranke $R_{\max}$ für Raumzeit-Austauschraten abgeleitet werden. P3 wird als unvereinbar mit der Geometrie der Raumzeit verworfen und entfällt für die experimentelle Auswertung.
 
 P4: Modulationen breiten sich mit c aus und koppeln resonant oder durch Kohärenz, siehe Physik 4 – dort anderes Thema (P4 betrifft hier nur die postulierte Zeitfluss-Modulation, nicht die in Intuition 11 gefragte Verschränkung.) 
 
@@ -537,7 +534,13 @@ $E/h$ ist zunächst eine aus der Energie-Frequenz-Beziehung gebildete Modellgrö
 
 Eine Prüfung mit dem Phasendetektor setzt ein quantitatives Kopplungsmodell voraus, das die postulierte Größe in eine Änderung der elektrischen Laufzeit $\Delta\tau$ übersetzt. Für eine Laufzeit von etwa $2\,\mu\mathrm{s}$ entsprechen relative Änderungen von $10^{-6}$ bis $10^{-7}$ etwa $2$ bis $0{,}2$ ps. Das liegt unter der im Dokument genannten Auflösung von 10–100 ps. Eine Nullmessung mit der derzeit beschriebenen Empfindlichkeit kann diese konkrete Größenordnung daher nicht ausschließen.
 
-Falsifikationskriterium: Ein Restsignal oberhalb des Umweltuntergrunds mit Δτ > ~100 ps bei Korrelation zur Hypothese, sonst nur Obergrenze für κ.
+**Falsifikationskriterium:**
+ 
+1. Da die apparative Nachweisgrenze des aktuellen Aufbaus ($\Delta\tau \approx 10\text{--}100\,\mathrm{ps}$ bei $\tau \approx 2\,\mu\mathrm{s}$) einer relativen Empfindlichkeit von bestenfalls $\Delta\tau/\tau \approx 5\times 10^{-6}$ bis $5\times 10^{-5}$ ($5\text{--}50\,\mathrm{ppm}$) entspricht, liegt die postulierte Kozyrev-Skala ($1\text{--}10\,\mathrm{ppm} \Leftrightarrow 2\text{--}20\,\mathrm{ps}$) unterhalb des instrumentellen Signal-Rausch-Verhältnisses.
+
+2. Jedes gemessene Restsignal mit $\Delta\tau \ge 100\,\mathrm{ps}$ gilt methodisch als Umwelt- oder Instrumentalartefakt (Temperaturkoeffizient des Kabels $\approx 20\text{--}100\,\mathrm{ps/K}$, Versorgungsdrift), bis es durch eine vollständige Regression der Störkanäle (Physik 2) und eine bekannte Laufzeitinjektion (Physik 3) zweifelsfrei widerlegt werden kann.
+
+3. Übersteht ein Signal diese Umweltbereinigung nicht, ist das Modell P1–P4 für den Phasendetektor falsifiziert bzw. operativ bedeutungslos, da keine vom Umweltuntergrund trennbare physikalische Messgröße existiert.
 
 - **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
