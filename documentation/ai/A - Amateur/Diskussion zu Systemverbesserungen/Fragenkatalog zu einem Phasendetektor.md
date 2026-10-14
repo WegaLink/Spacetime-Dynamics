@@ -464,7 +464,7 @@ Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änder
 
 Für ein Kilogramm Masse ergibt sich eine äquivalente Energiemenge aus der Einsteinschen Formel:
 
-E = m c^2 = 1 kg * (3 * 10^8 m/s)^2 = 9 * 10^16 J. 
+E = m c^2 = 1 kg * (3 * 10^8 m/s)^2 = 9 * 10^16 J. (ungefähre Größenordnung)
 
 Die Anzahl an kleinsten Energie-/Aktionspotenzialen für das Fortbewegen dieser Masse in der Zeit um eine Sekunde ist demnach:
 
@@ -486,11 +486,11 @@ Für Massen/Energien weit unterhalb dieser Grenze wird Energie/Information mit L
 
 Ähnlich wie Photonen Energie/Information im elektromagnetischen Feld übertragen, kann Energie/Information auch im Zeitflussfeld übertragen werden. Jedes Elementarteilchen ist bereits Energie/Information, welche sich im Raum und damit im Zeitflussfeld des Raumes bewegen kann, indem sich der durch das Teilchen verursachte Symmetriebruch beim Absorbieren/Emittieren von Raumenergie im Raum/Zeitflussfeld bewegt.
 
-Die Zeitflussdichte N_max_1s ist nach allen bisherigen Beobachtungen dabei sehr konstant, weil sonst die extremen Anforderungen z.B. von Navigationssystemen an die Präzision von Uhren nicht erfüllt wären. Moderne Atomuhren und GPS-Vergleiche begrenzen Variationen der Uhrenrate auf 10⁻¹⁶ bis 10⁻¹⁸ über Tage. Das ist weit strenger als die Kozyrev-Skala von 10⁻⁶ bis 10⁻⁷ und stellt ein starkes Gegenargument für eine allgemeine Zeitflussmodulation dieser Größe dar. In der Konsequenz ist eine Übertragung von Energie/Information durch diese extrem gleichförmige Zeitflussdichte nur sehr gering denkbar.
+Die Zeitflussdichte R0 (postuliert) ist nach allen bisherigen Beobachtungen dabei sehr konstant, weil sonst die extremen Anforderungen z.B. von Navigationssystemen an die Präzision von Uhren nicht erfüllt wären. Moderne Atomuhren und GPS-Vergleiche begrenzen Variationen der Uhrenrate auf 10⁻¹⁶ bis 10⁻¹⁸ über Tage. Das ist weit strenger als die Kozyrev-Skala von 10⁻⁶ bis 10⁻⁷ und stellt ein starkes Gegenargument für eine allgemeine Zeitflussmodulation dieser Größe dar. In der Konsequenz ist eine Übertragung von Energie/Information durch diese extrem gleichförmige Zeitflussdichte nur sehr gering denkbar.
 
 Der Zeitfluss kann jedoch trotz der extremen durchschnittlichen Stabilität moduliert sein und dadurch Struktur bekommen. Wenn diese Modulation/Struktur sich mit Lichtgeschwindigkeit ausbreitet, dann kann dies beim Durchströmen von Masse/Energie mit Resonanz für diese Struktur oder bei Kohärenz zu Kraftwirkungen auf die Masse/Energie kommen. Diese Art der Energie-/Informationsübertragung muss deutlich von der Energie-/Informationsübertragung durch Photonen unterschieden werden, denn der Energie-/Informationsstrom im Zeitflussfeld durchdringt alle Materie ohne signifikante Wechselwirkung, bis eine Anregung in einer für die übertragene Modulation/Struktur resonante Masse/Energie erfolgt oder bis sich in einem System eine Kohärenz aufbaut.
 
-Als Bild: Im Kontext von Entropie ausgedrückt, besitzt ein unmodulierter Zeitfluss im Sinne einer Analogie (nicht als thermodynamische Aussage) höchste Entropie, ähnlich zu weißem Rauschen. Jede Modulation/Struktur des Zeitflusses kann als Reduktion der Entropie gegenüber dem unmodulierten Zeitfluss angesehen werden.
+Als Bild: Im Kontext von Entropie ausgedrückt, besitzt ein unmodulierter Zeitfluss im Sinne einer Analogie (nicht als thermodynamische Aussage) höchste Entropie, ähnlich zu weißem Rauschen. Jede Modulation/Struktur des Zeitflusses kann als Reduktion der Entropie gegenüber dem unmodulierten Zeitfluss angesehen werden. (nur Bild, keine Messvorhersage)
 
 1. unmodulierter Fluss = hohe Entropie,
 2. Modulation = spektrale Struktur,
@@ -505,7 +505,7 @@ R(E)      = E/h                ≈ 1,50919 × 10^33·E [s⁻¹]       (Rate für
 
 R(1 kg)   = mc²/h              ≈ 1,35827 × 10^50  [s⁻¹]       (Rate für 1 kg Masse)
 
-R(ρ,1 s)  = ρc²/h              ≈ 1,35827 × 10^50·ρ [m⁻³ s⁻¹] (Rate pro Volumen, ausgedrückt in Massendichte)
+R(ρ,1 s)  = ρc²/h              ≈ 1,35827 × 10^50·ρ [m⁻³ s⁻¹] (Rate pro Volumen, ausgedrückt in Massendichte, reine Umrechnung, keine ART-Dichteabhängigkeit)
 
 **Postulate**
 
@@ -520,6 +520,7 @@ P4: Modulationen breiten sich mit c aus und koppeln resonant oder durch Kohären
 Modellstand: Impuls, keine Messgröße. 
 Primärgröße des Detektors bleibt Δt / Δφ nach Physik 1.
 E/h wird hier als postulierte Flussrate gelesen.
+Modellpostulate ohne ART-Ableitung, κ_diff frei.
 
 **Kopplungshypothese**
 
@@ -545,7 +546,7 @@ Eine Prüfung mit dem Phasendetektor setzt ein quantitatives Kopplungsmodell vor
 - **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** Offen: Überführung von postulierter Rate R in messbares δτ der Cat-6a-Strecke (~2 µs) bei Auflösung 10-100 ps, siehe Physik 1-3.
-- **Status:** in Bearbeitung
+- **Status:** Impuls dokumentiert
 ### Intuition 11
 - **Datum:** 2026-09-02
 - **Frage:** **Der Mechanismus der Nicht-Lokalität (Verschränkung vs. Raumzeit)** 
