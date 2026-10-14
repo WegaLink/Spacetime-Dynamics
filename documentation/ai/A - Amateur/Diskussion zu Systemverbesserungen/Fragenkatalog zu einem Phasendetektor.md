@@ -515,7 +515,7 @@ P2: Die Austauschrate hängt vom Potential Φ/c² ab
 
 P3 (gestrichen / physikalisch unbegründet): Die mittlere Dichte eines Schwarzen Lochs $\rho_\mathrm{BH} \propto 1/M^2$ ist ein rein geometrisches Skalenmaß des Ereignishorizonts und keine universelle Dichteobergrenze. Da bereits Standardmaterie im Labor (Kupferleiter, Dielektrikum) eine um Größenordnungen höhere Massendichte aufweist als $\rho_\mathrm{BH}(\text{Sgr A*})$, kann daraus keine physikalische Sättigungsschranke $R_{\max}$ für Raumzeit-Austauschraten abgeleitet werden. P3 wird als unvereinbar mit der Geometrie der Raumzeit verworfen und entfällt für die experimentelle Auswertung.
 
-P4: Modulationen breiten sich mit c aus und koppeln resonant oder durch Kohärenz, siehe Physik 4 – dort anderes Thema (P4 betrifft hier nur die postulierte Zeitfluss-Modulation, nicht die in Intuition 11 gefragte Verschränkung.) 
+P4: Modulationen breiten sich konsistent mit der gemessenen Geschwindigkeitsgleichheit von GW- und Lichtausbreitung aus und koppeln resonant oder durch Kohärenz, siehe Physik 4 – dort anderes Thema (P4 betrifft hier nur die postulierte Zeitfluss-Modulation, nicht die in Intuition 11 gefragte Verschränkung.) 
 
 Modellstand: Impuls, keine Messgröße. 
 Primärgröße des Detektors bleibt Δt / Δφ nach Physik 1.
@@ -527,9 +527,15 @@ Modellpostulate ohne ART-Ableitung, κ_diff frei.
 Operative Kopplung, nur differentiell: Eine räumlich gleichförmige Änderung von $R$ skaliert Takt und Leitung gemeinsam und ergibt in erster Ordnung $\Delta\tau=0$ (Physik 1). Sichtbar wäre höchstens eine Differenz zwischen elektromagnetischer Gruppenlaufzeit und Zählertakt, $\Delta\tau/\tau=\kappa_\mathrm{diff}\,\Delta R/R_0$, mit freiem $\kappa_\mathrm{diff}$. Eine allgemeine Rate von $10^{-6}$–$10^{-7}$ ist mit Uhrenmetrologie unvereinbar und wird nicht als Zielamplitude verwendet. Bei $\tau\approx 2\,\mu\mathrm{s}$ und 10–100 ps entspricht die erreichbare Schranke $|\kappa_\mathrm{diff}\,\Delta R/R_0|\lesssim 5\times 10^{-6}$–$5\times 10^{-5}$, und auch das nur nach Abzug der Umwelt. Ohne diesen Abzug ist jede Reihe dieser Größe der Leitung, der Versorgung und der Temperatur zuzuordnen.
 Vorläufiger Abschluss: Innerhalb der heutigen Empfindlichkeit macht das Modell keine eigene, von der Umgebung unterscheidbare Vorhersage. Ein Null begrenzt nur $\kappa_\mathrm{diff}$ und bestätigt die elektrische Stabilität. Ein Rest bestätigt P1–P4 nicht. Kandidatensignale gelten als Umgebung, bis sie eine Regression auf Temperatur, Versorgung, Mechanik und eine injizierte Laufzeit (Physik 2/3) überleben. Kein Umbau, keine Firmware-Signatur aus $E/h$ oder aus der Sgr-A*-Dichte.
 
+**Externe Schranken an κ_diff:**
+ 
+ Der differentielle Kopplungsfaktor κ_diff ist nicht nur durch diesen Detektor beschränkbar. Kompositionsabhängige Differentialkopplungen sind durch Eötvös-Tests (MICROSCOPE: η < 10⁻¹⁵) und Langreichweiten-Fünfte-Kraft-Suchen ausgeschlossen, soweit sie das hier postulierte Ausmaß erreichen. Ein Modell, das κ_diff in einer Größenordnung belässt, die der Detektor sehen könnte (≥ 10⁻⁶), kollidiert damit bereits mit unabhängigen Messungen. Eine Empfindlichkeitsschranke aus dem Phasendetektor wäre daher nur für κ_diff < 10⁻⁵–10⁻⁶ informativ und auch dort gegenüber bestehenden Schranken abzuwägen. Dies ist Teil der Falsifikationsbewertung, nicht der Messplanung.
+
 **Vorläufige physikalische Einordnung:** 
 
 $E/h$ ist zunächst eine aus der Energie-Frequenz-Beziehung gebildete Modellgröße. Die Interpretation als reale Austauschrate mit einem Zeitflussfeld und die postulierte Abhängigkeit dieser Rate von der Massendichte folgen weder aus $E=h\nu$ noch aus der Schwarzschild-Geometrie der ART. Insbesondere ergibt sich aus der Schwarzschild-Rechnung keine physikalische Sättigungsdichte des Zeitflusses. Die Aussage, der Zeitfluss beziehungsweise die Eigenzeit falle am Horizont auf Null, ist ohne Angabe des Beobachters irreführend und wird hier nicht als ART-Ergebnis übernommen.
+
+P1 ist als Zählprozess-Deutung von E = hν beobachtbar nicht von der Standardquantenmechanik unterscheidbar und damit einzeln nicht falsifizierbar. Falsifizierbar innerhalb dieses Dokuments sind nur die differentialen Konsequenzen P2/P4 über den Parameter κ_diff und deren externe Schranken (siehe oben). Das Falsifikationskriterium 1 ist entsprechend zu lesen: Es prüft das Modell als Ganzes über κ_diff, nicht die Postulate einzeln.
 
 **Experimentelle Prüfbarkeit:** 
 
