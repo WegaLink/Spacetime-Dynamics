@@ -458,7 +458,7 @@ Setzung: Die in E = hν enthaltene Frequenz ν wird hier nicht als Schwingung, s
 
 In einer flachen Raumzeit wird jeder Punkt des Raumes von einer relativ konstanten Anzahl von kleinsten Energie-/Aktionspotenzialen der Raumenergie durchströmt. Die Anzahl der kleinsten Energie-/Aktionspotenziale, welche jeden Punkt des Raumes für eine Energiemenge von 1 Joule in einer Sekunde durchströmen, ergibt sich als Reziprokwert des Planckschen Wirkungsquantums: 
 
-N_pot = 1 / h = 1 / (6,62607015 * 10^-34 J s) = 1,50919 * 10^33 J^-1 s^-1. 
+N_pot = 1 / h = 1 / (6,62607015 * 10^-34 J s) = 1,50919 * 10^33 J^-1 s^-1. (dimensionsbehafteter Umrechnungsfaktor, keine eigenständige physikalische Größe)
 
 Die Anzahl N_pot kann kausal als ein Potenzial verstanden werden, welches Änderungen/Bewegung für eine Energiemenge von 1 Joule beim Voranschreiten in der Zeit um eine Sekunde erzeugt. Als Formel E/h (Modellpostulat) ergibt sich die Maßeinheit einer Frequenz s^-1. Die Lesart ist jedoch nicht die einer harmonischen Schwingung sondern von ausgetauschten kleinsten Wirkungen. Die daraus abgeleitete dimensionslose Größe entspricht der Anzahl der Schwingungen in einer Sekunde. Somit steht eine einzelne Schwingung mit dem kleinsten Energie-/Aktionspotenzial in direkter Beziehung. Die Größe E/h ist als Compton-Frequenz bekannt; die hier verwendete Lesart als Austauschrate kleinster Wirkungen ist eine Umdeutung, keine neue Messgröße.
 
@@ -507,7 +507,7 @@ R(E)      = E/h                ≈ 1,50919 × 10^33·E [s⁻¹]       (Rate für
 
 R(1 kg)   = mc²/h              ≈ 1,35827 × 10^50  [s⁻¹]       (Rate für 1 kg Masse)
 
-R(ρ,1 s)  = ρc²/h              ≈ 1,35827 × 10^50·ρ [m⁻³ s⁻¹] (Rate pro Volumen, ausgedrückt in Massendichte, reine Umrechnung, keine ART-Dichteabhängigkeit)
+R(ρ,1 s)  = ρc²/h              ≈ 1,35827 × 10^50·ρ [m⁻³ s⁻¹] (Rate pro Volumen, ausgedrückt in Massendichte, reine Umrechnung, keine ART-Dichteabhängigkeit, reine Umrechnung ohne Berücksichtigung von P2; bei Anwendung von P2 tritt eine zusätzliche Potentialabhängigkeit hinzu, die hier nicht mitgeführt wird.)
 
 **Postulate**
 
@@ -531,13 +531,15 @@ Vorläufiger Abschluss: Innerhalb der heutigen Empfindlichkeit macht das Modell 
 
 **Externe Schranken an κ_diff:**
  
- Der differentielle Kopplungsfaktor κ_diff ist nicht nur durch diesen Detektor beschränkbar. Kompositionsabhängige Differentialkopplungen sind durch Eötvös-Tests (MICROSCOPE: η < 10⁻¹⁵) und Langreichweiten-Fünfte-Kraft-Suchen ausgeschlossen, soweit sie das hier postulierte Ausmaß erreichen. Ein Modell, das κ_diff in einer Größenordnung belässt, die der Detektor sehen könnte (≥ 10⁻⁶), kollidiert damit bereits mit unabhängigen Messungen. Eine Empfindlichkeitsschranke aus dem Phasendetektor wäre daher nur für κ_diff < 10⁻⁵–10⁻⁶ informativ und auch dort gegenüber bestehenden Schranken abzuwägen. Dies ist Teil der Falsifikationsbewertung, nicht der Messplanung. $\kappa_{\text{diff}}$ ist als kompositionsunabhängige differentielle Kopplung definiert; MICROSCOPE/Eötvös limitieren nur kompositionsabhängige Anteile und sind daher nicht direkt auf $\kappa_{\text{diff}}$ anwendbar.
-
+Da κ_diff als kompositionsunabhängige, aber mechanismusabhängige differentielle Kopplung (elektromagnetische Ausbreitung vs. elektronische Taktzählung) definiert ist, sind Eötvös-Tests und MICROSCOPE (η < 10⁻¹⁵) nicht direkt anwendbar. Diese Experimente schließen kompositionsabhängige Differentialkopplungen aus, nicht mechanismusabhängige. Die einzige derzeit verfügbare Schranke für κ_diff ergibt sich aus der Stabilität der hier verwendeten Messkette selbst sowie aus vergleichbaren Laufzeitmessungen in der Zeit- und Frequenzmetrologie (z. B. Zweiwege-Satellitenzeittransfer, bei dem ebenfalls EM-Laufzeit gegen lokale Uhren verglichen wird). Eine systematische Auswertung dieser Daten steht aus.
+ 
 **Vorläufige physikalische Einordnung:** 
 
 $E/h$ ist zunächst eine aus der Energie-Frequenz-Beziehung gebildete Modellgröße. Die Interpretation als reale Austauschrate mit einem Zeitflussfeld und die postulierte Abhängigkeit dieser Rate von der Massendichte folgen weder aus $E=h\nu$ noch aus der Schwarzschild-Geometrie der ART. Insbesondere ergibt sich aus der Schwarzschild-Rechnung keine physikalische Sättigungsdichte des Zeitflusses. Die Aussage, der Zeitfluss beziehungsweise die Eigenzeit falle am Horizont auf Null, ist ohne Angabe des Beobachters irreführend und wird hier nicht als ART-Ergebnis übernommen.
 
-P1 ist als Zählprozess-Deutung von E = hν beobachtbar nicht von der Standardquantenmechanik unterscheidbar und damit einzeln nicht falsifizierbar. Falsifizierbar innerhalb dieses Dokuments sind nur die differentialen Konsequenzen P2/P4 über den Parameter κ_diff und deren externe Schranken (siehe oben). Das Falsifikationskriterium 1 ist entsprechend zu lesen: Es prüft das Modell als Ganzes über κ_diff, nicht die Postulate einzeln.
+P1 ( Interpretationspostulat, keine eigenständige Vorhersage): Die Energie-Frequenz-Beziehung E = hν wird als Zählprozess gedeutet: Zeitintervall = gezählte Austausche / Rate. Diese Deutung ist beobachtbar nicht von der Standardquantenmechanik unterscheidbar und erzeugt keine eigene Messvorhersage. Sie dient als motivierendes Bild für die Postulate P2 und P4, ist aber nicht unabhängig prüfbar.
+
+Was durch den Detektor einschränkbar ist: Nur die Kombination κ_diff · ΔR/R₀. Ein Nullresultat schränkt diese Kombination ein, nicht P1 als Interpretation.
 
 **Experimentelle Prüfbarkeit:** 
 
@@ -547,11 +549,11 @@ Falsifikationskriterium: Ein Signal in diesem Fenster wird als Umgebungseffekt k
 
 **Falsifikationskriterium:**
  
-1. Mit der derzeit beschriebenen Empfindlichkeit kann der Aufbau keine eigenständige Kopplung von $R$ nachweisen, solange das Modell keine quantitative Mindestamplitude und keine von den Störkanälen unterscheidbare Signatur vorhersagt. Ein Nullresultat begrenzt nur die Kombination $\kappa_{\mathrm{diff}}\Delta R/R_0$ unter den angegebenen Messbedingungen. Bleibt ein Signal nach Umweltregression und Injektionstests nicht von Temperatur-, Versorgungs-, Mechanik- oder Elektronikbeiträgen unterscheidbar, ist es mit diesem Aufbau kein Nachweis des Modells. Das falsifiziert nicht automatisch alle Postulate, sondern zeigt ihre fehlende Prüfbarkeit beziehungsweise fehlende Identifizierbarkeit in dieser Messkonfiguration.
+1. Das Modell P1–P4 liefert derzeit keine quantitative Mindestamplitude und keine von Störkanälen unterscheidbare Signatur. Es ist daher im strengen Sinn nicht falsifizierbar, solange keine solche Vorhersage nachgeliefert wird. Ein Nullresultat begrenzt die Kombination κ_diff · ΔR/R₀ unter den gegebenen Messbedingungen, widerlegt aber nicht die Postulate selbst.
 
-2. Ein Signal der Größenordnung 100 ps liegt innerhalb des Bereichs, in dem bekannte Umwelt- und Instrumentaleffekte relevant sein können. Es wird erst dann als Kandidat für einen zusätzlichen Effekt behandelt, wenn die gemessenen Störkanäle, Kalibrierungen und Injektionstests diese Erklärung quantitativ nicht tragen.
+2. Ein Signal der Größenordnung 10–100 ps liegt innerhalb des Bereichs bekannter Umwelt- und Instrumentaleffekte. Es wird erst dann als Kandidat für einen zusätzlichen Effekt behandelt, wenn die gemessenen Störkanäle, Kalibrierungen und Injektionstests diese Erklärung quantitativ nicht tragen.
 
-3. Übersteht ein Signal diese Umweltbereinigung nicht, ist das Modell P1–P4 für den Phasendetektor falsifiziert bzw. operativ bedeutungslos, da keine vom Umweltuntergrund trennbare physikalische Messgröße existiert.
+3. Übersteht ein Signal die Umweltbereinigung nicht, ist das Modell für diesen Detektor operativ bedeutungslos: Es existiert keine vom Umweltuntergrund trennbare physikalische Messgröße. Das ist keine Falsifikation der Postulate P1–P4 als metaphysisches Rahmenwerk, sondern eine Falsifikation ihrer prüfbaren Konsequenz in dieser Messkonfiguration.
 
 **Bewusste Modellpostulate**
 
@@ -562,6 +564,20 @@ Falsifikationskriterium: Ein Signal in diesem Fenster wird als Umgebungseffekt k
 3. Resonanz-/Kohärenz-Kopplung — Zusatzannahme ohne etablierte Entsprechung.
 
 4. Modulationsbild — Bild, nicht Observable.
+
+**Vorläufiger Abschluss (revidiert):**
+
+Das Modell P1–P4 ist ein Interpretationsrahmen, der aus der Energie-Frequenz-Beziehung ein Bild ableitet, in dem „Zeitfluss" als Zählprozess gedeutet wird. Es erzeugt keine eigenständige quantitative Vorhersage, die von der Standardphysik unterscheidbar wäre, solange der freie Parameter κ_diff nicht durch eine unabhängige Theorie oder Messung festgelegt wird.
+
+**Was der Detektor leisten kann:** Die Messkette (Cat-6a, τ ≈ 2 µs, Auflösung 10–100 ps) kann die Kombination |κ_diff · ΔR/R₀| auf Werte unterhalb 5 × 10⁻⁶ bis 5 × 10⁻⁵ einschränken – vorausgesetzt, Umweltbeiträge (Temperatur, Versorgung, Mechanik) sind durch Regression und Injektionstests abgezogen.
+
+**Was der Detektor nicht leisten kann:** Er kann P1 weder bestätigen noch widerlegen, da P1 keine eigene Vorhersage erzeugt. Er kann P2 und P4 nur über κ_diff einschränken, nicht unabhängig prüfen.
+
+**Falsifikation im engeren Sinn:** Ein Nullresultat nach vollständiger Umweltbereinigung und Injektionskalibrierung falsifiziert nicht die Postulate, sondern zeigt, dass das Modell in dieser Messkonfiguration keine prüfbare Konsequenz hat. Es ist dann operativ bedeutungslos für den Phasendetektor.
+
+**Bedingung für eine Wiederaufnahme:** Das Modell wird für den Detektor wieder relevant, wenn eine unabhängige Theorie oder ein unabhängiges Experiment κ_diff auf einen Wert festlegt, der innerhalb der erreichbaren Empfindlichkeit liegt, und eine von Umweltkanälen unterscheidbare Signatur (z. B. Frequenzabhängigkeit, Richtungsabhängigkeit, Korrelationslänge zwischen zwei Standorten) vorhersagt.
+
+Kein Umbau, keine Firmware-Signatur, kein Template aus E/h oder Sgr-A-Dichte.*
 
 - **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
