@@ -37,3 +37,5 @@ date        hours  total    location     subject
 2026-10-09    5     85      Vierow       "Intuition 10" Abgleich mit KI-Beiträgen
 2026-10-11    3     88      Vierow       "Intuition 10" Abgleich mit KI-Beiträgen
 2026-10-12    3     91      Vierow       "Intuition 10" Abgleich mit KI-Beiträgen
+2026-10-13    4     95      Vierow       "Intuition 10" Abgleich mit KI-Beiträgen
+2026-10-14    3     98      Vierow       "Intuition 10" Abgleich mit KI-Beiträgen

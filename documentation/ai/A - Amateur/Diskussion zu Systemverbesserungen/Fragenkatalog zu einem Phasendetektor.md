@@ -486,7 +486,7 @@ Für Massen/Energien weit unterhalb dieser Grenze wird Energie/Information mit L
 
 Ähnlich wie Photonen Energie/Information im elektromagnetischen Feld übertragen, kann Energie/Information auch im Zeitflussfeld übertragen werden. Jedes Elementarteilchen ist bereits Energie/Information, welche sich im Raum und damit im Zeitflussfeld des Raumes bewegen kann, indem sich der durch das Teilchen verursachte Symmetriebruch beim Absorbieren/Emittieren von Raumenergie im Raum/Zeitflussfeld bewegt.
 
-Die Zeitflussdichte R0 (postuliert) ist nach allen bisherigen Beobachtungen dabei sehr konstant, weil sonst die extremen Anforderungen z.B. von Navigationssystemen an die Präzision von Uhren nicht erfüllt wären. Uhrenvergleiche zeigen für die jeweils untersuchten Uhren und Messbedingungen relative Frequenzstabilitäten bzw. -vergleiche bis in den Bereich $10^{-18}$. Das begrenzt Modelle, die eine entsprechende Änderung der gemessenen Uhrenrate vorhersagen; es ist keine modellunabhängige Schranke für eine separat definierte Größe $R$. Das ist weit strenger als die Kozyrev-Skala von 10⁻⁶ bis 10⁻⁷ und stellt ein starkes Gegenargument für eine allgemeine Zeitflussmodulation dieser Größe dar. In der Konsequenz ist eine Übertragung von Energie/Information durch diese extrem gleichförmige Zeitflussdichte nur sehr gering denkbar.
+Die Zeitflussdichte R0 (postuliert) ist nach allen bisherigen Beobachtungen dabei sehr konstant, weil sonst die extremen Anforderungen z.B. von Navigationssystemen an die Präzision von Uhren nicht erfüllt wären. Uhrenvergleiche zeigen für die jeweils untersuchten Uhren und Messbedingungen relative Frequenzstabilitäten bzw. -vergleiche bis in den Bereich $10^{-18}$. Das begrenzt Modelle, die eine entsprechende Änderung der gemessenen Uhrenrate vorhersagen; es ist keine modellunabhängige Schranke für eine separat definierte Größe $R$. Das ist weit strenger als die Kozyrev-Skala von 10⁻⁶ bis 10⁻⁷ und stellt ein starkes Gegenargument für eine allgemeine Zeitflussmodulation dieser Größe dar. In der Konsequenz ist eine Übertragung von Energie/Information durch diese extrem gleichförmige Zeitflussdichte nur sehr gering denkbar. (Bild, keine Konsequenz des Modells)
 
 Der Zeitfluss kann jedoch trotz der extremen durchschnittlichen Stabilität moduliert sein und dadurch Struktur bekommen. Wenn diese Modulation/Struktur sich mit Lichtgeschwindigkeit ausbreitet, dann kann dies beim Durchströmen von Masse/Energie mit Resonanz für diese Struktur oder bei Kohärenz zu Kraftwirkungen auf die Masse/Energie kommen. Diese Art der Energie-/Informationsübertragung muss deutlich von der Energie-/Informationsübertragung durch Photonen unterschieden werden, denn der Energie-/Informationsstrom im Zeitflussfeld durchdringt alle Materie ohne signifikante Wechselwirkung, bis eine Anregung in einer für die übertragene Modulation/Struktur resonante Masse/Energie erfolgt oder bis sich in einem System eine Kohärenz aufbaut.
 
@@ -496,8 +496,8 @@ Als Bild: Im Kontext von Entropie ausgedrückt, besitzt ein unmodulierter Zeitfl
 
 1. unmodulierter Fluss = hohe Entropie,
 2. Modulation = spektrale Struktur,
-3. Ausbreitung mit c (wie GWs),
-4. Kopplung an Resonator/Kohärenz (wie ein Detektor im Grundzustand).
+3. Ausbreitung mit c (obere Grenze, mit $c$ als maximaler Ausbreitungsgeschwindigkeit gemäß SRT),
+4. Kopplung an Resonator/Kohärenz (Kohärenz-Kopplung ist nicht als Signalübertragung zu lesen; die Detektion erfolgt lokal an der resonanten Materie, nicht über eine Korrelation zwischen Detektoren).
 
 **Zusammenfassung**
 
@@ -513,7 +513,7 @@ R(ρ,1 s)  = ρc²/h              ≈ 1,35827 × 10^50·ρ [m⁻³ s⁻¹] (Rate
 
 P1: Zeitflussrate entspricht postulierter Austauschrate E/h. Zeitintervall = gezählte Austausche / Rate.
 
-P2: Die Austauschrate hängt vom Potential Φ/c² ab
+P2: Die Austauschrate hängt vom Potential Φ/c² ab (Modell-Annahme ohne ART-Ableitung)
 
 P3 (gestrichen / physikalisch unbegründet): Die mittlere Dichte eines Schwarzen Lochs $\rho_\mathrm{BH} \propto 1/M^2$ ist ein rein geometrisches Skalenmaß des Ereignishorizonts und keine universelle Dichteobergrenze. Da bereits Standardmaterie im Labor (Kupferleiter, Dielektrikum) eine um Größenordnungen höhere Massendichte aufweist als $\rho_\mathrm{BH}(\text{Sgr A*})$, kann daraus keine physikalische Sättigungsschranke $R_{\max}$ für Raumzeit-Austauschraten abgeleitet werden. P3 wird als unvereinbar mit der Geometrie der Raumzeit verworfen und entfällt für die experimentelle Auswertung.
 
@@ -531,7 +531,7 @@ Vorläufiger Abschluss: Innerhalb der heutigen Empfindlichkeit macht das Modell 
 
 **Externe Schranken an κ_diff:**
  
- Der differentielle Kopplungsfaktor κ_diff ist nicht nur durch diesen Detektor beschränkbar. Kompositionsabhängige Differentialkopplungen sind durch Eötvös-Tests (MICROSCOPE: η < 10⁻¹⁵) und Langreichweiten-Fünfte-Kraft-Suchen ausgeschlossen, soweit sie das hier postulierte Ausmaß erreichen. Ein Modell, das κ_diff in einer Größenordnung belässt, die der Detektor sehen könnte (≥ 10⁻⁶), kollidiert damit bereits mit unabhängigen Messungen. Eine Empfindlichkeitsschranke aus dem Phasendetektor wäre daher nur für κ_diff < 10⁻⁵–10⁻⁶ informativ und auch dort gegenüber bestehenden Schranken abzuwägen. Dies ist Teil der Falsifikationsbewertung, nicht der Messplanung.
+ Der differentielle Kopplungsfaktor κ_diff ist nicht nur durch diesen Detektor beschränkbar. Kompositionsabhängige Differentialkopplungen sind durch Eötvös-Tests (MICROSCOPE: η < 10⁻¹⁵) und Langreichweiten-Fünfte-Kraft-Suchen ausgeschlossen, soweit sie das hier postulierte Ausmaß erreichen. Ein Modell, das κ_diff in einer Größenordnung belässt, die der Detektor sehen könnte (≥ 10⁻⁶), kollidiert damit bereits mit unabhängigen Messungen. Eine Empfindlichkeitsschranke aus dem Phasendetektor wäre daher nur für κ_diff < 10⁻⁵–10⁻⁶ informativ und auch dort gegenüber bestehenden Schranken abzuwägen. Dies ist Teil der Falsifikationsbewertung, nicht der Messplanung. $\kappa_{\text{diff}}$ ist als kompositionsunabhängige differentielle Kopplung definiert; MICROSCOPE/Eötvös limitieren nur kompositionsabhängige Anteile und sind daher nicht direkt auf $\kappa_{\text{diff}}$ anwendbar.
 
 **Vorläufige physikalische Einordnung:** 
 
@@ -552,6 +552,16 @@ Falsifikationskriterium: Ein Signal in diesem Fenster wird als Umgebungseffekt k
 2. Ein Signal der Größenordnung 100 ps liegt innerhalb des Bereichs, in dem bekannte Umwelt- und Instrumentaleffekte relevant sein können. Es wird erst dann als Kandidat für einen zusätzlichen Effekt behandelt, wenn die gemessenen Störkanäle, Kalibrierungen und Injektionstests diese Erklärung quantitativ nicht tragen.
 
 3. Übersteht ein Signal diese Umweltbereinigung nicht, ist das Modell P1–P4 für den Phasendetektor falsifiziert bzw. operativ bedeutungslos, da keine vom Umweltuntergrund trennbare physikalische Messgröße existiert.
+
+**Bewusste Modellpostulate**
+
+1. Existenz eines Zeitflusses (P1) — Postulat.
+
+2. Zählbild $R = E/h$ — Reinterpretation, nicht Ableitung.
+
+3. Resonanz-/Kohärenz-Kopplung — Zusatzannahme ohne etablierte Entsprechung.
+
+4. Modulationsbild — Bild, nicht Observable.
 
 - **Quelle:** Informationsfeld-Impuls, angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
