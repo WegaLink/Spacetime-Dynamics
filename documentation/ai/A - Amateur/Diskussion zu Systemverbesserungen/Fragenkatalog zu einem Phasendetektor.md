@@ -513,9 +513,9 @@ R(ρ,1 s)  = ρc²/h              ≈ 1,35827 × 10^50·ρ [m⁻³ s⁻¹] (Rate
 
 P1: Zeitflussrate entspricht postulierter Austauschrate E/h. Zeitintervall = gezählte Austausche / Rate.
 
-P2: Die Austauschrate hängt vom Potential Φ/c² ab (Modell-Annahme ohne ART-Ableitung)
+P2: P2 wird im Rahmen des Falsifikationskriteriums nicht weitergeführt. Die im Vorentwurf enthaltene Modell-Annahme Δτ/τ ≈ ΔΦ/c² wird ausdrücklich nicht als Ableitung aus der ART verstanden und nicht als Observable übernommen. Grund: Die ART beschreibt Eigenzeitdifferenzen zwischen zwei Weltlinien, nicht einen absoluten „Fluss" in einem Potential. Eine Grösse Δτ/τ wäre im hier vorliegenden Aufbau nur als differentielle Eigenzeit zwischen Signalpfad (durch die Cat-6a-Strecke) und Zähltakt (im XMC4700) beobachtbar. Solange keine unabhängige, modellfremde Vorhersage für das Verhältnis dieser beiden Eigenzeiten existiert, ist die Grösse Φ/c² kein Prädiktor, sondern eine Parametrisierung der Modellfreiheit. P2 wird daher aus dem aktiven Postulat-Block gestrichen.
 
-P3 (gestrichen / physikalisch unbegründet): Die mittlere Dichte eines Schwarzen Lochs $\rho_\mathrm{BH} \propto 1/M^2$ ist ein rein geometrisches Skalenmaß des Ereignishorizonts und keine universelle Dichteobergrenze. Da bereits Standardmaterie im Labor (Kupferleiter, Dielektrikum) eine um Größenordnungen höhere Massendichte aufweist als $\rho_\mathrm{BH}(\text{Sgr A*})$, kann daraus keine physikalische Sättigungsschranke $R_{\max}$ für Raumzeit-Austauschraten abgeleitet werden. P3 wird als unvereinbar mit der Geometrie der Raumzeit verworfen und entfällt für die experimentelle Auswertung.
+P3 (Sättigungsschranke R_max aus ρ_BH = 3c⁶/(8πG³M²)) wurde im Verlauf der Diskussion als physikalisch unbegründet verworfen. Eine universelle, materialunabhängige Dichteschranke ist mit der ART nicht verträglich; ρ_BH ist eine geometrische Grösse des jeweiligen Horizonts, nicht eine globale Konstante. P3 wird daher nicht weitergeführt. Die Begründung ist im Abschnitt „Verworfene Postulate" abgelegt.
 
 P4: Modulationen breiten sich konsistent mit der gemessenen Geschwindigkeitsgleichheit von GW- und Lichtausbreitung aus und koppeln resonant oder durch Kohärenz, siehe Physik 4 – dort anderes Thema (P4 betrifft hier nur die postulierte Zeitfluss-Modulation, nicht die in Intuition 11 gefragte Verschränkung.) 
 
@@ -528,6 +528,24 @@ Modellpostulate ohne ART-Ableitung, κ_diff frei.
 
 Operative Kopplung, nur differentiell: Eine räumlich gleichförmige Änderung von $R$ skaliert Takt und Leitung gemeinsam und ergibt in erster Ordnung $\Delta\tau=0$ (Physik 1). Sichtbar wäre höchstens eine Differenz zwischen elektromagnetischer Gruppenlaufzeit und Zählertakt, $\Delta\tau/\tau=\kappa_\mathrm{diff}\,\Delta R/R_0$, mit freiem $\kappa_\mathrm{diff}$. Eine allgemeine Rate von $10^{-6}$–$10^{-7}$ ist mit Uhrenmetrologie unvereinbar und wird nicht als Zielamplitude verwendet. Bei $\tau\approx 2\,\mu\mathrm{s}$ und 10–100 ps entspricht die erreichbare Schranke $|\kappa_\mathrm{diff}\,\Delta R/R_0|\lesssim 5\times 10^{-6}$–$5\times 10^{-5}$, und auch das nur nach Abzug der Umwelt. Ohne diesen Abzug ist jede Reihe dieser Größe der Leitung, der Versorgung und der Temperatur zuzuordnen.
 Vorläufiger Abschluss: Innerhalb der heutigen Empfindlichkeit macht das Modell keine eigene, von der Umgebung unterscheidbare Vorhersage. Ein Null begrenzt nur $\kappa_\mathrm{diff}$ und bestätigt die elektrische Stabilität. Ein Rest bestätigt P1–P4 nicht. Kandidatensignale gelten als Umgebung, bis sie eine Regression auf Temperatur, Versorgung, Mechanik und eine injizierte Laufzeit (Physik 2/3) überleben. Kein Umbau, keine Firmware-Signatur aus $E/h$ oder aus der Sgr-A*-Dichte.
+
+**Definition von κ_diff (für Physik 2/3 verbindlich).**
+
+Im verbleibenden Modell wird die differentielle Kopplungskonstante
+
+Δτ/τ = κ_diff · (ΔR / R_0)
+
+mit folgenden Festlegungen verwendet:
+
+• τ ist die mittlere Gruppenlaufzeit eines Umlaufs durch die Cat-6a-Strecke (Grössenordnung 2 µs), nicht eine Eigenzeit im ART-Sinn.
+
+• ΔR / R_0 ist die modellseitig postulierte relative Änderung der Rate R = E/h, nicht eine gemessene Grösse.
+
+• κ_diff ist dimensionslos. Das Vorzeichen wird im Experiment bestimmt; das Modell selbst macht keine Vorhersage über das Vorzeichen.
+
+• Die einzige modellseitige Vorhersage ist, dass Δτ/τ linear in ΔR/R_0 ist. Ein nichtlinearer Verlauf wäre mit dem Modell verträglich, sofern er als Änderung von κ_diff über den Messbereich gedeutet wird; das ist im Falsifikationskriterium zu berücksichtigen.
+
+Diese Definition ist die einzige, auf die sich Physik 2/3 beruft. Andere im Text vorkommende Verwendungen von κ_diff sind als informell zu lesen.
 
 **Externe Schranken an κ_diff:**
  
@@ -555,6 +573,8 @@ Falsifikationskriterium: Ein Signal in diesem Fenster wird als Umgebungseffekt k
 
 3. Übersteht ein Signal die Umweltbereinigung nicht, ist das Modell für diesen Detektor operativ bedeutungslos: Es existiert keine vom Umweltuntergrund trennbare physikalische Messgröße. Das ist keine Falsifikation der Postulate P1–P4 als metaphysisches Rahmenwerk, sondern eine Falsifikation ihrer prüfbaren Konsequenz in dieser Messkonfiguration.
 
+Das Falsifikationskriterium von Intuition 10 ist nur zusammen mit zwei Bausteinen aus Physik 6 anwendbar: (a) der Transferfunktion des Detektors (welcher Anteil eines realen τ-Signals im Messfenster erscheint) und (b) der Injektionsmessung (Messung 3, künstliche Δτ-Belastung der Leitung als Kalibrierstandard). Ohne (a) ist jedes Signal im Messfenster nicht zuordenbar; ohne (b) ist der Verdacht, ein vermeintlicher Effekt gehe auf Drift oder Thermik zurück, nicht entkräftbar. Das in Physik 6 formulierte Kriterium „1–10 ppm im Fenster, aber ohne Transferfunktion nicht zuordenbar" wird hier ausdrücklich mit übernommen.
+
 **Bewusste Modellpostulate**
 
 1. Existenz eines Zeitflusses (P1) — Postulat.
@@ -565,9 +585,28 @@ Falsifikationskriterium: Ein Signal in diesem Fenster wird als Umgebungseffekt k
 
 4. Modulationsbild — Bild, nicht Observable.
 
+**Verworfene Postulate**
+
+P3 (verworfen, 2026-10): Sättigungsschranke R_max aus ρ_BH. Die Idee war, dass die postulierte Rate R = E/h eine obere Schranke aus der mittleren Dichte eines Schwarzen Lochs bezieht und damit zu einer materialunabhängigen Konstante wird. Verworfen, weil ρ_BH nur eine geometrische Grösse des jeweiligen Horizonts ist; eine materialunabhängige, globale Dichteschranke existiert in der ART nicht. Der Bezug auf Sgr A* im Vorentwurf betraf ausschliesslich P3 und hat für das verbleibende Modell keine Bedeutung.
+
 **Vorläufiger Abschluss (revidiert):**
 
 Das Modell P1–P4 ist ein Interpretationsrahmen, der aus der Energie-Frequenz-Beziehung ein Bild ableitet, in dem „Zeitfluss" als Zählprozess gedeutet wird. Es erzeugt keine eigenständige quantitative Vorhersage, die von der Standardphysik unterscheidbar wäre, solange der freie Parameter κ_diff nicht durch eine unabhängige Theorie oder Messung festgelegt wird.
+
+**Vorläufiger Abschluss Intuition 10**
+
+Aktive Postulate. Von den ursprünglich vier Postulaten (P1–P4) sind nur noch zwei im aktiven Modellbestand:
+
+• P1 – Umrechnung R = E/h. Nicht Modellvorhersage, sondern identische Umschreibung der Energie-Frequenz-Beziehung. Beobachtbar von der Standardquantenmechanik nicht unterscheidbar.
+
+• P4 – Kopplung der Rate R an die differentielle Eigenzeit zwischen Signalpfad und Zähltakt. Operationalisiert als κ_diff · ΔR/R_0 = Δτ/τ, mit κ_diff dimensionslos und vorzeichenoffen.
+
+Verworfene Postulate:
+
+• P2 (Kopplung über Φ/c²) – verworfen, weil Φ/c² keine Observable im hier vorliegenden Aufbau ist. Die ART beschreibt Eigenzeitdifferenzen zwischen Weltlinien, nicht einen absoluten Fluss in einem Potential.
+
+• P3 (Sättigungsschranke R_max aus ρ_BH) – verworfen, weil ρ_BH eine geometrische Grösse des jeweiligen Horizonts ist, keine materialunabhängige Konstante.
+Beobachtbare und ihre Definition. Die einzige modellseitige Grösse, die im Falsifikationskriterium eine Rolle spielt, ist
 
 **Was der Detektor leisten kann:** Die Messkette (Cat-6a, τ ≈ 2 µs, Auflösung 10–100 ps) kann die Kombination |κ_diff · ΔR/R₀| auf Werte unterhalb 5 × 10⁻⁶ bis 5 × 10⁻⁵ einschränken – vorausgesetzt, Umweltbeiträge (Temperatur, Versorgung, Mechanik) sind durch Regression und Injektionstests abgezogen.
 
