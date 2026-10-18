@@ -443,7 +443,9 @@ Ich empfehle dringend, die von Ihnen erwähnten historischen Signale (2008–201
 # Intuition 10 – Zeitfluss als messbare Größe: Ein Phasendetektor für differentielle Eigenzeit
 
 **Status:** Vorläufiger Abschluss (endgültige Fassung)
+
 **Datum:** 2026-10-18
+
 **Quelle:** Vom Autor eingebracht (ursprünglich als „Informationsfeld-Impuls" bezeichnet), angepasst durch [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Intuition%2010/) im Verzeichnis Intuition 10. Die Herkunft ist für die physikalische Bewertung ohne Belang; maßgeblich sind die Konsequenzen der Postulate P1–P4.
 
 **Ziel:** Falsifizierbares Modell im Rahmen der erreichbaren Empfindlichkeit des Detektors, bei dem mögliche Signale auf Umgebungseinflüsse zurückgeführt werden können.
