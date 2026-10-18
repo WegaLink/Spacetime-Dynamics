@@ -488,7 +488,7 @@ Dies ist konsistent mit der gravitativen Zeitdilatation der ART, wird hier aber 
 
 > ~~Ursprüngliche Fassung: R kann lokal beliebig wachsen, ist aber global durch die kritische Dichte ρ_BH begrenzt.~~
 >
-> **Verworfen** am 2026-03-28: Die Sättigungsschranke aus ρ_BH ist physikalisch nicht haltbar (siehe Diskussion). Ersetzt durch P3'.
+> **Verworfen** am 2026-10-11: Die Sättigungsschranke aus ρ_BH ist physikalisch nicht haltbar (siehe Diskussion). Ersetzt durch P3'.
 
 ---
 
@@ -516,19 +516,33 @@ wobei:
 ### Aufbau
 
 ┌─────────────┐      Koaxialkabel (Länge L)      ┌─────────────┐
+
 │  Oszillator │ ────────────────────────────────▶│  Oszillator │
+
 │  (Quelle)   │    Signal läuft mit c_eff        │  (Senke)    │
+
 │  f₀ = 10 MHz│                                  │  f₀ = 10 MHz│
+
 └─────────────┘                                  └──────┬──────┘
+
 │
+
 ┌────┴────┐
+
 │  Mischer │
+
 │  + PLL  │
+
 └────┬────┘
+
 │
+
 ┌────┴────┐
+
 │  Zähler │
+
 │  Δφ     │
+
 └─────────┘
 
 
@@ -599,10 +613,15 @@ Die Nachweisgrenze ergibt sich aus:
 **δτ_min/τ = (10–100 ps)/(2 µs) = 5 × 10⁻⁶ bis 5 × 10⁻⁵**
 
 | Konfiguration | τ (Laufzeit) | δτ_min (Auflösung) | Nachweisgrenze |Δτ/τ| |
+
 |-------------|------------|-------------------|--------------------------|
+
 | Kurze Strecke (L = 0,6 m) | 2 µs | 10 ps | 5 × 10⁻⁶ |
+
 | Kurze Strecke (L = 0,6 m) | 2 µs | 100 ps | 5 × 10⁻⁵ |
+
 | Lange Strecke (L = 600 m) | 2 ms | 10 ps | 5 × 10⁻⁹ |
+
 | Lange Strecke (L = 600 m) | 2 ms | 100 ps | 5 × 10⁻⁸ |
 
 ---
