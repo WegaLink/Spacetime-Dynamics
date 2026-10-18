@@ -608,6 +608,34 @@ Verworfene Postulate:
 • P3 (Sättigungsschranke R_max aus ρ_BH) – verworfen, weil ρ_BH eine geometrische Grösse des jeweiligen Horizonts ist, keine materialunabhängige Konstante.
 Beobachtbare und ihre Definition. Die einzige modellseitige Grösse, die im Falsifikationskriterium eine Rolle spielt, ist
 
+Δτ/τ = κ_diff · (ΔR / R_0)
+
+mit τ = Gruppenlaufzeit durch die Cat-6a-Strecke (~2 µs), ΔR/R_0 = modellseitig postulierte relative Änderung der Rate, κ_diff dimensionslos. Vorzeichen und Betrag von κ_diff werden im Experiment bestimmt.
+
+**Falsifikationskriterium (endgültige Fassung für Intuition 10).** 
+
+Ein Signal im Messfenster des Detektors wird dem Modell zugerechnet, wenn drei Bedingungen gleichzeitig erfüllt sind:
+
+1. Das Signal liegt nach Umweltbereinigung (Regression auf Thermik, Taktdrift, mechanische Kopplung) im Fenster 1–10 ppm bezogen auf τ.
+
+2. Die Transferfunktion des Detektors (Physik 6) zeigt, dass dieser Anteil eines realen τ-Signals im Messfenster überhaupt erscheinen kann.
+
+3. Die Injektionsmessung (Messung 3) zeigt, dass eine künstliche Δτ-Belastung der Leitung im selben Fenster mit der aus der Transferfunktion erwarteten Amplitude erscheint.
+
+Eine Verletzung einer dieser drei Bedingungen reicht aus, um das Modell in dem getesteten Parameterbereich von κ_diff zu falsifizieren.
+
+Offene, für Physik 2/3 zu klärende Punkte.
+
+• Effektive Auflösung des Zählers nach Mittelung über N Zyklen (Ziel: 10–100 ps rms).
+
+• Dominanz der Thermik der Leitung gegenüber dem XMC4700-Taktjitter.
+
+• Saisonalität und Tagesgang der Messbasis als Schranke für die Konstanz von κ_diff über Wochen.
+
+• Übertragbarkeit der in Physik 6 für Messung 1/2 abgeleiteten Transferfunktion auf den differentiellen Aufbau mit zwei Leitungen.
+
+Was dieser Abschluss nicht leistet. Stilistische Überarbeitung, Umnummerierung der Postulate, Vereinheitlichung der Einheiten und eine Gesamtbilanz aller seit Messung 1 gemachten Annahmen bleiben Physik 2/3 bzw. einer späteren Endredaktion vorbehalten. Der hier festgehaltene Stand ist der Punkt, an dem die Arbeit am technischen Konzept des Phasendetektors mit Physik 2/3 ansetzen kann, ohne dass die Diskussion zu Intuition 10 im Hintergrund offen ist.
+
 **Was der Detektor leisten kann:** Die Messkette (Cat-6a, τ ≈ 2 µs, Auflösung 10–100 ps) kann die Kombination |κ_diff · ΔR/R₀| auf Werte unterhalb 5 × 10⁻⁶ bis 5 × 10⁻⁵ einschränken – vorausgesetzt, Umweltbeiträge (Temperatur, Versorgung, Mechanik) sind durch Regression und Injektionstests abgezogen.
 
 **Was der Detektor nicht leisten kann:** Er kann P1 weder bestätigen noch widerlegen, da P1 keine eigene Vorhersage erzeugt. Er kann P2 und P4 nur über κ_diff einschränken, nicht unabhängig prüfen.
