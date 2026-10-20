@@ -2,8 +2,8 @@
   Grok 4.7 Phasendetektor-Auflösung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 20. Oktober 2026 um 21:21
-Nachrichten: 2
+Exportiert: 20. Oktober 2026 um 21:44
+Nachrichten: 4
 Modell: grok-latest
 
 ───────────────────────────────────────────────────────────────
@@ -91,6 +91,85 @@ Zusätzlich fällt ein gemeinsamer oder langsam unterschiedlicher Taktfehler bei
 [12] [https://www.rlocman.es/datasheet/pdf.html?di=126459&p=6](https://www.rlocman.es/datasheet/pdf.html?di=126459&p=6)
 [13] [https://xonstorage.z8.web.core.windows.net/pdf/2259185_MEUM202_link.pdf](https://xonstorage.z8.web.core.windows.net/pdf/2259185_MEUM202_link.pdf)
 [14] [https://yibeiic-shop.oss-cn-hangzhou.aliyuncs.com/media/collection/um203-t-cPXopV5L-ejPKJakro.pdf](https://yibeiic-shop.oss-cn-hangzhou.aliyuncs.com/media/collection/um203-t-cPXopV5L-ejPKJakro.pdf)
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Die KI-Antworten wurden im Verzeichnis ‚https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/' gesammelt. Darin sind die Ableitungen der einzelnen KIs für die Phasendetektor-Auflösung enthalten. Die Antworten sollen bitte zu einem repräsentativen Eintrag im Fragenkatalog zusammengefasst werden.
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+Ich lese den Fragenkatalog und die gesammelten Ableitungen, damit die Zusammenfassung dem bestehenden Eintragsformat folgt.Elf der zwölf Dateien sind auswertbar. MiniMax M3 enthält nur einen Abbruch. Die folgenden Absätze können unter Physik 3 als zweite Stufe der Messkette eingetragen werden.
+
+### Physik 3-1 — Auslesen der Laufzeitdifferenz
+
+- **Datum:** 2026-10-20, zusammengefasst 2026-10-20
+- **Frage:** Welche Auflösung beim Auslesen der Laufzeitdifferenz lässt sich für das historische System A und das laufende System B aus der Beschreibung abschätzen?
+- **Quelle:** technische Analyse, KI-Runde, Verzeichnis `Physik 3-1/`
+- **Status:** Impuls dokumentiert
+
+Elf Analysen. MiniMax M3 ohne Inhalt. Einigkeit besteht nur für B und nur über die gemessene Kennlinie. Für A gibt es keine aus der Beschreibung ableitbare Laufzeitauflösung. Theoretische ADC-Zahlen von 0,2 ps bis 1 fs dürfen nicht in die Transferfunktion.
+
+**System B, einzige belastbare Zahl.** Alle auswertbaren Antworten rechnen dieselbe Kalibrierung:
+
+\[
+\frac{100\,\mathrm{ps}}{200\,\mathrm{Zählwerte}} = 0{,}5\,\mathrm{ps/Zählwert}.
+\]
+
+Das Fenster 200…800 ist 600 Zählwerte, also 300 ps, der Arbeitspunkt liegt bei etwa 500. Die Rohgröße der Transferfunktion ist die eingestellte Verzögerung plus \((N-500)\cdot 0{,}5\,\mathrm{ps}\). Die 0,5 ps sind die Steigung der Interpolation, nicht die Unsicherheit (GPT, Perplexity, Grok, Muse).
+
+Der Grobtakt \(1/144\,\mathrm{MHz}\approx 6{,}94\,\mathrm{ns}\) ist keine Auslese. Die etwa 30 ps, nominell 250 ps am 3D3428, führen nur den Arbeitspunkt nach. Jeder Nachführsprung ist eine Unstetigkeit und muss mit dem Delay-Code geloggt werden (Claude, Muse, Gemini). Grok trennt zusätzlich Datenblatt und Behauptung: der 3D3428-0.25 hat nominell 0,25 ns je Schritt, nicht 30 ps.
+
+**Rauschen eines Blocks.** GPT, Claude, Gemini, Grok, Muse und Qwen rechnen dieselbe Binomialgrenze. Bei 1000 Flanken und \(p\approx 0{,}5\) ist \(\sigma_N\approx 16\), also \(\sigma_t\approx 8\,\mathrm{ps}\) in 2 ms. Das gilt nur, wenn die gemessene Steigung aus einer statistischen Streuung der Flanke um den Umschaltpunkt kommt. Versorgung, Treiber und Temperatur können größer sein. Weißes Mittel über 1 s ergäbe rechnerisch etwa 0,4 ps (Claude, Gemini, Muse). Das ist keine Geräteangabe. Drift bricht die \(1/\sqrt{N}\)-Skalierung.
+
+Nicht übernehmen: Mistral rechnet aus der Steigung und \(\sqrt{1000}\) formal 16 fs und verwirft das selbst. GLM setzt 30 ps durch \(\sqrt{1000}\) und erhält etwa 1 ps; das verwechselt Nachführschritt und Zählrauschen. Kimi nennt 1–10 ps kurzzeitig und 30 ps langzeitig, ohne die Binomialrechnung. Die in Physik 1 geführten **10–100 ps** bleiben die praktische Grenze, sobald die Umwelt größer ist als die Binomialstreuung (Mistral, Muse, Qwen, Grok).
+
+**System A, keine ps-Zahl.** GPT, Grok und Perplexity: 16 bit legen \(\Delta t\) nicht fest. Es fehlen Spannungsänderung je Phase, Rauschen, Abtastrate und eine Injektion bekannter Laufzeit. Kanal 2, AR5000 5…15 MHz und ADL5519, ist eine Leistungs-, keine Zeitmessung (Grok, Gemini, Claude, Muse, Kimi). Der Hochpass auf der 1–2-Hz-Schwebung macht den Kanal für quasistationäre Änderungen blind und die Empfindlichkeit phasenabhängig, an den Extrema null (Gemini, Claude, Muse).
+
+Die Umrechnung, auf die sich alle einigen können, ist nur
+
+\[
+\delta t = \frac{\delta\varphi}{2\pi\cdot 16\,\mathrm{MHz}},\qquad T_0=62{,}5\,\mathrm{ns}.
+\]
+
+1° entspricht 174 ps, 0,1° entspricht 17 ps. Wer daraus eine Auflösung macht, setzt ein SNR voraus, das nicht gemessen ist. Claude erhält formal etwa 1 fs je LSB bei voller Aussteuerung und etwa 10–20 fs bei 12–13 bit ENOB, begrenzt die Nutzbarkeit aber durch freie Quarze auf 0,1–1 ns bei 1 s. Qwen erhält über die Schwebungszeitdehnung formal 0,2 ps und praktisch 1–10 ps, langzeitig 100 ps und schlechter. Kimi setzt \(2\pi/2^{16}\) und erhält 1 fs, praktisch 10–100 ps. GLM nimmt 0,1° an und erhält etwa 17 ps, relativ \(10^{-8}\) bis \(10^{-7}\). Gemini nennt 10–50 ps nur für Transienten oberhalb des Hochpasses. Diese Spanne ist eine Meinungsbreite, keine Kalibrierung. A und B dürfen nicht in eine gemeinsame \(\Delta t\)-Angabe fallen: A ist \(\int\Delta f/f\,\mathrm{d}t\) zweier Freiläufer plus Kabel, B eine Flankenlage gegen einen gemeinsamen 144-MHz-Takt (Physik 1, bestätigt von GLM, Mistral, Muse, Grok).
+
+**Was in die Transferfunktion gehört**
+
+| | A | B |
+| --- | --- | --- |
+| Primärgröße | relative Phase, AC nach Hochpass | Zählwert im 300-ps-Fenster |
+| Einzige harte Zahl | \(\delta t=\delta\varphi/(2\pi\cdot 16\,\mathrm{MHz})\) | 0,5 ps/Zählwert |
+| Einzelblock | nicht ableitbar | etwa 8 ps in 2 ms, binomial |
+| Praktische Grenze | nicht gemessen; Schätzungen 10 ps bis ns, Drift der freien Takte | 10–100 ps, sobald Drift oder Nachführsprung dazukommt |
+| Kanal 2 | Amplitude, Transferfunktion für \(\Delta t\) null | — |
+
+**Offen, bevor die zweite Stufe als kalibriert gilt.** Gemessenes \(\sigma_N\) bei festem Delay-Code, sonst bleibt die 8-ps-Zahl eine Annahme. Injektion einer bekannten Laufzeit, Messung 3, sonst ist die Steigung 0,5 ps/Zählwert nur eine Gerätekennlinie, keine metrologische Kalibrierung. Log des Delay-Codes bei jedem Verlassen von 200…800.
+
+**Citations:**
+[1] [https://api.github.com/repos/WegaLink/Spacetime-Dynamics/contents/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1](https://api.github.com/repos/WegaLink/Spacetime-Dynamics/contents/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1)
+[2] [https://api.github.com/repos/WegaLink/Spacetime-Dynamics/contents/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1?ref=main](https://api.github.com/repos/WegaLink/Spacetime-Dynamics/contents/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1?ref=main)
+[3] [https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Fragenkatalog%20zu%20einem%20Phasendetektor.md](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Fragenkatalog%20zu%20einem%20Phasendetektor.md)
+[4] [https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/)
+[5] [https://github.com/braegel/AmateurfunkPruefungsfragen/blob/master/TechnischeKenntnisseA.txt.tab.txt](https://github.com/braegel/AmateurfunkPruefungsfragen/blob/master/TechnischeKenntnisseA.txt.tab.txt)
+[6] [https://github.com/edstott/EEE1labs/blob/main/ADC/Part1/Section3.md](https://github.com/edstott/EEE1labs/blob/main/ADC/Part1/Section3.md)
+[7] [https://github.com/latex4ei/Technische_Felder_und_Wellen/raw/gh-pages/TFW.pdf](https://github.com/latex4ei/Technische_Felder_und_Wellen/raw/gh-pages/TFW.pdf)
+[8] [https://github.com/msaddler/phaselocknet/blob/main/util_stimuli.py](https://github.com/msaddler/phaselocknet/blob/main/util_stimuli.py)
+[9] [https://github.com/quintace-external/superuser_detection_poker/tree/main/00_simulator](https://github.com/quintace-external/superuser_detection_poker/tree/main/00_simulator)
+[10] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Claude%205.5%20Phasendetektor-Aufl%C3%B6sung%20A%20und%20B.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Claude%205.5%20Phasendetektor-Aufl%C3%B6sung%20A%20und%20B.md)
+[11] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/DeepSeek%20V4.1%20Laufzeitaufl%C3%B6sung%20der%20Systeme%20A%20und%20B.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/DeepSeek%20V4.1%20Laufzeitaufl%C3%B6sung%20der%20Systeme%20A%20und%20B.md)
+[12] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/GLM%205.3%20Phasendetektor-Aufl%C3%B6sung%20vergleichen.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/GLM%205.3%20Phasendetektor-Aufl%C3%B6sung%20vergleichen.md)
+[13] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/GPT-6%20Laufzeitaufl%C3%B6sung%20der%20Systeme.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/GPT-6%20Laufzeitaufl%C3%B6sung%20der%20Systeme.md)
+[14] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Gemini%204%20Argon%20Phasendetektor-Aufl%C3%B6sung.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Gemini%204%20Argon%20Phasendetektor-Aufl%C3%B6sung.md)
+[15] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Grok%204.7%20Phasendetektor-Aufl%C3%B6sung.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Grok%204.7%20Phasendetektor-Aufl%C3%B6sung.md)
+[16] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Kimi%20K3%20Phasendetektor-Aufl%C3%B6sungsanalyse.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Kimi%20K3%20Phasendetektor-Aufl%C3%B6sungsanalyse.md)
+[17] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/MiniMax%20M3%20Phasendetektor-Aufl%C3%B6sung.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/MiniMax%20M3%20Phasendetektor-Aufl%C3%B6sung.md)
+[18] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Mistral%20Large%204%20Laufzeitaufl%C3%B6sung%20der%20Systeme.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Mistral%20Large%204%20Laufzeitaufl%C3%B6sung%20der%20Systeme.md)
+[19] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Muse%20Spark%201.3%20Phasendetektor-Aufl%C3%B6sung.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Muse%20Spark%201.3%20Phasendetektor-Aufl%C3%B6sung.md)
+[20] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Perplexity%20Phasendetektor-Aufl%C3%B6sung.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Perplexity%20Phasendetektor-Aufl%C3%B6sung.md)
+[21] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Quen%203.8%20Max%20Aufl%C3%B6sung%20zweier%20Phasendetektoren.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/Quen%203.8%20Max%20Aufl%C3%B6sung%20zweier%20Phasendetektoren.md)
+[22] [https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Fragenkatalog%20zu%20einem%20Phasendetektor.md](https://raw.githubusercontent.com/WegaLink/Spacetime-Dynamics/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Fragenkatalog%20zu%20einem%20Phasendetektor.md)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

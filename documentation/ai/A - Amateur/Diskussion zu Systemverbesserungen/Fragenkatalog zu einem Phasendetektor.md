@@ -381,7 +381,47 @@ Das entspricht einer Zeitunsicherheit von σ_t = σ_φ/(2πf₀) = 10⁻¹² s =
 
 ---
 
-- **Quelle:** [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203/) im Verzeichnis Physik 3
+### Physik 3-1 — Auslesen der Laufzeitdifferenz
+
+Elf Analysen. MiniMax M3 ohne Inhalt. Einigkeit besteht nur für B und nur über die gemessene Kennlinie. Für A gibt es keine aus der Beschreibung ableitbare Laufzeitauflösung. Theoretische ADC-Zahlen von 0,2 ps bis 1 fs dürfen nicht in die Transferfunktion.
+
+**System B, einzige belastbare Zahl.** Alle auswertbaren Antworten rechnen dieselbe Kalibrierung:
+
+\[
+\frac{100\,\mathrm{ps}}{200\,\mathrm{Zählwerte}} = 0{,}5\,\mathrm{ps/Zählwert}.
+\]
+
+Das Fenster 200…800 ist 600 Zählwerte, also 300 ps, der Arbeitspunkt liegt bei etwa 500. Die Rohgröße der Transferfunktion ist die eingestellte Verzögerung plus \((N-500)\cdot 0{,}5\,\mathrm{ps}\). Die 0,5 ps sind die Steigung der Interpolation, nicht die Unsicherheit (GPT, Perplexity, Grok, Muse).
+
+Der Grobtakt \(1/144\,\mathrm{MHz}\approx 6{,}94\,\mathrm{ns}\) ist keine Auslese. Die etwa 30 ps, nominell 250 ps am 3D3428, führen nur den Arbeitspunkt nach. Jeder Nachführsprung ist eine Unstetigkeit und muss mit dem Delay-Code geloggt werden (Claude, Muse, Gemini). Grok trennt zusätzlich Datenblatt und Behauptung: der 3D3428-0.25 hat nominell 0,25 ns je Schritt, nicht 30 ps.
+
+**Rauschen eines Blocks.** GPT, Claude, Gemini, Grok, Muse und Qwen rechnen dieselbe Binomialgrenze. Bei 1000 Flanken und \(p\approx 0{,}5\) ist \(\sigma_N\approx 16\), also \(\sigma_t\approx 8\,\mathrm{ps}\) in 2 ms. Das gilt nur, wenn die gemessene Steigung aus einer statistischen Streuung der Flanke um den Umschaltpunkt kommt. Versorgung, Treiber und Temperatur können größer sein. Weißes Mittel über 1 s ergäbe rechnerisch etwa 0,4 ps (Claude, Gemini, Muse). Das ist keine Geräteangabe. Drift bricht die \(1/\sqrt{N}\)-Skalierung.
+
+Nicht übernehmen: Mistral rechnet aus der Steigung und \(\sqrt{1000}\) formal 16 fs und verwirft das selbst. GLM setzt 30 ps durch \(\sqrt{1000}\) und erhält etwa 1 ps; das verwechselt Nachführschritt und Zählrauschen. Kimi nennt 1–10 ps kurzzeitig und 30 ps langzeitig, ohne die Binomialrechnung. Die in Physik 1 geführten **10–100 ps** bleiben die praktische Grenze, sobald die Umwelt größer ist als die Binomialstreuung (Mistral, Muse, Qwen, Grok).
+
+**System A, keine ps-Zahl.** GPT, Grok und Perplexity: 16 bit legen \(\Delta t\) nicht fest. Es fehlen Spannungsänderung je Phase, Rauschen, Abtastrate und eine Injektion bekannter Laufzeit. Kanal 2, AR5000 5…15 MHz und ADL5519, ist eine Leistungs-, keine Zeitmessung (Grok, Gemini, Claude, Muse, Kimi). Der Hochpass auf der 1–2-Hz-Schwebung macht den Kanal für quasistationäre Änderungen blind und die Empfindlichkeit phasenabhängig, an den Extrema null (Gemini, Claude, Muse).
+
+Die Umrechnung, auf die sich alle einigen können, ist nur
+
+\[
+\delta t = \frac{\delta\varphi}{2\pi\cdot 16\,\mathrm{MHz}},\qquad T_0=62{,}5\,\mathrm{ns}.
+\]
+
+1° entspricht 174 ps, 0,1° entspricht 17 ps. Wer daraus eine Auflösung macht, setzt ein SNR voraus, das nicht gemessen ist. Claude erhält formal etwa 1 fs je LSB bei voller Aussteuerung und etwa 10–20 fs bei 12–13 bit ENOB, begrenzt die Nutzbarkeit aber durch freie Quarze auf 0,1–1 ns bei 1 s. Qwen erhält über die Schwebungszeitdehnung formal 0,2 ps und praktisch 1–10 ps, langzeitig 100 ps und schlechter. Kimi setzt \(2\pi/2^{16}\) und erhält 1 fs, praktisch 10–100 ps. GLM nimmt 0,1° an und erhält etwa 17 ps, relativ \(10^{-8}\) bis \(10^{-7}\). Gemini nennt 10–50 ps nur für Transienten oberhalb des Hochpasses. Diese Spanne ist eine Meinungsbreite, keine Kalibrierung. A und B dürfen nicht in eine gemeinsame \(\Delta t\)-Angabe fallen: A ist \(\int\Delta f/f\,\mathrm{d}t\) zweier Freiläufer plus Kabel, B eine Flankenlage gegen einen gemeinsamen 144-MHz-Takt (Physik 1, bestätigt von GLM, Mistral, Muse, Grok).
+
+**Was in die Transferfunktion gehört**
+
+| | A | B |
+| --- | --- | --- |
+| Primärgröße | relative Phase, AC nach Hochpass | Zählwert im 300-ps-Fenster |
+| Einzige harte Zahl | \(\delta t=\delta\varphi/(2\pi\cdot 16\,\mathrm{MHz})\) | 0,5 ps/Zählwert |
+| Einzelblock | nicht ableitbar | etwa 8 ps in 2 ms, binomial |
+| Praktische Grenze | nicht gemessen; Schätzungen 10 ps bis ns, Drift der freien Takte | 10–100 ps, sobald Drift oder Nachführsprung dazukommt |
+| Kanal 2 | Amplitude, Transferfunktion für \(\Delta t\) null | — |
+
+**Offen, bevor die zweite Stufe als kalibriert gilt.** Gemessenes \(\sigma_N\) bei festem Delay-Code, sonst bleibt die 8-ps-Zahl eine Annahme. Injektion einer bekannten Laufzeit, Messung 3, sonst ist die Steigung 0,5 ps/Zählwert nur eine Gerätekennlinie, keine metrologische Kalibrierung. Log des Delay-Codes bei jedem Verlassen von 200…800.
+
+- **Quelle:** technische Analyse, [KI-Runde](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203/) im Verzeichnis Physik 3 und [Physik 3-1]() im Verzeichnis Physik 3-1
 - **Prüfbarkeit:** direkt messbar
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** Transferfunktionen für alle interessierenden Signale ermitteln
