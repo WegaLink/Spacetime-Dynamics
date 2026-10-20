@@ -345,19 +345,15 @@ Das entspricht einer Zeitunsicherheit von σ_t = σ_φ/(2πf₀) = 10⁻¹² s =
 
 | Nr. | Frage | Betreffende KIs |
 |-----|-------|---------------|
-| Q1 | **Welche Frequenz hat die hypothetische Metrikstörung in "Intuition 10"?** Ohne diese Angabe sind alle Frequenzabhängigkeiten (Resonanz, Chirp, Korrelation) nicht quantifizierbar.
-Mensch: Kurzwelle 0-30 MHz, wegen verfügbarer günstiger elektronischer Bauteile | Alle 12 |
+| Q1 | **Welche Frequenz hat die hypothetische Metrikstörung in "Intuition 10"?** Ohne diese Angabe sind alle Frequenzabhängigkeiten (Resonanz, Chirp, Korrelation) nicht quantifizierbar. Mensch: Kurzwelle 0-30 MHz, wegen verfügbarer günstiger elektronischer Bauteile | Alle 12 |
 | Q2 | **Ist die Störung kohärent über die geplante Messzeit?** Für Resonatoren und lange Baselines entscheidend. | Claude 5.5, GLM 5.3, DeepSeek V4.1 |
 | Q3 | **Wie ist die erwartete räumliche Ausdehnung/Wellenlänge der Störung?** Bestimmt, ob differentielle Anordnungen (A2) oder lokale Resonatoren (A1) geeignet sind. | Perplexity, Quen 3.8 Max, GPT-6 |
-| Q4 | **Ist eine phasenkohärente Übertragung über 700 km (Mecklenburg–Bayern) technisch realisierbar?**
-Mensch: Dies ist meine Vision seit 20 Jahren (bin jetzt 70), hoffe es noch selber realisieren zu können, ansonsten mögliche Fortsetzung des Projektes durch meine Enkel Felix, Larissa, Lena, Max, Tim,... | DeepSeek V4.1, Perplexity, Grok 4.7 |
-| Q5 | **Welche Oszillatortechnologie ist für erweiterte Topologien vorgesehen?** (OCXO, Rubidium, optischer Kamm?)
-Mensch: OCXO (ca. 100 EUR) ist machbar, Rubidium (ca. 1000 EUR) wäre wünschenswert, sobald finanzielle Mittel dafür verfügbar werden | GLM 5.3, Kimi K3, Mistral Large 4 |
+| Q4 | **Ist eine phasenkohärente Übertragung über 700 km (Mecklenburg–Bayern) technisch realisierbar?** Mensch: Dies ist meine Vision seit 20 Jahren (bin jetzt 70), hoffe es noch selber realisieren zu können, ansonsten mögliche Fortsetzung des Projektes durch meine Enkel Felix, Larissa, Lena, Max, Tim,... | DeepSeek V4.1, Perplexity, Grok 4.7 |
+| Q5 | **Welche Oszillatortechnologie ist für erweiterte Topologien vorgesehen?** (OCXO, Rubidium, optischer Kamm?) Mensch: OCXO (ca. 100 EUR) ist machbar, Rubidium (ca. 1000 EUR) wäre wünschenswert, sobald finanzielle Mittel dafür verfügbar werden | GLM 5.3, Kimi K3, Mistral Large 4 |
 | Q6 | **Wie wird zwischen "Verbesserung der Umwandlung" und "Verbesserung der Auswertung" unterschieden?** (Relevant für die Systemarchitektur.) | Perplexity, MiniMax M3 |
 | Q7 | **Ist die Annahme einer mit *c* propagierenden Störung konsistent mit einer Messung, die eine differentielle Anordnung über 700 km erfordert?** (Wellenlänge vs. Baseline.) | Quen 3.8 Max, GPT-6 |
-| Q8 | **Welche Integrationszeit ist für die Messung vorgesehen?** Bestimmt, welche Rauschunterdrückung (Korrelation, Mittelung) wirksam wird. Aktuell sind Integrationszeiten von 2 s und 96 s in Anwendung, historisch wurden Signale mit 1 µs aufgelöst und mit unterschiedlichen Algorithmen verarbeitet | Muse Spark 1.3, Kimi K3 |
-| Q9 | **Sind aktive Komponenten (Verstärker, Regeneratoren) in der Messkette zulässig, oder muss die Messung passiv bleiben?** (Relevant für Resonator-Topologien.)
-Mensch: Die aktuellen digitalen Systeme arbeiten passiv, das im Aufbau befindliche System setzt Verstärker, Regeneratoren ein  | Claude 5.5, GLM 5.3 |
+| Q8 | **Welche Integrationszeit ist für die Messung vorgesehen?** Bestimmt, welche Rauschunterdrückung (Korrelation, Mittelung) wirksam wird. Mensch: Aktuell sind Integrationszeiten von 2 s und 96 s in Anwendung, historisch wurden Signale mit 1 µs aufgelöst und mit unterschiedlichen Algorithmen verarbeitet | Muse Spark 1.3, Kimi K3 |
+| Q9 | **Sind aktive Komponenten (Verstärker, Regeneratoren) in der Messkette zulässig, oder muss die Messung passiv bleiben?** (Relevant für Resonator-Topologien.) Mensch: Die aktuellen digitalen Systeme arbeiten passiv, das im Aufbau befindliche System setzt Verstärker, Regeneratoren ein  | Claude 5.5, GLM 5.3 |
 | Q10 | **Wie groß ist der erwartete Beitrag lokaler Metrikfluktuationen (seismisch, thermisch, anthropogen) an den beiden Standorten?** | DeepSeek V4.1, Perplexity |
 
 ---
