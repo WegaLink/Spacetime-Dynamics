@@ -40,5 +40,7 @@ date        hours  total    location     subject
 2026-10-13    4     95      Vierow       "Intuition 10" Abgleich mit KI-Beiträgen
 2026-10-14    3     98      Vierow       "Intuition 10" Abgleich mit KI-Beiträgen
 2026-10-15    3    101      Vierow       "Intuition 10" Abgleich mit KI-Beiträgen
-2026-10-18    3    104      Vierow       Einstieg in Transferfunktion-Diskussion in Physik 3
+2026-10-18    3    104      Türkenfeld   Einstieg in Transferfunktion-Diskussion in Physik 3
+2026-10-19    4    108      Türkenfeld   Einstieg in Transferfunktion-Diskussion in Physik 3
+2026-10-20    8    116      Türkenfeld   Phasendetektor-Auflösung Diskussion in Physik 3-1/2
 
