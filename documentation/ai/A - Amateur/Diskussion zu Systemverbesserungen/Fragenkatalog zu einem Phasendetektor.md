@@ -421,11 +421,53 @@ Die Umrechnung, auf die sich alle einigen können, ist nur
 
 **Offen, bevor die zweite Stufe als kalibriert gilt.** Gemessenes \(\sigma_N\) bei festem Delay-Code, sonst bleibt die 8-ps-Zahl eine Annahme. Injektion einer bekannten Laufzeit, Messung 3, sonst ist die Steigung 0,5 ps/Zählwert nur eine Gerätekennlinie, keine metrologische Kalibrierung. Log des Delay-Codes bei jedem Verlassen von 200…800.
 
-- **Quelle:** technische Analyse, [KI-Runde](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203/) im Verzeichnis Physik 3 und [Physik 3-1]() im Verzeichnis Physik 3-1
+### Physik 3-2
+
+- **Frage:** Wie kann das Auslesekonzept von System A und System B geändert werden, welche Bauteile tragen, und welche Größenordnung der Auflösung ist damit belegbar? Umwelt, Versorgung und Gerätekanäle bleiben Physik 2.
+- **Antwort / Impuls:**
+
+Zwölf Analysen trennen Auslese von Umwandlung. Eine feinere Zeitmarke ändert nicht die Aussage von Physik 1: eine quasistationäre Eigenzeit fällt bei gemeinsamem Takt in erster Ordnung heraus. Mehrfachumlauf und längeres Kabel vergrößern \(\varepsilon\to\Delta t\), nicht die Auflösung des Komparators; das bleibt Physik 3, Topologie, und wird hier nicht als Gewinn gezählt (Mehrheit; Gegenposition bei GLM, Qwen, DeepSeek). A und B bleiben getrennte Ketten. Eine Kennliniensteigung ist kein Rauschen. Die 0,5-ps-Kennlinie von B und formale ADC-LSB von A gehören nicht in die Transferfunktion.
+
+**Was Physik 3-1 als Bezug festlegt.** System A: zwei freie 16-MHz-Takte, Mischer. Primärgröße \(\int\Delta f/f\,\mathrm{d}t\). Keine gemessene Laufzeitauflösung. Einzige saubere Umrechnung: \(T_0=62{,}5\,\mathrm{ns}\), also \(1^\circ\widehat{=}174\,\mathrm{ps}\). System B: gemeinsamer 144-MHz-Takt, Rohbin \(6{,}9\,\mathrm{ns}\), Feinstufe 3D3428 etwa 30 ps, RS-422 LTC1687, Statistik über Pause/Burst. Praktische Grenze im Konsens von Physik 1: 10–100 ps. Claude, GLM, Kimi, MiniMax und Qwen setzen für A Zahlen von 0,1 ps bis 10 ns an, die im Dokument nicht stehen. Diese Baselines werden nicht übernommen (Grok, GPT, Perplexity).
+
+**Konzept, das trägt.**
+
+1. **B, Flanke vor Zähler.** Die Zeitmarke entsteht im Komparator und im Leitungstreiber. Ein Sprung des Zählertakts von 144 MHz auf 1 GHz verbessert nur das Rohbin auf 1 ns und liegt über der heutigen Feinstufe (Grok, GPT, Perplexity, Muse). Mistral und Kimi gewichten den schnelleren Zähler zu hoch.
+2. **B, kalibrierter TDC statt Zähler plus 3D3428.** ASIC oder FPGA-Carry-Kette, Code-Dichte-Kalibrierung, INL mitgemessen. Einzelschuss realistisch 5–20 ps RMS. Der TI TDC7200 (55 ps, etwa 35 ps RMS) ist nur ein Zwischenschritt und lohnt sich gegenüber 30 ps kaum (Grok, GPT, Qwen, Gemini).
+3. **A, Schwebung oder I/Q, nicht eine Grad-Anzeige.** DMTD mit Heterodynfaktor \(f_0/f_\mathrm{b}\) (Grok, Gemini, Kimi) oder zwei Quadraturmischer mit \(\operatorname{atan2}(Q,I)\) (GPT, MiniMax, Qwen, Muse). Beides misst weiterhin die relative Phase zweier Pfade. Eine gemeinsame Referenz macht aus A ein anderes Instrument: differentielle Laufzeit statt Integral zweier Freiläufer (DeepSeek, Qwen, Grok). Das ist eine Konzeptänderung, kein reiner Auflösungsgewinn, und der Oszillator selbst ist ein Gerätekanal für Physik 2.
+4. **Träger höher, nur sekundär.** \(\Delta t=\Delta\varphi/(2\pi f)\). Von 16 MHz auf 50–100 MHz formal Faktor 3–6, praktisch etwa 3–10, weil das Phasenrauschen in Radiant mitsteigt und Cat-7 oberhalb einiger hundert Megahertz dämpft (Grok, Muse, Qwen). Faktor 60 bei 1 GHz (MiniMax) wird nicht übernommen.
+
+**Bauteile, die mehrfach und mit nachvollziehbarer Rolle genannt werden.**
+
+| Funktion | Klasse | Beispiele aus der Runde | Rolle |
+| --- | --- | --- | --- |
+| Flanke B | Komparator, Dispersion unter einigen ps | ADCMP572, ADCMP580, ADCMP582 | ersetzt die langsame Schwelle |
+| Leitungsmarke B | LVPECL oder CML, nicht als Zeitmarke RS-422 | NB7L14M, LTC6957, NB7V52M | LTC1687 bleibt für das Kabel zulässig; die Zeitmarke wird davor geformt und danach regeneriert |
+| Taktverteilung | Jitter-Cleaner, additives Jitter unter 100 fs im Datenblatt, im Aufbau zu messen | LTC6957, HMC7044, LMK04828 | nur der nichtgemeinsame Anteil zählt |
+| Zeitmessung B | ASIC-TDC oder FPGA-Carry | TDC-GPX2, AS6501; Artix-7 oder Kintex-7 | ersetzt 3D3428 |
+| Auslese A | Doppelmischer oder linearer Phasendetektor, rauscharmer NF-Pfad | ADE-1, RPD-1, AD8302; ADA4898, LT1028, OPA211; 24-bit-ADC | AD8302 ist ein Testbauteil, kein fs-Detektor |
+| Option A/B | Zweikanal-ADC, digitale I/Q | LTC2185, AD9653 | Alternative zur Flanke, kein automatisches Upgrade |
+
+Nicht übernehmen: DS1023 mit „0,25 ps Schritt“ (Kimi; Schrittweite ist keine RMS-Auflösung), optischer Frequenzkamm und Wasserstoff-Maser (Mistral, Priorität 3), Femto-LSB aus ADC-Bitbreite.
+
+**Größenordnung.** Gegen 10–100 ps, nicht gegen die Kennlinie, und nur für weißes elektronisches Rauschen. Faktoren dürfen nicht multipliziert werden (Fehler bei Kimi, Qwen, MiniMax, Mistral).
+
+| Pfad | Einzelschuss | Nach Mittelung, nur weiß | Faktor, Konsens | Nicht ansetzen |
+| --- | --- | --- | --- | --- |
+| Schnellerer Zähler allein | 1–7 ns Rohbin | kaum besser | unter 2 | — |
+| Steile Flanke plus ASIC- oder FPGA-TDC | 5–20 ps RMS | 0,1–1 ps bei \(10^2\)–\(10^4\) unabhängigen Ereignissen | etwa 10–100 | 10 fs aus \(\sqrt{N}\) bei \(N=10^6\) (Gemini, Claude, Mistral) |
+| DMTD oder I/Q an A | keine Messung vorhanden | 0,1–1 ps elektronisch bei 1–10 s, falls das Mischerrauschen mitspielt | 10–100 gegen eine Grad-Anzeige | gegen freie Quarze oft null; 1–10 fs (Claude, Gemini) |
+| Träger etwa mal 6 | proportional nur bei gleichem \(\Delta\varphi\) in Radiant | realistisch 3–10 | 3–10 | linear bis 1 GHz |
+
+Die ehrliche Spanne ist **eine bis zwei Größenordnungen, Ziel 0,1–1 ps elektronisch**. GPT und Perplexity bleiben bei Faktor 3–10 und wenigen bis einigen zehn Pikosekunden, solange die Baseline nicht gemessen ist; das ist die Untergrenze des Konsenses, nicht ein Widerspruch. Flicker von Komparator, Verzögerungskette und Mischer beendet die Mittelung typisch bei etwa 0,1–1 ps über Sekunden bis Minuten, nicht bei einigen zehn Femtosekunden. Eine stabile 10-fs-Auslese ist ein anderes Instrument. Die 1-fs-Schwelle aus dem Einstieg von Physik 3 (Amplitude \(10^{-8}\) an 30 m) liegt damit weiter außerhalb dieser Bauteile.
+
+**Prüfung, bevor eine Zahl in die Transferfunktion wandert.** Bekannte Laufzeit injizieren (Messung 3). Für B: \(\sigma\) bei festem Delay-Code mit der neuen Flanke, gegen die heutigen 10–100 ps. Für A: erst eine gemessene Baseline, dann Schwebung oder I/Q. Liegt \(\sigma\) nicht darunter, hat das Bauteil nichts gebracht.
+
+- **Quelle:** technische Analyse, [KI-Runde](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203/) im Verzeichnis Physik 3 und [Physik 3-1](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/) und [Physik 3-2](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-2/)
 - **Prüfbarkeit:** direkt messbar
-- **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
-- **Offene Prüfung:** Transferfunktionen für alle interessierenden Signale ermitteln
-- **Status:** in Bearbeitung
+- **Technische Konsequenz:** nächster Hardware-Schritt ist Flanke plus kalibrierter TDC an B, parallel eine gemessene Phasenbaseline an A; kein Femto-Ziel, keine Kabellänge als Auflösungsmaßnahme
+- **Offene Prüfung:** Injektionstest; Allan-Grenze der neuen Kette; ob eine gemeinsame Referenz an A gewollt ist, weil sie die Messgröße ändert
+- **Status:** Impuls dokumentiert
 ### Physik 4
 - **Datum:** 2026-09-02 (abgeschlossen 2026-10-04)
 - **Frage:** Könnten Raumzeitkristalle bzw. deren Kollaps im kritischen Zustand in ein mikroskopisches Schwarzes Loch mit dem Phasendetektor als Modulation der Zeitkomponente nachweisbar sein? Lässt sich aus der mathematischen Beschreibung (Goethe-Universität Frankfurt / TU Wien) Signalform und Amplitudenordnung einer propagierenden Störung der Raumzeitkrümmung ableiten? Zusammenhang mit 3604 s und 204 min?
