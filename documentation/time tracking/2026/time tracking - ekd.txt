@@ -43,4 +43,5 @@ date        hours  total    location     subject
 2026-10-18    3    104      Türkenfeld   Einstieg in Transferfunktion-Diskussion in Physik 3
 2026-10-19    4    108      Türkenfeld   Einstieg in Transferfunktion-Diskussion in Physik 3
 2026-10-20    8    116      Türkenfeld   Phasendetektor-Auflösung Diskussion in Physik 3-1/2
+2026-10-22    4    120      Türkenfeld   Diskussion zu Eclypse + ADC + AWG in Physik 3-3
 

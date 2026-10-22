@@ -516,8 +516,82 @@ Aufbauend auf der Analyse in *Physik 3-1* (Analog: zwei freie 16-MHz-Oszillatore
 2. **Kabel- und Streckeneinfluss:** Eine Verlängerung der Laufzeit $\tau$ (z. B. auf 4 km) verbessert zwar die relative Auflösung ($\delta\tau/\tau$), ändert aber nichts an der intrinsischen Komparator-Präzision $\delta\tau_{\text{min}}$.
 3. **Zwingende Verifikation (Injektionskalibrierung):** Bevor eine verbesserte Kennlinie in die Transferfunktion übernommen wird, muss die neue Kette mit einer bekannten, injizierten Laufzeitänderung (Test-Injektion) kalibriert werden. Wenn das gemessene $\sigma$ nach dem Hardware-Umbau nicht sinkt, hat die Bauteiländerung nichts bewirkt.
 
+## Physik 3-3: Konzept und Abschätzung für einen digitalen I/O-Phasendetektor (Eclypse Z7 + Zmod AWG/ADC)
 
-- **Quelle:** technische Analyse, [KI-Runde](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203/) im Verzeichnis Physik 3 und [Physik 3-1](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/) und [Physik 3-2](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-2/)
+**Status:** Konsens-Dokument auf Basis der Analyse von 12 KI-Experten  
+**Bezug:** Fragenkatalog zur Systemverbesserung (Raumzeitdynamik)
+
+---
+
+### 1. Ausgangssituation und Konzept
+
+Basierend auf den vorherigen Diskussionen („Physik 3-2“) wird als nächstes ein volldigitales I/Q-Konzept auf Basis fertiger, modularer Hardware untersucht:
+
+* **Hardware-Plattform:** Digilent Eclypse Z7 (Zynq-7000 SoC) kombiniert mit Zmod AWG 1411 (14 Bit, 125 MS/s) und Zmod Scope / ADC 1410 (14 Bit, 105 MS/s).
+* **Zusammenführung:** AWG und ADC werden in einem System vereint; der FPGA hat simultan Zugriff auf das gesendete (Tx) und empfangene (Rx) Signal.
+* **Signalformen:** Der AWG erzeugt wahlweise Sinus, Rechteck, Pulse oder komplexe Signalformen (Chirp/Multiton).
+* **Kabeltopologie (Typ B):** Ein 30 m langes gerades Sat-Koaxialkabel (Hin- und Rückweg, Gesamtlänge $\approx 60\text{ m}$).
+* **Auswertung:** Kontinuierliche Ermittlung der Laufzeitdifferenz im FPGA via digitaler I/Q-Demodulation und Phasenvergleich, mit anschließender Weiterverarbeitung im Frequenzbereich von 0–50 MHz.
+
+---
+
+### 2. Grundlaufzeit und elektrotechnische Basis
+
+* **Elektrische Länge ($\tau_0$):** Bei 60 m Gesamtweg und einem typischen Verkürzungsfaktor für geschäumte Sat-Koaxialkabel von $v_f \approx 0{,}80$ bis $0{,}82$ (bzw. PE $\approx 0{,}66$) beträgt die absolute Grundlaufzeit:
+  $$\tau_0 \approx 250\text{ ns bis } 300\text{ ns}$$
+* **Trägerfrequenz ($f_c$):** Sinnvollerweise im Bereich 5 bis 20 MHz (da die analoge AWG-Bandbreite bei höheren Frequenzen abfällt und das Nyquist-Limit des ADCs bei 52,5 MHz liegt).
+* **Phasen-Zeit-Beziehung:** Eine kleine Laufzeitänderung $\Delta\tau$ übersetzt sich über einen Sinusträger in eine Phasenänderung:
+  $$\Delta\varphi = 2\pi f_c \Delta\tau \implies \Delta\tau = \frac{\Delta\varphi}{2\pi f_c}$$
+
+---
+
+### 3. Abschätzung der Systemempfindlichkeit ($\delta\tau$)
+
+Die Expertendiskussion der 12 KIs zeigt ein klares dreistufiges Bild zwischen theoretischem Rauschlimit und realer Systemgrenze:
+
+#### A. Elektronische Rausch- und Abtastgrenze (Cramér-Rao / Quantisierung)
+* Der 14-Bit-ADC (AD9648) liefert ein praktisches SNR (ENOB $\approx 11{,}5\text{–}12\text{ Bit}$) von $\approx 70\text{–}74\text{ dB}$.
+* Aus dem thermischen Rauschen und der Quantisierung resultiert im Kurzzeitbereich (nach kohärenter Mittelung über $N$ Samples) eine rein elektronische Auflösung von:
+  * **Einzel-Sample ($\sim 10\text{ ns}$):** $\approx 1\text{ bis } 5\text{ ps}$
+  * **1 s Mittelung ($N = 10^8$):** $\approx 0{,}1\text{ bis } 1\text{ fs}$ (theoretisches Rauschlimit)
+
+#### B. Reale Systemgrenzen (Takt-Jitter & PLL)
+* **Nachteil (Kein externer Oszillator):** Da AWG und ADC auf dem Eclypse Z7 aus internen PLLs des On-Board-Oszillators versorgt werden, existiert kein externer Master-Takt.
+* **Differentieller Takt-Jitter:** Da Sende- und Empfangspfad auf demselben Board laufen, heben sich viele Common-Mode-Fehler auf. Verbleibender PLL- und Apertur-Jitter ($\sim 1\text{ ps}$) limitieren die praktische Kurzzeit-Empfindlichkeit ohne externen Takt auf:
+  $$\delta\tau_{\text{praxis, kurz}} \approx \mathbf{10\text{ bis }100\text{ fs (in 1 s)}}$$
+
+#### C. Umwelt- und Kabelthermik (Dominanter Langzeit-Faktor)
+* **Kabel-Temperaturkoeffizient:** Sat-Koaxialkabel besitzen einen Temperaturkoeffizienten der Laufzeit von $\alpha_\tau \approx 10\text{–}50\text{ ppm/K}$.
+* Bei $\tau_0 \approx 250\text{ ns}$ bedeutet dies eine Laufzeitänderung von $\approx 2{,}5\text{ bis }12\text{ ps per Kelvin}$.
+* Schon eine unkompensierte Temperaturdrift von $1\text{ mK}$ erzeugt $\approx 3\text{–}12\text{ fs}$ Änderung – und überstrahlt damit das elektronische Rauschen. In unkontrollierter Laborumgebung dominiert über Minuten/Stunden eine Drift von $1\text{ bis } 100\text{ ps}$.
+
+---
+
+### 4. Zusammenfassende Empfindlichkeitstabelle
+
+| Integrationszeit / Messfenster | Erreichbare Laufzeitauflösung ($\delta\tau$) | Relative Empfindlichkeit ($\delta\tau / \tau_0$) | Dominierender Limitierungsfaktor |
+| :--- | :--- | :--- | :--- |
+| **Einzelmessung** (Nyquist, $\sim 10\text{ ns}$) | $\approx 1\text{–}5\text{ ps}$ | $\approx 4 \cdot 10^{-6} \text{ bis } 2 \cdot 10^{-5}$ | ADC-Quantisierung & Apertur-Jitter |
+| **1 Sekunde** (Mittelung) | $\approx \mathbf{10\text{–}100\text{ fs}}$ | $\approx 4 \cdot 10^{-8} \text{ bis } 4 \cdot 10^{-7}$ | Takt-Jitter & Restrauschen |
+| **Langzeit / unkompensiert** (Stunden) | $\approx 1\text{–}100\text{ ps}$ | $\approx 4 \cdot 10^{-6} \text{ bis } 4 \cdot 10^{-4}$ | Kabel-Temperaturdrift ($\Delta T$) & Board-Drift |
+
+---
+
+### 5. Kritische Bewertung & Konsequenzen für den Aufbau
+
+1. **Einordnung zur Raumzeit-Metrikstörung:**  
+   Eine hypothetische Raumzeitstörung der Amplitude $\sim 10^{-8}$ erzeugt auf der 60-m-Strecke eine Laufzeitänderung im Attosunden-Bereich ($\sim 1\text{ fs}$). Das digitale I/Q-System stößt bei 1 s Integrationszeit in diesen Rauschbereich ($\sim 10\text{ fs}$) vor, bleibt jedoch ohne thermische Stabilisierung und Taktoptimierung durch Umweltfaktoren gedeckelt.
+
+2. **Vorteil der Hardware:**  
+   Die vollständige Software-Definierbarkeit, der simultane Zugriff auf Tx/Rx im FPGA und die freie Wahl der Signalformen (Chirp, Multiton, Sinus) bieten einen enormen Gewinn an Flexibilität und Systemverständnis gegenüber dem alten XMC4700-Aufbau.
+
+3. **Notwendige Gegenmaßnahmen (Best Practices):**
+   * **Referenzkanal nutzen:** Nutzen Sie den zweiten ADC-Kanal des Zmod Scope für einen kurzen internen Loopback, um Board- und PLL-Drifts herauszurechnen.
+   * **Differentielle Zweitstrecke (Methodik 8):** Ein zweites, thermisch gekoppeltes Referenzkabel ist zwingend erforderlich, um Common-Mode-Temperatureffekte zu unterdrücken, ohne isotrope Nutzsignale zu verlieren.
+   * **Injektionskalibrierung:** Vor jeder Messung muss eine bekannte, kalibrierte Laufzeitänderung (Delay-Line) eingespeist werden, um die reale Transferfunktion ($\Delta\varphi \to \Delta\tau$) zu verifizieren.
+   * **Rohdaten-Ausgabe:** Es wird konsequent eine kalibrierte $\Delta\tau(t)$-Zeitreihe im Frequenzband ausgegeben, anstatt ungeprüfte Interpretationen als „Zeitfluss“ zu deklarieren.
+
+- **Quelle:** technische Analyse, [KI-Runde](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203/) im Verzeichnis Physik 3 und [Physik 3-1](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-1/) und [Physik 3-2](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-2/) und [Physik 3-3](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%203-3/)
 - **Prüfbarkeit:** direkt messbar
 - **Technische Konsequenz:** nächster Hardware-Schritt ist Flanke plus kalibrierter TDC an B, parallel eine gemessene Phasenbaseline an A; kein Femto-Ziel, keine Kabellänge als Auflösungsmaßnahme
 - **Offene Prüfung:** Injektionstest; Allan-Grenze der neuen Kette; ob eine gemeinsame Referenz an A gewollt ist, weil sie die Messgröße ändert
