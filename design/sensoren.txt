@@ -1,0 +1,63 @@
+
+
+
+
+
+Adafruit 9-DOF Orientation IMU Fusion Breakout - BNO085 (BNO080) - STEMMA QT / Qwiic (29.50 €)
+- accelerometer
+- gyroscope
+- magnetometer
+
+BMP388
+- Luftdruck, barometer
+
+## Eclypse Z7 - Pmod Port JA: Shared SPI Bus für BNO085 + BMP388
+
+# Gemeinsame SPI-Busleitungen
+set_property -dict { PACKAGE_PIN T5    IOSTANDARD LVCMOS33 } [get_ports { spi_mosi }]; # Pin 2
+set_property -dict { PACKAGE_PIN W6    IOSTANDARD LVCMOS33 } [get_ports { spi_miso }]; # Pin 3
+set_property -dict { PACKAGE_PIN W7    IOSTANDARD LVCMOS33 } [get_ports { spi_sck  }]; # Pin 4
+
+# Separate Chip-Selects
+set_property -dict { PACKAGE_PIN R5    IOSTANDARD LVCMOS33 } [get_ports { bno_cs_n }]; # Pin 1
+set_property -dict { PACKAGE_PIN W5    IOSTANDARD LVCMOS33 } [get_ports { bmp_cs_n }]; # Pin 9
+
+# BNO085 SHTP-Spezifische Steuerleitungen
+set_property -dict { PACKAGE_PIN V5    IOSTANDARD LVCMOS33 } [get_ports { bno_int_n }]; # Pin 7 (Input)
+set_property -dict { PACKAGE_PIN V6    IOSTANDARD LVCMOS33 } [get_ports { bno_rst_n }]; # Pin 8 (Output)
+
+
+Quelle 1: Temperatur auslesen über den BMP388 (Empfohlen & am präzisesten)
+
+Der BMP388 misst die Umgebungstemperatur primär, um die temperaturbedingte Drift des Luftdrucksensors mathematisch zu kompensieren. Diese Rohdaten können Sie direkt abgreifen.
+
+1. Die Rohwerte auslesen
+
+Die Temperaturdaten des BMP388 liegen aufgeteilt in drei aufeinanderfolgenden 8-Bit-Registern. Sie müssen einen SPI-Burst-Read ab der Registeradresse 0x07 durchführen:
+• 0x07 (T_DATA_0) -> Bits [7:0]
+• 0x08 (T_DATA_1) -> Bits [15:8]
+• 0x09 (T_DATA_2) -> Bits [23:16]
+Sie fügen diese drei Bytes im ARM-Core des Zynq zu einer einzigen 24-Bit-Ganzzahl (raw_temp) zusammen.
+
+2. Die mathematische Kompensation (Wichtig!)
+
+Die Zahl raw_temp ist nicht direkt die Temperatur in Celsius. Bosch-Sensoren erfordern eine Kompensationsformel unter Verwendung von herstellerseitig eingebrannten Kalibrierdaten (T₁, T₂, T₃), die Sie beim Systemstart einmalig aus den Registern 0x31 bis 0x35 auslesen müssen.
+Der offizielle Kompensations-C-Code von Bosch für den Zynq-Prozessor sieht stark vereinfacht so aus:
+c
+// Einmalig beim Start ausgelesene Kalibrierwerte (Trimming Coefficients)
+uint16_t T1; // aus Reg 0x31 / 0x32
+uint16_t T2; // aus Reg 0x33 / 0x34
+int8_t   T3; // aus Reg 0x35
+
+double kompensiere_temperatur(uint32_t raw_temp) {
+    double partial_data1 = (double)(raw_temp - T1);
+    double partial_data2 = (double)(partial_data1 * T2);
+    // Das Endergebnis in °C (Gleitkommazahl)
+    double t_lin = partial_data2 + (partial_data1 * partial_data1) * T3;
+    return t_lin; 
+}
+Verwende Code mit Vorsicht.
+
+Quelle 2: Temperatur auslesen über den BNO085 (Der SHTP-Weg)
+
+-> spiegelt primär die Eigenerwärmung des IMU-Prozessors wider

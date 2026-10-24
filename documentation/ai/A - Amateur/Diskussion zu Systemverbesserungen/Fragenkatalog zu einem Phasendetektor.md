@@ -64,6 +64,7 @@
 | Methodik | Trennt ein geplanter Vergleich von wahrer und scheinbarer Sternposition, einschließlich Parallaxe und Lichtlaufzeit, ein behauptetes nicht-optisches Signal von einem optischen oder thermischen Artefakt? Das ist der einzige in der Quelle wiederholt genannte Diskriminator. Ein Fehlschlag widerlegt die Übertragbarkeit auf diesen Detektor, nicht nur ein Analysefenster. | offen | [Methodik_9](#methodik-9) |
 | Methodik | Lässt sich die behauptete Finsternis-Signatur (Reaktion beim Wiederaufheizen, nicht bei der geometrischen Bedeckung) gegen Wetter und lokale Thermik prüfen, oder ist sie prinzipiell mit einem Wärmekanal verwechselt? Gemini und MiniMax machen daraus ein Template. Ohne Wärmekanal ist es keines. | offen | [Methodik_10](#methodik-10) |
 | Methodik | Soll ein Nahfeld-Test mit einem irreversiblen Laborprozess (Phasenübergang, Verdunstung) als Empfindlichkeitsinjektion dienen, analog zu Methodik 2, und welcher Nullversuch (dieselbe Wärme, ohne den Prozess) ist Pflicht? MiniMax und Mistral. Ein Prozent-Effekt im Nahfeld, der den Detektor nicht bewegt, begrenzt jede kosmische ppm-Erwartung. | offen | [Methodik_11](#methodik-11) |
+| Methodik | Wie kann eine KI-gestützte Störsignal-Erkennung und Vorselektion erfolgen und welche Anforderungen gibt es an eine Hardware-Skalierung? | Impuls dokumentiert | [Methodik_12](#methodik-12) |
 | Messung | Welche Erkenntnisse gibt es zu möglichen alternativen Entstehungsmechanismen der beobachteten 204-min-Chirp-Signale jenseits der diskret selbstähnlichen (DSS) kritischen Lösung des gravitativen Kollapses (Choptuik 1993)? | offen | [Messung_1](#messung-1) |
 | Messung | Sind die 13 Impulse im Abstand 3604 s mit Abtastraster, Zählerlänge oder Timer-Überlauf kommensurabel, und bleiben sie bei abgeschlossenem Eingang oder abgeschaltetem Detektor bestehen? | offen | [Messung_2](#messung-2) |
 | Messung | Sind Pause- und Burst-Statistik linear in einer elektrisch oder mechanisch injizierten Laufzeitänderung, und welches Vorzeichen und welcher Zyklusbereich gelten? Das entscheidet die Zuordnung experimentell, bevor eine Transferfunktion behauptet wird. (GPT, Grok) | offen | [Messung_3](#messung-3) |
@@ -516,7 +517,7 @@ Aufbauend auf der Analyse in *Physik 3-1* (Analog: zwei freie 16-MHz-Oszillatore
 2. **Kabel- und Streckeneinfluss:** Eine Verlängerung der Laufzeit $\tau$ (z. B. auf 4 km) verbessert zwar die relative Auflösung ($\delta\tau/\tau$), ändert aber nichts an der intrinsischen Komparator-Präzision $\delta\tau_{\text{min}}$.
 3. **Zwingende Verifikation (Injektionskalibrierung):** Bevor eine verbesserte Kennlinie in die Transferfunktion übernommen wird, muss die neue Kette mit einer bekannten, injizierten Laufzeitänderung (Test-Injektion) kalibriert werden. Wenn das gemessene $\sigma$ nach dem Hardware-Umbau nicht sinkt, hat die Bauteiländerung nichts bewirkt.
 
-## Physik 3-3: Konzept und Abschätzung für einen digitalen I/O-Phasendetektor (Eclypse Z7 + Zmod AWG/ADC)
+# Physik 3-3: Konzept und Abschätzung für einen digitalen I/Q-Phasendetektor (Eclypse Z7 + Zmod AWG/ADC)
 
 **Status:** Konsens-Dokument auf Basis der Analyse von 12 KI-Experten  
 **Bezug:** Fragenkatalog zur Systemverbesserung (Raumzeitdynamik)
@@ -761,6 +762,62 @@ Die Expertendiskussion der 12 KIs zeigt ein klares dreistufiges Bild zwischen th
 - **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
 - **Offene Prüfung:** derzeit keine offene Prüfung
 - **Status:** offen
+### Methodik 12
+- **Datum:** 2026-10-24
+- **Frage:** Wie kann eine KI-gestützte Störsignal-Erkennung und Vorselektion erfolgen und welche Anforderungen gibt es an eine Hardware-Skalierung?
+- **Antwort / Impuls:** 
+# KI-gestützte Störsignal-Erkennung, Vorselektion und Hardware-Skalierung
+
+### 1. Zielsetzung und Ausgangslage
+Im historischen System von 2007 wurden Störsignale manuell ermittelt und schrittweise ausgeblendet, bis im Wesentlichen Rauschen verblieb. Für das neue System mit deutlich höherem Datenaufkommen soll dieser Prozess durch eine automatisierte, KI-gestützte Pipeline ersetzt werden. Die zentrale methodische Herausforderung besteht darin, das System so auszulegen, dass **weder echte Raumzeit-Signale durch eine aggressive Vorselektion verloren gehen** noch **Umwelt- und Geräteartefakte (Temperatur, Taktjitter, Versorgungsschwankungen) irrtümlich als physikalische Signale interpretiert werden**.
+
+---
+
+### 2. Die vierstufige Daten- und Analyse-Pipeline
+
+Um den strengen Falsifikationskriterien des Projekts gerecht zu werden, wird die Verarbeitung in vier strikt getrennte Stufen unterteilt:
+
+* **Stufe 1 – Deterministische und statistische Online-Vorselektion (Edge):**
+  * Auf dem Erfassungsrechner oder Mikrocontroller läuft *kein* neuronales Netz, sondern eine deterministische, ressourcenschonende Signalstatistik (gleitende Allan-Abweichung, spektrale Flachheit / Spectral Flatness, Kurtosis, CUSUM-Sprungdetektion und Kreuzkanal-Kohärenz).
+  * **Zweigleisige Speicherung (Verlustvermeidung):** Reine Rauschdatensätze werden nicht einfach gelöscht, sondern fließen kontinuierlich in einen **Niedrig-Raten-Statistikstrom** ein (Allan-Punkte, Bandleistungen, Histogramme), der dauerhaft erhalten bleibt, um die Rausch-Baseline und langsame Drifts zu sichern.
+  * Nur bei statistischer Auffälligkeit oder Grenzwertüberschreitung werden die Rohdaten (inklusive Vor- und Nachlauf-Fenster) in den Ringpuffer übergeben. Die Vorselektion muss konservativ arbeiten (lieber zu viele Kandidaten als ein verpasstes Signal).
+
+* **Stufe 2 – Der 1-TByte-Ringpuffer (Ereignis- und Kandidatenarchiv):**
+  * Speicherung der verbleibenden relevanten Datensätze in strukturierten, komprimierten Formaten (**Apache Parquet, HDF5 oder Zarr**) in Kombination mit einer Metadaten-Datenbank (SQLite/DuckDB).
+  * Jedes Event enthält präzise Zeitstempel (GPS/PPS-synchronisiert), Detektor-ID, Vorselektions-Kennzahlen sowie alle synchron erfassten Umweltkanäle (Temperatur an mehreren Punkten, Versorgungsspannung/PoE-Last, Vibration, Luftdruck).
+  * **Überschreib-Strategie:** Ein automatisierter Lebenszyklus (FIFO mit Priority-Overwrite oder Schutzmarken für bestätigte Events und Injektionsreihen) verhindert, dass seltene oder wichtige Daten vor der Analyse überschrieben werden.
+
+* **Stufe 3 – Offline-KI-Analyse (Zwei-Ebenen-Modell):**
+  * **Umwelt-Regression (Stufe A):** Ein erklärbares Modell (z. B. Gradient Boosted Trees / XGBoost oder TCN) wird mit den Umweltkanälen gefüttert, um das erwartete Phasensignal $\Delta t$ vorherzusagen. Die verbleibenden **Residuen** (nach präregistrierter, eingefrorener Regression) bilden die eigentliche Basis für die Signal- und Anomaliesuche.
+  * **Unüberwachte Anomalieerkennung & Clustering (Stufe B):** Autoencoder (1D-CNN) oder Isolation Forests erkennen unregelmäßige Muster in den Residuen. Mittels Feature-Extraktion (Wavelets/Spektrogramme) und Clustering (UMAP + HDBSCAN) werden wiederkehrende Störungen (z. B. schaltende Netzteile, thermische Zyklen) zu Störungskatalogen zusammengefasst und automatisiert ausgeblendet.
+
+* **Stufe 4 – Validierung und Falsifikation:**
+  * **Künstliche Signal-Injektionen (Messung 3 / Methodik 2):** Vorab definierte, synthetische Testsignale (Chirps, Sprünge, thermische Pulse über DAC oder Delay-Chips) werden in den Datenstrom eingespeist. Die Pipeline muss diese Injektionen fehlerfrei wiederfinden, um ihre Nachweisempfindlichkeit zu beweisen.
+  * **Nullversuche & Blind-Analysen:** Parallele Aufzeichnungen bei abgeschaltetem Detektor oder kurzgeschlossenem Eingang sowie zeitlich blockweise getrennte Trainings- und Testdaten schützen vor Zirkelschlüssen und Überanpassung.
+
+---
+
+### 3. Hardware-Plattform und Skalierungsstrategie
+
+#### A. Lokaler Einstieg (Prototyp-Phase)
+* Das vorhandene **MacBook M2 mit 64 GB Unified Memory und 2 TB SSD** ist eine hervorragende Entwicklungsumgebung.
+* **Vorteile:** Dank Unified Memory kann die GPU (via Metal/MPS oder MLX) direkt auf den Arbeitsspeicher zugreifen, was die Analyse großer Zeitreihenfenster stark beschleunigt; DuckDB und Polars verarbeiten Parquet-Daten auf der internen NVMe-SSD extrem schnell.
+* **Grenzen:** Das MacBook dient als interaktiver Analyse- und Prototyping-Arbeitsplatz, sollte jedoch im Dauerbetrieb nicht als alleiniger physischer Ringpuffer-Speicher oder Server für das gesamte System genutzt werden.
+
+#### B. Optimale Plattform für Einzelsysteme (Produktion)
+* **Edge-Node (am Detektor):** Ein kleiner, passiver Industrie-PC oder Mini-PC mit Enterprise-NVMe-SSD (hohe Schreibleistung/TBW) und **GPSDO / PPS-Modul** für absolute, nanosekundengenaue UTC-Zeitstempel (Grundvoraussetzung für spätere Koinzidenzanalysen).
+* **Zentraler Analyse-Server:** Eine Linux-Workstation (z. B. 16–32 Kerne, 128–256 GB ECC-RAM, 1× NVIDIA RTX 4090 / RTX 6000 Ada mit 24–48 GB VRAM für CUDA-beschleunigtes Training und Inferenz, NVMe-RAID für den Ringpuffer sowie ein NAS/ZFS-Verbund für das Langzeitarchiv).
+
+#### C. Skalierung im verteilten Szenario (Mehrere Standorte, z. B. Mecklenburg und Bayern)
+* **Edge-First-Architektur:** Jeder Detektor-Standort betreibt lokal seine Erfassung, Vorselektion und seinen Ringpuffer. Es werden **niemals rohe Terabytes über das Internet übertragen**, sondern lediglich aggregierte Statistiken, Umwelt-Residuen und kompakte Event-Fingerabdrücke (Embeddings).
+* **Zentrale Kreuzkorrelation:** Ein zentraler Server gleicht die Ereignisse aller Standorte ab. Wenn ein Ereignis zeitversetzt ($\Delta t \le d/c$, z. B. $\approx 2,3\text{ ms}$ bei 700 km Abstand) an mehreren Standorten auftritt, werden gezielt die Rohdatenschnipsel dieser Sekunden angefordert.
+* **Vorteil der Skalierung:** Durch den standortübergreifenden Vergleich lassen sich lokale technische Störungen (Umwelt, Thermik, Netzeffekte) von potenziell raumzeitlich kohärenten Signalen trennen – genau der entscheidende Diskriminator für die physikalische Falsifikation.
+
+- **Quelle:** [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Methodik%212/)
+- **Prüfbarkeit:** direkt messbar
+- **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
+- **Offene Prüfung:** derzeit keine offene Prüfung
+- **Status:** Impuls dokumentiert
 ### Messung 1
 - **Datum:** 2026-10-03
 - **Frage:** Welche alternativen Entstehungsmechanismen des historischen 204-min-Chirps bleiben, nachdem eine Deutung als Choptuik-Kollaps anhand der Zeitstruktur ausgeschlossen ist? Zu prüfen sind insbesondere instrumentelle Perioden, Einkopplung in das RG58-Kabel und eine etwaige Ähnlichkeit mit den NASA-Magnetfelddaten, ohne diese Ähnlichkeit bereits als Ursache vorauszusetzen. Prüfen, ob der historische Chirp linear bzw. thermisch ist oder eine diskrete log-periodische Folge. Ein kontinuierlicher Verlauf passt zu differentieller Quarzdrift, nicht zu DSS (Gemini, DeepSeek). Dazu eine Kalibrierung durch Injektion eines bekannten Chirps und die Gruppenlaufzeit des RG58-Kabels (Muse).
