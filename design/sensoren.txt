@@ -1,7 +1,32 @@
 
+Sensor-Konzept
+==============
+
+BNO085: accelerometer, gyroscope, magnetometer (27,45 €)
+
+BMP390: Druck- und Höhenmesser, 3 Pascal
+BMP388: Druck- und Höhenmesser, 8 Pascal (9,90 €) 
+BME680: Temperatur, Luftdruck, Luftfeuchtigkeit, Luftgüte (14,99 €)
+
+ADS1118: 4-Kanal ADC, 16-bit, 860 SPS, + LM35 (13,79 €)
+
+PMOD TC1: K-Typ Thermoelementmodul mit draht (33,15 €)
 
 
 
+------------------------------------------------------------------------------
+
+EVAL-AD7980-PMDZ (32.90 €)
+- 2-kanal ADC, 16-bit
+
+ADS131M02
+- 2-kanal ADC, 24-bit, 64 ksps
+
+8-Channel 12-Bit SPI ADC - ADS7038 Breakout (13,39 €)
+- 
+
+Precisions ADS1118 16-Bit Entwicklungsplatine für Sensordatenerfassung, SPI Kommunikation
+- 
 
 Adafruit 9-DOF Orientation IMU Fusion Breakout - BNO085 (BNO080) - STEMMA QT / Qwiic (29.50 €)
 - accelerometer
