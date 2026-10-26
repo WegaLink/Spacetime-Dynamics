@@ -51,8 +51,8 @@
 | Physik | Könnten Raumzeitkristalle (spontane periodische Ordnung in Raum und Zeit) bzw. deren Kollaps im kritischen Zustand in ein mikroskopisches Schwarzes Loch mit dem Phasendetektor als Modulation der Zeitkomponente nachweisbar sein? Lässt sich aus der nun vorliegenden exakten mathematischen Beschreibung die Signalform und Amplitudenordnung der resultierenden dynamischen, propagierenden Störung der Raumzeitkrümmung ableiten? Zusammenhang mit historischen Periodizitäten (3604 s, 204 min)? | widerlegt | [Physik_4](#physik-4) |
 | Physik | Hebt der gemeinsame Takt eine quasistationäre Eigenzeitänderung in erster Ordnung auf, und welche Restkopplung bleibt für eine propagierende Störung, deren Wellenlänge mit dem Spulendurchmesser vergleichbar ist? (Grok) | offen | [Physik_5](#physik-5) |
 | Physik | Lassen sich aus der [Dokumentation](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/website/pdf/Kozyrev%20-%20CHAPTER%201.%20REVIEWS%20AND%20COMMENTS.pdf) zu Kozyrevs Beobachtungen Informationen über natürlich vorkommende relative Zeitflussänderungen der von ihm untersuchten kosmischen Phänomene ableiten? | offen | [Physik_6](#physik-6) |
-| Physik | Wenn eine relative Laufzeitänderung von 1–10 ppm auf die konkrete Verzögerung des Aufbaus umgerechnet wird: welche \(\Delta t\) ergibt sich, und liegt sie über oder unter dem bereits erreichten Rauschen? Qwen und Kimi skalieren unterschiedlich, weil die Armlänge nicht eingesetzt wurde. Ohne diese Zahl ist der Kozyrev-Vergleich gegenstandslos. | offen | [Physik_7](#physik-7) |
-| Physik | Sind die in der Levich-Darstellung vermischten Skalen (ppm an Widerständen, \(10^{-4}\)–\(10^{-5}\) an Torsionskräften, Prozent an Viskosität) überhaupt dieselbe physikalische Größe? Sonst wird aus drei verschiedenen Laboreffekten ein einziger „Zeitfluss“ gebaut. | offen | [Physik_8](#physik-8) |
+| Physik | Wenn eine relative Laufzeitänderung von 1–10 ppm auf die konkrete Verzögerung des Aufbaus umgerechnet wird: welche $\Delta t$ ergibt sich, und liegt sie über oder unter dem bereits erreichten Rauschen? Qwen und Kimi skalieren unterschiedlich, weil die Armlänge nicht eingesetzt wurde. Ohne diese Zahl ist der Kozyrev-Vergleich gegenstandslos. | offen | [Physik_7](#physik-7) |
+| Physik | Sind die in der Levich-Darstellung vermischten Skalen (ppm an Widerständen, $10^{-4}$–$10^{-5}$ an Torsionskräften, Prozent an Viskosität) überhaupt dieselbe physikalische Größe? Sonst wird aus drei verschiedenen Laboreffekten ein einziger „Zeitfluss“ gebaut. | offen | [Physik_8](#physik-8) |
 | Methodik | Welche Beobachtung würde die Hypothese eines externen Signals am stärksten widerlegen? | offen | [Methodik_1](#methodik-1) |
 | Methodik | Welche künstliche Injektion ist am besten geeignet, um Empfindlichkeit zu testen? | offen | [Methodik_2](#methodik-2) |
 | Methodik | Welche Umweltkanäle müssen zwingend mitgemessen werden (Schein-Korrelationen)? | offen | [Methodik_3](#methodik-3) |
@@ -147,12 +147,12 @@ Um Reflexionen und unerwünschte Phasenripples zu vermeiden, werden alle Quellen
 1. **GPSDO-Pfad (Soll-Dämpfung ~5 dB, 50 Ω Pi-Glied):**
    * Serienwiderstand: **30 Ω** (Soll: 30,4 Ω)
    * Querwiderstände (Eingang/Ausgang): je **180 Ω** (Soll: 178,5 Ω)
-   * *Ergebnis:* \(Z_\mathrm{in} \approx 50{,}0\,\Omega\), Spannungsdämpfung \(\approx 4{,}94\,\mathrm{dB}\).
+   * *Ergebnis:* $Z_\mathrm{in} \approx 50{,}0\,\Omega$, Spannungsdämpfung $\approx 4{,}94\,\mathrm{dB}$.
 
 2. **AWG-Pfad (Soll-Dämpfung ~25 dB, 50 Ω Pi-Glied):**
    * Serienwiderstand: **220 Ω + 220 Ω in Serie** (Gesamt 440 Ω, Soll: 443 Ω)
    * Querwiderstände (Eingang/Ausgang): je **56 Ω** (Soll: 56,0 Ω)
-   * *Ergebnis:* \(Z_\mathrm{in} \approx 50\,\Omega\), Spannungsdämpfung \(\approx 24{,}9\,\mathrm{dB}\).
+   * *Ergebnis:* $Z_\mathrm{in} \approx 50\,\Omega$, Spannungsdämpfung $\approx 24{,}9\,\mathrm{dB}$.
 
 3. **Symmetrischer T-Kombinierer (GPSDO + AWG):**
    * Drei gleiche Arme im Sternpunkt: je **16,5 Ω** (realisiert durch **2× 33 Ω parallel**, Soll: 16,7 Ω).
@@ -161,7 +161,7 @@ Um Reflexionen und unerwünschte Phasenripples zu vermeiden, werden alle Quellen
 4. **Anpassung 50 Ω auf 75 Ω (L-Glied / Minimum-Loss-Pad am Kabelanfang):**
    * Querwiderstand (auf der 50-Ω-Seite gegen Masse): **91 Ω** (Soll: 86,6 Ω)
    * Serienwiderstand (zur 75-Ω-Seite): **43 Ω** (Soll: 43,3 Ω)
-   * *Ergebnis:* Rückflussdämpfung \(S_{11} < -37\,\mathrm{dB}\) an 50 Ω und \(<-50\,\mathrm{dB}\) an 75 Ω; Zusatzdämpfung \(\approx 5{,}8\,\mathrm{dB}\).
+   * *Ergebnis:* Rückflussdämpfung $S_{11} < -37\,\mathrm{dB}$ an 50 Ω und $<-50\,\mathrm{dB}$ an 75 Ω; Zusatzdämpfung $\approx 5{,}8\,\mathrm{dB}$.
 
 ---
 
@@ -177,15 +177,15 @@ Um Reflexionen und unerwünschte Phasenripples zu vermeiden, werden alle Quellen
 ## 4. HF-gerechte Schirmüberbrückung am empfangsseitigen Kabelende
 
 Um Masseschleifen und Brummstörungen (sowie gefährliche Potenzialausgleiche über die 250-m-Strecke im Freien) zu unterbinden, wird der Kabelschirm empfangsseitig **galvanisch offen** gehalten:
-* **HF-Überbrückung:** Der Schirm wird über **zwei parallele Hochspannungs-Keramikkondensatoren** (z. B. 2× 10 nF bis 100 nF, Spannungsfestigkeit \(\ge 500\,\mathrm{V}\)) niederohmisch an die lokale Gerätemasse gekoppelt (\(X_C \approx 0{,}16\,\Omega\) bei 10 MHz).
+* **HF-Überbrückung:** Der Schirm wird über **zwei parallele Hochspannungs-Keramikkondensatoren** (z. B. 2× 10 nF bis 100 nF, Spannungsfestigkeit $\ge 500\,\mathrm{V}$) niederohmisch an die lokale Gerätemasse gekoppelt ($X_C \approx 0{,}16\,\Omega$ bei 10 MHz).
 * **Statische Entladung:** Ein hochohmiger Ableitwiderstand (1 MΩ bis 10 MΩ) parallel zu den Kondensatoren verhindert elektrostatische Aufladungen des Kabelschirms.
 
 ---
 
 ## 5. Injektion für den ±300-ps-Phasenhub
 
-* **Ziel:** 300 ps bei 10 MHz entsprechen einem Phasenversatz von \(\Delta\varphi \approx 1{,}08^\circ \approx 0{,}01885\,\mathrm{rad}\).
-* **Methode (Quadratur-Vektoraddition):** Der AWG liefert ein phasenstarr (per 10-MHz-Referenz) zum GPSDO gekoppeltes Signal, das um \(90^\circ\) phasenverschoben als Quadraturkomponente am Kombinierer eingespeist wird.
+* **Ziel:** 300 ps bei 10 MHz entsprechen einem Phasenversatz von $\Delta\varphi \approx 1{,}08^\circ \approx 0{,}01885\,\mathrm{rad}$.
+* **Methode (Quadratur-Vektoraddition):** Der AWG liefert ein phasenstarr (per 10-MHz-Referenz) zum GPSDO gekoppeltes Signal, das um $90^\circ$ phasenverschoben als Quadraturkomponente am Kombinierer eingespeist wird.
 * **Pegel:** Nach der 25-dB-Dämpfung und dem Kombinierer liefert der AWG im Low-Range einige Millivolt – ideal, um den DAC-Rauschboden zu drücken und den Phasenhub im Bereich von wenigen Pikosekunden bis 300 ps hochauflösend einzustellen.
 
 ---
@@ -193,8 +193,8 @@ Um Masseschleifen und Brummstörungen (sowie gefährliche Potenzialausgleiche ü
 ## 6. Falsifizierungs- und Testplan (VNA-Abnahme)
 
 Vor Inbetriebnahme mit dem 250-m-Kabel wird die Elektronik stufenweise am VNA (1 bis 50 MHz) überprüft:
-1. **Pi-Glieder & Kombinierer einzeln:** \(S_{11}\) und \(S_{22} < -30\,\mathrm{dB}\), Durchgangsdämpfungen exakt nach Soll.
-2. **L-Glied:** Mit 75-Ω-Prüfwiderstand auf \(S_{11}\) testen.
+1. **Pi-Glieder & Kombinierer einzeln:** $S_{11}$ und $S_{22} < -30\,\mathrm{dB}$, Durchgangsdämpfungen exakt nach Soll.
+2. **L-Glied:** Mit 75-Ω-Prüfwiderstand auf $S_{11}$ testen.
 3. **Nullmessung (Injektions-Test):** Bei AWG-Amplitude = 0 V darf kein künstlicher Offset auftreten. Ein reiner Quadratur-Hub von ±300 ps muss am Scope als Laufzeitänderung gleichen Betrags erscheinen, während ein In-Phase-Hub (0°) keine signifikante Laufzeitänderung bewirken darf (Trennung von AM- und PM-Artefakten).
 
 - **Quelle:**  technische Analyse, [KI-Runde](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%202/) im Verzeichnis Physik 2
@@ -240,7 +240,7 @@ Ein optisches/elektrisches Resonator-Prinzip auf das Kabel übertragen: Das Sign
 
 **Mechanismus:** Die effektive Weglänge steigt von 2L auf 2NL, wobei N die Anzahl der Umläufe ist. Die Laufzeitdifferenz akkumuliert kohärent:
 
-$$\Delta t_{res} = N \cdot \Delta t_{einfach} = N \cdot \frac{2L}{v} \cdot \varepsilon_0$$
+$\Delta t_{res} = N \cdot \Delta t_{einfach} = N \cdot \frac{2L}{v} \cdot \varepsilon_0$
 
 **Realisierungsansätze:**
 - **Aktive Rückkopplung:** Verstärker am Kabelende speisen das Signal phasenkohärent zurück
@@ -275,7 +275,7 @@ Mecklenburg (Kreis, 57,2 m) ←———— 700 km ————→ Bayern (gerad
 
 **Mechanismus:** Eine mit *c* propagierende Metrikstörung trifft zeitversetzt auf beide Stationen. Die Laufzeitdifferenz zwischen den Stationen beträgt:
 
-$$\Delta t_{geo} = \frac{d}{c} \cdot \varepsilon_0 \cdot \sin(\theta)$$
+$\Delta t_{geo} = \frac{d}{c} \cdot \varepsilon_0 \cdot \sin(\theta)$
 
 wobei d = 700 km, θ der Winkel zwischen Ausbreitungsrichtung und Verbindungslinie.
 
@@ -321,11 +321,11 @@ Anstelle eines kontinuierlichen 5 MHz-Sinus: **Kurze Impulse** (z.B. 1–10 ns) 
 
 **Mechanismus:** Ein Impuls "friert" die momentane Metrikstörung entlang des Kabels ein. Die Laufzeitdifferenz des Impulses ist direkt die integrierte Störung über die Kabellänge:
 
-$$\Delta t_{Impuls} = \int_0^L \frac{\varepsilon(x, t_0)}{v} dx$$
+$\Delta t_{Impuls} = \int_0^L \frac{\varepsilon(x, t_0)}{v} dx$
 
 Bei einer propagierenden Störung ε(x,t) = ε₀·sin(ω_m t − k_m x) zum Zeitpunkt t₀ des Impulses:
 
-$$\Delta t_{Impuls} = \frac{\varepsilon_0 L}{v} \cdot \text{sinc}\left(\frac{k_m L}{2}\right) \cdot \sin(\omega_m t_0 - \frac{k_m L}{2})$$
+$\Delta t_{Impuls} = \frac{\varepsilon_0 L}{v} \cdot \text{sinc}\left(\frac{k_m L}{2}\right) \cdot \sin(\omega_m t_0 - \frac{k_m L}{2})$
 
 **Vergleich mit CW:** Beim CW-Signal mittelt sich die Störung über die Signalperiode 1/f₀ = 200 ns. Für f_m ≪ f₀ ist der CW-Effekt unterdrückt um Faktor ~ f_m/f₀. Der Impuls hingegen tastet die Störung **momentan** ab.
 
@@ -350,7 +350,7 @@ Anregung mit einem **frequenzmodulierten** Signal (Chirp: f(t) = f₀ + Δf·t/T
 
 **Mechanismus:** Die momentane Frequenz f(t) tastet die Transferfunktion des Systems bei verschiedenen Frequenzen ab. Die Metrikstörung moduliert die Laufzeit, was zu einer **Frequenzverschiebung** des empfangenen Chirps führt:
 
-$$\Delta f_{empfangen} = -\frac{d}{dt}\left(\frac{\Delta t_{Laufzeit}(t)}{T}\right) \cdot \Delta f$$
+$\Delta f_{empfangen} = -\frac{d}{dt}\left(\frac{\Delta t_{Laufzeit}(t)}{T}\right) \cdot \Delta f$
 
 Durch Korrelation mit dem Referenz-Chirp lässt sich Δt_Laufzeit rekonstruieren.
 
@@ -390,7 +390,7 @@ Nutzung von **Pseudozufallsfolgen** (PRBS, z.B. Gold-Codes wie in GPS) statt Sin
 
 Die Umwandlung Metrikstörung → Laufzeitdifferenz ist durch die **geometrische Anordnung** festgelegt:
 
-$$\Delta t = \frac{2L}{v} \cdot \varepsilon_0$$
+$\Delta t = \frac{2L}{v} \cdot \varepsilon_0$
 
 Diese Formel enthält keine freien Parameter, die durch Signalform oder Frequenz optimiert werden könnten — solange die Störung **langsam** gegenüber der Signallaufzeit ist (ω_m ≪ v/L).
 
@@ -408,13 +408,13 @@ Diese Formel enthält keine freien Parameter, die durch Signalform oder Frequenz
 
 Selbst bei perfekter Topologie ist die Messung durch **thermisches Rauschen** im Kabel begrenzt:
 
-$$\sigma_t = \sqrt{\frac{4k_B T R \Delta f}{V_0^2}} \cdot \tau_{Laufzeit}$$
+$\sigma_t = \sqrt{\frac{4k_B T R \Delta f}{V_0^2}} \cdot \tau_{Laufzeit}$
 
 Bei T = 300 K, R = 50 Ω, V₀ = 1 V, Δf = 1 Hz: σ_t ~ 10⁻¹⁶ s = 0,1 fs — weit unter dem Nutzsignal von 1 fs.
 
 **Aber:** Das **Phasenrauschen des Oszillators** dominiert. Bei einem typischen OCXO mit σ_y(τ) = 10⁻¹² bei τ = 1 s:
 
-$$\sigma_\phi = 2\pi f_0 \cdot \sigma_y \cdot \tau = 2\pi \cdot 5\cdot10^6 \cdot 10^{-12} \cdot 1 \approx 3\cdot10^{-5} \text{ rad}$$
+$\sigma_\phi = 2\pi f_0 \cdot \sigma_y \cdot \tau = 2\pi \cdot 5\cdot10^6 \cdot 10^{-12} \cdot 1 \approx 3\cdot10^{-5} \text{ rad}$
 
 Das entspricht einer Zeitunsicherheit von σ_t = σ_φ/(2πf₀) = 10⁻¹² s = **1 ps** — deutlich über dem Nutzsignal von 1 fs.
 
@@ -475,15 +475,15 @@ Elf Analysen. MiniMax M3 ohne Inhalt. Einigkeit besteht nur für B und nur über
 \frac{100\,\mathrm{ps}}{200\,\mathrm{Zählwerte}} = 0{,}5\,\mathrm{ps/Zählwert}.
 \]
 
-Das Fenster 200…800 ist 600 Zählwerte, also 300 ps, der Arbeitspunkt liegt bei etwa 500. Die Rohgröße der Transferfunktion ist die eingestellte Verzögerung plus \((N-500)\cdot 0{,}5\,\mathrm{ps}\). Die 0,5 ps sind die Steigung der Interpolation, nicht die Unsicherheit (GPT, Perplexity, Grok, Muse).
+Das Fenster 200…800 ist 600 Zählwerte, also 300 ps, der Arbeitspunkt liegt bei etwa 500. Die Rohgröße der Transferfunktion ist die eingestellte Verzögerung plus $(N-500)\cdot 0{,}5\,\mathrm{ps}$. Die 0,5 ps sind die Steigung der Interpolation, nicht die Unsicherheit (GPT, Perplexity, Grok, Muse).
 
-Der Grobtakt \(1/144\,\mathrm{MHz}\approx 6{,}94\,\mathrm{ns}\) ist keine Auslese. Die etwa 30 ps, nominell 250 ps am 3D3428, führen nur den Arbeitspunkt nach. Jeder Nachführsprung ist eine Unstetigkeit und muss mit dem Delay-Code geloggt werden (Claude, Muse, Gemini). Grok trennt zusätzlich Datenblatt und Behauptung: der 3D3428-0.25 hat nominell 0,25 ns je Schritt, nicht 30 ps.
+Der Grobtakt $1/144\,\mathrm{MHz}\approx 6{,}94\,\mathrm{ns}$ ist keine Auslese. Die etwa 30 ps, nominell 250 ps am 3D3428, führen nur den Arbeitspunkt nach. Jeder Nachführsprung ist eine Unstetigkeit und muss mit dem Delay-Code geloggt werden (Claude, Muse, Gemini). Grok trennt zusätzlich Datenblatt und Behauptung: der 3D3428-0.25 hat nominell 0,25 ns je Schritt, nicht 30 ps.
 
-**Rauschen eines Blocks.** GPT, Claude, Gemini, Grok, Muse und Qwen rechnen dieselbe Binomialgrenze. Bei 1000 Flanken und \(p\approx 0{,}5\) ist \(\sigma_N\approx 16\), also \(\sigma_t\approx 8\,\mathrm{ps}\) in 2 ms. Das gilt nur, wenn die gemessene Steigung aus einer statistischen Streuung der Flanke um den Umschaltpunkt kommt. Versorgung, Treiber und Temperatur können größer sein. Weißes Mittel über 1 s ergäbe rechnerisch etwa 0,4 ps (Claude, Gemini, Muse). Das ist keine Geräteangabe. Drift bricht die \(1/\sqrt{N}\)-Skalierung.
+**Rauschen eines Blocks.** GPT, Claude, Gemini, Grok, Muse und Qwen rechnen dieselbe Binomialgrenze. Bei 1000 Flanken und $p\approx 0{,}5$ ist $\sigma_N\approx 16$, also $\sigma_t\approx 8\,\mathrm{ps}$ in 2 ms. Das gilt nur, wenn die gemessene Steigung aus einer statistischen Streuung der Flanke um den Umschaltpunkt kommt. Versorgung, Treiber und Temperatur können größer sein. Weißes Mittel über 1 s ergäbe rechnerisch etwa 0,4 ps (Claude, Gemini, Muse). Das ist keine Geräteangabe. Drift bricht die $1/\sqrt{N}$-Skalierung.
 
-Nicht übernehmen: Mistral rechnet aus der Steigung und \(\sqrt{1000}\) formal 16 fs und verwirft das selbst. GLM setzt 30 ps durch \(\sqrt{1000}\) und erhält etwa 1 ps; das verwechselt Nachführschritt und Zählrauschen. Kimi nennt 1–10 ps kurzzeitig und 30 ps langzeitig, ohne die Binomialrechnung. Die in Physik 1 geführten **10–100 ps** bleiben die praktische Grenze, sobald die Umwelt größer ist als die Binomialstreuung (Mistral, Muse, Qwen, Grok).
+Nicht übernehmen: Mistral rechnet aus der Steigung und $\sqrt{1000}$ formal 16 fs und verwirft das selbst. GLM setzt 30 ps durch $\sqrt{1000}$ und erhält etwa 1 ps; das verwechselt Nachführschritt und Zählrauschen. Kimi nennt 1–10 ps kurzzeitig und 30 ps langzeitig, ohne die Binomialrechnung. Die in Physik 1 geführten **10–100 ps** bleiben die praktische Grenze, sobald die Umwelt größer ist als die Binomialstreuung (Mistral, Muse, Qwen, Grok).
 
-**System A, keine ps-Zahl.** GPT, Grok und Perplexity: 16 bit legen \(\Delta t\) nicht fest. Es fehlen Spannungsänderung je Phase, Rauschen, Abtastrate und eine Injektion bekannter Laufzeit. Kanal 2, AR5000 5…15 MHz und ADL5519, ist eine Leistungs-, keine Zeitmessung (Grok, Gemini, Claude, Muse, Kimi). Der Hochpass auf der 1–2-Hz-Schwebung macht den Kanal für quasistationäre Änderungen blind und die Empfindlichkeit phasenabhängig, an den Extrema null (Gemini, Claude, Muse).
+**System A, keine ps-Zahl.** GPT, Grok und Perplexity: 16 bit legen $\Delta t$ nicht fest. Es fehlen Spannungsänderung je Phase, Rauschen, Abtastrate und eine Injektion bekannter Laufzeit. Kanal 2, AR5000 5…15 MHz und ADL5519, ist eine Leistungs-, keine Zeitmessung (Grok, Gemini, Claude, Muse, Kimi). Der Hochpass auf der 1–2-Hz-Schwebung macht den Kanal für quasistationäre Änderungen blind und die Empfindlichkeit phasenabhängig, an den Extrema null (Gemini, Claude, Muse).
 
 Die Umrechnung, auf die sich alle einigen können, ist nur
 
@@ -491,35 +491,35 @@ Die Umrechnung, auf die sich alle einigen können, ist nur
 \delta t = \frac{\delta\varphi}{2\pi\cdot 16\,\mathrm{MHz}},\qquad T_0=62{,}5\,\mathrm{ns}.
 \]
 
-1° entspricht 174 ps, 0,1° entspricht 17 ps. Wer daraus eine Auflösung macht, setzt ein SNR voraus, das nicht gemessen ist. Claude erhält formal etwa 1 fs je LSB bei voller Aussteuerung und etwa 10–20 fs bei 12–13 bit ENOB, begrenzt die Nutzbarkeit aber durch freie Quarze auf 0,1–1 ns bei 1 s. Qwen erhält über die Schwebungszeitdehnung formal 0,2 ps und praktisch 1–10 ps, langzeitig 100 ps und schlechter. Kimi setzt \(2\pi/2^{16}\) und erhält 1 fs, praktisch 10–100 ps. GLM nimmt 0,1° an und erhält etwa 17 ps, relativ \(10^{-8}\) bis \(10^{-7}\). Gemini nennt 10–50 ps nur für Transienten oberhalb des Hochpasses. Diese Spanne ist eine Meinungsbreite, keine Kalibrierung. A und B dürfen nicht in eine gemeinsame \(\Delta t\)-Angabe fallen: A ist \(\int\Delta f/f\,\mathrm{d}t\) zweier Freiläufer plus Kabel, B eine Flankenlage gegen einen gemeinsamen 144-MHz-Takt (Physik 1, bestätigt von GLM, Mistral, Muse, Grok).
+1° entspricht 174 ps, 0,1° entspricht 17 ps. Wer daraus eine Auflösung macht, setzt ein SNR voraus, das nicht gemessen ist. Claude erhält formal etwa 1 fs je LSB bei voller Aussteuerung und etwa 10–20 fs bei 12–13 bit ENOB, begrenzt die Nutzbarkeit aber durch freie Quarze auf 0,1–1 ns bei 1 s. Qwen erhält über die Schwebungszeitdehnung formal 0,2 ps und praktisch 1–10 ps, langzeitig 100 ps und schlechter. Kimi setzt $2\pi/2^{16}$ und erhält 1 fs, praktisch 10–100 ps. GLM nimmt 0,1° an und erhält etwa 17 ps, relativ $10^{-8}$ bis $10^{-7}$. Gemini nennt 10–50 ps nur für Transienten oberhalb des Hochpasses. Diese Spanne ist eine Meinungsbreite, keine Kalibrierung. A und B dürfen nicht in eine gemeinsame $\Delta t$-Angabe fallen: A ist $\int\Delta f/f\,\mathrm{d}t$ zweier Freiläufer plus Kabel, B eine Flankenlage gegen einen gemeinsamen 144-MHz-Takt (Physik 1, bestätigt von GLM, Mistral, Muse, Grok).
 
 **Was in die Transferfunktion gehört**
 
 | | A | B |
 | --- | --- | --- |
 | Primärgröße | relative Phase, AC nach Hochpass | Zählwert im 300-ps-Fenster |
-| Einzige harte Zahl | \(\delta t=\delta\varphi/(2\pi\cdot 16\,\mathrm{MHz})\) | 0,5 ps/Zählwert |
+| Einzige harte Zahl | $\delta t=\delta\varphi/(2\pi\cdot 16\,\mathrm{MHz})$ | 0,5 ps/Zählwert |
 | Einzelblock | nicht ableitbar | etwa 8 ps in 2 ms, binomial |
 | Praktische Grenze | nicht gemessen; Schätzungen 10 ps bis ns, Drift der freien Takte | 10–100 ps, sobald Drift oder Nachführsprung dazukommt |
-| Kanal 2 | Amplitude, Transferfunktion für \(\Delta t\) null | — |
+| Kanal 2 | Amplitude, Transferfunktion für $\Delta t$ null | — |
 
-**Offen, bevor die zweite Stufe als kalibriert gilt.** Gemessenes \(\sigma_N\) bei festem Delay-Code, sonst bleibt die 8-ps-Zahl eine Annahme. Injektion einer bekannten Laufzeit, Messung 3, sonst ist die Steigung 0,5 ps/Zählwert nur eine Gerätekennlinie, keine metrologische Kalibrierung. Log des Delay-Codes bei jedem Verlassen von 200…800.
+**Offen, bevor die zweite Stufe als kalibriert gilt.** Gemessenes $\sigma_N$ bei festem Delay-Code, sonst bleibt die 8-ps-Zahl eine Annahme. Injektion einer bekannten Laufzeit, Messung 3, sonst ist die Steigung 0,5 ps/Zählwert nur eine Gerätekennlinie, keine metrologische Kalibrierung. Log des Delay-Codes bei jedem Verlassen von 200…800.
 
 ### Physik 3-2
 
 - **Frage:** Wie kann das Auslesekonzept von System A und System B geändert werden, welche Bauteile tragen, und welche Größenordnung der Auflösung ist damit belegbar? Umwelt, Versorgung und Gerätekanäle bleiben Physik 2.
 - **Antwort / Impuls:**
 
-Zwölf Analysen trennen Auslese von Umwandlung. Eine feinere Zeitmarke ändert nicht die Aussage von Physik 1: eine quasistationäre Eigenzeit fällt bei gemeinsamem Takt in erster Ordnung heraus. Mehrfachumlauf und längeres Kabel vergrößern \(\varepsilon\to\Delta t\), nicht die Auflösung des Komparators; das bleibt Physik 3, Topologie, und wird hier nicht als Gewinn gezählt (Mehrheit; Gegenposition bei GLM, Qwen, DeepSeek). A und B bleiben getrennte Ketten. Eine Kennliniensteigung ist kein Rauschen. Die 0,5-ps-Kennlinie von B und formale ADC-LSB von A gehören nicht in die Transferfunktion.
+Zwölf Analysen trennen Auslese von Umwandlung. Eine feinere Zeitmarke ändert nicht die Aussage von Physik 1: eine quasistationäre Eigenzeit fällt bei gemeinsamem Takt in erster Ordnung heraus. Mehrfachumlauf und längeres Kabel vergrößern $\varepsilon\to\Delta t$, nicht die Auflösung des Komparators; das bleibt Physik 3, Topologie, und wird hier nicht als Gewinn gezählt (Mehrheit; Gegenposition bei GLM, Qwen, DeepSeek). A und B bleiben getrennte Ketten. Eine Kennliniensteigung ist kein Rauschen. Die 0,5-ps-Kennlinie von B und formale ADC-LSB von A gehören nicht in die Transferfunktion.
 
-**Was Physik 3-1 als Bezug festlegt.** System A: zwei freie 16-MHz-Takte, Mischer. Primärgröße \(\int\Delta f/f\,\mathrm{d}t\). Keine gemessene Laufzeitauflösung. Einzige saubere Umrechnung: \(T_0=62{,}5\,\mathrm{ns}\), also \(1^\circ\widehat{=}174\,\mathrm{ps}\). System B: gemeinsamer 144-MHz-Takt, Rohbin \(6{,}9\,\mathrm{ns}\), Feinstufe 3D3428 etwa 30 ps, RS-422 LTC1687, Statistik über Pause/Burst. Praktische Grenze im Konsens von Physik 1: 10–100 ps. Claude, GLM, Kimi, MiniMax und Qwen setzen für A Zahlen von 0,1 ps bis 10 ns an, die im Dokument nicht stehen. Diese Baselines werden nicht übernommen (Grok, GPT, Perplexity).
+**Was Physik 3-1 als Bezug festlegt.** System A: zwei freie 16-MHz-Takte, Mischer. Primärgröße $\int\Delta f/f\,\mathrm{d}t$. Keine gemessene Laufzeitauflösung. Einzige saubere Umrechnung: $T_0=62{,}5\,\mathrm{ns}$, also $1^\circ\widehat{=}174\,\mathrm{ps}$. System B: gemeinsamer 144-MHz-Takt, Rohbin $6{,}9\,\mathrm{ns}$, Feinstufe 3D3428 etwa 30 ps, RS-422 LTC1687, Statistik über Pause/Burst. Praktische Grenze im Konsens von Physik 1: 10–100 ps. Claude, GLM, Kimi, MiniMax und Qwen setzen für A Zahlen von 0,1 ps bis 10 ns an, die im Dokument nicht stehen. Diese Baselines werden nicht übernommen (Grok, GPT, Perplexity).
 
 **Konzept, das trägt.**
 
 1. **B, Flanke vor Zähler.** Die Zeitmarke entsteht im Komparator und im Leitungstreiber. Ein Sprung des Zählertakts von 144 MHz auf 1 GHz verbessert nur das Rohbin auf 1 ns und liegt über der heutigen Feinstufe (Grok, GPT, Perplexity, Muse). Mistral und Kimi gewichten den schnelleren Zähler zu hoch.
 2. **B, kalibrierter TDC statt Zähler plus 3D3428.** ASIC oder FPGA-Carry-Kette, Code-Dichte-Kalibrierung, INL mitgemessen. Einzelschuss realistisch 5–20 ps RMS. Der TI TDC7200 (55 ps, etwa 35 ps RMS) ist nur ein Zwischenschritt und lohnt sich gegenüber 30 ps kaum (Grok, GPT, Qwen, Gemini).
-3. **A, Schwebung oder I/Q, nicht eine Grad-Anzeige.** DMTD mit Heterodynfaktor \(f_0/f_\mathrm{b}\) (Grok, Gemini, Kimi) oder zwei Quadraturmischer mit \(\operatorname{atan2}(Q,I)\) (GPT, MiniMax, Qwen, Muse). Beides misst weiterhin die relative Phase zweier Pfade. Eine gemeinsame Referenz macht aus A ein anderes Instrument: differentielle Laufzeit statt Integral zweier Freiläufer (DeepSeek, Qwen, Grok). Das ist eine Konzeptänderung, kein reiner Auflösungsgewinn, und der Oszillator selbst ist ein Gerätekanal für Physik 2.
-4. **Träger höher, nur sekundär.** \(\Delta t=\Delta\varphi/(2\pi f)\). Von 16 MHz auf 50–100 MHz formal Faktor 3–6, praktisch etwa 3–10, weil das Phasenrauschen in Radiant mitsteigt und Cat-7 oberhalb einiger hundert Megahertz dämpft (Grok, Muse, Qwen). Faktor 60 bei 1 GHz (MiniMax) wird nicht übernommen.
+3. **A, Schwebung oder I/Q, nicht eine Grad-Anzeige.** DMTD mit Heterodynfaktor $f_0/f_\mathrm{b}$ (Grok, Gemini, Kimi) oder zwei Quadraturmischer mit $\operatorname{atan2}(Q,I)$ (GPT, MiniMax, Qwen, Muse). Beides misst weiterhin die relative Phase zweier Pfade. Eine gemeinsame Referenz macht aus A ein anderes Instrument: differentielle Laufzeit statt Integral zweier Freiläufer (DeepSeek, Qwen, Grok). Das ist eine Konzeptänderung, kein reiner Auflösungsgewinn, und der Oszillator selbst ist ein Gerätekanal für Physik 2.
+4. **Träger höher, nur sekundär.** $\Delta t=\Delta\varphi/(2\pi f)$. Von 16 MHz auf 50–100 MHz formal Faktor 3–6, praktisch etwa 3–10, weil das Phasenrauschen in Radiant mitsteigt und Cat-7 oberhalb einiger hundert Megahertz dämpft (Grok, Muse, Qwen). Faktor 60 bei 1 GHz (MiniMax) wird nicht übernommen.
 
 **Bauteile, die mehrfach und mit nachvollziehbarer Rolle genannt werden.**
 
@@ -539,13 +539,13 @@ Nicht übernehmen: DS1023 mit „0,25 ps Schritt“ (Kimi; Schrittweite ist kein
 | Pfad | Einzelschuss | Nach Mittelung, nur weiß | Faktor, Konsens | Nicht ansetzen |
 | --- | --- | --- | --- | --- |
 | Schnellerer Zähler allein | 1–7 ns Rohbin | kaum besser | unter 2 | — |
-| Steile Flanke plus ASIC- oder FPGA-TDC | 5–20 ps RMS | 0,1–1 ps bei \(10^2\)–\(10^4\) unabhängigen Ereignissen | etwa 10–100 | 10 fs aus \(\sqrt{N}\) bei \(N=10^6\) (Gemini, Claude, Mistral) |
+| Steile Flanke plus ASIC- oder FPGA-TDC | 5–20 ps RMS | 0,1–1 ps bei $10^2$–$10^4$ unabhängigen Ereignissen | etwa 10–100 | 10 fs aus $\sqrt{N}$ bei $N=10^6$ (Gemini, Claude, Mistral) |
 | DMTD oder I/Q an A | keine Messung vorhanden | 0,1–1 ps elektronisch bei 1–10 s, falls das Mischerrauschen mitspielt | 10–100 gegen eine Grad-Anzeige | gegen freie Quarze oft null; 1–10 fs (Claude, Gemini) |
-| Träger etwa mal 6 | proportional nur bei gleichem \(\Delta\varphi\) in Radiant | realistisch 3–10 | 3–10 | linear bis 1 GHz |
+| Träger etwa mal 6 | proportional nur bei gleichem $\Delta\varphi$ in Radiant | realistisch 3–10 | 3–10 | linear bis 1 GHz |
 
-Die ehrliche Spanne ist **eine bis zwei Größenordnungen, Ziel 0,1–1 ps elektronisch**. GPT und Perplexity bleiben bei Faktor 3–10 und wenigen bis einigen zehn Pikosekunden, solange die Baseline nicht gemessen ist; das ist die Untergrenze des Konsenses, nicht ein Widerspruch. Flicker von Komparator, Verzögerungskette und Mischer beendet die Mittelung typisch bei etwa 0,1–1 ps über Sekunden bis Minuten, nicht bei einigen zehn Femtosekunden. Eine stabile 10-fs-Auslese ist ein anderes Instrument. Die 1-fs-Schwelle aus dem Einstieg von Physik 3 (Amplitude \(10^{-8}\) an 30 m) liegt damit weiter außerhalb dieser Bauteile.
+Die ehrliche Spanne ist **eine bis zwei Größenordnungen, Ziel 0,1–1 ps elektronisch**. GPT und Perplexity bleiben bei Faktor 3–10 und wenigen bis einigen zehn Pikosekunden, solange die Baseline nicht gemessen ist; das ist die Untergrenze des Konsenses, nicht ein Widerspruch. Flicker von Komparator, Verzögerungskette und Mischer beendet die Mittelung typisch bei etwa 0,1–1 ps über Sekunden bis Minuten, nicht bei einigen zehn Femtosekunden. Eine stabile 10-fs-Auslese ist ein anderes Instrument. Die 1-fs-Schwelle aus dem Einstieg von Physik 3 (Amplitude $10^{-8}$ an 30 m) liegt damit weiter außerhalb dieser Bauteile.
 
-**Prüfung, bevor eine Zahl in die Transferfunktion wandert.** Bekannte Laufzeit injizieren (Messung 3). Für B: \(\sigma\) bei festem Delay-Code mit der neuen Flanke, gegen die heutigen 10–100 ps. Für A: erst eine gemessene Baseline, dann Schwebung oder I/Q. Liegt \(\sigma\) nicht darunter, hat das Bauteil nichts gebracht.
+**Prüfung, bevor eine Zahl in die Transferfunktion wandert.** Bekannte Laufzeit injizieren (Messung 3). Für B: $\sigma$ bei festem Delay-Code mit der neuen Flanke, gegen die heutigen 10–100 ps. Für A: erst eine gemessene Baseline, dann Schwebung oder I/Q. Liegt $\sigma$ nicht darunter, hat das Bauteil nichts gebracht.
 
 ---
 
@@ -622,10 +622,10 @@ Basierend auf den vorherigen Diskussionen („Physik 3-2“) wird als nächstes 
 ### 2. Grundlaufzeit und elektrotechnische Basis
 
 * **Elektrische Länge ($\tau_0$):** Bei 60 m Gesamtweg und einem typischen Verkürzungsfaktor für geschäumte Sat-Koaxialkabel von $v_f \approx 0{,}80$ bis $0{,}82$ (bzw. PE $\approx 0{,}66$) beträgt die absolute Grundlaufzeit:
-  $$\tau_0 \approx 250\text{ ns bis } 300\text{ ns}$$
+  $\tau_0 \approx 250\text{ ns bis } 300\text{ ns}$
 * **Trägerfrequenz ($f_c$):** Sinnvollerweise im Bereich 5 bis 20 MHz (da die analoge AWG-Bandbreite bei höheren Frequenzen abfällt und das Nyquist-Limit des ADCs bei 52,5 MHz liegt).
 * **Phasen-Zeit-Beziehung:** Eine kleine Laufzeitänderung $\Delta\tau$ übersetzt sich über einen Sinusträger in eine Phasenänderung:
-  $$\Delta\varphi = 2\pi f_c \Delta\tau \implies \Delta\tau = \frac{\Delta\varphi}{2\pi f_c}$$
+  $\Delta\varphi = 2\pi f_c \Delta\tau \implies \Delta\tau = \frac{\Delta\varphi}{2\pi f_c}$
 
 ---
 
@@ -642,7 +642,7 @@ Die Expertendiskussion der 12 KIs zeigt ein klares dreistufiges Bild zwischen th
 #### B. Reale Systemgrenzen (Takt-Jitter & PLL)
 * **Nachteil (Kein externer Oszillator):** Da AWG und ADC auf dem Eclypse Z7 aus internen PLLs des On-Board-Oszillators versorgt werden, existiert kein externer Master-Takt.
 * **Differentieller Takt-Jitter:** Da Sende- und Empfangspfad auf demselben Board laufen, heben sich viele Common-Mode-Fehler auf. Verbleibender PLL- und Apertur-Jitter ($\sim 1\text{ ps}$) limitieren die praktische Kurzzeit-Empfindlichkeit ohne externen Takt auf:
-  $$\delta\tau_{\text{praxis, kurz}} \approx \mathbf{10\text{ bis }100\text{ fs (in 1 s)}}$$
+  $\delta\tau_{\text{praxis, kurz}} \approx \mathbf{10\text{ bis }100\text{ fs (in 1 s)}}$
 
 #### C. Umwelt- und Kabelthermik (Dominanter Langzeit-Faktor)
 * **Kabel-Temperaturkoeffizient:** Sat-Koaxialkabel besitzen einen Temperaturkoeffizienten der Laufzeit von $\alpha_\tau \approx 10\text{–}50\text{ ppm/K}$.
@@ -713,15 +713,15 @@ Die Expertendiskussion der 12 KIs zeigt ein klares dreistufiges Bild zwischen th
 
   Zwölf Auswertungen derselben Levich-Darstellung stimmen in der Lesart überein, nicht in einer Bestätigung der zugrunde liegenden Physik. Die Quelle berichtet historische Detektorreaktionen; sie liefert keine unabhängig reproduzierte Messung eines Zeitflusses und keine Transferfunktion auf den heutigen Phasendetektor. Was sich ableiten lässt, sind **Größenordnungen, Signaturen und Trennaufgaben**, nicht ein Nachweis.
 
-  **Was die Dokumentation als Effektgröße angibt.** Widerstandsbrücken, Photozellen und Thermometer werden mit relativen Änderungen von etwa \(10^{-6}\) bis \(10^{-7}\) (1–10 ppm) beschrieben. Mechanische Systeme (Torsionswaagen, Gyroskope) liegen in derselben Darstellung teils bei \(10^{-6}\)–\(10^{-7}\), nach Qwen und Mistral bei zusätzlichen Kräften eher bei \(10^{-4}\)–\(10^{-5}\) des Eigengewichts. Diese beiden Skalen dürfen nicht in eine einzige „Zeitflussamplitude“ zusammengezogen werden. MiniMax trennt zusätzlich Laborprozesse (Acetonverdunstung, Eisschmelzen, chemische Reaktionen): dort werden relative Dichte- und Viskositätsänderungen von einigen Prozent berichtet, Massendefekte aber wieder im ppm-Bereich. Prozent-Effekte im Nahfeld sind kein kosmischer Richtwert.
+  **Was die Dokumentation als Effektgröße angibt.** Widerstandsbrücken, Photozellen und Thermometer werden mit relativen Änderungen von etwa $10^{-6}$ bis $10^{-7}$ (1–10 ppm) beschrieben. Mechanische Systeme (Torsionswaagen, Gyroskope) liegen in derselben Darstellung teils bei $10^{-6}$–$10^{-7}$, nach Qwen und Mistral bei zusätzlichen Kräften eher bei $10^{-4}$–$10^{-5}$ des Eigengewichts. Diese beiden Skalen dürfen nicht in eine einzige „Zeitflussamplitude“ zusammengezogen werden. MiniMax trennt zusätzlich Laborprozesse (Acetonverdunstung, Eisschmelzen, chemische Reaktionen): dort werden relative Dichte- und Viskositätsänderungen von einigen Prozent berichtet, Massendefekte aber wieder im ppm-Bereich. Prozent-Effekte im Nahfeld sind kein kosmischer Richtwert.
 
-  **Was als kosmische Quelle berichtet wird.** Sterne (u. a. \(\alpha\) CMa, \(\alpha\) Leo, \(\eta\) Cas, weiße Zwerge), Cyg X-1 und das galaktische Zentrum sollen richtungsabhängige Ausschläge erzeugen; Saturn wird bei Gemini als ohne messbaren Effekt genannt, Venus und Mond als unregelmäßig. Der wiederkehrende Anspruch ist eine Reaktion auf die **wahre** Position (Parallaxe einiger Bogensekunden, ohne Lichtlaufzeit), nicht nur auf das optische Bild. Perplexity hebt zusätzlich die in der Literatur behaupteten Reaktionen auf vergangene und künftige Positionen hervor. Finsternisse werden als Sprungvorlagen genannt: Detektoren reagieren nicht im Moment der geometrischen Bedeckung, sondern mit dem Wiederaufheizen der freigegebenen Oberfläche (MiniMax: Mondfinsternis März 1979). Das ist, wenn überhaupt, eine Kopplung an irreversible Oberflächenprozesse, kein sauberer „Stern als Zeitquelle“-Test.
+  **Was als kosmische Quelle berichtet wird.** Sterne (u. a. $\alpha$ CMa, $\alpha$ Leo, $\eta$ Cas, weiße Zwerge), Cyg X-1 und das galaktische Zentrum sollen richtungsabhängige Ausschläge erzeugen; Saturn wird bei Gemini als ohne messbaren Effekt genannt, Venus und Mond als unregelmäßig. Der wiederkehrende Anspruch ist eine Reaktion auf die **wahre** Position (Parallaxe einiger Bogensekunden, ohne Lichtlaufzeit), nicht nur auf das optische Bild. Perplexity hebt zusätzlich die in der Literatur behaupteten Reaktionen auf vergangene und künftige Positionen hervor. Finsternisse werden als Sprungvorlagen genannt: Detektoren reagieren nicht im Moment der geometrischen Bedeckung, sondern mit dem Wiederaufheizen der freigegebenen Oberfläche (MiniMax: Mondfinsternis März 1979). Das ist, wenn überhaupt, eine Kopplung an irreversible Oberflächenprozesse, kein sauberer „Stern als Zeitquelle“-Test.
 
   **Modulation, die als Baseline taugt.** Mehrere Beiträge (Gemini, MiniMax, Mistral, Perplexity, Grok) lesen dieselbe Saisonalität: stärkere Effekte im Spätherbst und Winter der Nordhalbkugel, Abschwächung oder Ausfall im Sommer, dazu ein Tagesgang mit Richtungswechsel um Mitternacht und Sprüngen beim wahren Sonnenuntergang. Levich führt das auch auf Biosphäre zurück (Wachstum als Absorption, Absterben als Freisetzung). Das ist eine Hypothese über den Untergrund, kein Beleg. Für den Detektor heißt es nur: eine kosmische Korrelation, die im Sommer verschwindet und im Winter ohne Kontrollkanäle auftaucht, ist nicht von einem saisonalen Umweltkanal zu unterscheiden.
 
-  **Was das für den Phasendetektor bedeutet.** Ein Effekt von 1–10 ppm liegt in dem Fenster, das eine Laufzeitmessung im Mikrosekundenbereich bei Pikosekunden-Auflösung prinzipiell berühren kann (Kimi; Grok fordert dafür stabile Auflösung bis \(10^{-8}\)). Ob der bestehende Aufbau das wirklich leistet, entscheidet nicht Kozyrev, sondern die noch offene Transferfunktion (Physik 1–3) und die Driftanalyse (Methodik 4). GPT-6 nennt als Suchmuster Relaxationsschweife und Asymmetrien, nicht nur eine Gleichanteil-Verschiebung. Qwen rechnet aus 1–10 ppm Laufzeitverschiebung grob \(\Delta t \sim 10^{-11}\)–\(10^{-12}\,\mathrm{s}\) und Integrationsfenster von 10–20 min; diese Zahl hängt an der angenommenen Verzögerung und ist kein Literaturwert. Kimi ergänzt eine nur dort betonte Materialbehauptung: Reflexion an Aluminium, Absorption in dicken Metall- oder Glasschichten. Das ist ein möglicher Diskriminator, kein Designgesetz.
+  **Was das für den Phasendetektor bedeutet.** Ein Effekt von 1–10 ppm liegt in dem Fenster, das eine Laufzeitmessung im Mikrosekundenbereich bei Pikosekunden-Auflösung prinzipiell berühren kann (Kimi; Grok fordert dafür stabile Auflösung bis $10^{-8}$). Ob der bestehende Aufbau das wirklich leistet, entscheidet nicht Kozyrev, sondern die noch offene Transferfunktion (Physik 1–3) und die Driftanalyse (Methodik 4). GPT-6 nennt als Suchmuster Relaxationsschweife und Asymmetrien, nicht nur eine Gleichanteil-Verschiebung. Qwen rechnet aus 1–10 ppm Laufzeitverschiebung grob $\Delta t \sim 10^{-11}$–$10^{-12}\,\mathrm{s}$ und Integrationsfenster von 10–20 min; diese Zahl hängt an der angenommenen Verzögerung und ist kein Literaturwert. Kimi ergänzt eine nur dort betonte Materialbehauptung: Reflexion an Aluminium, Absorption in dicken Metall- oder Glasschichten. Das ist ein möglicher Diskriminator, kein Designgesetz.
 
-  **Grenze der Ableitung.** Die Größe \(c_2 \approx 700\,\mathrm{km/s}\) (nur Qwen) und die überlichtschnelle Komponente \(c_3\) sind Theorieelemente der Kozyrev-Schule, keine aus den Detektordaten des Projekts folgenden Konstanten. Instantane oder skalare Kopplung bleibt eine Hypothese. Sie ist nur dann interessant, wenn ein Signal mit der wahren Position korreliert und mit der scheinbaren Position, mit Temperatur, Druck, EM-Störung und lokalem Taktjitter nicht.
+  **Grenze der Ableitung.** Die Größe $c_2 \approx 700\,\mathrm{km/s}$ (nur Qwen) und die überlichtschnelle Komponente $c_3$ sind Theorieelemente der Kozyrev-Schule, keine aus den Detektordaten des Projekts folgenden Konstanten. Instantane oder skalare Kopplung bleibt eine Hypothese. Sie ist nur dann interessant, wenn ein Signal mit der wahren Position korreliert und mit der scheinbaren Position, mit Temperatur, Druck, EM-Störung und lokalem Taktjitter nicht.
 
 - **Quelle:** Literatur (Levich zu Kozyrev); KI-Konsens der Arbeitsgruppe vom 2026-10-06, mit Einzelnuancen von Gemini, GPT-6, Grok, Kimi, MiniMax, Mistral, Perplexity und Qwen. Nicht eigene Messdaten. [KI-Beiträge](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%206/)
 - **Prüfbarkeit:** indirekt messbar, über lange Zeitreihen gegen Ephemeriden und mitgemessene Umweltkanäle. Ein einzelner Sternscan ohne Kontrollen ist nicht entscheidbar.
@@ -730,7 +730,7 @@ Die Expertendiskussion der 12 KIs zeigt ein klares dreistufiges Bild zwischen th
 - **Status:** Impuls dokumentiert
 ### Physik 7
 - **Datum:** 2026-10-06
-- **Frage:** Wenn eine relative Laufzeitänderung von 1–10 ppm auf die konkrete Verzögerung des Aufbaus umgerechnet wird: welche \(\Delta t\) ergibt sich, und liegt sie über oder unter dem bereits erreichten Rauschen? | Qwen und Kimi skalieren unterschiedlich, weil die Armlänge nicht eingesetzt wurde. Ohne diese Zahl ist der Kozyrev-Vergleich gegenstandslos.
+- **Frage:** Wenn eine relative Laufzeitänderung von 1–10 ppm auf die konkrete Verzögerung des Aufbaus umgerechnet wird: welche $\Delta t$ ergibt sich, und liegt sie über oder unter dem bereits erreichten Rauschen? | Qwen und Kimi skalieren unterschiedlich, weil die Armlänge nicht eingesetzt wurde. Ohne diese Zahl ist der Kozyrev-Vergleich gegenstandslos.
 - **Antwort / Impuls:** ausstehend
 - **Quelle:** noch nicht zugeordnet
 - **Prüfbarkeit:** direkt messbar
@@ -739,7 +739,7 @@ Die Expertendiskussion der 12 KIs zeigt ein klares dreistufiges Bild zwischen th
 - **Status:** offen
 ### Physik 8
 - **Datum:** 2026-10-06
-- **Frage:** Sind die in der Levich-Darstellung vermischten Skalen (ppm an Widerständen, \(10^{-4}\)–\(10^{-5}\) an Torsionskräften, Prozent an Viskosität) überhaupt dieselbe physikalische Größe? Sonst wird aus drei verschiedenen Laboreffekten ein einziger „Zeitfluss“ gebaut. Die Diskrepanz zu den strengen Anforderungen von Navigationssystemen und Atomuhren dient als entscheidender Falsifikationsmaßstab. Wenn ein Detektor Signale im ppm-Bereich misst, die im Widerspruch zur globalen Uhrenstabilität stehen, handelt es sich per Definition um ein lokales Apparate- oder Umweltartefakt (Temperatur, Einstreuung, Lastwechsel) und nicht um eine kosmische Raumzeit- oder Zeitfluss-Modulation.
+- **Frage:** Sind die in der Levich-Darstellung vermischten Skalen (ppm an Widerständen, $10^{-4}$–$10^{-5}$ an Torsionskräften, Prozent an Viskosität) überhaupt dieselbe physikalische Größe? Sonst wird aus drei verschiedenen Laboreffekten ein einziger „Zeitfluss“ gebaut. Die Diskrepanz zu den strengen Anforderungen von Navigationssystemen und Atomuhren dient als entscheidender Falsifikationsmaßstab. Wenn ein Detektor Signale im ppm-Bereich misst, die im Widerspruch zur globalen Uhrenstabilität stehen, handelt es sich per Definition um ein lokales Apparate- oder Umweltartefakt (Temperatur, Einstreuung, Lastwechsel) und nicht um eine kosmische Raumzeit- oder Zeitfluss-Modulation.
 - **Antwort / Impuls:** ausstehend
 - **Quelle:** noch nicht zugeordnet
 - **Prüfbarkeit:** direkt messbar
@@ -1126,35 +1126,21 @@ wobei:
 
 ### Aufbau
 
-┌─────────────┐      Koaxialkabel (Länge L)      ┌─────────────┐
-
-│  Oszillator │ ────────────────────────────────▶│  Oszillator │
-
-│  (Quelle)   │    Signal läuft mit c_eff        │  (Senke)    │
-
-│  f₀ = 10 MHz│                                  │  f₀ = 10 MHz│
-
-└─────────────┘                                  └──────┬──────┘
-
-│
-
-┌────┴────┐
-
-│  Mischer │
-
-│  + PLL  │
-
-└────┬────┘
-
-│
-
-┌────┴────┐
-
-│  Zähler │
-
-│  Δφ     │
-
-└─────────┘
+┌─────────────┐      Koaxialkabel (Länge L)       ┌─────────────┐
+│  Oszillator │ ────────────────────────────────▶ │  Oszillator │
+│  (Quelle)   │    Signal läuft mit c_eff         │  (Senke)    │
+│  f₀ = 10 MHz│                                   │  f₀ = 10 MHz│
+└─────────────┘                                   └──────┬──────┘
+														 │
+													┌────┴────┐
+													│  Mischer│
+													│  + PLL  │
+													└────┬────┘
+														 │
+													┌────┴────┐
+													│  Zähler │
+													│  Δφ     │
+													└─────────┘
 
 
 ### Physikalische Kette
@@ -1224,15 +1210,10 @@ Die Nachweisgrenze ergibt sich aus:
 **δτ_min/τ = (10–100 ps)/(2 µs) = 5 × 10⁻⁶ bis 5 × 10⁻⁵**
 
 | Konfiguration | τ (Laufzeit) | δτ_min (Auflösung) | Nachweisgrenze |Δτ/τ| |
-
 |-------------|------------|-------------------|--------------------------|
-
 | Kurze Strecke (L = 0,6 m) | 2 µs | 10 ps | 5 × 10⁻⁶ |
-
 | Kurze Strecke (L = 0,6 m) | 2 µs | 100 ps | 5 × 10⁻⁵ |
-
 | Lange Strecke (L = 600 m) | 2 ms | 10 ps | 5 × 10⁻⁹ |
-
 | Lange Strecke (L = 600 m) | 2 ms | 100 ps | 5 × 10⁻⁸ |
 
 ---
