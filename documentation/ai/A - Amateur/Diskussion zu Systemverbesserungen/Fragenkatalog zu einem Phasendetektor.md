@@ -111,14 +111,97 @@
 - **Abweichende Beiträge:** keine im Urteil. Grok gewichtet die Phase als elektrische Primärgröße und die Eigenzeit-Auslöschung stärker; die PDF-Leser gewichten den Capture-Zählerstand als Laufzeit. Beides ist hier zusammengeführt. Die 1-ps-Angabe wird nicht übernommen.
 
 ### Physik 2
-- **Datum:** 2026-09-02
+- **Datum:** 2026-10-26
 - **Frage:** Welche Komponenten des Signals sind durch Temperatur, Taktjitter oder Mechanik erklärbar?
-- **Antwort / Impuls:** ausstehend
-- **Quelle:** noch nicht zugeordnet
+- **Antwort / Impuls:**
+
+# Präzisionsanpassung und Signalaufbereitung (250-m-Messstrecke)
+
+Dieser Abschnitt definiert den konkreten Hardware-Entwurf für die 250-m-Messstrecke (HQ 135 dB Sat-Kabel, 75 Ω, VF 0,82, 5 dB Dämpfung bei 10 MHz) sowie die impedanzrichtige Einbindung von DXPatrol GPSDO V2.4, Eclypse Z7 AWG und dem Eclypse Z7 Scope (1 MΩ ∥ 18 pF).
+
+---
+
+## 1. Topologie der Messkette
+
+```text
+[ GPSDO Sinus 1 ] ──(16cm SMA)──► Scope CH1 (50-Ω-Durchgangsterminator, Referenz)
+
+[ GPSDO Sinus 2 ] ──(16cm SMA)──► Pi-Glied (5 dB)  ──┐
+                                                     ├── [T-Kombinierer 16,5 Ω] ──► L-Glied 50→75 Ω ──► [F-Buchse]
+[ AWG (Eclypse) ] ──(16cm SMA)──► Pi-Glied (25 dB) ──┘                                                    │
+                                                                                                    (250m HQ-135, 75 Ω)
+                                                                                                         │
+                                                                                                   [F-Buchse] 
+                                                                                                         │
+                                                                                           75-Ω-Abschluss am Innenleiter
+                                                                                           + HF-Kondensatoren am Schirm
+                                                                                           + (16cm SMA-Leitung zum Scope CH2)
+```
+
+---
+
+## 2. Dimensionierung der Widerstandsnetzwerke (E24-Reihe)
+
+Um Reflexionen und unerwünschte Phasenripples zu vermeiden, werden alle Quellen und Lasten über ein selektiertes Widerstandsnetzwerk (Metallfilm 0,1 %, 0805/1206) impedanzrichtig entkoppelt:
+
+1. **GPSDO-Pfad (Soll-Dämpfung ~5 dB, 50 Ω Pi-Glied):**
+   * Serienwiderstand: **30 Ω** (Soll: 30,4 Ω)
+   * Querwiderstände (Eingang/Ausgang): je **180 Ω** (Soll: 178,5 Ω)
+   * *Ergebnis:* \(Z_\mathrm{in} \approx 50{,}0\,\Omega\), Spannungsdämpfung \(\approx 4{,}94\,\mathrm{dB}\).
+
+2. **AWG-Pfad (Soll-Dämpfung ~25 dB, 50 Ω Pi-Glied):**
+   * Serienwiderstand: **220 Ω + 220 Ω in Serie** (Gesamt 440 Ω, Soll: 443 Ω)
+   * Querwiderstände (Eingang/Ausgang): je **56 Ω** (Soll: 56,0 Ω)
+   * *Ergebnis:* \(Z_\mathrm{in} \approx 50\,\Omega\), Spannungsdämpfung \(\approx 24{,}9\,\mathrm{dB}\).
+
+3. **Symmetrischer T-Kombinierer (GPSDO + AWG):**
+   * Drei gleiche Arme im Sternpunkt: je **16,5 Ω** (realisiert durch **2× 33 Ω parallel**, Soll: 16,7 Ω).
+   * *Eigenschaften:* Jeder Port sieht saubere 50 Ω; die Dämpfung je Zweig beträgt ca. 6,1 dB. Die vorgeschalteten Pi-Glieder sichern eine Entkopplung der Ausgänge von über 35 dB, um ein „Pulling“ des Oszillators zu verhindern.
+
+4. **Anpassung 50 Ω auf 75 Ω (L-Glied / Minimum-Loss-Pad am Kabelanfang):**
+   * Querwiderstand (auf der 50-Ω-Seite gegen Masse): **91 Ω** (Soll: 86,6 Ω)
+   * Serienwiderstand (zur 75-Ω-Seite): **43 Ω** (Soll: 43,3 Ω)
+   * *Ergebnis:* Rückflussdämpfung \(S_{11} < -37\,\mathrm{dB}\) an 50 Ω und \(<-50\,\mathrm{dB}\) an 75 Ω; Zusatzdämpfung \(\approx 5{,}8\,\mathrm{dB}\).
+
+---
+
+## 3. Schnittstellen und Steckverbinder (F-Buchsen & SMA)
+
+* **Sendeseite (Platine):** Der Übergang vom 50-Ω-Widerstandsnetz erfolgt über eine **SMA/F-Buchse**. Über eine kurze, konfektionierte **16-cm-SMA-Leitung** wird die Verbindung hergestellt. Für den direkten Anschluss des 75-Ω-Sat-Kabels auf der Platine ist eine **75-Ω-F-Buchse** (oder ein impedanzarme SMA-zu-F-Schottwandbuchse) vorzusehen.
+* **Empfangsseite (Kabelende):** Das 250-m-Sat-Kabel (HQ 135 dB, 4-fach geschirmt) besitzt standardmäßig **F-Kompressionsstecker**. 
+  * Der 75-Ω-Abschlusswiderstand (0,1 %) wird direkt zwischen F-Innenleiter und F-Außenleiter (Schirm) am Empfangsstecker angelötet.
+  * Der Abgriff zum Scope-CH2 erfolgt über eine kurze, direkt angelötete SMA/BNC-Messleitung (Länge < 16 cm). Der Scope-Eingang selbst bleibt hochohmig (**1 MΩ ∥ 18 pF**), um die 75-Ω-Terminierung nicht zu verfälschen.
+
+---
+
+## 4. HF-gerechte Schirmüberbrückung am empfangsseitigen Kabelende
+
+Um Masseschleifen und Brummstörungen (sowie gefährliche Potenzialausgleiche über die 250-m-Strecke im Freien) zu unterbinden, wird der Kabelschirm empfangsseitig **galvanisch offen** gehalten:
+* **HF-Überbrückung:** Der Schirm wird über **zwei parallele Hochspannungs-Keramikkondensatoren** (z. B. 2× 10 nF bis 100 nF, Spannungsfestigkeit \(\ge 500\,\mathrm{V}\)) niederohmisch an die lokale Gerätemasse gekoppelt (\(X_C \approx 0{,}16\,\Omega\) bei 10 MHz).
+* **Statische Entladung:** Ein hochohmiger Ableitwiderstand (1 MΩ bis 10 MΩ) parallel zu den Kondensatoren verhindert elektrostatische Aufladungen des Kabelschirms.
+
+---
+
+## 5. Injektion für den ±300-ps-Phasenhub
+
+* **Ziel:** 300 ps bei 10 MHz entsprechen einem Phasenversatz von \(\Delta\varphi \approx 1{,}08^\circ \approx 0{,}01885\,\mathrm{rad}\).
+* **Methode (Quadratur-Vektoraddition):** Der AWG liefert ein phasenstarr (per 10-MHz-Referenz) zum GPSDO gekoppeltes Signal, das um \(90^\circ\) phasenverschoben als Quadraturkomponente am Kombinierer eingespeist wird.
+* **Pegel:** Nach der 25-dB-Dämpfung und dem Kombinierer liefert der AWG im Low-Range einige Millivolt – ideal, um den DAC-Rauschboden zu drücken und den Phasenhub im Bereich von wenigen Pikosekunden bis 300 ps hochauflösend einzustellen.
+
+---
+
+## 6. Falsifizierungs- und Testplan (VNA-Abnahme)
+
+Vor Inbetriebnahme mit dem 250-m-Kabel wird die Elektronik stufenweise am VNA (1 bis 50 MHz) überprüft:
+1. **Pi-Glieder & Kombinierer einzeln:** \(S_{11}\) und \(S_{22} < -30\,\mathrm{dB}\), Durchgangsdämpfungen exakt nach Soll.
+2. **L-Glied:** Mit 75-Ω-Prüfwiderstand auf \(S_{11}\) testen.
+3. **Nullmessung (Injektions-Test):** Bei AWG-Amplitude = 0 V darf kein künstlicher Offset auftreten. Ein reiner Quadratur-Hub von ±300 ps muss am Scope als Laufzeitänderung gleichen Betrags erscheinen, während ein In-Phase-Hub (0°) keine signifikante Laufzeitänderung bewirken darf (Trennung von AM- und PM-Artefakten).
+
+- **Quelle:**  technische Analyse, [KI-Runde](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%202/) im Verzeichnis Physik 2
 - **Prüfbarkeit:** direkt messbar
-- **Technische Konsequenz:** derzeit keine unmittelbare Änderung am Messaufbau
-- **Offene Prüfung:** Transferfunktionen für Störsignale ermitteln
-- **Status:** offen
+- **Technische Konsequenz:** Aufbau von Anpassung und Kombinierer als Widerstandsnetzwerk
+- **Offene Prüfung:** Durchgang und Reflektionen mit VNA überprüfen
+- **Status:** in Bearbeitung
 ### Physik 3
 - **Datum:** 2026-09-02 (aktualisiert 2026-10-20)
 - **Frage:** Wie sieht die vollständige Transferfunktion der Messkette aus?
