@@ -47,7 +47,9 @@ date        hours  total    location     subject
 2026-10-23    2    122      Türkenfeld   Installation und Inbetriebnahme Eclypse Z7 + Scope + AWG mit WaveForms
 2026-10-24    2    124      Türkenfeld   Hardware für Sensoren recherchieren und bestellen
 2026-10-24    4    128      Türkenfeld   Methode für KI-Modell und optimale KI-Hardware diskutieren
-2026-10-245   2    130      Türkenfeld   Hardware für Sensoren recherchieren und bestellen
+2026-10-25    2    130      Türkenfeld   Hardware für Sensoren recherchieren und bestellen
+2026-10-26    5    135      Türkenfeld   Schaltung und Dimensionierung von Anpassung und Kombinierer generieren
+
 
 
 

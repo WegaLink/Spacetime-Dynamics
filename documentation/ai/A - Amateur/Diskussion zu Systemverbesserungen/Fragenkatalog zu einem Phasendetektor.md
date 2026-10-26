@@ -1126,6 +1126,7 @@ wobei:
 
 ### Aufbau
 
+```text
 ┌─────────────┐      Koaxialkabel (Länge L)       ┌─────────────┐
 │  Oszillator │ ────────────────────────────────▶ │  Oszillator │
 │  (Quelle)   │    Signal läuft mit c_eff         │  (Senke)    │
@@ -1141,7 +1142,7 @@ wobei:
 													│  Zähler │
 													│  Δφ     │
 													└─────────┘
-
+```
 
 ### Physikalische Kette
 
@@ -1208,14 +1209,14 @@ Falls R kosmologisch variiert (z. B. durch Dunkle Energie):
 Die Nachweisgrenze ergibt sich aus:
 
 **δτ_min/τ = (10–100 ps)/(2 µs) = 5 × 10⁻⁶ bis 5 × 10⁻⁵**
-
-| Konfiguration | τ (Laufzeit) | δτ_min (Auflösung) | Nachweisgrenze |Δτ/τ| |
-|-------------|------------|-------------------|--------------------------|
-| Kurze Strecke (L = 0,6 m) | 2 µs | 10 ps | 5 × 10⁻⁶ |
-| Kurze Strecke (L = 0,6 m) | 2 µs | 100 ps | 5 × 10⁻⁵ |
-| Lange Strecke (L = 600 m) | 2 ms | 10 ps | 5 × 10⁻⁹ |
-| Lange Strecke (L = 600 m) | 2 ms | 100 ps | 5 × 10⁻⁸ |
-
+```text
+| Konfiguration             | τ (Laufzeit) | δτ_min (Auflösung) | Nachweisgrenze |Δτ/τ |
+|---------------------------|--------------|--------------------|----------------------|
+| Kurze Strecke (L = 0,6 m) |      2 µs    |        10 ps       |       5 × 10⁻⁶       |
+| Kurze Strecke (L = 0,6 m) |      2 µs    |       100 ps       |       5 × 10⁻⁵       |
+| Lange Strecke (L = 600 m) |      2 ms    |        10 ps       |       5 × 10⁻⁹       |
+| Lange Strecke (L = 600 m) |      2 ms    |       100 ps       |       5 × 10⁻⁸       |
+```
 ---
 
 ### Falsifikationskriterium (präzisiert)
