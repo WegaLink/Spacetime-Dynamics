@@ -197,6 +197,58 @@ Vor Inbetriebnahme mit dem 250-m-Kabel wird die Elektronik stufenweise am VNA (1
 2. **L-Glied:** Mit 75-Ω-Prüfwiderstand auf $S_{11}$ testen.
 3. **Nullmessung (Injektions-Test):** Bei AWG-Amplitude = 0 V darf kein künstlicher Offset auftreten. Ein reiner Quadratur-Hub von ±300 ps muss am Scope als Laufzeitänderung gleichen Betrags erscheinen, während ein In-Phase-Hub (0°) keine signifikante Laufzeitänderung bewirken darf (Trennung von AM- und PM-Artefakten).
 
+## Das Zmod Scope soll gegen ein Zmod SDR mit 50 Ohm Impedanz getauscht werden. Wie ändert sich die Anpassung und welche Vor- oder Nachteile ergeben sich?
+
+─────────────────────────────────────────────────────────
+
+Das Ersetzen des Zmod Scope (1 MΩ ∥ 18 pF) durch das **Zmod SDR** (50 Ω Eingangsimpedanz) verändert die Schaltung grundlegend zum Besseren: Die Messstrecke wird von einer hochohmigen Spannungsabfrage auf eine rein **leistungsmäßig angepasste 75-Ω/50-Ω-Wellenwiderstandskette** umgestellt.
+
+Hier sind die Änderungen und die Vor- und Nachteile im Detail:
+
+---
+
+## 1. Was ändert sich an der Anpassung?
+
+Durch den 50-Ω-Eingang des Zmod SDR entfällt das Problem der kapazitiven Last am Kabelende. Allerdings muss nun der Übergang vom 75-Ω-Sat-Kabel auf den 50-Ω-Eingang des SDR sauber gelöst werden:
+
+* **Empfangsseitiges L-Glied (50 Ω zu 75 Ω, umgekehrt):** 
+  Am Ende des 250-m-Kabels wird ein identisches Minimum-Loss-Pad (L-Glied) wie am Anfang eingesetzt:
+  * Serienwiderstand (zur 75-Ω-Leitung): **43 Ω**
+  * Querwiderstand (auf der 50-Ω-Seite gegen Masse): **91 Ω**
+  * *Ergebnis:* Das 75-Ω-Kabel sieht exakt seinen Wellenwiderstand (keine stehenden Wellen, keine Reflexionen), und das Zmod SDR sieht aus Richtung des Kabels saubere 50 Ω.
+* **Referenzkanal (Scope CH1 / SDR CH1):**
+  Der GPSDO-Referenzpfad (Sinus 1) geht nun direkt über eine 50-Ω-Leitung auf den 50-Ω-Eingang des SDR. Der bisher nötige externe 50-Ω-Durchgangsterminator entfällt.
+
+---
+
+## 2. Vorteile des Zmod SDR (50 Ω)
+
+1. **Keine Reflexionen am Kabelende:** 
+   Das Zmod Scope mit 1 MΩ ließ am Kabelende einen Reflexionsfaktor von \(\Gamma \approx 0{,}04\) (ca. −28 dB Rückflussdämpfung) durch die 18-pF-Eingangskapazität entstehen, der zu Mehrfachreflexionen (Echo nach ~2 µs) führte. Das Zmod SDR schließt die Strecke über das L-Glied perfekt ab.
+2. **Breitbandige Signalintegrität:** 
+   Da beide Enden (Sender und Empfänger) nun impedanzrichtig mit ihren jeweiligen Wellenwiderständen (75 Ω auf der Leitung, 50 Ω an den Geräten) abgeschlossen sind, verhält sich die 250-m-Strecke wie eine echte, fehlerfreie Übertragungsleitung.
+3. **Robustheit gegen Störungen:** 
+   50-Ω-Systeme sind deutlich unempfindlicher gegenüber kapazitivem Crosstalk und Einstrahlungen auf den letzten Zentimetern vor dem Messgerät als hochohmige 1-MΩ-Eingänge.
+4. **Keine Kalibrierfehler durch Frequenzgang der Eingangskapazität:** 
+   Die 18 pF des Scopes erzeugen einen frequenzabhängigen Phasenfehler bei 10 MHz. Ein 50-Ω-Widerstand im SDR hat keine nennenswerte Blindkomponente, wodurch die Phase über den Nulldurchgang extrem stabil bleibt.
+
+---
+
+## 3. Nachteile / zu beachtende Punkte
+
+1. **Zusätzliche Dämpfung (Insertion Loss):**
+   Das empfangsseitige L-Glied (Minimum-Loss-Pad) erzeugt eine prinzipbedingte Spannungsdämpfung von ca. **5,8 dB**. 
+   * *Bedeutung für den Pegel:* Zusammen mit den 5 dB Kabeldämpfung und den Dämpfungen auf der Sendeseite kommt am SDR ein kleinerer Signalpegel an. Da das Zmod SDR jedoch für HF-Signale ausgelegt ist und eine exzellente Empfindlichkeit besitzt, ist dies unkritisch, solange das Signal weit über dem Rauschboden des ADCs liegt.
+2. **Verlust des hochohmigen Abgriffs:**
+   Das Signal wird nun mit Leistung belastet. Ein "unbelauschetetes" Mitmessen (High-Z-Probe) ist ohne aktiven HF-Verstärker oder Puffer nicht mehr möglich – was für eine präzise Phasendetektion im 50-Ω-System aber ohnehin die fachgerechtere Lösung ist.
+
+---
+
+## 4. Konsequenz für den Aufbau
+
+* **Empfangsseite:** Das Sat-Kabel endet nun an einer **F-Buchse**, auf die direkt das kompakte 50/75-Ω-Anpassungs-Glied (L-Pad aus 43 Ω und 91 Ω) folgt, von wo aus ein kurzes 50-Ω-SMA-Kabel direkt in den 50-Ω-Eingang des Zmod SDR führt.
+* Die HF-Kondensatoren zur Schirmüberbrückung am empfangsseitigen F-Stecker bleiben wie gehabt erhalten, um Masseschleifen zu unterbinden.
+
 - **Quelle:**  technische Analyse, [KI-Runde](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%202/) im Verzeichnis Physik 2
 - **Prüfbarkeit:** direkt messbar
 - **Technische Konsequenz:** Aufbau von Anpassung und Kombinierer als Widerstandsnetzwerk
