@@ -1,0 +1,30 @@
+Widerstandsnetzwerk			 Soll   /   Ist
+
+GPSDO-Pfad
+- Serienwiderstand: 		 30,4 Ω /  30,4 Ω
+- Querwiderstand Eingang:	178,5 Ω / 178,6 Ω
+- Querwiderstand Ausgang:	178,5 Ω / 178,9 Ω
+
+AWG-Pfad
+- Serienwiderstad:			  443 Ω /   445 Ω
+- Querwiderstand Eingang:	 56,0 Ω /  56,0 Ω
+- Querwiderstand Ausgang:	 56,0 Ω /  55,9 Ω
+
+T-Kombinierer
+- 1.Arm:					 16,7 Ω / 33,4||33,3 = 16,7 Ω
+- 2.Arm:					 16,7 Ω / 33,4||33,3 = 16,7 Ω 
+- 3.Arm:					 16,7 Ω / 33,4||33,3 = 16,7 Ω
+
+Kabelanfang 50 Ω auf 75 Ω 
+- Querwiderstand:			 86,6 Ω /  99,5||669 = 86,6 Ω
+- Serienwiderstand:			 43,3 Ω /  46,8||612 = 43,5 Ω
+
+Kabelende 50 Ω auf 75 Ω 
+- Querwiderstand:			 86,6 Ω /  99,4||672 = 86,6 Ω  
+- Serienwiderstand:			 43,3 Ω /  46,7||612 = 43,4 Ω
+
+
+
+
+
+
