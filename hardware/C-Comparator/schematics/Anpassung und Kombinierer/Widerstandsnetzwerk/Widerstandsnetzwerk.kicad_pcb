@@ -134,7 +134,7 @@
 	(footprint "C-Comparator:CONN_73330-0030_MOL"
 		(layer "F.Cu")
 		(uuid "7ec8f335-4d17-40ae-b565-89a4eeaa3aa5")
-		(at 76 53.5 90)
+		(at 56.4027 72 90)
 		(property "Reference" "J1"
 			(at -0.1016 0 90)
 			(layer "F.SilkS")
