@@ -386,5 +386,44 @@
 		)
 		(embedded_fonts no)
 	)
+	(gr_text "Anpassung und Kombinierer für GPSDO+AWG/SDR auf Sat-Kabel"
+		(at 187.5 190.5 0)
+		(layer "F.Cu")
+		(uuid "7a97d1ee-cea9-474d-a21f-7b961d172eb6")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "2026-10-28"
+		(at 206.5 194 0)
+		(layer "F.Cu")
+		(uuid "d8ee76f0-9b15-48d8-903a-d77280cfa891")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "1.0"
+		(at 269 194 0)
+		(layer "F.Cu")
+		(uuid "3f920b6b-caaa-4c4a-bf5c-45218c65f8c5")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
 	(embedded_fonts no)
 )
