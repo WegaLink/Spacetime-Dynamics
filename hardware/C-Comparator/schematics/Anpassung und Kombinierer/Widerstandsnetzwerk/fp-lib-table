@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "C-Comparator")(type "KiCad")(uri "Z:/Documents/_Projects/_GitHub/Spacetime-Dynamics/hardware/C-Comparator/KiCAD/C-Comparator.pretty")(options "")(descr ""))
+)
