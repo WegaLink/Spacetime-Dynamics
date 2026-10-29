@@ -308,7 +308,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_Coaxial")
-		(at 45.974 98.806 0)
+		(at 50.8 100.33 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -319,7 +319,7 @@
 		(dnp no)
 		(uuid "ce08c70e-7633-4a75-b187-3c938cf3861f")
 		(property "Reference" "J2"
-			(at 42.672 98.4642 0)
+			(at 47.498 99.9882 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -330,7 +330,7 @@
 			)
 		)
 		(property "Value" "SATA OUT"
-			(at 42.672 101.0042 0)
+			(at 47.498 102.5282 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -341,7 +341,7 @@
 			)
 		)
 		(property "Footprint" "C-Comparator:CONN_73330-0030_MOL"
-			(at 45.974 98.806 0)
+			(at 50.8 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -352,7 +352,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 45.974 98.806 0)
+			(at 50.8 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -363,7 +363,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 45.974 98.806 0)
+			(at 50.8 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
