@@ -4839,7 +4839,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "C-Comparator:CONN_73330-0030_MOL"
 			(at 39.37 104.14 0)
 			(hide yes)
 			(show_name no)
