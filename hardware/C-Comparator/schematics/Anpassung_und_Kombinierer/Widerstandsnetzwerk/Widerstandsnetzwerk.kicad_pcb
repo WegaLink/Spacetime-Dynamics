@@ -138,7 +138,7 @@
 		(descr "Resistor, Axial_DIN0309 series, Axial, Horizontal, pin pitch=12.7mm, 0.5W = 1/2W, length*diameter=9*3.2mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0309 series Axial Horizontal pin pitch 12.7mm 0.5W = 1/2W length 9mm diameter 3.2mm")
 		(property "Reference" "R15"
-			(at 6.35 -2.72 0)
+			(at 3.81 0 0)
 			(layer "F.SilkS")
 			(uuid "a81edca6-fcd8-463d-82c4-43c38452b991")
 			(effects
@@ -149,7 +149,7 @@
 			)
 		)
 		(property "Value" "46,7"
-			(at 6.35 2.72 0)
+			(at 8.255 0.635 0)
 			(layer "F.Fab")
 			(uuid "f1295739-7f0f-40f9-b974-02dfaf669d98")
 			(effects
@@ -279,7 +279,7 @@
 			(uuid "cc841811-1879-4033-90bc-0d120ab98725")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 6.35 0 0)
+			(at 3.81 0 0)
 			(layer "F.Fab")
 			(uuid "894dfab2-9d98-4eb3-8766-ff75d5fd55d6")
 			(effects
@@ -520,7 +520,7 @@
 		(descr "Resistor, Axial_DIN0309 series, Axial, Horizontal, pin pitch=12.7mm, 0.5W = 1/2W, length*diameter=9*3.2mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0309 series Axial Horizontal pin pitch 12.7mm 0.5W = 1/2W length 9mm diameter 3.2mm")
 		(property "Reference" "R14"
-			(at 6.35 -2.72 0)
+			(at 3.81 -1.27 0)
 			(layer "F.SilkS")
 			(uuid "5a4d9c5d-7ef7-4afe-9270-c76d6f56ba90")
 			(effects
@@ -531,7 +531,7 @@
 			)
 		)
 		(property "Value" "612"
-			(at 6.35 2.72 0)
+			(at 8.255 0 0)
 			(layer "F.Fab")
 			(uuid "ecafb315-22c0-4f7e-ba6f-0239324db9e2")
 			(effects
@@ -661,7 +661,7 @@
 			(uuid "e89fa1b0-c34d-45ed-b47b-db83726ba1f8")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 6.35 0 0)
+			(at 3.81 -0.635 0)
 			(layer "F.Fab")
 			(uuid "ae1746d2-4b66-4ad2-884d-a9d469818e73")
 			(effects
@@ -4547,7 +4547,7 @@
 			)
 		)
 		(property "Value" "99,4"
-			(at 6.35 2.72 0)
+			(at 4.445 -0.635 0)
 			(layer "F.Fab")
 			(uuid "72076fb0-dbfe-4c58-b591-658f8c9f6852")
 			(effects
@@ -4677,7 +4677,7 @@
 			(uuid "a54605af-3148-4fc7-97f6-7beb08716537")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 6.35 0 0)
+			(at 8.89 0 0)
 			(layer "F.Fab")
 			(uuid "6705bd8c-5518-4838-b3af-fe98cba8f1ae")
 			(effects
@@ -4738,7 +4738,7 @@
 			)
 		)
 		(property "Value" "672"
-			(at 6.35 2.72 0)
+			(at 4.445 0 0)
 			(layer "F.Fab")
 			(uuid "197fe370-dc83-46e1-bfc4-ce541bebc61a")
 			(effects
@@ -4868,7 +4868,7 @@
 			(uuid "13c13379-46f4-46da-987d-5c33aa3ab36e")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 6.35 0 0)
+			(at 8.89 0.635 0)
 			(layer "F.Fab")
 			(uuid "8ae36e40-7ad7-4186-b839-271764f00a17")
 			(effects
@@ -6459,6 +6459,22 @@
 			)
 			(justify left bottom)
 		)
+	)
+	(segment
+		(start 162.56 86.36)
+		(end 165.1 83.82)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "Net-(J3-Pin_1)")
+		(uuid "0acaced1-3fa6-4d5a-ae89-513889823d63")
+	)
+	(segment
+		(start 162.56 96.52)
+		(end 162.56 86.36)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "Net-(J3-Pin_1)")
+		(uuid "f3680669-fbf6-46cb-a63e-bc877bb9a46c")
 	)
 	(embedded_fonts no)
 )
