@@ -1544,7 +1544,7 @@
 	)
 	(wire
 		(pts
-			(xy 38.1 148.59) (xy 38.1 154.94)
+			(xy 39.37 148.59) (xy 39.37 154.94)
 		)
 		(stroke
 			(width 0)
@@ -1584,7 +1584,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 143.51) (xy 232.41 143.51)
+			(xy 44.45 143.51) (xy 232.41 143.51)
 		)
 		(stroke
 			(width 0)
@@ -3053,7 +3053,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 38.1 154.94 0)
+		(at 39.37 154.94 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3064,7 +3064,7 @@
 		(fields_autoplaced yes)
 		(uuid "5b25a811-22ee-447e-9a1d-468860e8ebe6")
 		(property "Reference" "#PWR09"
-			(at 38.1 161.29 0)
+			(at 39.37 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3075,7 +3075,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 38.1 160.02 0)
+			(at 39.37 160.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3085,7 +3085,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 38.1 154.94 0)
+			(at 39.37 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3096,7 +3096,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 38.1 154.94 0)
+			(at 39.37 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3107,7 +3107,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 38.1 154.94 0)
+			(at 39.37 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4355,7 +4355,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
 			(at 57.912 48.26 90)
 			(hide yes)
 			(show_name no)
@@ -4839,7 +4839,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "C-Comparator:CONN_73330-0030_MOL"
+		(property "Footprint" ""
 			(at 39.37 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -4888,7 +4888,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic_Shielded:Conn_01x01_Shielded")
-		(at 38.1 143.51 0)
+		(at 39.37 143.51 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -4899,7 +4899,7 @@
 		(dnp no)
 		(uuid "d160cc13-b3e7-48c2-8783-d2b0c1409d6a")
 		(property "Reference" "J6"
-			(at 35.56 142.2399 0)
+			(at 36.83 142.2399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4910,7 +4910,7 @@
 			)
 		)
 		(property "Value" "SDR-2"
-			(at 35.56 144.7799 0)
+			(at 36.83 144.7799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4921,7 +4921,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Coaxial:SMA_Amphenol_132291_Vertical"
-			(at 38.1 143.51 0)
+			(at 39.37 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4932,7 +4932,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 38.1 143.51 0)
+			(at 39.37 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4943,7 +4943,7 @@
 			)
 		)
 		(property "Description" "Generic shielded connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 38.1 143.51 0)
+			(at 39.37 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
