@@ -785,7 +785,7 @@
 	)
 	(text "(43,3)"
 		(exclude_from_sim no)
-		(at 87.884 29.972 0)
+		(at 90.424 29.972 0)
 		(effects
 			(font
 				(size 1.2192 1.2192)
@@ -959,7 +959,7 @@
 		(uuid "878c101b-ab17-4139-892e-d44144038aa8")
 	)
 	(junction
-		(at 95.25 35.56)
+		(at 97.79 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9d70e89c-8552-4e75-8b87-b789be8b2b8f")
@@ -983,12 +983,6 @@
 		(uuid "d6334df0-2b34-4344-ac1a-3c6da654ac59")
 	)
 	(junction
-		(at 83.82 55.88)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f6dade14-f462-4a15-8469-1b11892894c8")
-	)
-	(junction
 		(at 208.28 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1001,13 +995,7 @@
 		(uuid "fb421489-c768-4773-86c2-ce65ca0fa70a")
 	)
 	(junction
-		(at 59.69 41.91)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "fc17624d-07d8-4711-a2df-df804d26a376")
-	)
-	(junction
-		(at 83.82 35.56)
+		(at 86.36 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fffbf9f1-3221-4d82-b09a-b47fbfa256ea")
@@ -1074,7 +1062,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 35.56) (xy 83.82 41.91)
+			(xy 86.36 35.56) (xy 86.36 41.91)
 		)
 		(stroke
 			(width 0)
@@ -1084,7 +1072,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 35.56) (xy 95.25 35.56)
+			(xy 86.36 35.56) (xy 97.79 35.56)
 		)
 		(stroke
 			(width 0)
@@ -1144,7 +1132,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 49.53) (xy 95.25 55.88)
+			(xy 97.79 49.53) (xy 97.79 55.88)
 		)
 		(stroke
 			(width 0)
@@ -1154,7 +1142,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 35.56) (xy 83.82 35.56)
+			(xy 78.74 35.56) (xy 86.36 35.56)
 		)
 		(stroke
 			(width 0)
@@ -1214,7 +1202,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 35.56) (xy 95.25 41.91)
+			(xy 97.79 35.56) (xy 97.79 41.91)
 		)
 		(stroke
 			(width 0)
@@ -1244,7 +1232,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 49.53) (xy 83.82 55.88)
+			(xy 86.36 49.53) (xy 86.36 55.88)
 		)
 		(stroke
 			(width 0)
@@ -1304,16 +1292,6 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 41.91) (xy 72.39 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "62fac451-9f43-44ee-8985-3b0c18628b14")
-	)
-	(wire
-		(pts
 			(xy 193.04 68.58) (xy 185.42 68.58)
 		)
 		(stroke
@@ -1351,16 +1329,6 @@
 			(type default)
 		)
 		(uuid "818c97bd-dd53-42da-bdf7-e923f962ea5f")
-	)
-	(wire
-		(pts
-			(xy 72.39 55.88) (xy 83.82 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "81b92f9a-2173-4057-8db5-0104f40a12d8")
 	)
 	(wire
 		(pts
@@ -1614,16 +1582,6 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 41.91) (xy 72.39 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cc01e8bc-a142-4546-bece-c0d138a77990")
-	)
-	(wire
-		(pts
 			(xy 154.94 57.15) (xy 163.83 57.15)
 		)
 		(stroke
@@ -1644,7 +1602,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 24.13) (xy 83.82 24.13)
+			(xy 78.74 24.13) (xy 86.36 24.13)
 		)
 		(stroke
 			(width 0)
@@ -1664,7 +1622,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 24.13) (xy 83.82 35.56)
+			(xy 86.36 24.13) (xy 86.36 35.56)
 		)
 		(stroke
 			(width 0)
@@ -1681,16 +1639,6 @@
 			(type default)
 		)
 		(uuid "e5a41ebd-ff7b-4583-8112-9fea1565d6a0")
-	)
-	(wire
-		(pts
-			(xy 83.82 55.88) (xy 95.25 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e78e908e-45b5-43c6-97de-d347ff9198e7")
 	)
 	(wire
 		(pts
@@ -1714,7 +1662,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 35.56) (xy 229.87 35.56)
+			(xy 97.79 35.56) (xy 229.87 35.56)
 		)
 		(stroke
 			(width 0)
@@ -2482,6 +2430,84 @@
 			(project "Widerstandsnetzwerk"
 				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
 					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 97.79 55.88 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3a162dd8-a0a2-4210-87b3-ec46adf4703a")
+		(property "Reference" "#PWR017"
+			(at 97.79 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 97.79 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 97.79 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 97.79 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 97.79 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e6d37d24-5ce9-4329-a7cd-c992a63e35da")
+		)
+		(instances
+			(project "Widerstandsnetzwerk"
+				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
+					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -3925,7 +3951,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 95.25 45.72 0)
+		(at 97.79 45.72 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3936,7 +3962,7 @@
 		(fields_autoplaced yes)
 		(uuid "8b3cf8c2-560a-44e2-8982-a05f2dcfd2bd")
 		(property "Reference" "R17"
-			(at 97.79 44.4499 0)
+			(at 100.33 44.4499 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3947,7 +3973,7 @@
 			)
 		)
 		(property "Value" "672"
-			(at 97.79 46.9899 0)
+			(at 100.33 46.9899 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3958,7 +3984,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
-			(at 93.472 45.72 90)
+			(at 96.012 45.72 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3969,7 +3995,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 95.25 45.72 0)
+			(at 97.79 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3980,7 +4006,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 95.25 45.72 0)
+			(at 97.79 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4241,7 +4267,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 83.82 45.72 0)
+		(at 86.36 45.72 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4252,7 +4278,7 @@
 		(fields_autoplaced yes)
 		(uuid "9d6f2c40-5eef-4309-80c2-4ac38344eb1b")
 		(property "Reference" "R16"
-			(at 86.36 44.4499 0)
+			(at 88.9 44.4499 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4263,7 +4289,7 @@
 			)
 		)
 		(property "Value" "99,4"
-			(at 86.36 46.9899 0)
+			(at 88.9 46.9899 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4274,7 +4300,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
-			(at 82.042 45.72 90)
+			(at 84.582 45.72 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4285,7 +4311,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 83.82 45.72 0)
+			(at 86.36 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4296,7 +4322,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 83.82 45.72 0)
+			(at 86.36 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4963,6 +4989,84 @@
 			(project "Widerstandsnetzwerk"
 				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
 					(reference "J6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 86.36 55.88 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d5f7bd1f-c6c9-4101-a1a5-0bc94422be24")
+		(property "Reference" "#PWR016"
+			(at 86.36 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 86.36 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 86.36 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 86.36 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 86.36 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "68dcf5ce-63ac-4bcf-9611-790dfc371f78")
+		)
+		(instances
+			(project "Widerstandsnetzwerk"
+				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
