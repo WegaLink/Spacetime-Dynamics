@@ -2,8 +2,8 @@
   Perplexity Phasendetektor-Impedanzanpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 26. Oktober 2026 um 18:51
-Nachrichten: 2
+Exportiert: 1. November 2026 um 23:29
+Nachrichten: 4
 Modell: sonar
 
 ───────────────────────────────────────────────────────────────
@@ -68,6 +68,46 @@ Die angegebene Verkürzungsgeschwindigkeit von \(0{,}82c\) ergibt für 250 m ein
 [4] [https://in.element14.com/digilent-embedded-measurement](https://in.element14.com/digilent-embedded-measurement)
 [5] [https://ipxchange.tech/evaluation-boards/digilent-eclypse-z7-processor-fgpa-soc-development-board-for-embedded-measurement-systems/](https://ipxchange.tech/evaluation-boards/digilent-eclypse-z7-processor-fgpa-soc-development-board-for-embedded-measurement-systems/)
 [6] [https://www.hb-digital.de/05-m-10-m-SAT-Anschluss-Kabel-mit-2-x-vergoldeten-oder-vernickelten-Vollmetall-F-Schnellstecker-Quickfix-Farbe-waehlbar](https://www.hb-digital.de/05-m-10-m-SAT-Anschluss-Kabel-mit-2-x-vergoldeten-oder-vernickelten-Vollmetall-F-Schnellstecker-Quickfix-Farbe-waehlbar)
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Ein Widerstandsnetzwerk wurde wie im Dokument beschrieben mit folgenden Komponenten aufgebaut: GPSDO - Dämpfung (-5dB) - 3-Wege-Kombinierer - 50/75 Ohm Anpassung - SATA Kabel 1 m (für Null-Test) - 75/50 Ohm Anpassung - SDR-1. Die Dämpfung der gesamten Strecke wurde mit Nano VNA bei 10 MHz etwa wie erwartet mit -22.5dB gemessen. Nach Wechsel des 1m SATA-Kabels gegen ein 250m SATA-Kabel stieg die Dämpfung wie im NanoVNA Screenshot gezeigt auf -55dB an. Es zeigte sich nun ein Tiefpasscharakter mit einer -3dB Frequenz bei etwa 250 kHz  wie ebenfalls in einem angehängten Screenshot vom Nano VNA gezeigt. Nach Datenblatt sollte die zusätzliche Dämpfung bei 250m/10MHz etwa -5dB sein, sie ist jedoch mehr als -30dB. Der ohmsche Widerstand der Schirmung ist etwa 8 Ohm und des Innenleiters etwa 34 Ohm. Welche Erklärung könnte es dafür geben? Wie kann das System verändert werden, damit das 10MHz Signal des GPSDO mit der nominellen Dämpfung am Ausgang ankommt?
+
+📎 Anhänge: Anpassung und Kombinierer 3 MHz (GPSDO - SATA_250m - SDR-1).jpg, Anpassung und Kombinierer 10 MHz (GPSDO - SATA_250m - SDR-1).jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+Die von Ihnen gemessenen Werte (insbesondere der ohmsche Widerstand des Innenleiters von ca. **34 Ω** für die gesamte Strecke und die massive Dämpfung von ca. \(-55\,\text{dB}\) bei 10 MHz mit starkem Tiefpasscharakter) liefern eine eindeutige physikalische Erklärung:
+
+### 1. Erklärung für das unerwartete Verhalten
+
+- **DC-Widerstand des Innenleiters:** Ein typisches Koaxialkabel für Sat-Anlagen (wie das HQ 135 dB) verwendet im Innenleiter meist **verkupferten Stahldraht (CCS – Copper-Clad Steel)** oder einen sehr dünnen massiven Kupferdraht. Bei einer Länge von **250 m** summiert sich der Gleichstromwiderstand des Innenleiters auf die von Ihnen gemessenen **34 Ω** (ca. \(136\,\Omega/\text{km}\), was typisch für dünne CCS-Innenleiter ist).
+- **Gleichstromwiderstand der Schirmung:** Die Schirmung (meist Aluminium-Folie plus Aluminium- oder tinnierte Kupfergeflechte) hat ca. **8 Ω** (\(\approx 32\,\Omega/\text{km}\)).
+- **Skineffekt bei 10 MHz:** Hochfrequenzströme fließen aufgrund des Skineffekts nur in der äußeren Schicht des Leiters (Skintiefe bei Kupfer bei 10 MHz liegt bei ca. \(21\,\mu\text{m}\)). Bei einem Stahldraht (CCS) weicht der Strom jedoch in den weitaus schlechter leitenden Stahlkern aus, sobald die Frequenz sinkt oder der Kupfermantel sehr dünn ist. 
+- **Zusammenbruch der Übertragung:** 
+  1. Die DC-Leitungsverluste und der HF-Widerstand eines 250-m-Stahlkern-Innenleiters sind bei 10 MHz dramatisch höher als bei reinem Kupfer.
+  2. Noch schwerwiegender ist: **Sat-Kabel (75 Ω) sind für Gigahertz-Frequenzen (Sat-ZF von 950 MHz bis 2150 MHz) optimiert.** Bei sehr niedrigen Frequenzen wie 10 MHz (und erst recht beim gemessenen Tiefpass bei \(\sim 250\,\text{kHz}\)) spielen die Kapazitäten und Induktivitäten im Zusammenspiel mit dem hochohmigen Innenleiter komplett verrückt. Das Kabel wirkt auf 250 m Länge wie ein extrem verlustbehaftetes RC-Glied bzw. eine verteilte RC-Leitung, nicht mehr wie eine reine Wellenleiter-Übertragungsstrecke. 
+  3. Die vom Datenblatt versprochenen „5 dB Dämpfung bei 10 MHz“ beziehen sich fast immer auf **100 Meter** (oder sind ein idealisierter theoretischer Wert für reine Kupferleitungen bei hohen Frequenzen, wo der Skineffekt ideal greift). 250 Meter Sat-Kabel mit CCS-Innenleiter dämpfen 10 MHz *kolossal* stark.
+
+---
+
+### 2. Wie kann das System verändert werden, damit das 10-MHz-Signal ankommt?
+
+Um ein 10-MHz-Referenzsignal verlustarm über 250 Meter zu übertragen, müssen Sie von ungeeigneten Consumer-Sat-Kabeln auf professionelle HF-Leitungen umsteigen:
+
+1. **Kabelwechsel auf massives Kupfer (Solid Copper) / Geringer Gleichstromwiderstand:**
+   - Verwenden Sie ein professionelles **Koaxialkabel mit massivem Kupfer-Innenleiter (BC – Bare Copper)** und niedriger Dämpfung im Kurzwellen-/VHF-Bereich (z. B. RG-213, H-1000, Aircom Premium oder professionelle 75-Ω-Messtechnik-Kabel wie RG-11 mit Vollkupfer).
+   - Ein typisches 50-Ω- oder 75-Ω-Vollkabel hat einen Innenleiterwiderstand im Bereich von unter \(2\,\Omega\) bis \(5\,\Omega\) für die gesamte 250-m-Strecke (statt 34 Ω). Dadurch bricht die Amplitude bei 10 MHz nicht ein.
+
+2. **Aktive Signalaufbereitung (Repeater / Line-Amplifier):**
+   - Wenn das Kabel aus mechanischen Gründen (z. B. Verlegung, Gewicht) beibehalten werden muss, kann das 10-MHz-Signal **nicht** passiv verlustfrei durch 250 m CCS-Kabel gezwungen werden.
+   - **Lösung:** Setzen Sie direkt hinter dem GPSDO (oder am Sendeende) einen **HF-Verstärker** ein, der die \(-30\,\text{dB}\) Dämpfung des Kabels ausgleicht, und entkoppeln Sie den Empfängereingang entsprechend. Besser ist jedoch immer eine niederohmige Kupferleitung, da ein Verstärker auf 250 m auch das Rauschen stark anhebt.
+
+3. **Alternativer Ansatz für Raumzeit- / Phasendynamik-Experimente (RF-over-Fiber):**
+   - Bei 250 Metern Distanz und extrem hohen Anforderungen an Phasenstabilität (Nanosekunden-/Pikosekunden-Bereich) kämpfen Sie bei Kupferkabeln immer mit thermischen Längenänderungen (Ausdehnung des Kabels bei Temperaturwechseln verfälscht die Phase massiv!).
+   - Professionelle Aufbauten in diesem Bereich nutzen oft **Glasfaser-Strecken (RF over Fiber / Analog-Optik-Links)** oder direkt digitale Protokolle (White Rabbit / PTP / Ethernet-basierte Uhrenverteilung), um Laufzeit- und Dämpfungsprobleme auf Langstrecken komplett zu eliminieren.
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

@@ -2,8 +2,8 @@
   Muse Spark 1.3 Phasendetektor-Impedanzanpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 26. Oktober 2026 um 18:51
-Nachrichten: 2
+Exportiert: 1. November 2026 um 23:29
+Nachrichten: 4
 Modell: muse-spark-1.3
 
 ───────────────────────────────────────────────────────────────
@@ -149,6 +149,39 @@ Vorschlag für Doku-Eintrag `Physik 2`: Topologie B-neu mit 250m/75R/0.82, 25R-Q
 
 **Citations:**
 [1] [https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Fragenkatalog%20zu%20einem%20Phasendetektor.md](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Fragenkatalog%20zu%20einem%20Phasendetektor.md)
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Ein Widerstandsnetzwerk wurde wie im Dokument beschrieben mit folgenden Komponenten aufgebaut: GPSDO - Dämpfung (-5dB) - 3-Wege-Kombinierer - 50/75 Ohm Anpassung - SATA Kabel 1 m (für Null-Test) - 75/50 Ohm Anpassung - SDR-1. Die Dämpfung der gesamten Strecke wurde mit Nano VNA bei 10 MHz etwa wie erwartet mit -22.5dB gemessen. Nach Wechsel des 1m SATA-Kabels gegen ein 250m SATA-Kabel stieg die Dämpfung wie im NanoVNA Screenshot gezeigt auf -55dB an. Es zeigte sich nun ein Tiefpasscharakter mit einer -3dB Frequenz bei etwa 250 kHz  wie ebenfalls in einem angehängten Screenshot vom Nano VNA gezeigt. Nach Datenblatt sollte die zusätzliche Dämpfung bei 250m/10MHz etwa -5dB sein, sie ist jedoch mehr als -30dB. Der ohmsche Widerstand der Schirmung ist etwa 8 Ohm und des Innenleiters etwa 34 Ohm. Welche Erklärung könnte es dafür geben? Wie kann das System verändert werden, damit das 10MHz Signal des GPSDO mit der nominellen Dämpfung am Ausgang ankommt?
+
+📎 Anhänge: Anpassung und Kombinierer 3 MHz (GPSDO - SATA_250m - SDR-1).jpg, Anpassung und Kombinierer 10 MHz (GPSDO - SATA_250m - SDR-1).jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+Die gemessenen Werte – insbesondere der DC-Widerstand von **34 Ohm für den Innenleiter** und **8 Ohm für die Schirmung** (zusammen 42 Ohm Schleifenwiderstand bei 250 m) sowie der massive Tiefpasscharakter mit einer Grenzfreqzenz von ca. 250 kHz und einer Gesamtdämpfung von **-55 dB bei 10 MHz** – offenbaren eine eindeutige physikalische Ursache.
+
+### 1. Erklärung des Phänomens: Das "Fake-Sat-Kabel" oder DC-Kopplungsproblem
+
+Ein echtes, hochwertiges Satellitenkabel (wie das genannte HQ 135 dB mit Vollkupfer-Innenleiter und gutem Schirm) hat bei 250 m Länge einen typischen Gleichstromwiderstand (DC-Widerstand) des Innenleiters von ca. **1,5 bis 3 Ohm** und der Schirmung von unter **1 bis 2 Ohm**. 
+
+* **Der gemessene Innenleiter-Widerstand von 34 Ohm** zeigt sofort, dass es sich hierbei **nicht** um ein klassisches Kupfer-Koaxialkabel für Hochfrequenz handelt, sondern um ein Kabel mit **Stahl-Kupfer-Kaschierung (CCS – Copper Clad Steel)** oder sogar um eine extrem dünne Leitung / ein Datenkabel / ein beschädigtes Kabel, bei dem der Skineffekt bei HF extrem hart zuschlägt.
+* Noch kritischer: **250 m Koaxialkabel haben eine Laufzeit von ca. 1,02 µs**. Eine so starke Tiefpass-Charakteristik bei 250 kHz (-3 dB) bei einer ansonsten fehlerfreien Impedanzanpassung (S11 Return Loss von über -37 dB bis -42 dB laut NanoVNA!) beweist, dass das Signal bei 10 MHz durch den enormen ohmschen Verlust und Skin-Effekt auf der langen Strecke komplett „aufgesaugt“ wird. Bei 10 MHz dringt der Strom nur wenige Mikrometer in den Leiter ein. Wenn der Innenleiter aus Stahl mit einer dünnen Kupfer-Schicht besteht (CCS), bricht die Leitfähigkeit bei RF dramatisch ein.
+
+---
+
+### 2. Wie kann das System verändert werden, damit das 10-MHz-Signal mit der nominellen Dämpfung ankommt?
+
+Um die physikalische Dämpfung des Kabels von den erwarteten ~5 dB bei 10 MHz zu erreichen (bzw. den massiven Verlust von -30 dB zu eliminieren), sind folgende Massnahmen zwingend erforderlich:
+
+1. **Kabeltausch auf echtes Vollkupfer (Solid Bare Copper):**
+   * Das verwendete 250m-Kabel muss durch ein professionelles **Koaxialkabel mit massivem Vollkupfer-Innenleiter (Class A / Class A++ oder High-End SAT-Kabel mit 1.13 mm Cu-Innenleiter)** ersetzt werden. CCS-Kabel (Copper Clad Steel) sind für HF-Signale über längere Strecken ungeeignet.
+   * Alternativ für 10 MHz (wo die Frequenz noch überschaubar ist) kann auch ein klassisches **RG-58 oder RG-213 (50 Ohm)** bzw. ein professionelles **RG-11 / 75-Ohm-Messkabel mit dickem Kupferkern** verwendet werden, um die ohmschen Verluste drastisch zu senken.
+
+2. **Verstärkung / In-Line-Amplification auf der Strecke (Workaround falls Kabel nicht tauschbar):**
+   * Falls das 250m-Kabel physisch verbaut ist und nicht gewechselt werden kann, muss die Dämpfung von -30 dB bei 10 MHz durch einen **rausarmen 10-MHz-Verstärker (Line-Amplifier mit ca. 30 dB Gain bei 10 MHz)** direkt vor dem Eingang ausgeglichen werden.
+   * Da der GPSDO mit +7 dBm (+0.7 Vpk) sendet, würde ein Aktivverstärker (oder eine schmalbandige 10-MHz-Resonanzstufe / Filterstufe) das Signal vor dem SDR-1 wieder auf den nominalen Pegel heben. Allerdings verschlechtert dies das Phasenrauschen leicht, weshalb ein **Vollkupfer-Kabel** die physikalisch einzig saubere Lösung für ein Experiment zur Raumzeitdynamik ist.
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

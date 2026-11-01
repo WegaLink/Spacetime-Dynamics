@@ -2,8 +2,8 @@
   GLM 5.3 Phasendetektor-Anpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 26. Oktober 2026 um 18:52
-Nachrichten: 2
+Exportiert: 1. November 2026 um 23:29
+Nachrichten: 4
 Modell: glm
 
 ───────────────────────────────────────────────────────────────
@@ -86,6 +86,58 @@ AWG (Eclypse Z7) ──────────┘        │
 
 **Citations:**
 [1] [https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Fragenkatalog%20zu%20einem%20Phasendetektor.md](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Fragenkatalog%20zu%20einem%20Phasendetektor.md)
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Ein Widerstandsnetzwerk wurde wie im Dokument beschrieben mit folgenden Komponenten aufgebaut: GPSDO - Dämpfung (-5dB) - 3-Wege-Kombinierer - 50/75 Ohm Anpassung - SATA Kabel 1 m (für Null-Test) - 75/50 Ohm Anpassung - SDR-1. Die Dämpfung der gesamten Strecke wurde mit Nano VNA bei 10 MHz etwa wie erwartet mit -22.5dB gemessen. Nach Wechsel des 1m SATA-Kabels gegen ein 250m SATA-Kabel stieg die Dämpfung wie im NanoVNA Screenshot gezeigt auf -55dB an. Es zeigte sich nun ein Tiefpasscharakter mit einer -3dB Frequenz bei etwa 250 kHz  wie ebenfalls in einem angehängten Screenshot vom Nano VNA gezeigt. Nach Datenblatt sollte die zusätzliche Dämpfung bei 250m/10MHz etwa -5dB sein, sie ist jedoch mehr als -30dB. Der ohmsche Widerstand der Schirmung ist etwa 8 Ohm und des Innenleiters etwa 34 Ohm. Welche Erklärung könnte es dafür geben? Wie kann das System verändert werden, damit das 10MHz Signal des GPSDO mit der nominellen Dämpfung am Ausgang ankommt?
+
+📎 Anhänge: Anpassung und Kombinierer 3 MHz (GPSDO - SATA_250m - SDR-1).jpg, Anpassung und Kombinierer 10 MHz (GPSDO - SATA_250m - SDR-1).jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+Die extrem hohe Dämpfung von ca. **-55 dB** (statt der erwarteten ca. -27,5 dB aus GPSDO-Grundpegel + 5 dB Kabeldämpfung) sowie der ausgeprägte **Tiefpasscharakter mit einer Grenzfrequenz von nur ca. 250 kHz** bei dem 250-m-Kabel lassen sich physikalisch und messtechnisch eindeutig klären.
+
+Hier ist die Ursachenanalyse und der Lösungsweg für das Team.
+
+---
+
+### 1. Erklärung des Fehlers (Warum -55 dB und 250 kHz Tiefpass?)
+
+Die Messwerte (Innenleiterwiderstand **34 Ω**, Schirmungswiderstand **8 Ω**) sind der Schlüssel zum Verständnis:
+
+1. **Gleichstromwiderstand des Innenleiters (34 Ω):** 
+   Ein hochwertiges Sat-Kabel (wie das HB Digital HQ-135 mit Kupfer- oder verkupfertem Stahl-Innenleiter) hat bei 250 m Länge typischerweise einen Innenleiterwiderstand im Bereich von ca. **4 bis 8 Ω** (je nach Querschnitt/Stahlanteil). Ein gemessener Wert von **34 Ω** zeigt, dass der Innenleiter extrem dünn ist, einen hohen Stahlanteil hat (CCS = Copper-Clad Steel) oder – was noch wahrscheinlicher ist – dass es sich bei dem verwendeten „SATA-Kabel“ in diesem Testaufbau um ein fehlerhaft kontaktiertes, extrem langes Datenkabel/Patchkabel (oder eine hochohmig geschaltete Leitung) handelt, bei dem der HF-Strom durch hochohmige Teilstücke oder schlechte Übergangswiderstände massiv gebremst wird. Bei echten 34 Ω Gleichstromwiderstand plus Skin-Effekt bei 10 MHz bricht jede HF-Leistung zusammen.
+2. **Die Kapazität des Kabels als RC-Tiefpass:**
+   Ein 250-m-Koaxialkabel hat eine Betriebskapazität von ca. 50 bis 100 pF/m. Bei 250 m sind das insgesamt **12 bis 25 nF** Kabelkapazität. 
+   Zusammen mit dem Serienwiderstand $R \approx 34\,\Omega$ bildet dies ein massives RC-Glied:
+   $$f_{-3\text{dB}} \approx \frac{1}{2\pi \cdot R \cdot C}$$
+   Mit $R = 34\,\Omega$ und $C \approx 20\,\text{nF}$ landet man genau in der Größenordnung der gemessenen **250 kHz**! Das Kabel verhält sich bei 250 m wie ein Tiefpass erster Ordnung, der 10-MHz-Signale um viele Dutzend dB verschluckt.
+3. **NanoVNA-Screenshot (3 MHz vs. 10 MHz):**
+   * Im 3-MHz-Sweep sieht man, dass die Dämpfung ($S_{21}$) zu niedrigen Frequenzen hin ansteigt (bei 240 kHz sind es ca. -30 dB, bei 3 MHz ca. -45 dB).
+   * Im 10-MHz-Sweep sinkt $S_{21}$ auf bis zu **-55 bis -64 dB** ab, und die typischen Interferenz-/Resonanzwellen (Ripple) im $S_{21}$-Plot zeigen, dass das Kabel aufgrund der massiven Fehlanpassung und Dämpfung völlig aus dem Ruder läuft.
+
+---
+
+### 2. Wie kann das System verändert werden, damit das 10-MHz-Signal ankommt?
+
+Um die nominelle Dämpfung (ca. 5 dB Kabeldämpfung bei 10 MHz) zu erreichen, müssen drei Punkte zwingend behoben werden:
+
+#### Schritt A: Kabelprüfung und -ersatz (DC-Widerstand prüfen)
+* **Innenleiter-Check:** Ein echtes, für HF geeignetes 75-Ω-Sat-Kabel darf bei 250 m keinen Innenleiterwiderstand von 34 Ω haben. Dieser sollte im einstelligen Ohm-Bereich liegen (Kupfer-Vollkern). 
+* **Schirmungs-Check:** 8 Ω für 250 m Schirmung ist ebenfalls recht hoch (spricht für einen dünnen Aluminium-Drahtgeflecht-Mix statt Kupfer). 
+* **Konsequenz:** Prüfen, ob Kontakte, Adapter (BNC auf F-Stecker) oder das Kabel selbst defekt oder ungeeignet sind. Für 10-MHz-Präzisionsmessungen über 250 m ist ein Koaxialkabel mit **reinem Kupfer-Innenleiter (solid copper)** zwingend erforderlich; CCS-Kabel dämpfen bei HF durch den Skin-Effekt und den ohmschen Anteil viel zu stark.
+
+#### Schritt B: Impedanzanpassung konsequent durchhalten (50 Ω ↔ 75 Ω)
+* Das System arbeitet mit GPSDO (50 Ω) und SDR/Scope (50 Ω), aber das Kabel hat 75 Ω. 
+* Die im Setup verwendeten **50/75-Ω-Anpassglieder** (idealerweise Dämpfungsglieder oder Resistor-Pads mit genau 5,7 dB Dämpfung pro Seite bzw. ein Trafo/UnUn) müssen exakt an beiden Enden sitzen. 
+* Wenn die Impedanzen nicht stimmen, entstehen stehende Wellen, die bei 250 m Kabellänge und 10 MHz zu steilen Resonanzstellen führen, welche die Leistung im $S_{21}$ weiter einbrechen lassen.
+
+#### Schritt C: Aktive Pufferung / Signalverstärkung bei Bedarf
+* Selbst bei einem perfekten 75-Ω-Sat-Kabel dämpft das Kabel bei 10 MHz ca. **5 dB**. Zusammen mit den 50/75-Ω-Anpassnetzwerken (die rein passiv jeweils ca. 3 bis 5,7 dB Einfügungsdämpfung kosten) verliert man auf der Strecke schnell **15 bis 20 dB**.
+* Da der GPSDO mit +7 dBm ($\approx 1,41\,\text{V}_{\text{ss}}$ an 50 Ω) startet, kommt am Ende ohne Verstärkung zu wenig an, um den ADC optimal ausgesteuert zu betreiben.
+* **Empfehlung:** Vor das 250-m-Kabel (nach dem GPSDO und dem Kombinierer) einen rauscharmen, linearen **HF-Verstärker (z. B. Mini-Circuits ZFL-500LN oder ein Breitband-MMIC mit 50 Ω, 20 dB Verstärkung)** setzen, der die 15–20 dB Leitungs- und Anpassdämpfung ausgleicht. Damit liegt der Pegel am Ende des 250-m-Kabels wieder exakt im Bereich von ±1 V für den ADC/SDR.
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation
