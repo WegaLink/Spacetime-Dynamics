@@ -761,6 +761,19 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "[ -5 dB ]"
+		(exclude_from_sim no)
+		(at 182.626 135.89 0)
+		(effects
+			(font
+				(face "Arial Black")
+				(size 1.8288 1.8288)
+				(thickness 0.3658)
+				(bold yes)
+			)
+		)
+		(uuid "032550ef-bbb5-4c56-97cc-d8c7ed38a553")
+	)
 	(text "1.0"
 		(exclude_from_sim no)
 		(at 268.732 193.802 0)
@@ -827,6 +840,19 @@
 		)
 		(uuid "72ba7c1f-bbb5-45a5-8491-4c1a4f99ea28")
 	)
+	(text "[ -25 dB ]"
+		(exclude_from_sim no)
+		(at 182.118 65.024 0)
+		(effects
+			(font
+				(face "Arial Black")
+				(size 1.8288 1.8288)
+				(thickness 0.3658)
+				(bold yes)
+			)
+		)
+		(uuid "776f78f6-89d0-4502-9985-efe8b84f304d")
+	)
 	(text "(86,6)"
 		(exclude_from_sim no)
 		(at 104.14 52.07 0)
@@ -881,6 +907,19 @@
 		)
 		(uuid "e1ff95e9-2372-4439-8e6d-78d2038dfcac")
 	)
+	(text "[ -5 dB ]"
+		(exclude_from_sim no)
+		(at 182.372 100.584 0)
+		(effects
+			(font
+				(face "Arial Black")
+				(size 1.8288 1.8288)
+				(thickness 0.3658)
+				(bold yes)
+			)
+		)
+		(uuid "ed2723db-b285-4db7-9e58-d201d18b2f06")
+	)
 	(text "(16,7)"
 		(exclude_from_sim no)
 		(at 112.522 98.044 0)
@@ -893,10 +932,22 @@
 		(uuid "f9d433b4-b163-4366-a601-881170b664fa")
 	)
 	(junction
+		(at 185.42 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "120281bf-8a16-4e46-907c-54d5c25504f0")
+	)
+	(junction
 		(at 163.83 68.58)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "17ca8141-000a-4241-ac65-cc5f7e210d45")
+	)
+	(junction
+		(at 208.28 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2b24e410-c5a3-48bf-95f3-4dadc89a8211")
 	)
 	(junction
 		(at 64.77 35.56)
@@ -1172,6 +1223,16 @@
 	)
 	(wire
 		(pts
+			(xy 208.28 139.7) (xy 208.28 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b90412b-d3f0-4fd6-9dee-58d4255b5d60")
+	)
+	(wire
+		(pts
 			(xy 81.28 104.14) (xy 86.36 104.14)
 		)
 		(stroke
@@ -1242,7 +1303,7 @@
 	)
 	(wire
 		(pts
-			(xy 237.49 148.59) (xy 237.49 154.94)
+			(xy 237.49 144.78) (xy 237.49 151.13)
 		)
 		(stroke
 			(width 0)
@@ -1292,6 +1353,16 @@
 	)
 	(wire
 		(pts
+			(xy 185.42 152.4) (xy 185.42 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6284dd77-65f4-419d-a89e-ec8c589e9f59")
+	)
+	(wire
+		(pts
 			(xy 193.04 68.58) (xy 185.42 68.58)
 		)
 		(stroke
@@ -1309,6 +1380,16 @@
 			(type default)
 		)
 		(uuid "76e3e677-002e-4272-815e-6489272bd8f5")
+	)
+	(wire
+		(pts
+			(xy 185.42 139.7) (xy 185.42 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ab33ccb-ebb3-4a67-8ffa-fcaadcb28de7")
 	)
 	(wire
 		(pts
@@ -1422,6 +1503,16 @@
 	)
 	(wire
 		(pts
+			(xy 208.28 152.4) (xy 208.28 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9235078-4289-44a1-8b47-fca5c2bd0e02")
+	)
+	(wire
+		(pts
 			(xy 154.94 92.71) (xy 163.83 92.71)
 		)
 		(stroke
@@ -1512,7 +1603,7 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 148.59) (xy 39.37 154.94)
+			(xy 39.37 144.78) (xy 39.37 151.13)
 		)
 		(stroke
 			(width 0)
@@ -1552,7 +1643,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 143.51) (xy 232.41 143.51)
+			(xy 44.45 139.7) (xy 193.04 139.7)
 		)
 		(stroke
 			(width 0)
@@ -1619,6 +1710,16 @@
 			(type default)
 		)
 		(uuid "d8c4cfd5-e604-4122-b971-d699375d6c84")
+	)
+	(wire
+		(pts
+			(xy 200.66 139.7) (xy 232.41 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db925399-4ac9-4fff-8641-1c9ba92c2869")
 	)
 	(wire
 		(pts
@@ -2940,7 +3041,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SATA IN"
+		(property "Value" "SAT IN"
 			(at 34.798 37.7582 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3079,7 +3180,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 39.37 154.94 0)
+		(at 39.37 151.13 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3090,7 +3191,7 @@
 		(fields_autoplaced yes)
 		(uuid "5b25a811-22ee-447e-9a1d-468860e8ebe6")
 		(property "Reference" "#PWR09"
-			(at 39.37 161.29 0)
+			(at 39.37 157.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3101,7 +3202,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 39.37 160.02 0)
+			(at 39.37 156.21 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3111,7 +3212,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 39.37 154.94 0)
+			(at 39.37 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3122,7 +3223,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 39.37 154.94 0)
+			(at 39.37 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3133,7 +3234,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 39.37 154.94 0)
+			(at 39.37 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3392,7 +3493,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic_Shielded:Conn_01x01_Shielded")
-		(at 237.49 143.51 0)
+		(at 237.49 139.7 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3403,7 +3504,7 @@
 		(fields_autoplaced yes)
 		(uuid "73d31f24-05c9-4900-a134-cb7f1a405840")
 		(property "Reference" "J7"
-			(at 240.03 142.2399 0)
+			(at 240.03 138.4299 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3414,7 +3515,7 @@
 			)
 		)
 		(property "Value" "GPSDO-2"
-			(at 240.03 144.7799 0)
+			(at 240.03 140.9699 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3425,7 +3526,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Coaxial:SMA_Amphenol_132291_Vertical"
-			(at 237.49 143.51 0)
+			(at 237.49 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3436,7 +3537,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 237.49 143.51 0)
+			(at 237.49 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3447,7 +3548,7 @@
 			)
 		)
 		(property "Description" "Generic shielded connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 237.49 143.51 0)
+			(at 237.49 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3868,6 +3969,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 185.42 157.48 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8867ac2a-c835-4fb1-9bf1-4242ffa1990c")
+		(property "Reference" "#PWR018"
+			(at 185.42 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 185.42 162.56 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 185.42 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 185.42 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 185.42 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8d97e52c-70e7-4524-88a1-da40ff15adaa")
+		)
+		(instances
+			(project "Widerstandsnetzwerk"
+				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
+					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 48.26 48.26 0)
 		(unit 1)
@@ -4033,7 +4212,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 237.49 154.94 0)
+		(at 237.49 151.13 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4044,7 +4223,7 @@
 		(fields_autoplaced yes)
 		(uuid "8f8c9ca2-733b-4a8d-ac17-c922748d9e90")
 		(property "Reference" "#PWR010"
-			(at 237.49 161.29 0)
+			(at 237.49 157.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4055,7 +4234,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 237.49 160.02 0)
+			(at 237.49 156.21 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4065,7 +4244,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 237.49 154.94 0)
+			(at 237.49 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4076,7 +4255,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 237.49 154.94 0)
+			(at 237.49 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4087,7 +4266,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 237.49 154.94 0)
+			(at 237.49 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4510,6 +4689,85 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 196.85 139.7 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a4c6d9b3-3b3a-4e54-9fed-470b6d8ed1a6")
+		(property "Reference" "R25"
+			(at 196.85 133.35 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "30,4 (30,4)"
+			(at 199.644 136.398 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+			(at 196.85 141.478 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 196.85 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 196.85 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "c7ffdc93-2b7c-4dbf-80c5-a1d9d9219cbe")
+		)
+		(pin "1"
+			(uuid "887323d7-5d8a-4ec4-835c-cdb9ff321e02")
+		)
+		(instances
+			(project "Widerstandsnetzwerk"
+				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
+					(reference "R25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 151.13 104.14 90)
 		(unit 1)
 		(body_style 1)
@@ -4582,6 +4840,84 @@
 			(project "Widerstandsnetzwerk"
 				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
 					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 208.28 157.48 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ba3db068-c591-408e-a342-0f3e13f467e8")
+		(property "Reference" "#PWR019"
+			(at 208.28 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 208.28 162.56 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 208.28 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 208.28 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 208.28 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "33217adc-c713-4ee4-926e-e4a5725ac5af")
+		)
+		(instances
+			(project "Widerstandsnetzwerk"
+				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -4753,6 +5089,88 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 208.28 148.59 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ca9fa02f-662f-4f4e-b0a2-c8124119ce0c")
+		(property "Reference" "R26"
+			(at 210.82 147.3199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "178,6 (178,5)"
+			(at 210.82 149.8599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+			(at 206.502 148.59 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 208.28 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 208.28 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "d2fb6a3e-a7aa-4d64-84a9-9b6c2536bd14")
+		)
+		(pin "1"
+			(uuid "a81c3fb0-9787-44f4-8c17-587ebfb84717")
+		)
+		(instances
+			(project "Widerstandsnetzwerk"
+				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
+					(reference "R26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 74.93 35.56 90)
 		(unit 1)
 		(body_style 1)
@@ -4854,7 +5272,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SATA OUT"
+		(property "Value" "SAT OUT"
 			(at 36.068 106.3382 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4914,7 +5332,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic_Shielded:Conn_01x01_Shielded")
-		(at 39.37 143.51 0)
+		(at 39.37 139.7 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -4925,7 +5343,7 @@
 		(dnp no)
 		(uuid "d160cc13-b3e7-48c2-8783-d2b0c1409d6a")
 		(property "Reference" "J6"
-			(at 36.83 142.2399 0)
+			(at 36.83 138.4299 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4936,7 +5354,7 @@
 			)
 		)
 		(property "Value" "SDR-2"
-			(at 36.83 144.7799 0)
+			(at 36.83 140.9699 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4947,7 +5365,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Coaxial:SMA_Amphenol_132291_Vertical"
-			(at 39.37 143.51 0)
+			(at 39.37 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4958,7 +5376,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 39.37 143.51 0)
+			(at 39.37 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4969,7 +5387,7 @@
 			)
 		)
 		(property "Description" "Generic shielded connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 39.37 143.51 0)
+			(at 39.37 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5389,6 +5807,88 @@
 			(project "Widerstandsnetzwerk"
 				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
 					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 185.42 148.59 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f62b73b7-d9ab-40ef-b0b1-b24a8717ef09")
+		(property "Reference" "R24"
+			(at 187.96 147.3199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "178,9 (178,5)"
+			(at 187.96 149.8599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+			(at 183.642 148.59 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 185.42 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 185.42 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "ce272f34-50c7-4d56-ad9a-939270a4b93d")
+		)
+		(pin "1"
+			(uuid "a1cb97e6-1376-4a3a-a687-9891fae9b7a4")
+		)
+		(instances
+			(project "Widerstandsnetzwerk"
+				(path "/609c6c2e-b624-49af-90b7-9fa4588d571a"
+					(reference "R24")
 					(unit 1)
 				)
 			)
