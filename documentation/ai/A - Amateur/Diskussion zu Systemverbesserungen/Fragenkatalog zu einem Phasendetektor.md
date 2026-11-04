@@ -249,6 +249,8 @@ Durch den 50-Ω-Eingang des Zmod SDR entfällt das Problem der kapazitiven Last 
 * **Empfangsseite:** Das Sat-Kabel endet nun an einer **F-Buchse**, auf die direkt das kompakte 50/75-Ω-Anpassungs-Glied (L-Pad aus 43 Ω und 91 Ω) folgt, von wo aus ein kurzes 50-Ω-SMA-Kabel direkt in den 50-Ω-Eingang des Zmod SDR führt.
 * Die HF-Kondensatoren zur Schirmüberbrückung am empfangsseitigen F-Stecker bleiben wie gehabt erhalten, um Masseschleifen zu unterbinden.
 
+# Problem mit hoher Kabeldämpfung 
+
 - **Frage:** Ein Widerstandsnetzwerk wurde wie im Dokument beschrieben mit folgenden Komponenten aufgebaut: GPSDO - Dämpfung (-5dB) - 3-Wege-Kombinierer - 50/75 Ohm Anpassung - Sat-Kabel 1 m (für Null-Test) - 75/50 Ohm Anpassung - SDR-1. Die Dämpfung der gesamten Strecke wurde mit Nano VNA bei 10 MHz etwa wie erwartet mit -22.5dB gemessen. Nach Wechsel des 1m Sat-Kabels gegen ein 250m Sat-Kabel stieg die Dämpfung auf -55dB an. Es zeigte sich nun ein Tiefpasscharakter mit einer -3dB Frequenz bei etwa 250 kHz. Nach Datenblatt sollte die zusätzliche Dämpfung bei 250m/10MHz etwa -5dB sein, sie ist jedoch mehr als -30dB. Der ohmsche Widerstand der Schirmung ist etwa 8 Ohm und des Innenleiters etwa 34 Ohm. Welche Erklärung könnte es dafür geben? Wie kann das System verändert werden, damit das 10MHz Signal des GPSDO mit der nominellen Dämpfung am Ausgang ankommt?
 
 - **Antwort / Impuls:** Das ist ein faszinierendes und extrem wichtiges Diagnoseergebnis! Der Wechsel von 1 m auf 250 m Sat-Kabel zeigt einen **massiven Tiefpasscharakter mit einer Grenzfequenz von ca. 250 kHz** und einer Zusatzdämpfung von über 30 dB bei 10 MHz (statt der erwarteten 5 dB). 
@@ -304,7 +306,9 @@ Wenn das 250-m-Kabel z. B. fest verlegt ist und nicht getauscht werden kann:
 * Da das Kabel nun hochohmig ist, stimmt die 75-Ω-Anpassung hinten und vorne nicht mehr. Das Kabel wirkt wie ein Vorwiderstand von ~40 Ω in Serie.
 * Sobald ein geeignetes Kabel mit < 6 Ω Schleifenwiderstand eingesetzt wird, greift auch die 75/50-Ohm-Anpassung und der NanoVNA wird sofort die erwarteten **ca. -5 dB bis -8 dB** bei 10 MHz anzeigen.
 
-- **Frage:** Danke für die Hinweise. Das Sat-Kabel war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) und soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk wie im Anhang gezeigt durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+# Schwankungen der Phasenverschiebung
+
+- **Frage:** Das Sat-Kabel war mit CCS Innenleiter und soll mit folgendem Typ mit Kupfer-Innenleiter ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
 
 - **Antwort / Impuls:** Das ist ein entscheidender Schritt: Der Wechsel von CCS (Kupfer-kaschiertem Stahl) auf ein **reines Kupferkabel (CU)** löst das fundamentale Gleichstrom- und HF-Dämpfungsproblem des Kabels komplett.
 
@@ -346,7 +350,7 @@ Da Stahlblechgehäuse und Ferrite nichts gebracht haben, handelt es sich **nicht
 1. **Vollständiger Verzicht auf ohmsche L-Pads (wo immer möglich) / Einsatz von echten HF-Übertragern:**
    * Widerstandsnetzwerke (wie das im ersten Bild gezeigte) haben Toleranzen (z. B. 1 % Metallschichtwiderstände), die bei 10 MHz parasitäre Kapazitäten und Phasenfehler erzeugen. Ersetzen Sie die rein ohmschen 50/75-Anpassungen durch **Miniatur-HF-Breitbandtrafos (Impedanzwandler 50:75 Ohm)**. Ein Trafo hat rein ohmsch keine Verlustwärme im Serienpfad und verschiebt die Phase nicht durch RC-Glieder.
 2. **Gleichtakt-Drosseln (Common-Mode Chokes) statt normaler Ferrite:**
-   * Normale Ferritperlen auf DC-Leitungen dämpfen Gleichtaktstörungen oft unzureichend. Wickeln Sie das Koaxialkabel (sowohl das 1m- als auch später das 250m-Kabel) an beiden Enden jeweils **5- bis 10-mal durch einen HF-Ferritkern (z.B. Ringkern aus Material 43 oder 61)**, um eine wirksue Mantelwellensperre (Choke Balun) zu bilden. Das stoppt vagabundierende Ströme auf der Schirmung.
+   * Normale Ferritperlen auf DC-Leitungen dämpfen Gleichtaktstörungen oft unzureichend. Wickeln Sie das Koaxialkabel (sowohl das 1m- als auch später das 250m-Kabel) an beiden Enden jeweils **5- bis 10-mal durch einen HF-Ferritkern (z.B. Ringkern aus Material 43 oder 61)**, um eine wirksame Mantelwellensperre (Choke Balun) zu bilden. Das stoppt vagabundierende Ströme auf der Schirmung.
 3. **Prüfung des Null-Tests mit dem Kombinierer ohne Kabel:**
    * Testen Sie als Zwischenschritt: Wie verhält sich die Schwankung, wenn das 1m-Kabel *weggelassen* wird und das Signal direkt über das Widerstandsnetzwerk an den Scope geht? Wenn dort die 600 ps auch auftreten, liegt der Fehler im Widerstandsnetzwerk / Kombinierer selbst (z.B. unzureichende Entkopplung zwischen den Quellen).
 
@@ -355,7 +359,7 @@ Da Stahlblechgehäuse und Ferrite nichts gebracht haben, handelt es sich **nicht
 - **Prüfbarkeit:** direkt messbar
 - **Technische Konsequenz:** Aufbau von Anpassung und Kombinierer als Widerstandsnetzwerk
 - **Offene Prüfung:** Durchgang und Reflektionen mit VNA überprüfen
-- **Status:** in 
+- **Status:** in Bearbeitung
 
 ### Physik 3
 - **Datum:** 2026-09-02 (aktualisiert 2026-10-20)
