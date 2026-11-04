@@ -111,7 +111,7 @@
 - **Abweichende Beiträge:** keine im Urteil. Grok gewichtet die Phase als elektrische Primärgröße und die Eigenzeit-Auslöschung stärker; die PDF-Leser gewichten den Capture-Zählerstand als Laufzeit. Beides ist hier zusammengeführt. Die 1-ps-Angabe wird nicht übernommen.
 
 ### Physik 2
-- **Datum:** 2026-10-26
+- **Datum:** 2026-10-26 (aktualisiert 2026-11-04)
 - **Frage:** Welche Komponenten des Signals sind durch Temperatur, Taktjitter oder Mechanik erklärbar?
 - **Antwort / Impuls:**
 
@@ -249,11 +249,114 @@ Durch den 50-Ω-Eingang des Zmod SDR entfällt das Problem der kapazitiven Last 
 * **Empfangsseite:** Das Sat-Kabel endet nun an einer **F-Buchse**, auf die direkt das kompakte 50/75-Ω-Anpassungs-Glied (L-Pad aus 43 Ω und 91 Ω) folgt, von wo aus ein kurzes 50-Ω-SMA-Kabel direkt in den 50-Ω-Eingang des Zmod SDR führt.
 * Die HF-Kondensatoren zur Schirmüberbrückung am empfangsseitigen F-Stecker bleiben wie gehabt erhalten, um Masseschleifen zu unterbinden.
 
+- **Frage:** Ein Widerstandsnetzwerk wurde wie im Dokument beschrieben mit folgenden Komponenten aufgebaut: GPSDO - Dämpfung (-5dB) - 3-Wege-Kombinierer - 50/75 Ohm Anpassung - Sat-Kabel 1 m (für Null-Test) - 75/50 Ohm Anpassung - SDR-1. Die Dämpfung der gesamten Strecke wurde mit Nano VNA bei 10 MHz etwa wie erwartet mit -22.5dB gemessen. Nach Wechsel des 1m Sat-Kabels gegen ein 250m Sat-Kabel stieg die Dämpfung auf -55dB an. Es zeigte sich nun ein Tiefpasscharakter mit einer -3dB Frequenz bei etwa 250 kHz. Nach Datenblatt sollte die zusätzliche Dämpfung bei 250m/10MHz etwa -5dB sein, sie ist jedoch mehr als -30dB. Der ohmsche Widerstand der Schirmung ist etwa 8 Ohm und des Innenleiters etwa 34 Ohm. Welche Erklärung könnte es dafür geben? Wie kann das System verändert werden, damit das 10MHz Signal des GPSDO mit der nominellen Dämpfung am Ausgang ankommt?
+
+- **Antwort / Impuls:** Das ist ein faszinierendes und extrem wichtiges Diagnoseergebnis! Der Wechsel von 1 m auf 250 m Sat-Kabel zeigt einen **massiven Tiefpasscharakter mit einer Grenzfequenz von ca. 250 kHz** und einer Zusatzdämpfung von über 30 dB bei 10 MHz (statt der erwarteten 5 dB). 
+
+Hier ist die physikalische Erklärung für dieses Verhalten und der konkrete Lösungsweg, wie das 10-MHz-Signal mit der nominellen Dämpfung am Ende ankommt.
+
+---
+
+### 1. Die harte physikalische Ursache: **Gleichstrom-Widerstand (DC-Resistance) und ein Missverständnis beim Kabeltyp**
+
+Sie haben die DC-Widerstände der Strecke gemessen:
+* **Innenleiter:** ca. **34 Ω**
+* **Schirmung:** ca. **8 Ω**
+* **Gesamter Schleifenwiderstand (DC):** $34\,\Omega + 8\,\Omega = 42\,\Omega$
+
+**Vergleich mit dem Wellenwiderstand:**
+Das Kabel hat einen Wellenwiderstand von **75 Ω**. Bei einer Länge von 250 m hat ein echtes HF-Koaxialkabel (wie das genannte HB Digital HQ 135 dB) einen Innenleiter aus Kupfer (oder kupferkaschiertem Stahl, CCS) mit einem typischen DC-Widerstand von ca. **20 Ω bis 30 Ω *pro Kilometer***. 
+* Für 250 m (also 1/4 km) dürfte der Innenleiter-Gleichstromwiderstand bei **max. 5 bis 7 Ω** liegen.
+* Ein gemessener Innenleiterwiderstand von **34 Ω** bei 250 m bedeutet einen Leitungswiderstand von **136 Ω pro Kilometer**! 
+
+**Was bedeutet das?**
+1. **Kein echtes HQ-HF-Kabel:** Entweder handelt es sich um eine extrem dünne Zuleitung (Miniaturkabel/Messleitung), um ein Kabel mit stark stahlkaschiertem Innenleiter (CCS) von minderer HF-Güte, oder das Kabel hat auf dem Weg einen schlechten Übergang / Beschädigung.
+2. **Der tiefe Fall zum Tiefpass (RC-Glied-Verhalten):** 
+   Ein Koaxialkabel ist verteilt aus $R$, $L$, $G$ und $C$ aufgebaut. Wenn der Serienwiderstand $R$ des Innenleiters so massiv ansteigt (34 Ω) und auf die Streckenkapazität von ca. 13–15 nF (bei 250 m und ~54 pF/m) trifft, verhält sich das Kabel bei niedrigen Frequenzen nicht mehr wie eine Transmissionsleitung, sondern wie ein **massives RC-Tiefpassfilter**. 
+   * Die Grenzfrequenz eines solchen RC-Glieds liegt bei $f_{-3dB} \approx \frac{1}{2\pi \cdot R_{serie} \cdot C_{ges}}$. Mit $R \approx 42\,\Omega$ und $C \approx 14\,\text{nF}$ landet man genau bei den **gemessenen ~270 kHz**!
+   * Oberhalb dieser Frequenz bricht die Amplitude drastisch ein. Bei 10 MHz ist das Signal im rein dissipativen und kapazitiven Sperrbereich dieses RC-Verhaltens – daher die **-55 dB** statt -5 dB.
+
+---
+
+### 2. Zusammenfassung: Warum weicht die Messung so dramatisch ab?
+
+1. **Massiver ohmscher Widerstand des Innenleiters (34 Ω):** Vernichtet die Signalenergie durch Joulesche Wärme (Gleichstrom-Dämpfung), bevor HF-Wellenpropagation überhaupt stattfinden kann.
+2. **Skin-Effekt bei 10 MHz:** Bei 10 MHz drängt der Strom an die Oberfläche. Wenn der Innenleiter aus einem hochohmigen Material (stahlkaschiert) besteht oder extrem dünn ist, steigt der Hochfrequenzwiderstand $R_{AC}$ nochmals drastisch über den DC-Wert an.
+3. **Impedanzkollaps:** Die komplexe Impedanz bricht ein, weshalb der NanoVNA den Tiefpasscharakter zeigt.
+
+---
+
+### 3. Wie kann das System verändert werden, damit das 10-MHz-Signal ankommt?
+
+Um das 10-MHz-Signal über 250 m mit den theoretischen ~5 dB Dämpfung zu übertragen, müssen Sie das Kabel und/oder die Signalaufbereitung anpassen:
+
+#### Schritt A: Das Kabel überprüfen / austauschen (Fundamentale Lösung)
+* **Kabel-Check:** Handelt es sich wirklich um ein echtes HQ 135 dB 4-fach geschirmt mit **Vollkupfer-Innenleiter (CU)**? Viele günstige Kabel auf dem Markt haben einen stahlkaschierten Innenleiter (CCS = Copper Clad Steel). Stahl hat einen um den Faktor 7 schlechteren Leitwert als Kupfer! Bei 250 m wirkt sich das katastrophal aus.
+* **Empfehlung:** Ersetzen Sie das 250-m-Kabel durch ein hochwertiges Koaxialkabel mit **massivem Kupfer-Innenleiter** und geringem Schleifenwiderstand (z. B. ein dickeres Koaxialkabel wie RG-11 oder ein professionelles 75-Ω-CATV-Erdkabel mit Cu-Innenleiter, dessen DC-Widerstand auf 250 m unter 5 Ω liegt).
+
+#### Schritt B: Aktive Zwischenverstärkung (Booster / Line-Verstärker) falls das Kabel beibehalten werden muss
+Wenn das 250-m-Kabel z. B. fest verlegt ist und nicht getauscht werden kann:
+* Die 30 dB Zusatzdämpfung bei 10 MHz können nicht passiv ausgeglichen werden, da sonst das Signal im Rauschen untergeht.
+* **Lösung:** Ein **schmalbandiger 10-MHz-Line-Verstärker** (z. B. mit einem rauscharmen MMIC oder einem Transistorverstärker exakt auf 10 MHz abgestimmt) direkt am *Anfang* des Kabels (oder als Senderstufe vor dem Kabel), der die 30 dB Kabelverlust vorab ausgleicht.
+* *Achtung:* Ein Breitbandverstärker würde das Rauschen verstärken. Da Sie aber ein rein sinnförmiges 10-MHz-Signal vom GPSDO haben, ist ein auf 10 MHz **resonant abgestimmter Verstärker** (Bandpass-Verstärker) ideal.
+
+#### Schritt C: Impedanz- und Pegel-Check des Netzwerks
+* Da das Kabel nun hochohmig ist, stimmt die 75-Ω-Anpassung hinten und vorne nicht mehr. Das Kabel wirkt wie ein Vorwiderstand von ~40 Ω in Serie.
+* Sobald ein geeignetes Kabel mit < 6 Ω Schleifenwiderstand eingesetzt wird, greift auch die 75/50-Ohm-Anpassung und der NanoVNA wird sofort die erwarteten **ca. -5 dB bis -8 dB** bei 10 MHz anzeigen.
+
+- **Frage:** Danke für die Hinweise. Das Sat-Kabel war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) und soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk wie im Anhang gezeigt durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+
+- **Antwort / Impuls:** Das ist ein entscheidender Schritt: Der Wechsel von CCS (Kupfer-kaschiertem Stahl) auf ein **reines Kupferkabel (CU)** löst das fundamentale Gleichstrom- und HF-Dämpfungsproblem des Kabels komplett.
+
+---
+
+### 1. Technische Daten des PremiumX Profi 250m (CU) & Alternativen
+
+* **Typ:** RG-6 / Class A, Vollkupfer (CU) Innenleiter (typisch ca. 1,02 mm Durchmesser), 4-fach geschirmt (Alu-Folie, Geflecht, Alu-Folie, Geflecht), Schirmungsmaß bis 135 dB.
+* **Elektrische Eigenschaften (RG-6 Standard):**
+  * Wellenwiderstand: $75\,\Omega$
+  * Innenleiter-Gleichstromwiderstand: ca. **21 bis 23 Ω pro Kilometer** (bei 250 m sind das ca. **5,2 bis 5,7 Ω** Schleifenwiderstand für den Innenleiter — das passt exakt zur Erwartung und liegt meilenweit unter den katastrophalen 34 Ω des CCS-Kabels).
+  * Dämpfung bei 10 MHz: extrem gering (unter 1 dB auf 100 m, d.h. bei 250 m im Bereich von **unter 2 dB**, deutlich besser als die überschlagenen 5 dB).
+
+**Gibt es bessere Alternativen?**
+* Ja, für wissenschaftliche / messtechnische Applikationen (Raumzeitdynamik / Präzisions-Phasendetektion) sind Consumer-Sat-Kabel (wie das PremiumX) mechanisch oft etwas labil (die PE-Dielektrika neigen bei Temperaturwechseln zu Längen- und Phasen-Drift).
+* **Profi-Alternative:** Ein professionelles **CATV-Trunk-Kabel** oder ein **RG-11 Vollkupfer-Koaxialkabel** (z. B. Kathrein LCD 111 oder Belden-Äquivalente). RG-11 ist dicker (~10 mm Außen durchmesser), hat einen dickeren Innenleiter (ca. 1,6 mm) und einen noch geringeren Schleifenwiderstand sowie eine deutlich höhere thermische Phasenstabilität. Wenn das Kabel jedoch unbewegt in Innenräumen oder geschützt verlegt wird, funktioniert das PremiumX CU-Kabel einwandfrei und liefert die geforderte Performance.
+
+---
+
+### 2. Analyse der hohen Schwankungsbreite (600 ps beim 1m-Kabel)
+
+Sie beschreiben, dass beim **direkten GPSDO-Signal** an beiden Kanälen der Offset winzig ist (26 ps bei 9 ps Schwankungsbreite – das ist nahezu perfekt und entspricht dem Rauschen des ADCs/Scopes), aber sobald das **1m-Kabel mit Anpassung und Kombinierer** dazugeschaltet wird, die Schwankungsbreite auf **enorme ~600 ps** ansteigt.
+
+Da Stahlblechgehäuse und Ferrite nichts gebracht haben, handelt es sich **nicht** um klassische elektromagnetische Einstrahlung (EMV / Netzteileinstrahlung), sondern um ein systemisches Problem des Messaufbaus:
+
+1. **Reflexions-Ripple / Mehrfachreflexionen (Der Hauptverdächtige):**
+   * Sie haben am 1m-Kabel eine Kombination aus 50/75-Ohm-Anpassungen (Widerstandsnetzwerk aus dem ersten Bild). 
+   * Kleine Impedanzsprünge an Steckern, Widerständen oder ungenaue 50/75-Übergänge erzeugen stehende Wellen. 
+   * Da ein 1m-Kabel extrem kurz ist ($\lambda/4$ bei 10 MHz ist ca. 5 Meter), liegt hier kein reiner Leitungswellenwiderstandseffekt vor, sondern eine **resonante Verkopplung**. Jede kleinste Frequenzschwankung des GPSDO oder des AWG schlägt sich bei Fehlanpassung in massiven Phasen-Sprüngen nieder. Das äußert sich exakt in einer scheinbaren Jitter-Explosion auf dem Scope.
+2. **AM-zu-PM-Konvertierung im Kombinierer:**
+   * Wenn der Kombinierer (Widerstandsnetzwerk) die Amplituden von GPSDO und AWG nicht perfekt entkoppelt oder anpasst, führt jede Amplitudenmodulation oder Rauschkomponente (z.B. Spannungsregler-Restwelligkeit des AWG/GPSDO) zu einer Phasenverschiebung im kombinierten Signal. Bei 10 MHz entsprechen 600 ps einem Phasenwinkel von ca. **2,16 Grad** ($\frac{600\,\text{ps}}{100\,\text{ns}} \cdot 360^\circ$). Das ist für HF-Vergleichsmessungen viel.
+3. **Erdschleifen / Gleichtaktstörungen (Common Mode) trotz Abschirmung:**
+   * Obwohl das Stahlblech da ist: Wenn die BNC-Massen des Eclypse Z7, des GPSDO und des Netzwerks über unterschiedliche Wege (USB-Kabel zum PC, Netzteil-PE) eine **Masseschleife** bilden, fließt ein Ausgleichsstrom über die Schirmung der Kabel. Das moduliert die Phase direkt am hochohmigen oder unsymmetrisch abgeschlossenen Messeingang.
+
+---
+
+### 3. Wie lässt sich die Schwankungsbreite reduzieren?
+
+1. **Vollständiger Verzicht auf ohmsche L-Pads (wo immer möglich) / Einsatz von echten HF-Übertragern:**
+   * Widerstandsnetzwerke (wie das im ersten Bild gezeigte) haben Toleranzen (z. B. 1 % Metallschichtwiderstände), die bei 10 MHz parasitäre Kapazitäten und Phasenfehler erzeugen. Ersetzen Sie die rein ohmschen 50/75-Anpassungen durch **Miniatur-HF-Breitbandtrafos (Impedanzwandler 50:75 Ohm)**. Ein Trafo hat rein ohmsch keine Verlustwärme im Serienpfad und verschiebt die Phase nicht durch RC-Glieder.
+2. **Gleichtakt-Drosseln (Common-Mode Chokes) statt normaler Ferrite:**
+   * Normale Ferritperlen auf DC-Leitungen dämpfen Gleichtaktstörungen oft unzureichend. Wickeln Sie das Koaxialkabel (sowohl das 1m- als auch später das 250m-Kabel) an beiden Enden jeweils **5- bis 10-mal durch einen HF-Ferritkern (z.B. Ringkern aus Material 43 oder 61)**, um eine wirksue Mantelwellensperre (Choke Balun) zu bilden. Das stoppt vagabundierende Ströme auf der Schirmung.
+3. **Prüfung des Null-Tests mit dem Kombinierer ohne Kabel:**
+   * Testen Sie als Zwischenschritt: Wie verhält sich die Schwankung, wenn das 1m-Kabel *weggelassen* wird und das Signal direkt über das Widerstandsnetzwerk an den Scope geht? Wenn dort die 600 ps auch auftreten, liegt der Fehler im Widerstandsnetzwerk / Kombinierer selbst (z.B. unzureichende Entkopplung zwischen den Quellen).
+
+
 - **Quelle:**  technische Analyse, [KI-Runde](https://github.com/WegaLink/Spacetime-Dynamics/raw/refs/heads/main/documentation/ai/A%20-%20Amateur/Diskussion%20zu%20Systemverbesserungen/Physik%202/) im Verzeichnis Physik 2
 - **Prüfbarkeit:** direkt messbar
 - **Technische Konsequenz:** Aufbau von Anpassung und Kombinierer als Widerstandsnetzwerk
 - **Offene Prüfung:** Durchgang und Reflektionen mit VNA überprüfen
-- **Status:** in Bearbeitung
+- **Status:** in 
+
 ### Physik 3
 - **Datum:** 2026-09-02 (aktualisiert 2026-10-20)
 - **Frage:** Wie sieht die vollständige Transferfunktion der Messkette aus?
