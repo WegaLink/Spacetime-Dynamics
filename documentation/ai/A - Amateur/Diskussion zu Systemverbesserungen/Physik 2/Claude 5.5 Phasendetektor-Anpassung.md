@@ -2,8 +2,8 @@
   Claude 5.5 Phasendetektor-Anpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 1. November 2026 um 23:28
-Nachrichten: 4
+Exportiert: 2. November 2026 um 23:35
+Nachrichten: 6
 Modell: claude-sonnet
 
 ───────────────────────────────────────────────────────────────
@@ -152,6 +152,65 @@ Um die physikalischen Gesetze (und das Datenblatt des Kabels) zu erfüllen, muss
 
 ### Zusammenfassung für das System:
 Das aktuelle 250-m-Kabel verhält sich wie ein **Widerstandsdraht** und zerstört das 10-MHz-Signal durch ohmschen Spannungsabfall und RC-Tiefpasswirkung. Tausche das Kabel gegen ein echtes 75-Ω-Koaxialkabel mit **Vollkupfer-Innenleiter (Solid Copper)** aus. Dann sinkt der Innenwiderstand auf wenige Ohm, der Tiefpass verschwindet in den GHz-Bereich, und die Dämpfung bei 10 MHz wird plangemäß bei ca. −5 bis −6 dB ankommen.
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Danke für die Hinweise. Das Sat-Kabel (nicht SATA, war falsch) war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk wie im Anhang gezeigt durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+
+📎 Anhänge: Widerstandsnetzwerk.jpg, GPSDO zu Sat-1m zu SDR1 und GPSDO zu SDR2.jpg, GPSDO zu SDR1 und SDR2.jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+Das ausgewählte **PremiumX PROFI 250 m Koaxialkabel (135 dB, 4-fach geschirmt, Vollkupfer-Innenleiter mit 1,02 mm Ø)** ist ein hervorragender Griff und exakt das richtige Kabel für diesen Zweck:
+- **Vollkupfer (CU):** Der DC-Widerstand des Innenleiters sinkt bei 250 m von katastrophalen 34 Ω auf theoretisch ca. 2,1 Ω (bzw. typisch unter 2,5 Ω), wodurch die Dämpfung bei 10 MHz wieder in den vom Datenblatt geforderten Bereich (ca. −3,5 dB bis −5 dB) zurückkehrt.
+- **Klasse A & 4-fach Schirmung:** Bietet exzellenten Schutz gegen Einstreuungen von außen (wichtig bei hochempfindlichen Raumzeit-Messungen).
+
+Alternativ gäbe es im professionellen Bereich noch **RG-6/U Vollkupfer-Messleitungen mit PE-Dielektrikum** (z. B. von Belden oder Draka), die oft noch etwas engere Toleranzen beim Wellenwiderstand (75 ±1 Ω) aufweisen, aber das PremiumX-Kabel ist für diesen Versuchsaufbau vollkommen adäquat und bietet ein starkes Preis-Leistungs-Verhältnis.
+
+---
+
+### Analyse des Schwankungsproblems (600 ps Jitter)
+
+Wenn beim direkten GPSDO-Vergleich an beiden Kanälen die Schwankung winzige **9 ps** beträgt, beim Einfügen des 1-m-Kabels mit Widerstandsnetzwerk und Kombinierer aber auf **600 ps** explodiert, zeigt das: 
+* Der GPSDO selbst und das Eclypse-Scope sind extrem rauscharm und stabil (die 9 ps beweisen das).
+* Die 600 ps Schwankung werden **nicht** durch thermisches Rauschen des Kabels oder interne Unzulänglichkeiten des ADCs erzeugt, sondern durch **systemische Einstreuungen, Masseschleifen oder Fehlanpassungs-Reflexionen**, die durch das Widerstandsnetzwerk und den Kombinierer aktiv werden.
+
+#### Mögliche Ursachen für die 600-ps-Schwankung:
+
+1. **Gleichtaktstörungen (Ground Loops) über den Kombinierer / AWG:**
+   * Sobald das Widerstandsnetzwerk und der Kombinierer (AWG) im Spiel sind, verbindest du mehrere Geräte (GPSDO, AWG, Eclypse-Scope, ggf. PC/Netzteil über USB). 
+   * Wenn das Eclypse (über USB oder Netzteil) und der GPSDO unterschiedliche Massepotenziale haben, fließt ein Ausgleichsstrom über die Schirmung der BNC-Kabel. Das moduliert den Arbeitspunkt des Signals im Takt von Netzbrümmern oder Schaltnetzteil-Frequenzen, was sich in einer niederfrequenten Phasen- bzw. Zeit-Schwankung (Jitter) von mehreren hundert Pikosekunden äußert.
+   * *Hinweis zu deinen Versuchen:* Eine reine Stahlblech-Umhüllung hilft nur gegen *magnetische/elektrische Hochfrequenz-Feldstrahlung* (EMV). Gegen niederfrequente **Masse-Ausgleichsströme** oder kapazitive Kopplung über Netzteile hilft sie nicht.
+
+2. **Reflexionen durch unvollständige Anpassung (Stehwellen):**
+   * Im 1-m-Nulltest ist das Kabel elektrisch extrem kurz ($\approx 1/80$ Wellenlänge). Fehlanpassungen fallen hier kaum ins Gewicht.
+   * Sobald aber die 50/75-Ω-Widerstandsnetzwerke und der 3-Wege-Kombinierer aktiv sind, können ungenaue Widerstandswerte oder parasitäre Kapazitäten an den Knotenpunkten Reflexionen erzeugen. Wenn sich diese mit dem Hauptsignal überlagern, führt das zu einer amplituden- und frequenzabhängigen Phasenverzerrung, die auf dem Scope als verrauschte Phasenmessung (600 ps) erscheint.
+
+3. **AWG-Restkopplung / Clock-Jitter:**
+   * Falls das AWG (Eclypse Z7) aktiv ist oder dessen Ausgangsstufe im hochohmigen Zustand Floaten/Rauschen einfängt, kann dies über den Kombinierer direkt in den Messpfad übersprechen.
+
+---
+
+### Empfohlene Maßnahmen zur Reduktion der Schwankungsbreite
+
+1. **Galvanische Trennung / Masseschleifen unterbrechen:**
+   * Versuche, den GPSDO, das AWG und das Eclypse-Scope an **exakt dieselte Steckdosenleiste** (Sternpunkt-Erdung) anzuschließen, um Potenzialdifferenzen zu minimieren.
+   * Teste testweise, ob das AWG im ausgeschalteten bzw. getrennten Zustand (nur reiner GPSDO durch das Netzwerk auf das 1-m-Kabel) die 600 ps reduziert. Falls ja, koppelt das AWG Masse- oder Taktstörungen ein.
+
+2. **Prüfung der Widerstandstoleranzen im Netzwerk:**
+   * Überprüfe im Schaltplan (Widerstandsnetzwerk), ob die verwendeten Widerstände enge Toleranzen (0,1% oder 1% Metallfilm) besitzen. Unsymmetrien im 3-Wege-Kombinierer führen sofort zu unvollständiger Entkopplung und Signalverfälschung.
+
+3. **Gleichtakt-Drosseln (Common-Mode Chokes) statt normaler Ferrite:**
+   * Normale Ferritperlen auf dem Kabel (Dämpfung von Gegentakt-Signalen) helfen bei Masseschleifen im Koaxialkabel wenig. Wenn, dann muss die Koaxialleitung selbst mehrfach durch einen **Ferrit-Ringkern (Mantelwellensperre / Common-Mode Choke)** geführt werden, um Gleichtaktströme auf dem Kabelschirm zu ersticken.
+
+4. **Schrittweises Isolieren (Einkanal-Fehlersuche):**
+   * Nimm den Kombinierer und das AWG komplett aus dem Aufbau. Schließe den GPSDO direkt an das 1-m-Kabel mit 50/75-Ω-Anpassung an und leite es auf CH2. 
+   * Sinkt der Jitter in diesem Zustand wieder in die Nähe der 9–30 ps, liegt das Problem definitiv beim Kombinierer oder der AWG-Injektion (Masseverbindung / Restwelligkeit). Bleibt der Jitter hoch, liegt es an der 50/75-Ω-Widerstandsanpassung selbst.
+
+**Citations:**
+[1] [https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917](https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

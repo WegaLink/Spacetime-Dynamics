@@ -2,8 +2,8 @@
   Quen 3.8 Max Phasendetektor-Impedanzanpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 1. November 2026 um 23:30
-Nachrichten: 4
+Exportiert: 2. November 2026 um 23:37
+Nachrichten: 6
 Modell: alibaba-qwen-3.8-max
 
 ───────────────────────────────────────────────────────────────
@@ -301,6 +301,70 @@ Falls das Kabel zwingend beibehalten werden muss:
 
 ### Zusammenfassende Empfehlung für das Team
 Überprüfen Sie das Datenblatt bzw. die Materialbeschaffenheit des 250-m-Kabels. Handelt es sich um einen kupferkaschierten Stahldraht (CCS) mit hohem Widerstand, sollte für die Raumzeitdynamik-Messungen zwingend ein **hochwertiges Vollkupfer-Koaxialkabel** (oder 75-Ω-RG11-Kabel mit dickem Innenleiter) eingesetzt werden, um die 34-Ω-Serienverluste zu eliminieren.
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Danke für die Hinweise. Das Sat-Kabel (nicht SATA, war falsch) war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk wie im Anhang gezeigt durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+
+📎 Anhänge: Widerstandsnetzwerk.jpg, GPSDO zu Sat-1m zu SDR1 und GPSDO zu SDR2.jpg, GPSDO zu SDR1 und SDR2.jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+---
+
+## 1. Bewertung des neuen Kabels (PremiumX Profi 250m Vollkupfer)
+
+* **Technische Eckdaten des gewählten Kabels (RG6 / Class A):**
+  * **Innenleiter:** 1,02 mm reines Kupfer (CU) (im Gegensatz zum vorherigen CCS-Kabel).
+  * **Wellenwiderstand:** 75 Ω.
+  * **Gleichstromwiderstand:** Der Innenleiterwiderstand sinkt bei 1,02 mm CU auf ca. **2,1 Ω bis 2,2 Ω pro 100 m**, d. h. für die gesamten 250 m liegt der DC-Innenwiderstand bei nur noch **ca. 5,3 Ω** (zuvor 34 Ω!).
+  * **HF-Dämpfung bei 10 MHz:** Liegt typischerweise bei unter **1,5 dB bis 2 dB für die gesamten 250 m** (statt der massiven -55 dB des CCS-Kabels). Damit wird die nominelle Dämpfung exakt erreicht, und der Tiefpass-Charakter verschwindet vollständig.
+* **Gibt es bessere Alternativen?**
+  * Für rein messtechnische / wissenschaftliche Aufbauten im Labor- oder Feldversuch (Raumzeitdynamik) ist ein RG6-Sat-Kabel gut geeignet. 
+  * Noch etwas besser (geringere Dämpfung, noch dickerer Innenleiter, professionellere Schirmung und geringere thermische Längenänderung) wären **RG11-Vollkupfer-Koaxialkabel** (z. B. mit 1,63 mm Innenleiter) oder Profi-Netzwerkkabel für Messtechnik (z. B. Kathrein LCD 111 oder Belden 1694A). Das gewählte PremiumX-Kabel mit Vollkupfer löst das Hauptproblem des massiven Widerstandsabfalls jedoch bereits hervorragend und vollkommen ausreichend.
+
+---
+
+## 2. Ursachenanalyse der hohen Schwankungsbreite (600 ps Jitter/Rauschen) beim 1-m-Kabel-Test
+
+Während die direkte GPSDO-Messung (Kanal 1 an Kanal 2) mit **9 ps Schwankungsbreite** extrem stabil ist, springt der Jitter beim Einfügen des Widerstandsnetzwerks und des 1-m-Kabels auf **ca. 600 ps** hoch. Da Stahlblech-Behälter und Ferritringe keine Besserung brachten, liegt die Ursache nicht an äußerer elektromagnetischer Einstrahlung (EMV), sondern an schaltungstechnischen Effekten:
+
+### A. Boden- und Massezirkulation (Ground Loops) über das USB-/Scope-Interface
+* Der Eclypse Z7 ist über USB mit einem PC verbunden, der seinerseits geerdet sein kann.
+* Das GPSDO und das AWG (bzw. die Signalquellen) haben oft eigene Netzteile oder Erdbezüge.
+* Über die BNC-Massen entsteht eine geschlossene Masseschleife (Ground Loop). Hochfrequente Störströme oder Gleichtaktstörungen (Common Mode Noise) der USB-Schnittstelle / des Netzteils fließen direkt über die Schirmungen der BNC-Kabel und modulieren den Messeingang (Ch2) massiv. Bei der Direktmessung fällt dies weniger ins Gewicht, weil beide Kanäle intern auf derselben Platinenmasse liegen; über das externe Widerstandsnetzwerk und die BNC-Leitungen koppeln diese Ströme jedoch als Gleichtakt ein.
+
+### B. Mangelnde Entkopplung und Restreflexionen im Widerstandsnetzwerk
+* Das Widerstandsnetzwerk teilt und kombiniert Signale passiv. Wenn die Anpassungen (50 Ω / 75 Ω) nicht perfekt reflektionsfrei sind, entstehen durch die Kombination aus AWG, GPSDO und den Leitungsübergängen stehende Wellen. 
+* Geringe Impedanzsprünge führen bei 10 MHz zu Phasenfehlern, die sich bei direkter Triggerung (v. a. wenn das Scope auf einen der Kanäle triggert) als Jitter von mehreren hundert Pikosekunden auf dem Bildschirm zeigen.
+
+### C. Rest-AM-zu-PM-Konversion (Amplituden- zu Phasen-Konversion)
+* Wenn das AWG-Signal oder das GPSDO-Signal durch das Widerstandsnetzwerk asymmetrisch belastet wird, entstehen leichte Amplituden-Fluktuationen.
+* Der Trigger des Eclypse Z7 / WaveForms reagiert empfindlich auf Amplituden-Rauschen, welches durch den steilen Nulldurchgang der 10-MHz-Sinuswelle in ein scheinbares Phasen-Rauschen (Jitter) umgerechnet wird ("Phase Jitter due to Amplitude Noise").
+
+---
+
+## 3. Wie lässt sich die Schwankungsbreite (600 ps) verringern?
+
+1. **Gleichtakt-Drosseln (Common-Mode chokes) in die BNC-Leitungen einbauen:**
+   * Normale Ferritringe *über* dem Kabelmantel helfen bei hochfrequenten Gleichtaktstörungen auf Koaxialkabeln oft nicht ausreichend, da der HF-Strom auf der *Innenseite* der Schirmung fließt.
+   * **Abhilfe:** Ein echter HF-Übertrager (Balun) oder Mantelwellenfilter (z. B. kleine Breitband-Trenntransformatoren / RF-Chokes für 10 MHz) in den Messpfad (Ch1 und Ch2) einfügen, um galvanische Massetrennung zwischen GPSDO, Netzwerk und Scope zu erreichen.
+
+2. **USB-Isolatoren verwenden:**
+   * Da der Eclypse Z7 über USB verbunden ist, trennen Sie die galvanische Verbindung zum PC durch einen **USB-2.0-Trennisolator (mit ADUM-Chip)**. Das unterbricht die Erdschleife über den PC und reduziert netzgekoppelte Störungen drastisch.
+
+3. **Prüfung der Triggerquelle in WaveForms:**
+   * Achten Sie darauf, worauf getriggert wird. Wenn auf Kanal 1 getriggert wird und Kanal 2 gemessen wird, schlägt jede Amplituden- oder Phasenschwankung von Kanal 1 voll auf die Messung von "Phase 1-2" durch.
+   * Testen Sie, ob der Jitter bei externem Triggersignal oder stabilerer Software-Mittelung zurückgeht. Durch Aktivieren von **Averaging (Mittelung, z. B. 16x oder 64x)** in WaveForms wird das Rauschen rechnerisch unterdrückt.
+
+**Citations:**
+[1] [https://www.kaufland.at/product/310218704/](https://www.kaufland.at/product/310218704/)
+[2] [https://www.kaufland.de/product/324473356/#1](https://www.kaufland.de/product/324473356/#1)
+[3] [https://www.kaufland.de/product/358228566/#1](https://www.kaufland.de/product/358228566/#1)
+[4] [https://www.otto.de/p/premiumx-5x-100m-koaxialkabel-135db-4-fach-antennenkabel-rg6-class-a-digital-sat-kabel-S0L340FG/#variationId=S0L340FGRL8A#1](https://www.otto.de/p/premiumx-5x-100m-koaxialkabel-135db-4-fach-antennenkabel-rg6-class-a-digital-sat-kabel-S0L340FG/#variationId=S0L340FGRL8A#1)
+[5] [https://www.testberichte.de/pdb/p/6L8ONUTjTDmwNDOinp6tZg.html#1](https://www.testberichte.de/pdb/p/6L8ONUTjTDmwNDOinp6tZg.html#1)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

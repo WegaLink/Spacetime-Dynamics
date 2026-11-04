@@ -2,8 +2,8 @@
   Grok 4.7 Phasendetektor-Impedanzanpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 1. November 2026 um 23:27
-Nachrichten: 10
+Exportiert: 2. November 2026 um 23:34
+Nachrichten: 12
 Modell: grok-latest
 
 ───────────────────────────────────────────────────────────────
@@ -416,6 +416,62 @@ Sobald das echte **250 m HQ 135 dB Sat-Kabel** (75 Ω, 4-fach geschirmt, Kupfer-
    * **Empfangsseite:** 250m Sat-Kabel → F-Buchse → 75/50-Ω-L-Glied → Zmod SDR (50 Ω).
 4. **Erneute NanoVNA-Messung:**
    Nach dem Tausch auf das Koaxialkabel muss der NanoVNA bei 10 MHz eine Gesamtdämpfung (\(S_{21}\)) von **ca. −17 bis −22 dB** (inklusive aller Teiler und Pads) und einen flachen Frequenzgang ohne Tiefpass-Einbruch im Bereich bis 20 MHz zeigen.
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Danke für die Hinweise. Das Sat-Kabel (nicht SATA, war falsch) war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+
+📎 Anhänge: GPSDO zu Sat-1m zu SDR1 und GPSDO zu SDR2.jpg, GPSDO zu SDR1 und SDR2.jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+### 1. Technische Daten des PremiumX 135 dB (Voll-Kupfer-Version)
+
+Das gewählte **PremiumX Profi 250m (mit reiner Kupfer-Innenader, Voll-Cu / CU)** ist im Vergleich zum CCS-Kabel die richtige Wahl für analoge HF-Präzisionsanwendungen:
+* **Innenleiter:** Reines Kupfer (Voll-Cu), Durchmesser \(\varnothing \approx 1{,}02\,\mathrm{mm}\). Gleichstromwiderstand liegt bei ca. **2,1 bis 2,3 Ω pro 100 m** (bei 250 m also ca. **5,3 bis 5,8 Ω** Gesamtwiderstand statt 34 Ω beim CCS-Fehlkauf).
+* **Wellenwiderstand:** \(75\,\Omega\) (Class A, RG-6 Standard).
+* **Schirmung:** 4-fach geschirmt (Alu-Folie / Geflecht / Alu-Folie / Geflecht), Schirmungsmaß bis 135 dB.
+* **Dämpfung bei 10 MHz:** Liegt datenblattgemäß im Bereich von ca. **0,6 bis 0,8 dB pro 100 m** (bei 250 m also unter **2 dB** Gesamtdämpfung für das reine Kabel). Zusammen mit den L-Gliedern und dem Kombinierer ergibt sich bei 10 MHz die erwartete Gesamtdämpfung von ca. 17 bis 18 dB (wichtiger Unterschied zu den gemessenen −55 dB des Datenkabels).
+
+*Gibt es bessere Kabel?* Für noch geringere Dämpfung oder maximale Phasenstabilität bei Temperaturwechseln kommen dickere Koaxialkabel (z. B. **RG-11** mit 10 mm Durchmesser und ca. 1,6 mm Kupferinnenleiter oder professionelle 50-/75-Ω-Messtrunk-Kabel) infrage. Für einen ersten und flexiblen Laboraufbau auf Holz-Trommel ist das gewählte RG-6-Voll-Kupfer-Kabel jedoch ein guter und absolut ausreichender Standard.
+
+---
+
+### 2. Ursachenanalyse der hohen Phasenschwankung (600 ps)
+
+Während eine direkte GPSDO-Direktmessung auf beiden Kanälen (Nullmessung) extrem stabil läuft (\(\approx 26\,\text{ps}\) Offset, \(\approx 9\,\text{ps}\) Jitter), springt die Schwankungsbreite beim Einfügen des 1-m-Kabels mit Widerstandsnetzwerk und Kombinierer dramatisch auf **600 ps** an. Da Stahlblechgehäuse und Ferrite wirkungslos blieben, liegt die Ursache nicht in äußerer elektromagnetischer Einstrahlung (EMV), sondern an **interternen Schaltungs- und HF-Effekten**:
+
+1. **AM-to-PM-Konversion (Amplituden-Modulation zu Phasen-Modulation):**
+   Der 3-Wege-Kombinierer ist ein reines Widerstandsnetzwerk (kein Transformator). Wenn die beiden Eingänge (GPSDO und AWG) phasenstarr auf 10 MHz laufen, überlagern sich die Signale im Sternpunkt. Kleine Amplitudenschwankungen, Restwelligkeit der Betriebsspannungen im AWG oder GPSDO, oder leichtes Rauschen auf dem AWG-Injektionspfad führen im Summenpunkt zu einer *Vektordrift*. Da das Scope die Nulldurchgänge detektiert, interpretiert es Amplituden- und Rauschmodulationen direkt als enorme Phasensprünge (600 ps entsprechen bei 10 MHz gerade einmal ca. \(2{,}16^\circ\)).
+2. **Reflexions-Jitter an den Steckern (Mismatch-Uncertainty):**
+   Selbst bei sorgfältig selektierten E24-Widerständen erzeugen kleinste Toleranzen, Lötpad-Kapazitäten auf dem PCB oder ungenügende SMA-Übergänge winzige Fehlanpassungen (\(S_{11}\)). Das führt zu stehenden Wellen auf den kurzen 16-cm-Leitungen. Verändert sich die Frequenz oder Temperatur auch nur minimal, wandert die Phase im Resonanzkabel sprunghaft.
+3. **Masse- und Gleichtakt-Verkopplung (Ground Bounce):**
+   Auch wenn das Stahlblech äußerlich schirmt, fließt der hochfrequente Strom über die gemeinsame Massefläche (Ground Plane) der Platine. Wenn AWG und GPSDO (oder das Messsystem) über Netzteile minimal koppeln, entsteht ein hochfrequenter Gleichtaktstrom auf den Schirmen der 16-cm-SMA-Kabel, der den Phasendetektor im WaveForms-Softwaretrigger (Scope) verwirrt.
+4. **Triggereinstellung und digitales Rauschen im WaveForms:**
+   Wenn das AWG aktiv ist, injiziert es ein Signal. Wenn dieses Signal Rest-DAC-Stufenrauschen oder Harmonische enthält und der Scope-Trigger auf einen verrauschten Nulldurchgang statt auf eine stabile mathematische Phasenmessung (C1-C2 Phase) schaut, springt der Messwert im Histogramm massiv.
+
+---
+
+### 3. Wie lässt sich die Phasenschwankung verringern?
+
+1. **Getrennte Stromversorgungen / Galvanische Entkopplung:**
+   Versorgen Sie den GPSDO, das AWG und das Scope (bzw. das FPGA-Board) über **völlig getrennte, akkubasierte Netzteile** oder hochwertige lineare Netzteile. Vermeiden Sie jegliche Brummschleifen über die Schutzleiter (PE) der Labornetzteile.
+2. **Verifizierung ohne AWG-Injektion (Isolierung des Fehlers):**
+   Schalten Sie den AWG-Ausgang komplett ab (oder trennen Sie ihn physisch am Pi-Glied ab) und messen Sie nur den GPSDO-Pfad durch das Widerstandsnetzwerk und das 1-m-Kabel auf beide Scope-Kanäle. 
+   * *Ziel:* Wenn die 600 ps Jitter **sofort verschwinden**, ist der AWG-Injektionspfad (oder dessen Amplitudenrauschen) die Ursache. Wenn die 600 ps **bleiben**, liegt es an der Fehlanpassung des passiven Widerstandsnetzwerks oder an Masseproblemen auf dem PCB.
+3. **Verbesserung des PCB-Layouts für den Sternpunkt:**
+   Ein reiner Lötpunkt-Sternpunkt auf einer normalen Lochraster- oder schlechten Leiterplatte hat parasitäre Induktivitäten. Die Widerstände müssen so nah wie physisch möglich (ohne Leiterbahnen dazwischen) zusammenrücken, um die Sternpunkt-Fläche gegen Null zu minimieren.
+4. **Softwareseitige Mittelung in WaveForms erhöhen:**
+   In den Scope-Messungen (Measurements) von WaveForms sollte für die Phasenmessung eine Mittelung („Acquisition Mode: Average“ mit 16 oder 64 Samples) aktiviert werden, um hochfrequentes Rauschen im Nulldurchgang auszufiltern.
+
+**Citations:**
+[1] [http://www.hifi-forum.de/viewthread-97-17866.html#1](http://www.hifi-forum.de/viewthread-97-17866.html#1)
+[2] [https://www.otto.de/p/premiumx-profi-pro-koaxialkabel-135db-5-fach-reines-kupfer-50-meter-tv-kabel-S072P0JM/#variationId=S072P0JMLGN3#1](https://www.otto.de/p/premiumx-profi-pro-koaxialkabel-135db-5-fach-reines-kupfer-50-meter-tv-kabel-S072P0JM/#variationId=S072P0JMLGN3#1)
+[3] [https://www.saturn.de/de/product/_premiumx-px-basic-250w-122625-antennenkabel-97539340.html](https://www.saturn.de/de/product/_premiumx-px-basic-250w-122625-antennenkabel-97539340.html)
+[4] [https://www.technisat.com/de_DE/Produktdatenblatt/352-775/?product=1645&createpdf#1#1#1](https://www.technisat.com/de_DE/Produktdatenblatt/352-775/?product=1645&createpdf#1#1#1)
+[5] [https://www.willisat.de/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-auf-holz-trommel/a-122621/](https://www.willisat.de/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-auf-holz-trommel/a-122621/)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

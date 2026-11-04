@@ -2,8 +2,8 @@
   Muse Spark 1.3 Phasendetektor-Impedanzanpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 1. November 2026 um 23:29
-Nachrichten: 4
+Exportiert: 2. November 2026 um 23:36
+Nachrichten: 8
 Modell: muse-spark-1.3
 
 ───────────────────────────────────────────────────────────────
@@ -182,6 +182,67 @@ Um die physikalische Dämpfung des Kabels von den erwarteten ~5 dB bei 10 MHz zu
 2. **Verstärkung / In-Line-Amplification auf der Strecke (Workaround falls Kabel nicht tauschbar):**
    * Falls das 250m-Kabel physisch verbaut ist und nicht gewechselt werden kann, muss die Dämpfung von -30 dB bei 10 MHz durch einen **rausarmen 10-MHz-Verstärker (Line-Amplifier mit ca. 30 dB Gain bei 10 MHz)** direkt vor dem Eingang ausgeglichen werden.
    * Da der GPSDO mit +7 dBm (+0.7 Vpk) sendet, würde ein Aktivverstärker (oder eine schmalbandige 10-MHz-Resonanzstufe / Filterstufe) das Signal vor dem SDR-1 wieder auf den nominalen Pegel heben. Allerdings verschlechtert dies das Phasenrauschen leicht, weshalb ein **Vollkupfer-Kabel** die physikalisch einzig saubere Lösung für ein Experiment zur Raumzeitdynamik ist.
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+2026-11-01    3    158      Türkenfeld   
+
+📎 Anhänge: Widerstandsnetzwerk.jpg, GPSDO zu Sat-1m zu SDR1 und GPSDO zu SDR2.jpg, GPSDO zu SDR1 und SDR2.jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+Das sieht nach einem Stations- oder Logbucheintrag aus (z. B. Datum: 2026-11-01, Standort Türkenfeld). 
+
+Soll dieser Eintrag direkt in das Dokument im GitHub-Repository übernommen, für die nächste Messreihe (Physik 2 / Kabellaufzeit) dokumentiert oder in eine bestimmte Form (wie eine Tabelle oder ein Markdown-Log) gebracht werden?
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Danke für die Hinweise. Das Sat-Kabel (nicht SATA, war falsch) war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk wie im Anhang gezeigt durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+### 1. Technische Daten des gewählten Kabels („PremiumX PROFI 250m“)
+
+Das ausgewählte Kabel ist ein typisches, hochwertiges **RG-6 Satellitenkabel der Klasse A** mit folgenden Herstellerdaten:
+* **Innenleiter:** Reines Kupfer (CU), Durchmesser **1,02 mm** (Widerstand ca. 2,2 Ohm / 100 m, bei 250 m also ca. **5,5 Ohm** Gleichstromwiderstand – das ist völlig im Rahmen für HF und dramatisch besser als das vorherige Stahl-Kupfer-Modell mit 34 Ohm).
+* **Wellenwiderstand:** 75 Ohm
+* **Schirmung:** 4-fach geschirmt (2x Folie, 2x Geflecht), Schirmungsmaß 135 dB
+* **Außendurchmesser:** ca. 7,54 mm
+* **Dämpfung bei 10 MHz:** Liegt bei RG-6 Vollkupfer extrem niedrig (theoretisch im Bereich von unter 1 dB auf 250 m bei reiner HF, da der Skin-Effekt bei 10 MHz den 1-mm-Leiter noch gut ausnutzt).
+
+**Gibt es noch besser geeignete Kabel?**
+* **RG-11 / 75-Ohm-Messkabel (z.B. Belden 7731A oder Kathrein LCD 111 / LCD 115):** Ein RG-11 hat einen dickeren Innenleiter (ca. 1,6 mm CU) und dadurch nochmals rund die Hälfte an Dämpfung und geringere thermische Phasendrift. Da ein 250m-Kabel jedoch extrem unhandlich und schwer ist (das PremiumX wiegt schon 11 kg auf Trommel), ist das gewählte RG-6 Vollkupfer ein sehr guter und praxistauglicher Kompromiss für das Experiment.
+
+---
+
+### 2. Ursachen für die hohe Schwankungsbreite (ca. 600 ps Jitter) beim 1m-Kabel-Aufbau
+
+Dass das direkte GPSDO-Signal mit 26 ps Offset und 9 ps Schwankung extrem stabil läuft, aber **mit dem 1m-Kabel und dem Widerstandsnetzwerk plötzlich ca. 600 ps Jitter** auftreten, ist ein wichtiger diagnostischer Hinweis. Stahlblech-Behälter und Ferrite halfen nicht, weil die Störung nicht über Magnetfelder von außen eingestreut wird, sondern systembedingt ist:
+
+1. **AM-to-PM-Konversion im Komparator / Trigger des Scopes (Eclypse Z7):**
+   * Das Widerstandsnetzwerk (Kombinierer + Anpassung) dämpft das Signal ab. Wenn die Signalflanken am Scope-Eingang flacher werden (weil Amplitude kleiner oder RC-Glied durch die 18 pF Eingangskapazität des Scopes wirkt), reagiert der digitale Trigger / Nulldurchgangsdetektor extrem empfindlich auf Rauschen. Jedes Mikrovolt Rauschen auf einer flachen Flanke wird in einen massiven Zeit-Jitter (Phase) umgerechnet.
+   * *Formel:* $\Delta t = \frac{\Delta V}{S}$, wobei $S = \frac{dV}{dt}$ die Flankensteilheit ist. Sinkt die Amplitude oder Steilheit, explodiert der Zeit-Jitter $\Delta t$.
+
+2. **Reflexionen an den Übergängen (Stecker, T-Stücke, 50/75-Ohm-Anpassung):**
+   * Selbst kleinste Impedanzsprünge im Widerstandsnetzwerk erzeugen bei 1 m Kabellänge stehende Wellen (Reflexionen). Da 1 m Kabel eine sehr kurze Laufzeit hat (ca. 5 ns), überlagern sich Hin- und Rücklauf direkt am Messeingang und modulieren die Amplitude und Phase des Signals im Takt von thermischen oder Laständerungen.
+
+3. **Rest-Massekopplung / Ground Loops über die USB-Masse des Eclypse Z7:**
+   * Auch wenn Ferrite auf den Leitungen sitzen, fliesst hochfrequenter Ausgleichsstrom oft direkt über die Schirmung der Messleitungen und die Masse des ADCs / AWGs, sobald mehrere Geräte (GPSDO, AWG, Eclypse) über unterschiedliche Steckdosen oder USB-Massen verbunden sind.
+
+---
+
+### 3. Wie lässt sich die Schwankungsbreite verringern?
+
+* **Flankensteilheit erhöhen (Slew Rate):** Den Pegel am Scope-Eingang durch einen kleinen rauscharmen Breitband-Verstärker (z.B. Mini-Circuits Monolithic Amplifier oder AD8350-basiert) kurz vor dem ADC-Eingang anheben, damit die 10-MHz-Sinusflanke steiler wird.
+* **AC-Kopplung und echte 75-Ohm-Terminierung direkt am Pin:** Sicherstellen, dass die 75 Ohm *direkt* als Abschlusswiderstand am BNC-Eingang des Scopes liegen und keine kapazitiven Stichleitungen (T-Stücke mit langen Kabeln) verwendet werden.
+* **Software-Averaging / Filterung in WaveForms:** Für den Null-Test das Messfenster im WaveForms-Scope auf Mittelwertbildung (Averaging 16x oder 64x) stellen. Das reduziert unkorrelierten Rausch-Jitter sofort drastisch, solange keine echten physikalischen Signaldynamiken gemessen werden sollen.
+
+**Citations:**
+[1] [https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917](https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

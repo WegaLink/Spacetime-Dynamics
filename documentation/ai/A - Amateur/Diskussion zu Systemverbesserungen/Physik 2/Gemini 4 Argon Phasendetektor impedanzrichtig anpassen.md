@@ -2,8 +2,8 @@
   Gemini 4 Argon Phasendetektor impedanzrichtig anpassen
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 1. November 2026 um 23:28
-Nachrichten: 4
+Exportiert: 2. November 2026 um 23:35
+Nachrichten: 6
 Modell: gemini-4-argon
 
 ───────────────────────────────────────────────────────────────
@@ -193,6 +193,54 @@ Da Sie laut Beschreibung mit einem $50\text{-}\Omega$-System (GPSDO, Kombinierer
 Nach dem Tausch auf ein echtes Koaxkabel muss der NanoVNA-Sweep bei 10 MHz folgendes zeigen:
 * **S21 (Gain):** ca. **$-5\text{ dB}$ bis $-7\text{ dB}$** (die reine Kabeldämpfung plus ca. 1–2 dB Einfügungsdämpfung der beiden Anpassungs Netzwerke).
 * **S11 (Return Loss):** Besser als **$-20\text{ dB}$** (entspricht einem VSWR $< 1,2$), um stehwellenbedingte Phasenfehler für Ihre Raumzeit-Messungen auszuschließen.
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Danke für die Hinweise. Das Sat-Kabel (nicht SATA, war falsch) war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk wie im Anhang gezeigt durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+
+📎 Anhänge: Widerstandsnetzwerk.jpg, GPSDO zu Sat-1m zu SDR1 und GPSDO zu SDR2.jpg, GPSDO zu SDR1 und SDR2.jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+### 1. Technische Daten des gewählten Kabels (*PremiumX PROFI 250m 135dB CU*)
+Das von Ihnen verlinkte Kabel ist für diesen Anwendungsfall eine **exzellente Wahl**:
+* **Innenleiter:** $1{,}02\text{ mm}$ Voll-Kupfer (CU) – kein CCS (Stahlkern) mehr. Der Gleichstromwiderstand sinkt von katastrophalen $34\ \Omega$ auf ca. **$2,2\ \Omega$ pro 100 Meter** (für 250 m also ca. $5{,}5\ \Omega$ total). Damit verhält sich das Kabel bei 10 MHz wie ein echtes HF-Leitungssystem.
+* **Wellenwiderstand:** $75\ \Omega$ (Nominalwert, perfekt für Koaxialstrecken).
+* **Schirmung:** 4-fach geschirmt (2x Folie, 2x Geflecht), Schirmungsmaß $135\text{ dB}$ (Klasse A), was Einstreuungen von außen nahezu komplett eliminiert.
+* **Alternativen:** Für noch geringere Dämpfung bei 250 m gäbe es dickere Koaxkabel (z. B. **RG-11** mit ca. $10\text{ mm}$ Durchmesser und einem Innenleiter von $\approx 1,6\text{ mm}$ Kupfer), allerdings sind diese deutlich steifer, schwerer (Trommelgewicht) und erfordern spezielle F-Stecker für RG-11. Das gewählte RG-6-Kabel von PremiumX ist der beste Kompromiss aus Dämpfung, Flexibilität und Handhabbarkeit.
+
+---
+
+### 2. Ursachenanalyse: Woher kommt die hohe Schwankungsbreite ($\sim 600\text{ ps}$) beim 1m-Kabel mit Netzwerk?
+
+Die Beobachtung, dass das direkte GPSDO-Signal extrem stabil ist ($\pm 9\text{ ps}$ Schwankung, 26 ps Offset), aber beim Einfügen des Widerstandsnetzwerks und des 1-m-Kabels die Schwankungsbreite auf **$\approx 600\text{ ps}$** ansteigt (obwohl Stahlblechgehäuse und Ferrite keinen Einfluss zeigen), weist auf physikalische Ursachen jenseits einfacher magnetischer Einstreuungen hin:
+
+1. **Phasen-Rauschen durch Fehlanpassung & Mehrfachreflexionen (Mismatched Line / Etch Effects):**
+   Wenn das Widerstandsnetzwerk (Kombinierer + 50/75-Ohm-Anpassung) kleinste Impedanzsprünge aufweist, entstehen stehende Wellen. Schon ein Reflexionsfaktor von $\Gamma = 0{,}1$ am Ende des kurzen 1-m-Kabels führt dazu, dass ein Teil des Signals zum Generator zurückläuft, dort am Ausgang des GPSDO/Kombinierers erneut reflektiert wird und nachgelagert Interferenzmuster bildet. Bei geringen Temperatur- oder Frequenzdriften des Oszillators schwingt die effektive Phasenmessung massiv hin und her.
+
+2. **AM/PM-Konversion im Oszillator/Puffer (Amplitude-to-Phase Conversion):**
+   Das Widerstandsnetzwerk dämpft das Signal stark ab. Wenn die Eingangsstufe des Eclypse Z7 Scopes oder des Kombinierers nicht perfekt linear arbeitet (oder leicht in die Begrenzung/Nichtlinearität fährt), konvertiert jede winzige Amplitudenwelle (Rauschen der Stromversorgung, thermisches Driften) direkt in einen **Phasenfehler**. Da $600\text{ ps}$ bei 10 MHz gerade einmal $\approx 2{,}16^\circ$ entsprechen, genügen minimalste Amplituden-Fluktuationen im analogen Frontend, um diesen Jitter zu erzeugen.
+
+3. **Ground-Loops über die Masseebene der Messtechnik (ZMod Scope / Eclypse Z7):**
+   Auch wenn Ferrite auf den Netzteilen sitzen: Das Eclypse Z7 misst beide Kanäle (CH1 und CH2) auf derselben digitalen Platine. Wenn der Signalpfad über das Widerstandsnetzwerk asymmetrische Masseströme (HF-Ausgleichsströme) in die BNC-Schirme einkoppelt, entsteht ein Gleichtakt-Fehler (Common-Mode-Interferenz), der sich direkt als Phasenschwankung im Software-Scope (WaveForms) zeigt.
+
+---
+
+### 3. Wie lässt sich die Schwankungsbreite verringern?
+
+Um den Jitter vor dem Aufbau der 250-m-Strecke auf das Niveau der Direktmessung ($\le 10\text{ ps}$) zu drücken, sollten folgende Schritte unternommen werden:
+
+* **Schritt 1: Präzisions-Abschluss direkt am Scope-Eingang:**
+  Stellen Sie sicher, dass am Scope (bzw. SDR) **keine passiven Standard-T-Stücke mit losen Kabelstummeln** verwendet werden, sondern exakte, kalibrierte $50\text{-}\Omega$- bzw. $75\text{-}\Omega$-Abschlüsse direkt auf dem BNC-Port stecken.
+* **Schritt 2: Entkopplung der Masse (Mantelstromunterdrückung):**
+  Um Masseversatz zwischen den Eingängen zu verhindern, sollte ein **HF-Breitband-Trenntrafo (Balun / Galvanische Trennung 1:1 bei 10 MHz)** in den Messeingang (oder vor das Widerstandsnetzwerk) gesetzt werden. Das unterbindet niederfrequente Ausgleichsströme über die Schirmung.
+* **Schritt 3: Überprüfung der AWG-Injektion (falls aktiv):**
+  Falls der Eclypse Z7 AWG während des Tests Signale in den Kombinierer einspeist, kann dessen Takt-Jitter oder DAC-Restrauschen direkt auf den Messkanal übersprechen. Testen Sie die 1-m-Strecke zunächst *ohne* AWG-Injektion (AWG ausgeschaltet / getrennt), um zu sehen, ob allein das passive Widerstandsnetzwerk den Jitter verursacht.
+
+**Citations:**
+[1] [https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917](https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

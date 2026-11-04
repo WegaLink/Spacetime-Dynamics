@@ -2,8 +2,8 @@
   DeepSeek Phasendetektor-Anpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 1. November 2026 um 23:30
-Nachrichten: 4
+Exportiert: 2. November 2026 um 23:37
+Nachrichten: 6
 Modell: deepseek-chat
 
 ───────────────────────────────────────────────────────────────
@@ -216,6 +216,67 @@ Wenn das 250-m-Kabel z. B. fest verlegt ist und nicht getauscht werden kann:
 #### Schritt C: Impedanz- und Pegel-Check des Netzwerks
 * Da das Kabel nun hochohmig ist, stimmt die 75-Ω-Anpassung hinten und vorne nicht mehr. Das Kabel wirkt wie ein Vorwiderstand von ~40 Ω in Serie.
 * Sobald ein geeignetes Kabel mit < 6 Ω Schleifenwiderstand eingesetzt wird, greift auch die 75/50-Ohm-Anpassung und der NanoVNA wird sofort die erwarteten **ca. -5 dB bis -8 dB** bei 10 MHz anzeigen.
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Danke für die Hinweise. Das Sat-Kabel (nicht SATA, war falsch) war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk wie im Anhang gezeigt durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+
+📎 Anhänge: Widerstandsnetzwerk.jpg, GPSDO zu Sat-1m zu SDR1 und GPSDO zu SDR2.jpg, GPSDO zu SDR1 und SDR2.jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+Das ist ein entscheidender Schritt: Der Wechsel von CCS (Kupfer-kaschiertem Stahl) auf ein **reines Kupferkabel (CU)** löst das fundamentale Gleichstrom- und HF-Dämpfungsproblem des Kabels komplett.
+
+---
+
+### 1. Technische Daten des PremiumX Profi 250m (CU) & Alternativen
+
+* **Typ:** RG-6 / Class A, Vollkupfer (CU) Innenleiter (typisch ca. 1,02 mm Durchmesser), 4-fach geschirmt (Alu-Folie, Geflecht, Alu-Folie, Geflecht), Schirmungsmaß bis 135 dB.
+* **Elektrische Eigenschaften (RG-6 Standard):**
+  * Wellenwiderstand: $75\,\Omega$
+  * Innenleiter-Gleichstromwiderstand: ca. **21 bis 23 Ω pro Kilometer** (bei 250 m sind das ca. **5,2 bis 5,7 Ω** Schleifenwiderstand für den Innenleiter — das passt exakt zur Erwartung und liegt meilenweit unter den katastrophalen 34 Ω des CCS-Kabels).
+  * Dämpfung bei 10 MHz: extrem gering (unter 1 dB auf 100 m, d.h. bei 250 m im Bereich von **unter 2 dB**, deutlich besser als die überschlagenen 5 dB).
+
+**Gibt es bessere Alternativen?**
+* Ja, für wissenschaftliche / messtechnische Applikationen (Raumzeitdynamik / Präzisions-Phasendetektion) sind Consumer-Sat-Kabel (wie das PremiumX) mechanisch oft etwas labil (die PE-Dielektrika neigen bei Temperaturwechseln zu Längen- und Phasen-Drift).
+* **Profi-Alternative:** Ein professionelles **CATV-Trunk-Kabel** oder ein **RG-11 Vollkupfer-Koaxialkabel** (z. B. Kathrein LCD 111 oder Belden-Äquivalente). RG-11 ist dicker (~10 mm Außen durchmesser), hat einen dickeren Innenleiter (ca. 1,6 mm) und einen noch geringeren Schleifenwiderstand sowie eine deutlich höhere thermische Phasenstabilität. Wenn das Kabel jedoch unbewegt in Innenräumen oder geschützt verlegt wird, funktioniert das PremiumX CU-Kabel einwandfrei und liefert die geforderte Performance.
+
+---
+
+### 2. Analyse der hohen Schwankungsbreite (600 ps beim 1m-Kabel)
+
+Sie beschreiben, dass beim **direkten GPSDO-Signal** an beiden Kanälen der Offset winzig ist (26 ps bei 9 ps Schwankungsbreite – das ist nahezu perfekt und entspricht dem Rauschen des ADCs/Scopes), aber sobald das **1m-Kabel mit Anpassung und Kombinierer** dazugeschaltet wird, die Schwankungsbreite auf **enorme ~600 ps** ansteigt.
+
+Da Stahlblechgehäuse und Ferrite nichts gebracht haben, handelt es sich **nicht** um klassische elektromagnetische Einstrahlung (EMV / Netzteileinstrahlung), sondern um ein systemisches Problem des Messaufbaus:
+
+1. **Reflexions-Ripple / Mehrfachreflexionen (Der Hauptverdächtige):**
+   * Sie haben am 1m-Kabel eine Kombination aus 50/75-Ohm-Anpassungen (Widerstandsnetzwerk aus dem ersten Bild). 
+   * Kleine Impedanzsprünge an Steckern, Widerständen oder ungenaue 50/75-Übergänge erzeugen stehende Wellen. 
+   * Da ein 1m-Kabel extrem kurz ist ($\lambda/4$ bei 10 MHz ist ca. 5 Meter), liegt hier kein reiner Leitungswellenwiderstandseffekt vor, sondern eine **resonante Verkopplung**. Jede kleinste Frequenzschwankung des GPSDO oder des AWG schlägt sich bei Fehlanpassung in massiven Phasen-Sprüngen nieder. Das äußert sich exakt in einer scheinbaren Jitter-Explosion auf dem Scope.
+2. **AM-zu-PM-Konvertierung im Kombinierer:**
+   * Wenn der Kombinierer (Widerstandsnetzwerk) die Amplituden von GPSDO und AWG nicht perfekt entkoppelt oder anpasst, führt jede Amplitudenmodulation oder Rauschkomponente (z.B. Spannungsregler-Restwelligkeit des AWG/GPSDO) zu einer Phasenverschiebung im kombinierten Signal. Bei 10 MHz entsprechen 600 ps einem Phasenwinkel von ca. **2,16 Grad** ($\frac{600\,\text{ps}}{100\,\text{ns}} \cdot 360^\circ$). Das ist für HF-Vergleichsmessungen viel.
+3. **Erdschleifen / Gleichtaktstörungen (Common Mode) trotz Abschirmung:**
+   * Obwohl das Stahlblech da ist: Wenn die BNC-Massen des Eclypse Z7, des GPSDO und des Netzwerks über unterschiedliche Wege (USB-Kabel zum PC, Netzteil-PE) eine **Masseschleife** bilden, fließt ein Ausgleichsstrom über die Schirmung der Kabel. Das moduliert die Phase direkt am hochohmigen oder unsymmetrisch abgeschlossenen Messeingang.
+
+---
+
+### 3. Wie lässt sich die Schwankungsbreite reduzieren?
+
+1. **Vollständiger Verzicht auf ohmsche L-Pads (wo immer möglich) / Einsatz von echten HF-Übertragern:**
+   * Widerstandsnetzwerke (wie das im ersten Bild gezeigte) haben Toleranzen (z. B. 1 % Metallschichtwiderstände), die bei 10 MHz parasitäre Kapazitäten und Phasenfehler erzeugen. Ersetzen Sie die rein ohmschen 50/75-Anpassungen durch **Miniatur-HF-Breitbandtrafos (Impedanzwandler 50:75 Ohm)**. Ein Trafo hat rein ohmsch keine Verlustwärme im Serienpfad und verschiebt die Phase nicht durch RC-Glieder.
+2. **Gleichtakt-Drosseln (Common-Mode Chokes) statt normaler Ferrite:**
+   * Normale Ferritperlen auf DC-Leitungen dämpfen Gleichtaktstörungen oft unzureichend. Wickeln Sie das Koaxialkabel (sowohl das 1m- als auch später das 250m-Kabel) an beiden Enden jeweils **5- bis 10-mal durch einen HF-Ferritkern (z.B. Ringkern aus Material 43 oder 61)**, um eine wirksue Mantelwellensperre (Choke Balun) zu bilden. Das stoppt vagabundierende Ströme auf der Schirmung.
+3. **Prüfung des Null-Tests mit dem Kombinierer ohne Kabel:**
+   * Testen Sie als Zwischenschritt: Wie verhält sich die Schwankung, wenn das 1m-Kabel *weggelassen* wird und das Signal direkt über das Widerstandsnetzwerk an den Scope geht? Wenn dort die 600 ps auch auftreten, liegt der Fehler im Widerstandsnetzwerk / Kombinierer selbst (z.B. unzureichende Entkopplung zwischen den Quellen).
+
+**Citations:**
+[1] [https://www.hardwareluxx.de/community/threads/koaxialkabel-ummantlung.1312314/#post-29042127#1](https://www.hardwareluxx.de/community/threads/koaxialkabel-ummantlung.1312314/#post-29042127#1)
+[2] [https://www.kaufland.de/product/438937966/#1](https://www.kaufland.de/product/438937966/#1)
+[3] [https://www.otto.de/p/premiumx-250m-sat-profi-koaxialkabel-135db-4-fach-montage-set-24x-f-stecker-sat-kabel-S054T014/#variationId=S054T014QEHH#1](https://www.otto.de/p/premiumx-250m-sat-profi-koaxialkabel-135db-4-fach-montage-set-24x-f-stecker-sat-kabel-S054T014/#variationId=S054T014QEHH#1)
+[4] [https://www.saturn.de/de/product/_premiumx-px-basic-250w-122625-antennenkabel-97539340.html](https://www.saturn.de/de/product/_premiumx-px-basic-250w-122625-antennenkabel-97539340.html)
+[5] [https://www.willisat.de/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-auf-holz-trommel/a-122621/](https://www.willisat.de/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-auf-holz-trommel/a-122621/)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

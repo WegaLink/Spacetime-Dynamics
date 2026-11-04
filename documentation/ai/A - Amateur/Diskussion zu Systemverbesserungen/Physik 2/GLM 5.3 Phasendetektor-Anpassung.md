@@ -2,8 +2,8 @@
   GLM 5.3 Phasendetektor-Anpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 1. November 2026 um 23:29
-Nachrichten: 4
+Exportiert: 2. November 2026 um 23:36
+Nachrichten: 6
 Modell: glm
 
 ───────────────────────────────────────────────────────────────
@@ -138,6 +138,67 @@ Um die nominelle Dämpfung (ca. 5 dB Kabeldämpfung bei 10 MHz) zu erreichen, m�
 * Selbst bei einem perfekten 75-Ω-Sat-Kabel dämpft das Kabel bei 10 MHz ca. **5 dB**. Zusammen mit den 50/75-Ω-Anpassnetzwerken (die rein passiv jeweils ca. 3 bis 5,7 dB Einfügungsdämpfung kosten) verliert man auf der Strecke schnell **15 bis 20 dB**.
 * Da der GPSDO mit +7 dBm ($\approx 1,41\,\text{V}_{\text{ss}}$ an 50 Ω) startet, kommt am Ende ohne Verstärkung zu wenig an, um den ADC optimal ausgesteuert zu betreiben.
 * **Empfehlung:** Vor das 250-m-Kabel (nach dem GPSDO und dem Kombinierer) einen rauscharmen, linearen **HF-Verstärker (z. B. Mini-Circuits ZFL-500LN oder ein Breitband-MMIC mit 50 Ω, 20 dB Verstärkung)** setzen, der die 15–20 dB Leitungs- und Anpassdämpfung ausgleicht. Damit liegt der Pegel am Ende des 250-m-Kabels wieder exakt im Bereich von ±1 V für den ADC/SDR.
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Danke für die Hinweise. Das Sat-Kabel (nicht SATA, war falsch) war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk wie im Anhang gezeigt durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+
+📎 Anhänge: Widerstandsnetzwerk.jpg, GPSDO zu Sat-1m zu SDR1 und GPSDO zu SDR2.jpg, GPSDO zu SDR1 und SDR2.jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+Hier ist die Analyse und Auswertung für das Team:
+
+---
+
+### 1. Technische Daten des gewählten Kabels & Alternativen
+
+* **PremiumX Profi 250 m (135 dB, 4-fach geschirmt, Voll-Kupfer CU):**
+  * **Innenleiter:** Reines Kupfer (CU), ca. **1,02 mm** Durchmesser (entspricht typischem RG-6 / Sat-Standard).
+  * **Wellenwiderstand:** Nominell **75 Ω** ($\pm 3\,\Omega$).
+  * **Gleichstrom-Innenleiterwiderstand:** Liegt bei ca. **21 bis 23 Ω pro 250 m** (statt 34 Ω beim CCS-Kabel). Damit bricht das 10-MHz-Signal nicht mehr per Tiefpass ein, und die Kabeldämpfung bei 10 MHz liegt real wieder nahe den herstellerseitigen Daten (ca. 2 bis 3 dB auf 250 m plus Anpassungsnetzwerke).
+  * **Bewertung:** Eine solide, praxisgerechte Wahl für den Testaufbau im Amateurbereich, da es ein echtes Kupferkabel ist.
+
+* **Gibt es noch besser geeignete Kabel?**
+  * **RG-11 Vollkupfer (75 Ω):** Ein RG-11-Satellitenkabel (z. B. mit 1,6 mm Innenleiter) hat einen deutlich dickeren Querschnitt. Der Gleichstrom- und HF-Widerstand sinkt dadurch um mehr als die Hälfte, und die Dämpfung bei 10 MHz halbiert sich nahezu. Der Nachteil: Es ist deutlich steifer, dicker und schwerer auf der 250-m-Trommel zu handhaben.
+  * **Fazit:** Das gewählte PremiumX-Kabel ist für den Einstieg in „Physik 2“ absolut in Ordnung und liefert saubere Ergebnisse, solange keine extremen Dämpfungsanforderungen bestehen.
+
+---
+
+### 2. Ursachenanalyse der hohen Schwankungsbreite (600 ps)
+
+Während der direkte GPSDO-Vergleich eine sehr saubere, stabile Messung zeigt (26,1 ps Offset, **9 ps Schwankungsbreite**), explodiert die Schwankungsbreite beim Einfügen des Widerstandsnetzwerks und des 1-m-Kabels auf **ca. 600 ps**. Da Stahlblechgehäuse und Ferritringe wirkungslos blieben, kommen primär **interne Schaltungs- und Signalmechanismen** als Ursache in Betracht:
+
+1. **Jitter-Multiplikation und AM/PM-Konvertierung im Widerstandsnetzwerk:**
+   * Das passive Widerstandsnetzwerk mischt Signale (GPSDO + AWG) und teilt sie auf. Widerstände sind thermischen Rauschprozessen unterworfen. Wenn die Signalflanken (Slew Rate) des 10-MHz-Sinussignals nach den Dämpfungsgliedern flacher werden (geringere Amplitude an den Messpunkten), schlägt das thermische Rauschen der Widerstände direkt als **Phasenjitter ($\Delta t = \frac{\Delta V}{\text{Slew Rate}}$)** durch.
+2. **Reflexionsbedingte stehende Wellen (Mismatch-Jitter):**
+   * Selbst mit „Anpassung“ existieren an den Übergängen 50 Ω ⇄ 75 Ω kleine Restreflexionen. Diese laufen im kurzen 1-m-Kabel hin und her (Mehrfachreflexionen). Da sich Phase und Amplitude durch kleinste thermische Frequenzdrifts des GPSDO oder Impedanzänderungen überlagern, führt dies zu einem stehenden Interferenzmuster am Eingang des Eclypse Z7, das im Scope als sprunghafte Jitter-Erhöhung interpretiert wird.
+3. **Massekopplung / Ground Loops zwischen GPSDO, AWG und Eclypse Z7:**
+   * Obwohl das Gehäuse geschirmt ist, teilen sich GPSDO, AWG und das Eclypse Z7 Scope über die BNC-Massen und Netzteile denselben Bezug. Hochfrequente Ausgleichsströme auf den Schirmungen (Ground Shifts) modulieren direkt den Messeingang des Scopes, da der AWG (Eclypse Z7 intern) und das Scope im selben Gerät / nah beieinander sitzen.
+4. **Triggerrrauschen im WaveForms-Scope:**
+   * Wenn die Messung bei 600 ps Schwankung auf einen internen Software-Trigger (Edge Trigger auf C1 oder C2) gestützt ist, kann ein leicht rauschendes Eingangssignal zu einem „Trigger-Jitter“ führen, bei dem die Phasen-Differenzmessung zwischen C1 und C2 scheinbar stark schwankt, obwohl das Signal selbst stabiler ist.
+
+---
+
+### 3. Wie lässt sich die Schwankungsbreite verringern?
+
+* **1. Trigger-Modus auf "External" oder stabiles Averaging umstellen:**
+  * Im WaveForms-Screenshot (bzw. den Einstellungen) prüfen, ob ein Averaging (Mittelung über z. B. 16 oder 64 Zyklen) aktiv ist. Für Nanosekunden- und Pikosekunden-Auflösung ist die digitale Mittelung im Scope zwingend erforderlich, um das thermische Grundrauschen auszufiltern.
+* **2. Flankensteilheit (Slew Rate) erhöhen:**
+  * Statt eines reinen Sinussignals sollte – sofern der AWG und das Netzwerken es zulassen – geprüft werden, ob das 10-MHz-Rechtecksignal des GPSDO (oder ein durch einen schnellen Komparator / Schmitt-Trigger aufbereitetes Rechtecksignal) genutzt werden kann. Rechtecke haben steilere Flanken ($\frac{dV}{dt}$), wodurch Amplitudenrauschen viel weniger Phasenjitter erzeugt.
+* **3. Entkopplung der Massepunkte (Common-Mode-Filterung):**
+   * Auch wenn Ferritringe auf den DC-Leitungen nichts brachten: Die HF-Masse zwischen AWG, GPSDO und Eclypse Z7 muss als **Sternpunkt** ausgelegt werden. Schleifen in der BNC-Masse (z. B. wenn AWG und Scope über USB und BNC doppelt verbunden sind) erzeugen Brummschleifen und Phasenrauschen.
+* **4. Schrittweiser Aufbau bei der Fehlersuche (Null-Test-Verfeinerung):**
+  * Zuerst das Widerstandsnetzwerk *ohne* AWG, aber mit dem 1-m-Kabel betreiben und prüfen, ob die 600 ps allein durch das passive Widerstandsnetzwerk (ohmsche Teiler) entstehen. Wenn ja, sind die Widerstandswerte oder die Fehlanpassung der 50/75-Ω-Pads die Hauptverursacher.
+
+**Citations:**
+[1] [https://www.kaufland.de/product/324473356/#1](https://www.kaufland.de/product/324473356/#1)
+[2] [https://www.mediamarkt.de/de/product/_premiumx-10m-gold-line-90-iec-antennenkabel-98268128.html](https://www.mediamarkt.de/de/product/_premiumx-10m-gold-line-90-iec-antennenkabel-98268128.html)
+[3] [https://www.otto.de/p/premiumx-25m-profi-koaxialkabel-schwarz-135db-4-fach-geschirmt-reines-kupfer-tv-kabel-S072P0KQ/#1](https://www.otto.de/p/premiumx-25m-profi-koaxialkabel-schwarz-135db-4-fach-geschirmt-reines-kupfer-tv-kabel-S072P0KQ/#1)
+[4] [https://www.saturn.de/de/product/_premiumx-px-gold-line-tv-75m-antennenkabel-97620884.html#1](https://www.saturn.de/de/product/_premiumx-px-gold-line-tv-75m-antennenkabel-97620884.html#1)
+[5] [https://www.saturn.de/de/product/_premiumx-px-profi-50m-antennenkabel-97800599.html#1](https://www.saturn.de/de/product/_premiumx-px-profi-50m-antennenkabel-97800599.html#1)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

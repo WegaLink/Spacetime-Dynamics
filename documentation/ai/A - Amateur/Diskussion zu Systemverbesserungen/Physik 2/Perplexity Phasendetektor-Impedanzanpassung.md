@@ -2,8 +2,8 @@
   Perplexity Phasendetektor-Impedanzanpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 1. November 2026 um 23:29
-Nachrichten: 4
+Exportiert: 2. November 2026 um 23:36
+Nachrichten: 6
 Modell: sonar
 
 ───────────────────────────────────────────────────────────────
@@ -108,6 +108,68 @@ Um ein 10-MHz-Referenzsignal verlustarm über 250 Meter zu übertragen, müssen 
 3. **Alternativer Ansatz für Raumzeit- / Phasendynamik-Experimente (RF-over-Fiber):**
    - Bei 250 Metern Distanz und extrem hohen Anforderungen an Phasenstabilität (Nanosekunden-/Pikosekunden-Bereich) kämpfen Sie bei Kupferkabeln immer mit thermischen Längenänderungen (Ausdehnung des Kabels bei Temperaturwechseln verfälscht die Phase massiv!).
    - Professionelle Aufbauten in diesem Bereich nutzen oft **Glasfaser-Strecken (RF over Fiber / Analog-Optik-Links)** oder direkt digitale Protokolle (White Rabbit / PTP / Ethernet-basierte Uhrenverteilung), um Laufzeit- und Dämpfungsprobleme auf Langstrecken komplett zu eliminieren.
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Danke für die Hinweise. Das Sat-Kabel (nicht SATA, war falsch) war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk wie im Anhang gezeigt durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+
+📎 Anhänge: Widerstandsnetzwerk.jpg, GPSDO zu Sat-1m zu SDR1 und GPSDO zu SDR2.jpg, GPSDO zu SDR1 und SDR2.jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+### 1. Technische Daten des gewählten Kabels (PremiumX Profi 250m CU)
+
+Das von Ihnen verlinkte **PremiumX Profi (CU, reines Kupfer)** ist eine deutliche Verbesserung gegenüber dem alten CCS-Kabel:
+- **Innenleiter:** Reines Kupfer (Solid Copper, meist ca. \(1{,}02\,\text{mm}\) Durchmesser), wodurch der DC-Widerstand für 250 m von katastrophalen \(\approx 34\,\Omega\) auf **unter \(4\,\Omega\) bis \(5\,\Omega\) für die gesamte Strecke** sinkt.
+- **Wellenwiderstand:** Nominell \(75\,\Omega\).
+- **Schirmung:** 4-fach geschirmt (Klasse A), Schirmungsmaß ca. 135 dB.
+- **Dämpfung bei 10 MHz:** Da Sat-Kabel primär für den GHz-Bereich optimiert sind, gibt es für 10 MHz selten offizielle Datenblätter, aber mit massivem Kupfer entfällt der massive Skineffekt-Einbruch des Stahlkerns. Die Dämpfung wird sich bei 10 MHz im Bereich von schätzungsweise \(\approx 1\,\text{dB}\) bis \(2\,\text{dB}\) für die 250 m bewegen (deutlich unter den im Datenblatt theoretisch angegebenen \(\sim 5\,\text{dB}\) oder dem gemessenen \(-55\,\text{dB}\)).
+
+#### Gibt es noch besser geeignete Kabel?
+Für Raumzeit- und Phasendynamik-Messungen im Nanosekunden-/Pikosekunden-Bereich gibt es zwei physikalische Aspekte, die ein Standard-Sat-Kabel (RG-6-Klasse) an seine Grenzen bringen:
+1. **Temperaturabhängigkeit des Dielektrikums (Phasendrift):** Standard-Sat-Kabel nutzen geschäumtes PE (Foam-PE). Dessen mechanische und dielektrische Eigenschaften variieren mit der Temperatur, was zu langsamen Phasenverschiebungen bei Raumklimaschwankungen führt.
+2. **Mechanische Stabilität (Biegestress):** Wenn das 250-m-Kabel bewegt oder aufgerollt ist, verändern sich die mechanischen Toleranzen leicht.
+
+*Alternativen:*
+- **RG-11 Vollkupfer / 75-Ω-Messtechnik-Kabel:** Haben einen dickeren Innenleiter (oft \(\approx 1{,}6\,\text{mm}\)), noch geringere Dämpfung und sind mechanisch stabiler.
+- **Professionelle 50-Ω- oder 75-Ω-Halb-Rigid- oder RG-213-Leitungen** (wobei 50-Ω-Leitungen im bestehenden Setup Anpassungsglieder erfordern). Für ein rein passives 75-Ω-System ist ein hochwertiges RG-11-Vollkupferkabel eine exzellente Wahl.
+
+---
+
+### 2. Ursachen für die hohe Schwankungsbreite (Jitter / Rauschen ~600 ps) bei der 1-m-Messung
+
+Bei der Direktmessung (GPSDO auf beide Kanäle) liegt die Schwankungsbreite bei sauberen **9 ps**. Sobald jedoch das Widerstandsnetzwerk und ein kurzes 1-m-Kabel im Spiel sind, springt die Schwankung auf **ca. 600 ps** (was bei 10 MHz ca. \(2{,}16^\circ\) Jitter/Phasenrauschen entspricht). Dass eine Stahlblech-Kapselung und Ferrite keinen Einfluss hatten, zeigt, dass es **kein klassisches Einstrahlproblem (HF/Netzbrumm)** ist.
+
+Die Hauptursachen für diese massive Verschlechterung im Netzwerk/Kabel-Pfad sind:
+
+1. **Fehlende Signalflanken-Steilheit & Rauschverstärkung im passiven Netzwerk:**
+   Ein passives Widerstandsnetzwerk (Teiler, Kombinierer, Anpassungswiderstände) dämpft das Signal massiv (ca. \(-22{,}5\,\text{dB}\) bis \(-25\,\text{dB}\)). Dadurch sinkt das Signal-Rausch-Verhältnis (SNR) am Scope-Eingang dramatisch. Das Rauschen des Oszilloskops bzw. der Eingangsstufe überlagert sich dem flachen Sinus-Nulldurchgang. Bei einem 10-MHz-Sinus führt ein geringes Amplitudenrauschen bei flacher Flanke zu riesigen Zeit-/Phasen-Jittern (\(\Delta t = \frac{\Delta V}{2\pi f V_{\text{peak}}}\)).
+2. **Reflexionen durch unvollständige Impedanzanpassung (Mismatched Loads):**
+   Das Netzwerk arbeitet mit diskreten Widerständen, kombiniert GPSDO-Signal und (simulierten) AWG-Pfad und trifft auf die hochohmige, kapazitive Last des Scopes (\(1\,\text{M}\Omega \parallel 18\,\text{pF}\)) bzw. des SDRs. Unangepasste Übergänge zwischen 50 Ω, Widerstands-Kombinierern und 75 Ω erzeugen stehende Wellen und Mehrfachreflexionen, die das Signal verformen und von Messung zu Messung fluktuieren lassen.
+3. **Masse-Loops / Ground-Bouncing über die gemeinsame Geräte-Masse:**
+   Wenn GPSDO, Eclypse Z7 (Scope/AWG) und eventuelle USB-/Netzteile über Schutzleiter oder Masse-Schirme mehrfach verbunden sind, fließen Ausgleichsströme auf den Schirmungen. Selbst wenn Ferrite auf den DC-Leitungen sitzen, reicht hochfrequentes digitales Schaltrauschen des FPGA-Boards (Eclypse Z7), um die empfindliche analoge Masse des Scopes oder der Referenz zu modulieren.
+
+---
+
+### 3. Wie lässt sich die Schwankungsbreite verringern?
+
+1. **Aktive Pufferung statt rein passiver Widerstandsnetzwerke:**
+   Verwenden Sie am Ausgang des GPSDO und an den Einspeisepunkten **aktive HF-Buffer / Breitband-Verstärker mit hoher Entkopplung** (oder Operationsverstärker mit hoher slew rate), anstatt Signale über passive Widerstandsnetzwerke zu kombinieren. Das hält das Signal-Rausch-Verhältnis hoch.
+2. **Erzwingen einer echten 50-Ω- oder 75-Ω-Last am Scope:**
+   Der Eclypse-Z7-Scope-Eingang ist hochohmig (\(1\,\text{M}\Omega\)). Ein offener oder hochohmig abgeschlossener Abschluss am Messpunkt führt zu Reflexionen. Schließen Sie den Messpunkt *direkt am Scope-Eingang* mit einem physischen 50-Ω- oder 75-Ω-Abschlusswiderstand (terminiert) ab und koppeln Sie das Signal entweder per hochohmigem Tastkopf (10:1 mit niedriger Kapazität) oder über einen Impedanzwandler aus.
+3. **Galvanische Trennung / Gleichtaktunterdrückung:**
+   Da Masse-Schleifen oft für unruhige Phasenmessungen sorgen, prüfen Sie, ob der GPSDO und das Eclypse Z7 über getrennte Netzteile laufen. Ein HF-Trenntrafo (Balun) oder ein optischer/galvanischer Trenner in der Taktleitung kann helfen, Brummen und digitale Störnteppiche des FPGAs fernzuhalten.
+4. **Verbesserung der Flankensteilheit (Zero-Crossing-Detektion):**
+   Wenn möglich, nutzen Sie nicht den Sinus-Ausgang direkt für die Phasendetektion, sondern formen Sie das Signal über einen schnellen Komparator (Nulldurchgangsdetektor mit schneller Schaltdiskriminierung) in ein Rechtecksignal um. Scharfe Flanken minimieren den Einfluss von Amplitudenrauschen auf die Zeitmessung drastisch.
+
+**Citations:**
+[1] [https://www.kaufland.at/product/320666483/](https://www.kaufland.at/product/320666483/)
+[2] [https://www.kaufland.at/product/338131801/](https://www.kaufland.at/product/338131801/)
+[3] [https://www.kaufland.de/product/324473356/#1](https://www.kaufland.de/product/324473356/#1)
+[4] [https://www.kaufland.de/product/358228566/#1](https://www.kaufland.de/product/358228566/#1)
+[5] [https://www.testberichte.de/pdb/p/evdTAFFeQTOKa3asbV7yDA.html#1](https://www.testberichte.de/pdb/p/evdTAFFeQTOKa3asbV7yDA.html#1)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation

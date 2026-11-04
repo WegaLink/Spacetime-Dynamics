@@ -2,8 +2,8 @@
   Kimi K3.1 Pro Phasendetektor-Anpassung
 ═══════════════════════════════════════════════════════════════
 
-Exportiert: 1. November 2026 um 23:30
-Nachrichten: 4
+Exportiert: 2. November 2026 um 23:37
+Nachrichten: 6
 Modell: kimi-latest
 
 ───────────────────────────────────────────────────────────────
@@ -203,6 +203,72 @@ Falls das Kabel physisch nicht gewechselt werden kann (z.B. fest verlegt), hilft
 
 #### C. Überprüfung der Impedanzanpassung bei 75 Ω
 Da das Kabel nun niederohmiger wird, greifen die 75/50-Ω-Anpassungsglieder wieder wie berechnet. Stellen Sie sicher, dass die Anpassungsnetzwerke (L-Pads oder Trafo-Glieder) direkt an den Kabelenden sitzen, um stehende Wellen und zusätzliche Resonanzen (wie im 3-MHz-NanoVNA-Plot zu sehen) zu vermeiden.
+
+───────────────────────────────────────────────────────────────
+
+[👤 Sie]
+Danke für die Hinweise. Das Sat-Kabel (nicht SATA, war falsch) war mit CCS Innenleiter (Fehlkauf, wider besseren Wissens) soll mit folgendem Typ mit Kupfer ausgetauscht werden: https://www.willisat.de/sat-empfang/kabel-co/premiumx-profi-250-m-koaxialkabel-135-db-4-fach-geschirmt-cu-reines-kupfer-satelliten-koaxkabel-antennenkabel-digital-sat-tv-koax-kabel-rg-6-class-a-250m-auf-holz-trommel-mit-10x-f-stecker-vergoldet-mit-dichtring_122626_17917 Sind von diesem Kabel die technischen Daten bekannt? Gibt es eventuell noch andere Kabel, die besser geeignet wären? Aktuell werden Nullmessungen mit direktem GPSDO-Signal an beiden Kanälen sowie mit einem 1m-Kabel am Widerstandsnetzwerk wie im Anhang gezeigt durchgeführt. Bei direktem GPSDO-Signal an beiden Kanälen wird ein geringfügiger Offset von 26.1 ps mit einer Schwankungsbreite von 9 ps wie im Anhang gezeigt sichtbar. Bei Anschluss eines 1m-Kabels mit Anpassung und Kombinierer wird neben der Phasenverschiebung durch die Kabellänge eine Schwankungsbreite von ca. 600 ps sichtbar. Zu deren Reduktion sind bereits eine vollständige Abschirmung in einem Stahlblech-Behälter sowie Ferritringe auf den Versorgungsleitungen versucht worden, jedoch ohne erkennbaren Einfluss. Was könnte die Ursache der hohen Schwankungsbreite des Phasensignals sein? Wie könnte sie sich verringern lassen?
+
+📎 Anhänge: Widerstandsnetzwerk.jpg, GPSDO zu Sat-1m zu SDR1 und GPSDO zu SDR2.jpg, GPSDO zu SDR1 und SDR2.jpg
+
+───────────────────────────────────────────────────────────────
+
+[🤖 KI]
+### 1. Technische Daten des gewählten PremiumX Vollkupfer-Kabels
+
+Das von Ihnen herausgesuchte **PremiumX Profi (bzw. Deluxe) Vollkupfer-Koaxialkabel (RG-6, Klasse A, 135 dB)** hat hervorragende, für diesen Einsatzzweck passende Kenndaten:
+* **Innenleiter:** 1,02 mm (bzw. 1,13 mm bei Deluxe) aus **100 % reinem Kupfer (CU)**. Der Gleichstromwiderstand sinkt damit bei 250 m Länge von schockierenden ~34 Ω (CCS) auf ca. **4,3 bis 5,5 Ω** für den gesamten Innenleiter.
+* **Wellenwiderstand:** 75 Ω (±3 Ω).
+* **Verkürzungsfaktor ($v_f$):** ca. 0,82 bis 0,85 (durch geschäumtes Zell-PE-Dielektrikum).
+* **Dämpfung bei 10 MHz:** Liegt bei diesem Kabeltyp extrem niedrig, typischerweise bei unter **0,8 bis 1,2 dB pro 100 Meter** bei 10 MHz. Für 250 Meter bedeutet dies eine zu erwartende Gesamtkabeldämpfung von **ca. 2 bis 3 dB** bei 10 MHz (zuzüglich der Anpassungsglieder). Damit wird der Tiefpass-Effekt komplett eliminiert.
+
+#### Gibt es noch besser geeignete Kabel?
+* **RG-11 Vollkupfer (75 Ω):** Ein RG-11-Kabel hat einen deutlich dickeren Innenleiter (ca. 1,6 mm Cu) und einen größeren Außendurchmesser (~10 mm). Die Dämpfung bei 10 MHz sinkt damit nochmals um etwa die Hälfte. *Nachteil:* Es ist spürbar dicker, schwerer, steifer und erfordert spezielle F-Stecker für RG-11. Für Labor- oder Testaufbauten ist das RG-6 Vollkupfer in der Regel der beste Kompromiss aus Handhabbarkeit und extrem geringer Dämpfung.
+* **Professionelles SDI-Videokabel (z.B. Belden 1694A):** Das ist der absolute Goldstandard für präzise analoge HF- und Digitalsignale bei 75 Ω mit massivem Kupferinnenleiter und gasgeschäumtem PE. Kostet allerdings im Vergleich zum Sat-Kabel ein Vielfaches. Das PremiumX Vollkupfer-Sat-Kabel ist für Ihr Projekt bei diesem Preis-Leistungs-Verhältnis eine exzellente Wahl.
+
+---
+
+### 2. Ursache für die hohe Schwankungsbreite (ca. 600 ps) beim 1m-Kabel-Test
+
+Dass die Nullmessung direkt am GPSDO (ohne Netzwerk) eine winzige Schwankung von nur **9 ps** zeigt, beweist, dass der GPSDO und der Eclypse Z7 AWG/Scope phasenstarr und rauscharm arbeiten. Sobald jedoch das 1m-Kabel mit dem Widerstandsnetzwerk (Kombinierer + 50/75-Ω-Anpassung) dazwischengeschaltet wird, explodiert die Schwankungsbreite auf **~600 ps**. 
+
+Da eine Stahlblech-Abschirmung und Ferrite keinen Einfluss hatten, handelt es sich **nicht um klassische elektromagnetische Einstrahlung (EMV-Netzbrummen oder HF-Störungen)**, sondern um schaltungstechnische bzw. reflexionsbedingte Effekte:
+
+1. **Fehlende Entkopplung (Rückwirkung des AWG auf den GPSDO):** 
+   Im Widerstandsnetzwerk sind GPSDO und AWG über den 3-Wege-Kombinierer zusammengeschaltet. Wenn die Entkopplung (Isolation) des passiven Widerstandsnetzwerks unzureichend ist, moduliert das AWG-Signal (oder interne Schaltvorgänge des AWG/Scopes) direkt auf den GPSDO-Referenzeingang zurück. Das führt zu einer Phasenverwirrung am Trigger.
+2. **Reflexionen an den Impedanzübergängen (Stehende Wellen):**
+   Das Netzwerk wandelt 50 Ω (GPSDO/AWG) auf 75 Ω (das kurze 1m-Kabel) und zurück auf 50 Ω (SDR/Scope). Wenn die Widerstände im L-Pad nicht exakt passen (z. B. Standardwerte statt exakter Berechnungen oder Toleranzen der SMD-Widerstände) oder Streuinduktivitäten durch lange ungeschirmte Beinchen/Leiterbahnen vorliegen, entstehen **Reflexionen**. Diese Mehrfachreflexionen im Kabel (auch bei nur 1 m Länge bei hohen Flankensteilheiten) verändern den Nulldurchgang des Sinussignals massiv und jitter-artig.
+3. **AM-zu-PM-Konversion (Amplituden- zu Phasen-Jitter):**
+   Wenn durch Fehlanpassung Signalanteile reflektiert werden und sich überlagern, führt jede kleinste Amplituden- oder Frequenzschwankung der Quellen zu einer scheinbaren Phasenverschiebung. 600 ps Jitter bei 10 MHz entspricht gerade einmal ca. **2,16 Grad** Phasenjitter – bei einer ungünstigen Resonanz im Widerstandsnetzwerk schwingt sich das System hier leicht auf.
+4. **Masse-Schleifen / Ground-Bouncing über die USB-Masse des Eclypse Z7:**
+   Der Eclypse Z7 ist oft über USB mit einem PC verbunden, der GPSDO hat eventuell ein eigenes Netzteil. Über die Schirmungen der Koaxkabel und die Masse des AWG/Scopes fließt ein Ausgleichsstrom (Ground Loop), der hochfrequentes Rauschen direkt in den Eingang mischt.
+
+---
+
+### 3. Wie lässt sich die Schwankungsbreite verringern?
+
+Um den Jitter beim 1m-Test (und später beim 250m-Kabel) wieder auf den Bereich von unter 20–50 ps zu drücken, sollten folgende Maßnahmen ergriffen werden:
+
+* **Aktive Entkopplung statt reinem Widerstandsnetzwerk:** 
+  Verwenden Sie für die Injektion keinen passiven Widerstands-Kombinierer, sondern einen **aktiven HF-Kombinierer / RF-Summierer** oder entkoppeln Sie den AWG über einen Operationsverstärker / HF-Buffer mit hoher Rückflussdämpfung (Reverse Isolation > 30 dB), damit das AWG-Signal den GPSDO nicht beeinflusst.
+* **Prüfung der Widerstandswerte im L-Pad:** 
+  Messen Sie die Widerstände des Anpassungsnetzwerks nach. Für 50 Ω ↔ 75 Ω müssen die exakten Werte (Serienwiderstand $R_1 = 43,3\,\Omega$, Querwiderstand $R_2 = 86,6\,\Omega$) möglichst genau getroffen werden (1%-Metallfilm-Widerstände oder Parallelschaltung von E24-Widerständen).
+* **Gezielte Masse-Trennung (Galvanische Trennung):** 
+  Trennen Sie eventuelle Masseschleifen auf. Versorgen Sie den GPSDO und den Eclypse Z7 testweise über getrennte, potentialfreie Netzteile oder nutzen Sie Gleichtakt-Drosseln (Common-Mode Chokes) auf den Signalleitungen (keine einfachen Ferritperlen, sondern echte HF-Übertrager / Baluns für 10 MHz), um Mantelwellen auf den Koaxkabeln zu unterbinden.
+* **Abschluss mit 75 Ω direkt am Eingang:** 
+  Stellen Sie sicher, dass das 1m-Kabel am Ende exakt mit 75 Ω abgeschlossen ist, bevor es in die 75/50-Ω-Anpassung und an das Scope (1 MΩ) geht. Ohne echten 75-Ω-Wellenwiderstand am Kabelende entstehen stehende Wellen, die den Jitter extrem antreiben.
+
+**Citations:**
+[1] [https://www.mediamarkt.de/de/product/_premiumx-500m-deluxe-pro-koaxial-antennenkabel-96178714.html#1](https://www.mediamarkt.de/de/product/_premiumx-500m-deluxe-pro-koaxial-antennenkabel-96178714.html#1)
+[2] [https://www.mediamarkt.de/de/product/_premiumx-50m-profi-pro-koaxial-antennenkabel-96178719.html#1](https://www.mediamarkt.de/de/product/_premiumx-50m-profi-pro-koaxial-antennenkabel-96178719.html#1)
+[3] [https://www.mediamarkt.de/de/product/_premiumx-basic-100w-123399-antennenkabel-97539402.html#1](https://www.mediamarkt.de/de/product/_premiumx-basic-100w-123399-antennenkabel-97539402.html#1)
+[4] [https://www.otto.de/p/premiumx-25m-profi-koaxialkabel-schwarz-135db-4-fach-geschirmt-reines-kupfer-tv-kabel-S072P0KQ/#1](https://www.otto.de/p/premiumx-25m-profi-koaxialkabel-schwarz-135db-4-fach-geschirmt-reines-kupfer-tv-kabel-S072P0KQ/#1)
+[5] [https://www.otto.de/p/premiumx-5x-100m-koaxialkabel-135db-4-fach-antennenkabel-rg6-class-a-digital-sat-kabel-S0L340FG/#variationId=S0L340FGRL8A#1](https://www.otto.de/p/premiumx-5x-100m-koaxialkabel-135db-4-fach-antennenkabel-rg6-class-a-digital-sat-kabel-S0L340FG/#variationId=S0L340FGRL8A#1)
+[6] [https://www.otto.de/p/premiumx-deluxe-pro-kupfer-koaxialkabel-135db-5-fach-100m-sat-antennenkabel-tv-kabel-S072P0J8/#1](https://www.otto.de/p/premiumx-deluxe-pro-kupfer-koaxialkabel-135db-5-fach-100m-sat-antennenkabel-tv-kabel-S072P0J8/#1)
+[7] [https://www.otto.de/p/premiumx-profi-pro-koaxialkabel-135db-5-fach-reines-kupfer-50-meter-tv-kabel-S072P0JM/#variationId=S072P0JMLGN3#1](https://www.otto.de/p/premiumx-profi-pro-koaxialkabel-135db-5-fach-reines-kupfer-50-meter-tv-kabel-S072P0JM/#variationId=S072P0JMLGN3#1)
+[8] [https://www.saturn.de/de/product/_premiumx-px-basic-250w-122625-antennenkabel-97539340.html](https://www.saturn.de/de/product/_premiumx-px-basic-250w-122625-antennenkabel-97539340.html)
+[9] [https://www.voelkner.de/products/3429869/PremiumX-25m-PROFI-Koaxialkabel-Schwarz-135dB-4-fach-geschirmt-REINES-KUPFER-Koax-Kabel-Satellitenkabel-SAT-Antennenkabel.html?offer=58d91faa31195edc9b4f019bee668de5](https://www.voelkner.de/products/3429869/PremiumX-25m-PROFI-Koaxialkabel-Schwarz-135dB-4-fach-geschirmt-REINES-KUPFER-Koax-Kabel-Satellitenkabel-SAT-Antennenkabel.html?offer=58d91faa31195edc9b4f019bee668de5)
+[10] [https://www.voelkner.de/products/4810478/PremiumX-100m-BASIC-Koaxialkabel-schwarz-135dB-4-fach-geschirmt-SAT-TV-Koax-Kabel-Antennenkabel-Entmanteler-0-31-m.html?itm_source=&itm_medium=last_seen&itm_campaign=4810478#1](https://www.voelkner.de/products/4810478/PremiumX-100m-BASIC-Koaxialkabel-schwarz-135dB-4-fach-geschirmt-SAT-TV-Koax-Kabel-Antennenkabel-Entmanteler-0-31-m.html?itm_source=&itm_medium=last_seen&itm_campaign=4810478#1)
 
 ═══════════════════════════════════════════════════════════════
   Ende der Konversation
